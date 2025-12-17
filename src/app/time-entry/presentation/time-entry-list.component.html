@@ -1,0 +1,24 @@
+<div class="time-entry-list">
+  <h2>{{ 'timeEntry.monthlySummary' | translate }}</h2>
+  <div class="totals" aria-live="polite" aria-label="{{ 'timeEntry.accessibility.totalsRegionLabel' | translate }}">
+    <div>{{ 'timeEntry.totalHours' | translate }} {{ facade.totals()?.totalHours ?? 0 }}</div>
+    <div>{{ 'timeEntry.totalCourses' | translate }} {{ facade.totals()?.totalCourses ?? 0 }}</div>
+  </div>
+
+  <ma-time-entry-form></ma-time-entry-form>
+  <div class="exports">
+    <button (click)="downloadJson()" aria-label="{{ 'timeEntry.accessibility.exportJsonAria' | translate }}">{{ 'timeEntry.exportJson' | translate }}</button>
+    <button (click)="downloadCsv()" aria-label="{{ 'timeEntry.accessibility.exportCsvAria' | translate }}">{{ 'timeEntry.exportCsv' | translate }}</button>
+    <input type="file" (change)="onImport($event)" accept="application/json" title="{{ 'timeEntry.importJson' | translate }}" aria-label="{{ 'timeEntry.accessibility.importAria' | translate }}" />
+  </div>
+
+  <h3>{{ 'timeEntry.entriesTitle' | translate }}</h3>
+  <ul>
+    <li *ngFor="let e of facade.entries()">{{ e.date }} — {{ e.durationMinutes }} min — {{ e.type }}</li>
+  </ul>
+
+  <h3>{{ 'timeEntry.courseVisitsTitle' | translate }}</h3>
+  <ul>
+    <li *ngFor="let v of facade.visits()">{{ v.date }} — {{ v.durationMinutes }} min — {{ v.personName || v.personId }}</li>
+  </ul>
+</div>

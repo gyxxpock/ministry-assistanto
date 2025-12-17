@@ -1,0 +1,10 @@
+.time-entry-form {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.time-entry-form label {
+  display: flex;
+  flex-direction: column;
+}
