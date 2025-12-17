@@ -1,0 +1,34 @@
+{
+  "app": {
+    "title": "Ministry Assistanto"
+  },
+  "timeEntry": {
+    "monthlySummary": "Resumen mensual",
+    "totalHours": "Horas totales:",
+    "totalCourses": "Cursos totales:",
+    "exportJson": "Exportar JSON",
+    "exportCsv": "Exportar CSV",
+    "importJson": "Importar JSON",
+    "entriesTitle": "Entradas",
+    "courseVisitsTitle": "Visitas a cursos",
+    "form": {
+      "date": "Fecha",
+      "durationMinutes": "Duración (minutos)",
+      "type": "Tipo",
+      "typeOptions": {
+        "preaching": "Predicación",
+        "study": "Estudio",
+        "visiting": "Visita",
+        "other": "Otro"
+      },
+      "add": "Agregar",
+      "addAria": "Agregar entrada"
+    },
+    "accessibility": {
+      "exportJsonAria": "Exportar entradas como archivo JSON",
+      "exportCsvAria": "Exportar entradas como archivo CSV",
+      "importAria": "Importar entradas desde archivo JSON",
+      "totalsRegionLabel": "Totales mensuales"
+    }
+  }
+}
