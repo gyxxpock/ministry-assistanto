@@ -1,0 +1,44 @@
+name: PR validation
+
+on:
+  pull_request:
+    types: [opened, edited, synchronize, ready_for_review]
+
+jobs:
+  validate-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run i18n key check
+        run: npm run i18n:check
+
+      - name: Lint (basic check)
+        run: npm run test -- --watch=false
+
+      - name: Validate PR body contains checklist
+        uses: amitsingh-007/validate-pr-body@v1.0.0
+        with:
+          regex: "\\- \[ \] Tests pass locally|\\- \[ \] Build passes" # small heuristic
+
+      - name: Ensure required labels
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const required = ['i18n','a11y','ci:automation'];
+            const pr = context.payload.pull_request;
+            if (!pr) return;
+            const labels = pr.labels.map(l => l.name);
+            const missing = required.filter(r => !labels.includes(r));
+            if (missing.length) {
+              core.setFailed(`Missing required PR labels: ${missing.join(', ')}`);
+            }
