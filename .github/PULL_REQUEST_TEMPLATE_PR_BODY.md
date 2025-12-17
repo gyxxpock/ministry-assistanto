@@ -21,8 +21,3 @@ This PR introduces runtime translations for the Time Entry feature and accessibi
 - [x] i18n: keys added and `npm run i18n:check` passes
 - [x] Accessibility: aria attributes added and tests assert them
 
----
-
-Commits have been squashed into a single clean commit for easier review.
-
-If anything else should be translated or you want a broader i18n sweep, I can follow up.
