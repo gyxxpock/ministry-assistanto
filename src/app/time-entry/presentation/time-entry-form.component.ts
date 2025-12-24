@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import TimeEntryFacade from '../facade/time-entry.facade';
+import { TimeEntryFacade } from '../facade/time-entry.facade';
 
 @Component({
   selector: 'ma-time-entry-form',

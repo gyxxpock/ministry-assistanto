@@ -1,12 +1,11 @@
-import { Injectable, signal } from '@angular/core';
-import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
+import { Injectable, Inject, signal } from '@angular/core';
+import { TIME_ENTRY_REPOSITORY } from '../presentation/tokens/time-entry.tokens';
+import { ITimeEntryRepository } from '../data/time-entry.repository';
 import { TimeEntry, CourseVisit } from '../domain/models';
 import computeMonthlyTotals, { MonthlyTotals } from '../domain/time-entry.usecase';
 
-@Injectable({ providedIn: 'root' })
+@Injectable()
 export class TimeEntryFacade {
-  private repo: DexieTimeEntryRepository;
-
   // Signals
   public entries = signal<TimeEntry[]>([]);
   public visits = signal<CourseVisit[]>([]);
@@ -14,20 +13,25 @@ export class TimeEntryFacade {
   public currentYear = signal<number>(new Date().getFullYear());
   public currentMonth = signal<number>(new Date().getMonth() + 1);
 
-  constructor(repo?: DexieTimeEntryRepository) {
-    this.repo = repo ?? new DexieTimeEntryRepository();
-  }
+  constructor(
+    @Inject(TIME_ENTRY_REPOSITORY)
+    private readonly repo: ITimeEntryRepository
+  ) {}
 
   async loadMonth(year = this.currentYear(), month = this.currentMonth()) {
     this.currentYear.set(year);
     this.currentMonth.set(month);
+
     const [entries, visits] = await Promise.all([
       this.repo.listEntriesByMonth(year, month),
       this.repo.listVisitsByMonth(year, month),
     ]);
+
     this.entries.set(entries);
     this.visits.set(visits);
-    this.totals.set(computeMonthlyTotals(entries, visits, year, month));
+    this.totals.set(
+      computeMonthlyTotals(entries, visits, year, month)
+    );
   }
 
   async addEntry(entry: TimeEntry) {
@@ -59,27 +63,4 @@ export class TimeEntryFacade {
     await this.repo.removeVisit(id);
     await this.loadMonth();
   }
-
-  // Export / Import wrappers
-  async exportJSON(): Promise<string> {
-    const payload = await this.repo.exportAll();
-    return JSON.stringify(payload, null, 2);
-  }
-
-  async exportCSV(): Promise<string> {
-    const { entries, visits } = await this.repo.exportAll();
-    // lazy import exporter to avoid cyclic deps in tests
-    const { toCSV } = await import('./time-entry.exporter');
-    return toCSV(entries, visits);
-  }
-
-  async importJSON(json: string) {
-    const payload = JSON.parse(json);
-    await this.repo.importAll(payload);
-    // reload current month
-    await this.loadMonth();
-  }
 }
-
-
-export default TimeEntryFacade;

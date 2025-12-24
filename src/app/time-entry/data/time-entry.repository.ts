@@ -12,5 +12,3 @@ export interface ITimeEntryRepository {
   exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[] }>;
   importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void>;
 }
-
-export default ITimeEntryRepository;

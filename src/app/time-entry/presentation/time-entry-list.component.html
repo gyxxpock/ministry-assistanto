@@ -1,24 +1,54 @@
-<div class="time-entry-list">
-  <h2>{{ 'timeEntry.monthlySummary' | translate }}</h2>
-  <div class="totals" aria-live="polite" aria-label="{{ 'timeEntry.accessibility.totalsRegionLabel' | translate }}">
-    <div>{{ 'timeEntry.totalHours' | translate }} {{ facade.totals()?.totalHours ?? 0 }}</div>
-    <div>{{ 'timeEntry.totalCourses' | translate }} {{ facade.totals()?.totalCourses ?? 0 }}</div>
-  </div>
+<mat-card class="time-entry-list">
 
-  <ma-time-entry-form></ma-time-entry-form>
-  <div class="exports">
-    <button (click)="downloadJson()" aria-label="{{ 'timeEntry.accessibility.exportJsonAria' | translate }}">{{ 'timeEntry.exportJson' | translate }}</button>
-    <button (click)="downloadCsv()" aria-label="{{ 'timeEntry.accessibility.exportCsvAria' | translate }}">{{ 'timeEntry.exportCsv' | translate }}</button>
-    <input type="file" (change)="onImport($event)" accept="application/json" title="{{ 'timeEntry.importJson' | translate }}" aria-label="{{ 'timeEntry.accessibility.importAria' | translate }}" />
-  </div>
+  <mat-card-title>
+    {{ 'timeEntry.monthlySummary' | translate }}
+  </mat-card-title>
 
-  <h3>{{ 'timeEntry.entriesTitle' | translate }}</h3>
-  <ul>
-    <li *ngFor="let e of facade.entries()">{{ e.date }} — {{ e.durationMinutes }} min — {{ e.type }}</li>
-  </ul>
+  <mat-card-content>
 
-  <h3>{{ 'timeEntry.courseVisitsTitle' | translate }}</h3>
-  <ul>
-    <li *ngFor="let v of facade.visits()">{{ v.date }} — {{ v.durationMinutes }} min — {{ v.personName || v.personId }}</li>
-  </ul>
-</div>
+    <!-- Totales -->
+    <div class="totals" aria-live="polite">
+      <p>
+        {{ 'timeEntry.totalHours' | translate }}:
+        <strong>{{ facade.totals()?.totalHours ?? 0 }}</strong>
+      </p>
+      <p>
+        {{ 'timeEntry.totalCourses' | translate }}:
+        <strong>{{ facade.totals()?.totalCourses ?? 0 }}</strong>
+      </p>
+    </div>
+
+    <!-- Formulario -->
+    <ma-time-entry-form></ma-time-entry-form>
+
+    <!-- Acciones -->
+    <div class="exports">
+
+      <button mat-raised-button color="primary" (click)="downloadJson()">
+        {{ 'timeEntry.exportJson' | translate }}
+      </button>
+
+      <button mat-raised-button color="accent" (click)="downloadCsv()">
+        {{ 'timeEntry.exportCsv' | translate }}
+      </button>
+
+      <!-- Import JSON -->
+      <button mat-stroked-button (click)="fileInput.click()">
+        {{ 'timeEntry.importJson' | translate }}
+      </button>
+
+      <input #fileInput type="file" accept="application/json" hidden (change)="onImport($event)" />
+
+    </div>
+
+    <!-- Entradas por día -->
+    <h3>{{ 'timeEntry.entriesTitle' | translate }}</h3>
+
+    <ng-container *ngFor="let day of groupedEntries()">
+      <ma-time-entry-day [date]="day.date" [entries]="day.entries">
+      </ma-time-entry-day>
+    </ng-container>
+
+  </mat-card-content>
+
+</mat-card>

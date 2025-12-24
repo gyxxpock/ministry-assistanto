@@ -3,13 +3,17 @@ import { TimeEntry } from '../domain/models';
 
 @Component({
   selector: 'ma-time-entry-day',
+  styleUrls: ['./time-entry-day.component.scss'],
   template: `
-    <div class="day">
-      <h4>{{ date }}</h4>
-      <ul>
-        <li *ngFor="let e of entries">{{ e.durationMinutes }} min — {{ e.type }}</li>
-      </ul>
-    </div>
+    <mat-card class="day-card">
+      <mat-card-title>{{ date }}</mat-card-title>
+
+      <mat-list>
+        <mat-list-item *ngFor="let e of entries">
+          {{ e.durationMinutes }} min — {{ e.type }}
+        </mat-list-item>
+      </mat-list>
+    </mat-card>
   `,
   standalone: false
 })

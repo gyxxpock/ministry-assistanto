@@ -19,7 +19,7 @@ export function httpLoaderFactory() {
     AppRoutingModule,
 
     TranslateModule.forRoot({
-      defaultLanguage: 'es'
+      fallbackLang: 'es'
     })
   ],
   providers: [
