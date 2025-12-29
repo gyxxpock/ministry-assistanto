@@ -1,10 +1,32 @@
-.time-entry-form {
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
+.time-form {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: 16px;
+  box-sizing: border-box;
+
+  display: grid;
+  gap: 16px;
 }
 
-.time-entry-form label {
+.minutes-field input {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.presets {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+
+  button {
+    min-width: 64px;
+    min-height: 44px;
+  }
+}
+
+.submit-btn {
+  width: 100%;
+  min-height: 48px;
 }

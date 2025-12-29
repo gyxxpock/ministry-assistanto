@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import TimeEntryFacade from '../facade/time-entry.facade';
+import { Component, OnInit, computed } from '@angular/core';
+import { TimeEntryFacade } from '../facade/time-entry.facade';
+import { MatDialog } from '@angular/material/dialog';
+import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
+import { TimeEntryVM } from './models/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-list',
@@ -8,41 +11,44 @@ import TimeEntryFacade from '../facade/time-entry.facade';
   standalone: false
 })
 export class TimeEntryListComponent implements OnInit {
-  constructor(public facade: TimeEntryFacade) {}
+
+  /**
+   * Agrupa las entradas por día para la vista
+   */
+  groupedEntries = computed(() => {
+    const entries = this.facade.entries();
+
+    const map = new Map<string, TimeEntryVM[]>();
+
+    for (const entry of entries) {
+      if (!map.has(entry.date)) {
+        map.set(entry.date, []);
+      }
+      map.get(entry.date)!.push(entry);
+    }
+
+    return Array.from(map.entries()).map(([date, entries]) => ({
+      date,
+      entries
+    }));
+  });
+
+  constructor(
+    public facade: TimeEntryFacade,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.facade.loadMonth();
   }
 
-  async downloadJson() {
-    const json = await this.facade.exportJSON();
-    const blob = new Blob([json], { type: 'application/json' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `ministry-assistanto-data-${new Date().toISOString().slice(0,10)}.json`;
-    a.click();
-    URL.revokeObjectURL(url);
+  editEntry(entry: TimeEntryVM) {
+    this.dialog.open(TimeEntryEditDialogComponent, {
+      width: '400px',
+      data: { entry }
+    });
   }
 
-  async downloadCsv() {
-    const csv = await this.facade.exportCSV();
-    const blob = new Blob([csv], { type: 'text/csv' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = `ministry-assistanto-data-${new Date().toISOString().slice(0,10)}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
-  }
-
-  async onImport(evt: Event) {
-    const input = evt.target as HTMLInputElement;
-    if (!input.files || !input.files.length) return;
-    const file = input.files[0];
-    const text = await file.text();
-    await this.facade.importJSON(text);
-    // clear input
-    input.value = '';
-  }
+  async downloadJson() { }
+  async downloadCsv() { }
+  async onImport(_: Event) { }
 }

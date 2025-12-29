@@ -1,0 +1,29 @@
+<h2 mat-dialog-title>{{ 'timeEntry.editTitle' | translate }}</h2>
+
+<mat-dialog-content>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ 'timeEntry.form.date' | translate }}</mat-label>
+    <input matInput type="date" [(ngModel)]="entry.date">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ 'timeEntry.form.durationMinutes' | translate }}</mat-label>
+    <input matInput type="number" [(ngModel)]="entry.durationMinutes">
+  </mat-form-field>
+
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>{{ 'timeEntry.form.type' | translate }}</mat-label>
+    <input matInput [(ngModel)]="entry.type">
+  </mat-form-field>
+
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="cancel()">
+    {{ 'common.buttons.cancel' | translate }}
+  </button>
+  <button mat-raised-button color="primary" (click)="save()">
+    {{ 'common.buttons.save' | translate }}
+  </button>
+</mat-dialog-actions>
