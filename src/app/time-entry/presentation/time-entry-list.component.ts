@@ -1,6 +1,8 @@
 import { Component, OnInit, computed } from '@angular/core';
 import { TimeEntryFacade } from '../facade/time-entry.facade';
-import { TimeEntry } from '../domain/models';
+import { MatDialog } from '@angular/material/dialog';
+import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
+import { TimeEntryVM } from './models/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-list',
@@ -16,7 +18,7 @@ export class TimeEntryListComponent implements OnInit {
   groupedEntries = computed(() => {
     const entries = this.facade.entries();
 
-    const map = new Map<string, TimeEntry[]>();
+    const map = new Map<string, TimeEntryVM[]>();
 
     for (const entry of entries) {
       if (!map.has(entry.date)) {
@@ -31,13 +33,22 @@ export class TimeEntryListComponent implements OnInit {
     }));
   });
 
-  constructor(public facade: TimeEntryFacade) {}
+  constructor(
+    public facade: TimeEntryFacade,
+    private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.facade.loadMonth();
   }
 
-  async downloadJson() {}
-  async downloadCsv() {}
-  async onImport(_: Event) {}
+  editEntry(entry: TimeEntryVM) {
+    this.dialog.open(TimeEntryEditDialogComponent, {
+      width: '400px',
+      data: { entry }
+    });
+  }
+
+  async downloadJson() { }
+  async downloadCsv() { }
+  async onImport(_: Event) { }
 }

@@ -1,54 +1,40 @@
-<mat-card class="time-entry-list">
+<div class="time-entry-list">
 
-  <mat-card-title>
+  <h2 class="page-title">
     {{ 'timeEntry.monthlySummary' | translate }}
-  </mat-card-title>
+  </h2>
 
-  <mat-card-content>
+  <!-- Totals -->
+  <section class="totals">
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalHours' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalHours ?? 0 }}
+      </mat-card-content>
+    </mat-card>
 
-    <!-- Totales -->
-    <div class="totals" aria-live="polite">
-      <p>
-        {{ 'timeEntry.totalHours' | translate }}:
-        <strong>{{ facade.totals()?.totalHours ?? 0 }}</strong>
-      </p>
-      <p>
-        {{ 'timeEntry.totalCourses' | translate }}:
-        <strong>{{ facade.totals()?.totalCourses ?? 0 }}</strong>
-      </p>
-    </div>
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalCourses' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalCourses ?? 0 }}
+      </mat-card-content>
+    </mat-card>
+  </section>
 
-    <!-- Formulario -->
+  <!-- Form -->
+  <section class="form-section">
     <ma-time-entry-form></ma-time-entry-form>
+  </section>
 
-    <!-- Acciones -->
-    <div class="exports">
+  <!-- Days -->
+  <section class="days">
+    <ma-time-entry-day *ngFor="let group of groupedEntries()" [date]="group.date" [entries]="group.entries"
+      (edit)="editEntry($event)">
+    </ma-time-entry-day>
+  </section>
 
-      <button mat-raised-button color="primary" (click)="downloadJson()">
-        {{ 'timeEntry.exportJson' | translate }}
-      </button>
-
-      <button mat-raised-button color="accent" (click)="downloadCsv()">
-        {{ 'timeEntry.exportCsv' | translate }}
-      </button>
-
-      <!-- Import JSON -->
-      <button mat-stroked-button (click)="fileInput.click()">
-        {{ 'timeEntry.importJson' | translate }}
-      </button>
-
-      <input #fileInput type="file" accept="application/json" hidden (change)="onImport($event)" />
-
-    </div>
-
-    <!-- Entradas por día -->
-    <h3>{{ 'timeEntry.entriesTitle' | translate }}</h3>
-
-    <ng-container *ngFor="let day of groupedEntries()">
-      <ma-time-entry-day [date]="day.date" [entries]="day.entries">
-      </ma-time-entry-day>
-    </ng-container>
-
-  </mat-card-content>
-
-</mat-card>
+</div>

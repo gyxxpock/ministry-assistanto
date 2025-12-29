@@ -17,14 +17,12 @@ export function httpLoaderFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
-
     TranslateModule.forRoot({
       fallbackLang: 'es'
     })
   ],
   providers: [
     provideHttpClient(),
-
     provideTranslateHttpLoader({
       prefix: '/assets/i18n/',
       suffix: '.json'

@@ -2,6 +2,19 @@
   "app": {
     "title": "Ministry Assistanto"
   },
+  "common": {
+    "buttons": {
+      "close": "Close",
+      "save": "Save",
+      "cancel": "Cancel",
+      "delete": "Delete",
+      "edit": "Edit",
+      "confirm": "Confirm",
+      "import": "Import",
+      "export": "Export",
+      "add": "Add"
+    }
+  },
   "timeEntry": {
     "monthlySummary": "Monthly Summary",
     "totalHours": "Total hours:",

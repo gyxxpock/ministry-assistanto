@@ -1,11 +1,25 @@
-<mat-card class="day-card">
-  <mat-card-subtitle>{{ date }}</mat-card-subtitle>
+<section class="day">
 
-  <mat-list>
-    <mat-list-item *ngFor="let e of entries">
-      <mat-icon matListIcon>schedule</mat-icon>
-      <div matLine>{{ e.durationMinutes }} min</div>
-      <div matLine class="secondary">{{ e.type }}</div>
-    </mat-list-item>
-  </mat-list>
-</mat-card>
+  <h3 class="day-title">{{ date }}</h3>
+
+  <div class="entries">
+    <mat-card *ngFor="let e of entries" class="entry-card">
+      <mat-card-content class="entry-content">
+        <div class="entry-main">
+          <span class="minutes">{{ e.minutes }} min</span>
+          <span class="type">{{ e.typeLabel }}</span>
+        </div>
+      </mat-card-content>
+
+      <mat-card-actions align="end">
+        <button
+          mat-icon-button
+          aria-label="Edit entry"
+          (click)="onEdit(e)">
+          <mat-icon>edit</mat-icon>
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+</section>

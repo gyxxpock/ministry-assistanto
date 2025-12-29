@@ -2,6 +2,19 @@
   "app": {
     "title": "Asistente del ministerio"
   },
+  "common": {
+    "buttons": {
+      "close": "Cerrar",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "confirm": "Confirmar",
+      "import": "Importar",
+      "export": "Exportar",
+      "add": "Agregar"
+    }
+  },
   "timeEntry": {
     "monthlySummary": "Resumen mensual",
     "totalHours": "Horas totales:",

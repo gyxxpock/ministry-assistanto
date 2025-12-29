@@ -17,6 +17,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatSelectModule } from '@angular/material/select';
 
 const routes: Routes = [
   { path: 'list', component: TimeEntryListComponent },
@@ -28,9 +33,14 @@ const routes: Routes = [
   declarations: [
     TimeEntryListComponent,
     TimeEntryFormComponent,
-    TimeEntryDayComponent
+    TimeEntryDayComponent,
+    TimeEntryEditDialogComponent
   ],
   imports: [
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatCardModule,
@@ -51,4 +61,4 @@ const routes: Routes = [
     }
   ]
 })
-export class TimeEntryModule {}
+export class TimeEntryModule { }
