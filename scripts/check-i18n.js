@@ -28,7 +28,7 @@ function readJson(file) {
 }
 
 function main() {
-  const dir = path.resolve(__dirname, '../src/assets/i18n');
+  const dir = path.resolve(__dirname, '../public/assets/i18n');
   if (!fs.existsSync(dir)) {
     console.error('i18n directory not found:', dir);
     process.exit(2);
