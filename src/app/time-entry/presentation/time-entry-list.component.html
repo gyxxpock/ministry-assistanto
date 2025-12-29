@@ -1,24 +1,40 @@
 <div class="time-entry-list">
-  <h2>{{ 'timeEntry.monthlySummary' | translate }}</h2>
-  <div class="totals" aria-live="polite" aria-label="{{ 'timeEntry.accessibility.totalsRegionLabel' | translate }}">
-    <div>{{ 'timeEntry.totalHours' | translate }} {{ facade.totals()?.totalHours ?? 0 }}</div>
-    <div>{{ 'timeEntry.totalCourses' | translate }} {{ facade.totals()?.totalCourses ?? 0 }}</div>
-  </div>
 
-  <ma-time-entry-form></ma-time-entry-form>
-  <div class="exports">
-    <button (click)="downloadJson()" aria-label="{{ 'timeEntry.accessibility.exportJsonAria' | translate }}">{{ 'timeEntry.exportJson' | translate }}</button>
-    <button (click)="downloadCsv()" aria-label="{{ 'timeEntry.accessibility.exportCsvAria' | translate }}">{{ 'timeEntry.exportCsv' | translate }}</button>
-    <input type="file" (change)="onImport($event)" accept="application/json" title="{{ 'timeEntry.importJson' | translate }}" aria-label="{{ 'timeEntry.accessibility.importAria' | translate }}" />
-  </div>
+  <h2 class="page-title">
+    {{ 'timeEntry.monthlySummary' | translate }}
+  </h2>
 
-  <h3>{{ 'timeEntry.entriesTitle' | translate }}</h3>
-  <ul>
-    <li *ngFor="let e of facade.entries()">{{ e.date }} — {{ e.durationMinutes }} min — {{ e.type }}</li>
-  </ul>
+  <!-- Totals -->
+  <section class="totals">
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalHours' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalHours ?? 0 }}
+      </mat-card-content>
+    </mat-card>
 
-  <h3>{{ 'timeEntry.courseVisitsTitle' | translate }}</h3>
-  <ul>
-    <li *ngFor="let v of facade.visits()">{{ v.date }} — {{ v.durationMinutes }} min — {{ v.personName || v.personId }}</li>
-  </ul>
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalCourses' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalCourses ?? 0 }}
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- Form -->
+  <section class="form-section">
+    <ma-time-entry-form></ma-time-entry-form>
+  </section>
+
+  <!-- Days -->
+  <section class="days">
+    <ma-time-entry-day *ngFor="let group of groupedEntries()" [date]="group.date" [entries]="group.entries"
+      (edit)="editEntry($event)">
+    </ma-time-entry-day>
+  </section>
+
 </div>

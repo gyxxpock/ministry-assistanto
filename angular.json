@@ -24,6 +24,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
+            "baseHref": "/ministry-assistant/",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"

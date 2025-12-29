@@ -1,9 +1,29 @@
 .time-entry-list {
   padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.totals {
-  display: flex;
-  gap: 1rem;
+.page-title {
   margin-bottom: 1rem;
+}
+
+/* Totals */
+.totals {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Form */
+.form-section {
+  margin-bottom: 2rem;
+}
+
+/* Days */
+.days {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }

@@ -1,6 +1,7 @@
 import Dexie, { Table } from 'dexie';
 import { ITimeEntryRepository } from './time-entry.repository';
 import { TimeEntry, CourseVisit } from '../domain/models';
+import { Injectable } from '@angular/core';
 
 export class TimeEntryDB extends Dexie {
   entries!: Table<TimeEntry, string>;
@@ -26,11 +27,12 @@ export class TimeEntryDB extends Dexie {
   }
 }
 
+@Injectable()
 export class DexieTimeEntryRepository implements ITimeEntryRepository {
   private db: TimeEntryDB;
 
-  constructor(db?: TimeEntryDB) {
-    this.db = db ?? new TimeEntryDB();
+  constructor() {
+    this.db = new TimeEntryDB();
   }
 
   async listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]> {

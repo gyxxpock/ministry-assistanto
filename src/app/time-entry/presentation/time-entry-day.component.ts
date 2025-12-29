@@ -1,19 +1,19 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { TimeEntry } from '../domain/models';
+import { TimeEntryVM } from './models/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-day',
-  template: `
-    <div class="day">
-      <h4>{{ date }}</h4>
-      <ul>
-        <li *ngFor="let e of entries">{{ e.durationMinutes }} min — {{ e.type }}</li>
-      </ul>
-    </div>
-  `,
+  templateUrl: './time-entry-day.component.html',
   standalone: false
 })
 export class TimeEntryDayComponent {
   @Input() date = '';
-  @Input() entries: TimeEntry[] = [];
+  @Input() entries: TimeEntryVM[] = [];
+
+  @Output() edit = new EventEmitter<TimeEntryVM>();
+
+  onEdit(entry: TimeEntryVM) {
+    this.edit.emit(entry);
+  }
 }
