@@ -10,13 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 export class App {
   protected readonly title = signal('ministry-assistanto');
   constructor(private translate: TranslateService) {
-    // Idioma principal
-    const defaultLang = 'es';
+    const supportedLangs = ['es', 'en'];
 
-    // Detectar idioma del navegador
-    const browserLang = navigator.language.split('-')[0]; // 'es-ES' -> 'es'
-console.log(browserLang)
-    // Usar el idioma del navegador si existe, si no usar el default
-    translate.use(browserLang || defaultLang);
+    const browserLang = navigator.language?.split('-')[0];
+    const langToUse = supportedLangs.includes(browserLang)
+      ? browserLang
+      : 'es';
+
+    this.translate.use(langToUse);
   }
 }
