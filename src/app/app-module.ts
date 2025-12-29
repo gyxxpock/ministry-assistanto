@@ -24,7 +24,7 @@ export function httpLoaderFactory() {
   providers: [
     provideHttpClient(),
     provideTranslateHttpLoader({
-      prefix: '/assets/i18n/',
+      prefix: 'assets/i18n/',
       suffix: '.json'
     })
   ],
