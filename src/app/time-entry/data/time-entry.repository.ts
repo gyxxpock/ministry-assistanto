@@ -1,13 +1,4 @@
-import { InjectionToken } from '@angular/core';
 import { TimeEntry, CourseVisit } from '../domain/models';
-
-/**
- * Injection token for the TimeEntry repository.
- * This allows swapping implementations (Dexie, API, mocks, etc.)
- * without affecting the domain or presentation layers.
- */
-export const TIME_ENTRY_REPOSITORY =
-  new InjectionToken<ITimeEntryRepository>('TIME_ENTRY_REPOSITORY');
 
 /**
  * Repository contract for TimeEntry persistence.

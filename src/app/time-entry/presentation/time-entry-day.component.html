@@ -1,6 +1,6 @@
 <section class="day">
 
-  <h3 class="day-title">{{ date }}</h3>
+  <h3 class="day-title">{{ date | i18nDate:{ dateStyle: 'full' } }}</h3>
 
   <div class="entries">
     <mat-card *ngFor="let e of entries" class="entry-card">

@@ -20,7 +20,7 @@ export class TimeEntryDB extends Dexie {
       (navigator as any).storage?.persist?.().then((granted: boolean) => {
         // no-op: presence of the call is the goal
         console.debug('storage.persist granted:', granted);
-      }).catch(() => {});
+      }).catch(() => { });
     } catch (e) {
       // ignore in test or environments without navigator
     }
@@ -36,17 +36,15 @@ export class DexieTimeEntryRepository implements ITimeEntryRepository {
   }
 
   async listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]> {
-    const start = `${year}-${String(month).padStart(2, '0')}-01`;
-    const endMonth = new Date(year, month, 0).getDate();
-    const end = `${year}-${String(month).padStart(2, '0')}-${String(endMonth).padStart(2,'0')}`;
+    const start = new Date(year, month - 1, 1);
+    const end = new Date(year, month, 0, 23, 59, 59, 999);
 
     return this.db.entries.where('date').between(start, end, true, true).toArray();
   }
 
   async listVisitsByMonth(year: number, month: number): Promise<CourseVisit[]> {
-    const start = `${year}-${String(month).padStart(2, '0')}-01`;
-    const endMonth = new Date(year, month, 0).getDate();
-    const end = `${year}-${String(month).padStart(2, '0')}-${String(endMonth).padStart(2,'0')}`;
+    const start = new Date(year, month - 1, 1);
+    const end = new Date(year, month, 0, 23, 59, 59, 999);
 
     return this.db.visits.where('date').between(start, end, true, true).toArray();
   }
