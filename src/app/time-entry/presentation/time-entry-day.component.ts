@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TimeEntry } from '../domain/models';
 import { TimeEntryVM } from './models/time-entry.vm';
 
 @Component({
