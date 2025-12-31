@@ -3,7 +3,7 @@ import { ITimeEntryRepository } from '../data/time-entry.repository';
 import { TIME_ENTRY_REPOSITORY } from '../presentation/tokens/time-entry.tokens';
 import { TimeEntry, CourseVisit } from '../domain/models';
 import computeMonthlyTotals, { MonthlyTotals } from '../domain/time-entry.usecase';
-import { CreateTimeEntryVM, TimeEntryVM } from '../presentation/models/time-entry.vm';
+import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../presentation/models/time-entry.vm';
 
 @Injectable()
 export class TimeEntryFacade {
@@ -20,10 +20,13 @@ export class TimeEntryFacade {
   // ============================
 
   readonly entries = computed<TimeEntryVM[]>(() =>
-    this._entries().map(e => ({
+    this._entries().map(e => (
+      console.log('Mapping entry', e),{
       id: e.id,
       date: e.date,
-      minutes: e.durationMinutes,
+      durationMinutes: e.durationMinutes,
+      type: e.type,
+      notes: e.notes,
       typeLabel: this.translateType(e.type)
     }))
   );
@@ -79,7 +82,7 @@ export class TimeEntryFacade {
     const entry: TimeEntry = {
       id: crypto.randomUUID(),
       date: vm.date,
-      durationMinutes: vm.minutes,
+      durationMinutes: vm.durationMinutes,
       type: vm.type,
       createdAt: new Date().toISOString(),
       source: 'local'
@@ -89,11 +92,11 @@ export class TimeEntryFacade {
     await this.loadMonth();
   }
 
-  async updateEntry(entry: TimeEntry): Promise<void> {
+  async updateEntry(vm: UpdateTimeEntryVM): Promise<void> {
     await this.repository.updateEntry({
-      ...entry,
+      ...vm,
       updatedAt: new Date().toISOString()
-    });
+    } as TimeEntry);
     await this.loadMonth();
   }
 

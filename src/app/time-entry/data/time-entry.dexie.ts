@@ -2,10 +2,11 @@ import Dexie, { Table } from 'dexie';
 import { ITimeEntryRepository } from './time-entry.repository';
 import { TimeEntry, CourseVisit } from '../domain/models';
 import { Injectable } from '@angular/core';
+import { EntityTable } from 'dexie';
 
 export class TimeEntryDB extends Dexie {
-  entries!: Table<TimeEntry, string>;
-  visits!: Table<CourseVisit, string>;
+  entries!: EntityTable<TimeEntry, 'id'>;
+  visits!: EntityTable<CourseVisit, 'id'>;
 
   constructor(dbName = 'ministry-assistanto-db') {
     super(dbName);
@@ -54,7 +55,7 @@ export class DexieTimeEntryRepository implements ITimeEntryRepository {
   }
 
   async updateEntry(entry: TimeEntry): Promise<void> {
-    await this.db.entries.put(entry);
+    await this.db.entries.update(entry.id, entry);
   }
 
   async removeEntry(id: string): Promise<void> {

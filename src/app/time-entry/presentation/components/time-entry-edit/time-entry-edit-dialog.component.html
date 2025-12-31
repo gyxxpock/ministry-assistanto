@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>
+  {{ (isEditMode ? 'timeEntry.editTitle' : 'timeEntry.createTitle') | translate }}
+</h2>
+
+<mat-dialog-content>
+  <ma-time-entry-form
+    [entry]="entry"
+    (save)="onSave($event)"
+    (cancel)="onCancel()"
+  ></ma-time-entry-form>
+</mat-dialog-content>
