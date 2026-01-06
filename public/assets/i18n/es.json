@@ -24,10 +24,13 @@
     "importJson": "Importar JSON",
     "entriesTitle": "Entradas",
     "courseVisitsTitle": "Visitas a cursos",
+    "createTitle": "Agregar tiempo",
+    "editTitle": "Editar tiempo",
     "form": {
       "date": "Fecha",
       "durationMinutes": "Duración (minutos)",
       "type": "Tipo",
+      "notes": "Notas",
       "typeOptions": {
         "preaching": "Predicación",
         "study": "Estudio",

@@ -1,0 +1,55 @@
+<div class="time-entry-list-container">
+  <h2 class="page-title">
+    {{ 'timeEntry.monthlySummary' | translate }}
+  </h2>
+
+  <!-- Month Paginator -->
+  <div class="month-paginator">
+    <button mat-icon-button (click)="prevMonth()">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+    <span class="current-month">{{ currentDate() | date:'MMMM yyyy' }}</span>
+    <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()">
+      Hoy
+    </button>
+    <button mat-icon-button (click)="nextMonth()">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+
+  <!-- Totals -->
+  <section class="totals">
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalHours' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalHours ?? 0 }}
+      </mat-card-content>
+    </mat-card>
+
+    <mat-card>
+      <mat-card-title>
+        {{ 'timeEntry.totalCourses' | translate }}
+      </mat-card-title>
+      <mat-card-content>
+        {{ facade.totals()?.totalCourses ?? 0 }}
+      </mat-card-content>
+    </mat-card>
+  </section>
+
+  <!-- Days -->
+  <section class="days">
+    <ma-time-entry-day
+      *ngFor="let group of groupedEntries()"
+      [date]="group.date"
+      [entries]="group.entries"
+      (edit)="editEntry($event)"
+    >
+    </ma-time-entry-day>
+  </section>
+
+  <button mat-fab color="primary" class="add-fab" (click)="addEntry()">
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
