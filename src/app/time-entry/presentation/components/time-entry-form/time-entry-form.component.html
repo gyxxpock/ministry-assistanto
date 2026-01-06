@@ -32,7 +32,7 @@
   <!-- Presets -->
   <div class="presets">
     <button mat-stroked-button type="button" *ngFor="let p of presets" (click)="setPreset(p)">
-      {{ p }} min
+      {{ p/60 }} hrs
     </button>
   </div>
 
