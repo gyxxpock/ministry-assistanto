@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { TimeEntryVM } from './models/time-entry.vm';
+import { TimeEntryVM } from '../../models/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-day',

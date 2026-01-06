@@ -1,16 +1,21 @@
-import { TimeEntryType } from "../../domain/models";
+import { TimeEntryType } from '../../domain/models';
 
 export type TimeEntryTypeVM = TimeEntryType;
 
 export interface TimeEntryVM {
-    id: string;
-    date: string;
-    minutes: number;
-    typeLabel: string;
+  id: string;
+  date: string; // ISO date: yyyy-mm-dd
+  durationMinutes: number;
+  type: TimeEntryType;
+  notes?: string;
+  typeLabel: string; // This is a derived property for the view
 }
 
 export interface CreateTimeEntryVM {
-    date: string;
-    minutes: number;
-    type: 'preaching' | 'study' | 'visiting' | 'other';
+  date: string; // ISO date: yyyy-mm-dd
+  durationMinutes: number;
+  type: TimeEntryType;
+  notes?: string;
 }
+
+export type UpdateTimeEntryVM = { id: string } & Partial<CreateTimeEntryVM>;

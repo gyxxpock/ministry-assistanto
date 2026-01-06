@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { TimeEntryListComponent } from './time-entry-list.component';
-import { TimeEntryFormComponent } from './time-entry-form.component';
-import { TimeEntryDayComponent } from './time-entry-day.component';
+import { TimeEntryListComponent } from './components/time-entry-list/time-entry-list.component';
+import { TimeEntryFormComponent } from './components/time-entry-form/time-entry-form.component';
+import { TimeEntryDayComponent } from './components/time-entry-day/time-entry-day.component';
+import { TimeEntryCalendarComponent } from './components/time-entry-calendar/time-entry-calendar';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
@@ -17,16 +18,17 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
+import { TimeEntryEditDialogComponent } from './components/time-entry-edit/time-entry-edit-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
-import { I18nDatePipe } from './pipes/i18n-date.pipe';
+import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 
 const routes: Routes = [
   { path: 'list', component: TimeEntryListComponent },
   { path: 'day', component: TimeEntryDayComponent },
+  { path: 'calendar', component: TimeEntryCalendarComponent },
   { path: '', redirectTo: 'list', pathMatch: 'full' }
 ];
 
@@ -36,7 +38,8 @@ const routes: Routes = [
     TimeEntryFormComponent,
     TimeEntryDayComponent,
     TimeEntryEditDialogComponent,
-    I18nDatePipe
+    I18nDatePipe,
+    TimeEntryCalendarComponent
   ],
   imports: [
     MatSelectModule,
