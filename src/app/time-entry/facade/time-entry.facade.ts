@@ -84,6 +84,7 @@ export class TimeEntryFacade {
       date: vm.date,
       durationMinutes: vm.durationMinutes,
       type: vm.type,
+      notes: vm.notes,
       createdAt: new Date().toISOString(),
       source: 'local'
     };
