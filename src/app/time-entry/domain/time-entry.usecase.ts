@@ -5,6 +5,13 @@ function normalizeName(name?: string): string | undefined {
   return name.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+function toKey(date: Date | string): string {
+    const d = new Date(date);
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+
 function inMonth(dateStr: string, year: number, month: number): boolean {
   // Handle date-only strings (YYYY-MM-DD) without causing timezone shifts
   const dateOnlyMatch = /^\s*(\d{4})-(\d{2})-(\d{2})\s*$/.exec(dateStr);
@@ -38,7 +45,7 @@ export function computeMonthlyTotals(
   let totalMinutes = 0;
 
   for (const e of entries) {
-    if (!inMonth(e.date, year, month)) continue;
+    if (!inMonth(toKey(e.date), year, month)) continue;
     if (typeof e.durationMinutes !== 'number' || e.durationMinutes <= 0) continue;
     totalMinutes += Math.floor(e.durationMinutes);
   }
@@ -46,7 +53,7 @@ export function computeMonthlyTotals(
   const personKeys = new Set<string>();
 
   for (const v of visits) {
-    if (!inMonth(v.date, year, month)) continue;
+    if (!inMonth(toKey(v.date), year, month)) continue;
     if (typeof v.durationMinutes === 'number' && v.durationMinutes > 0) {
       totalMinutes += Math.floor(v.durationMinutes);
     }

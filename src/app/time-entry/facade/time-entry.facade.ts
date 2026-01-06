@@ -21,7 +21,7 @@ export class TimeEntryFacade {
 
   readonly entries = computed<TimeEntryVM[]>(() =>
     this._entries().map(e => (
-      console.log('Mapping entry', e),{
+      {
       id: e.id,
       date: e.date,
       durationMinutes: e.durationMinutes,

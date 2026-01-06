@@ -4,7 +4,7 @@ export type TimeEntryTypeVM = TimeEntryType;
 
 export interface TimeEntryVM {
   id: string;
-  date: string; // ISO date: yyyy-mm-dd
+  date: Date; // ISO date: yyyy-mm-dd
   durationMinutes: number;
   type: TimeEntryType;
   notes?: string;
@@ -12,7 +12,7 @@ export interface TimeEntryVM {
 }
 
 export interface CreateTimeEntryVM {
-  date: string; // ISO date: yyyy-mm-dd
+  date: Date; // ISO date: yyyy-mm-dd
   durationMinutes: number;
   type: TimeEntryType;
   notes?: string;

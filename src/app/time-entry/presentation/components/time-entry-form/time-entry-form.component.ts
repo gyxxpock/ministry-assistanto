@@ -30,11 +30,11 @@ export class TimeEntryFormComponent implements OnInit {
   private readonly fb = inject(FormBuilder);
   isEditMode = false;
 
-  readonly presets = [5, 10, 15, 30, 45, 60];
+  readonly presets = [60, 90, 120, 150, 180, 240];
   readonly types: TimeEntryTypeVM[] = ['preaching', 'study', 'visiting', 'other'];
 
   readonly form = this.fb.nonNullable.group({
-    date: [this.today(), Validators.required],
+    date: [new Date(), Validators.required],
     type: ['preaching' as TimeEntryTypeVM, Validators.required],
     durationMinutes: [15, [Validators.required, Validators.min(1)]],
     notes: [''],
