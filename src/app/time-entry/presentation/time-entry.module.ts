@@ -23,6 +23,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
+import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 
 const routes: Routes = [
@@ -42,6 +43,7 @@ const routes: Routes = [
     TimeEntryCalendarComponent
   ],
   imports: [
+    MatChipsModule,
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,

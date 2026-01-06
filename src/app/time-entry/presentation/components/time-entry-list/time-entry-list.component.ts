@@ -14,18 +14,25 @@ export class TimeEntryListComponent implements OnInit {
   currentDate = signal(new Date());
   today = new Date();
 
+  private toKey(date: Date | string): string {
+    const d = new Date(date);
+    return d.getFullYear() + '-' +
+      String(d.getMonth() + 1).padStart(2, '0') + '-' +
+      String(d.getDate()).padStart(2, '0');
+  }
+
   /**
    * Groups entries by day for the view.
    */
   groupedEntries = computed(() => {
     const entries = this.facade.entries();
     const map = new Map<string, TimeEntryVM[]>();
-    console.log('groupedEntries recomputed', entries);
+    
     for (const entry of entries) {
-      if (!map.has(entry.date)) {
-        map.set(entry.date, []);
+      if (!map.has(this.toKey(entry.date))) {
+        map.set(this.toKey(entry.date), []);
       }
-      map.get(entry.date)!.push(entry);
+      map.get(this.toKey(entry.date))!.push(entry);
     }
 
     return Array.from(map.entries()).map(([date, entries]) => ({
