@@ -1,0 +1,41 @@
+<div class="calendar-container">
+  <div class="calendar-header">
+    <h2 class="page-title">Vista de Calendario</h2>
+
+    <!-- Paginador de Mes -->
+    <div class="month-paginator">
+      <button mat-icon-button (click)="prevMonth()" aria-label="Mes anterior">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+      <span class="current-month">{{ currentDate() | date:'MMMM yyyy' | uppercase }}</span>
+      <button mat-flat-button (click)="goToToday()" [disabled]="isCurrentMonth()">
+        Hoy
+      </button>
+      <button mat-icon-button (click)="nextMonth()" aria-label="Mes siguiente">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+    </div>
+  </div>
+
+  <!-- Cuadrícula del Calendario -->
+  <div class="calendar-grid">
+    <!-- Encabezados de los días de la semana -->
+    <div *ngFor="let day of weekDays" class="weekday-header">
+      {{ day }}
+    </div>
+
+    <!-- Celdas de los días -->
+    <div *ngFor="let day of calendarGrid()" class="calendar-day" [class.other-month]="!day.isCurrentMonth"
+      [class.today]="day.isToday">
+      <div class="day-number">{{ day.date | date:'d' }}</div>
+
+      @if (day.totalMinutes > 0) {
+      <div class="day-content">
+        <span class="total-badge">
+          {{ formatHours(day.totalMinutes) }}
+        </span>
+      </div>
+      }
+    </div>
+  </div>
+</div>

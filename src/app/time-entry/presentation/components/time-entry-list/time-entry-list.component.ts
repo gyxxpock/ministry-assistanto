@@ -49,7 +49,7 @@ export class TimeEntryListComponent implements OnInit {
   }
 
   loadData(): void {
-    this.facade.loadMonth();
+    this.facade.loadMonth(this.currentDate().getFullYear(), this.currentDate().getMonth() + 1);
   }
 
   prevMonth(): void {
