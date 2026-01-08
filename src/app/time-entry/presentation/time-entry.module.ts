@@ -8,6 +8,7 @@ import { TimeEntryListComponent } from './components/time-entry-list/time-entry-
 import { TimeEntryFormComponent } from './components/time-entry-form/time-entry-form.component';
 import { TimeEntryDayComponent } from './components/time-entry-day/time-entry-day.component';
 import { TimeEntryCalendarComponent } from './components/time-entry-calendar/time-entry-calendar';
+import { Layout } from './components/layout/layout';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
@@ -25,13 +26,30 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
+import { MatToolbar } from '@angular/material/toolbar';
 
 const routes: Routes = [
-  { path: 'list', component: TimeEntryListComponent },
-  { path: 'day', component: TimeEntryDayComponent },
-  { path: 'calendar', component: TimeEntryCalendarComponent },
-  { path: '', redirectTo: 'list', pathMatch: 'full' }
+  {
+    path: '', // Este es el path base 'time-entry/'
+    component: Layout, // Se carga siempre que estemos en time-entry
+    children: [
+      { 
+        path: 'list', 
+        component: TimeEntryListComponent // URL: time-entry/list
+      },
+      { 
+        path: 'calendar', 
+        component: TimeEntryCalendarComponent // URL: time-entry/detail
+      },
+      { 
+        path: '', 
+        redirectTo: 'list', 
+        pathMatch: 'full' 
+      }
+    ]
+  }
 ];
+
 
 @NgModule({
   declarations: [
@@ -40,7 +58,8 @@ const routes: Routes = [
     TimeEntryDayComponent,
     TimeEntryEditDialogComponent,
     I18nDatePipe,
-    TimeEntryCalendarComponent
+    TimeEntryCalendarComponent,
+    Layout
   ],
   imports: [
     MatChipsModule,
@@ -53,6 +72,7 @@ const routes: Routes = [
     MatCardModule,
     MatListModule,
     MatButtonModule,
+    MatToolbar,
     CommonModule,
     FormsModule,
     TranslateModule,

@@ -40,16 +40,18 @@
 
   <!-- Days -->
   <section class="days">
-    <ma-time-entry-day
-      *ngFor="let group of groupedEntries()"
-      [date]="group.date"
-      [entries]="group.entries"
-      (edit)="editEntry($event)"
-    >
+    <ma-time-entry-day *ngFor="let group of groupedEntries()" [date]="group.date" [entries]="group.entries"
+      (edit)="editEntry($event)">
     </ma-time-entry-day>
   </section>
 
-  <button mat-fab color="primary" class="add-fab" (click)="addEntry()">
-    <mat-icon>add</mat-icon>
-  </button>
+  <!-- Botón ADD Moderno (Extended FAB) -->
+  <!-- time-entry-list.component.html -->
+  <div class="fab-container">
+    <button mat-fab extended color="primary" class="add-btn" (click)="addEntry()">
+      <mat-icon>add</mat-icon>
+      <span>{{ 'timeEntry.add' | translate }}</span>
+    </button>
+  </div>
+
 </div>
