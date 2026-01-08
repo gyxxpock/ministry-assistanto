@@ -7,6 +7,7 @@ import { App } from './app';
 
 import { TranslateModule } from '@ngx-translate/core';
 import { provideTranslateHttpLoader, TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MatToolbar } from '@angular/material/toolbar';
 
 export function httpLoaderFactory() {
   return new TranslateHttpLoader();
@@ -17,6 +18,7 @@ export function httpLoaderFactory() {
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatToolbar,
     TranslateModule.forRoot({
       fallbackLang: 'es'
     })
