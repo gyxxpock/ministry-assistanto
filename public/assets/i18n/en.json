@@ -16,6 +16,14 @@
     }
   },
   "timeEntry": {
+    "pages": {
+      "list": {
+        "title": "Details"
+      },
+      "calendar": {
+        "title": "Calendar"
+      }
+    },
     "monthlySummary": "Monthly Summary",
     "totalHours": "Total hours:",
     "totalCourses": "Total courses:",

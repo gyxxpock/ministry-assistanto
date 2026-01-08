@@ -1,0 +1,27 @@
+<!-- El contenedor principal de la app Electron -->
+<div class="layout-wrapper" (scroll)="onScroll($event)" [class.nav-is-hidden]="!navVisible()">
+    <!-- Contenido de fondo (Detrás del menú) -->
+    <main class="content-container">
+        <!-- El título ahora vive aquí y se mueve con el contenido -->
+        <header class="page-header" [style.opacity]="headerOpacity()">
+            <h1>{{ 'app.title' | translate }}</h1>
+        </header>
+
+        <router-outlet></router-outlet>
+    </main>
+
+    <!-- Menú Flotante Inferior -->
+    <nav class="floating-nav" [class.nav-hidden]="!navVisible()">
+        <mat-toolbar class="bottom-toolbar">
+            <button mat-button routerLink="/time-entry/list" routerLinkActive="active-link">
+                <mat-icon>calendar_view_day</mat-icon>
+                <span class="label">{{ 'timeEntry.pages.list.title' | translate }}</span>
+            </button>
+
+            <button mat-button routerLink="/time-entry/calendar" routerLinkActive="active-link">
+                <mat-icon>calendar_today</mat-icon>
+                <span class="label">{{ 'timeEntry.pages.calendar.title' | translate }}</span>
+            </button>
+        </mat-toolbar>
+    </nav>
+</div>
