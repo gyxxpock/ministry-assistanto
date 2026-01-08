@@ -15,12 +15,12 @@
         <mat-toolbar class="bottom-toolbar">
             <button mat-button routerLink="/time-entry/list" routerLinkActive="active-link">
                 <mat-icon>calendar_view_day</mat-icon>
-                <span class="label">Detalle</span>
+                <span class="label">{{ 'timeEntry.pages.list.title' | translate }}</span>
             </button>
 
             <button mat-button routerLink="/time-entry/calendar" routerLinkActive="active-link">
                 <mat-icon>calendar_today</mat-icon>
-                <span class="label">Calendario</span>
+                <span class="label">{{ 'timeEntry.pages.calendar.title' | translate }}</span>
             </button>
         </mat-toolbar>
     </nav>
