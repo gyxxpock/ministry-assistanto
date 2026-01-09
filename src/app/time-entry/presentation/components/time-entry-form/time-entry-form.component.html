@@ -41,15 +41,4 @@
       </mat-form-field>
     </form>
   </div>
-
-  <!-- Footer Fijo: Siempre visible -->
-  <div class="form-actions-sticky">
-    <button mat-button type="button" (click)="cancel.emit()">
-      {{ 'common.buttons.cancel' | translate }}
-    </button>
-    <button mat-raised-button color="primary" type="submit" [disabled]="!canSubmit">
-      <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
-      {{ (isEditMode ? 'common.buttons.save' : 'common.buttons.add') | translate }}
-    </button>
-  </div>
 </div>
