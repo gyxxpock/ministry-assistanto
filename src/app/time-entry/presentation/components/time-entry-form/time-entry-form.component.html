@@ -1,59 +1,55 @@
-<form class="time-form" [formGroup]="form" (ngSubmit)="submit()">
-  <!-- Date -->
-  <mat-form-field appearance="outline">
-    <mat-label>{{ 'timeEntry.form.date' | translate }}</mat-label>
-    <input matInput [matDatepicker]="picker" formControlName="date" />
-    <mat-datepicker-toggle matSuffix [for]="picker" />
-    <mat-datepicker #picker />
-  </mat-form-field>
+<div class="form-container">
+  <!-- Área con Scroll: Aquí van todos tus inputs -->
+  <div class="form-content">
+    <form class="time-form" [formGroup]="form" (ngSubmit)="submit()">
+      <!-- Date -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'timeEntry.form.date' | translate }}</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date" (dateChange)="onDateChange()" />
+        <!-- Forzamos el estado dirty -->
+        <mat-datepicker-toggle matSuffix [for]="picker" />
+        <mat-datepicker #picker />
+      </mat-form-field>
 
-  <!-- Type -->
-  <mat-form-field appearance="outline">
-    <mat-label>{{ 'timeEntry.form.type' | translate }}</mat-label>
-    <mat-select formControlName="type">
-      <mat-option *ngFor="let type of types" [value]="type">
-        {{ ('timeEntry.form.typeOptions.' + type) | translate }}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+      <!-- Type -->
+      <mat-form-field appearance="outline">
+        <mat-label>{{ 'timeEntry.form.type' | translate }}</mat-label>
+        <mat-select formControlName="type">
+          <mat-option *ngFor="let type of types" [value]="type">
+            {{ ('timeEntry.form.typeOptions.' + type) | translate }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-  <!-- Duration -->
-  <mat-form-field appearance="outline" class="minutes-field">
-    <mat-label>{{ 'timeEntry.form.durationMinutes' | translate }}</mat-label>
-    <input
-      matInput
-      type="number"
-      inputmode="numeric"
-      formControlName="durationMinutes"
-      placeholder="Minutos"
-    />
-  </mat-form-field>
+      <!-- Duration -->
+      <mat-form-field appearance="outline" class="minutes-field">
+        <mat-label>{{ 'timeEntry.form.durationMinutes' | translate }}</mat-label>
+        <input matInput type="number" inputmode="numeric" formControlName="durationMinutes" placeholder="Minutos" />
+      </mat-form-field>
 
-  <!-- Presets -->
-  <div class="presets">
-    <button mat-stroked-button type="button" *ngFor="let p of presets" (click)="setPreset(p)">
-      {{ p/60 }} hrs
-    </button>
+      <!-- Presets -->
+      <div class="presets">
+        <button mat-stroked-button type="button" *ngFor="let p of presets" (click)="setPreset(p)">
+          {{ p/60 }} hrs
+        </button>
+      </div>
+
+      <!-- Notes -->
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'timeEntry.form.notes' | translate }}</mat-label>
+        <textarea matInput formControlName="notes" rows="3"></textarea>
+      </mat-form-field>
+    </form>
   </div>
 
-  <!-- Notes -->
-  <mat-form-field appearance="outline" class="full-width">
-    <mat-label>{{ 'timeEntry.form.notes' | translate }}</mat-label>
-    <textarea matInput formControlName="notes" rows="3"></textarea>
-  </mat-form-field>
-
-  <!-- Actions -->
-  <div class="form-actions" align="end">
+  <!-- Footer Fijo: Siempre visible -->
+  <div class="form-actions-sticky">
     <button mat-button type="button" (click)="cancel.emit()">
       {{ 'common.buttons.cancel' | translate }}
     </button>
-    <button
-      mat-raised-button
-      color="primary"
-      type="submit"
-      [disabled]="form.invalid || !form.dirty"
-    >
-      {{ 'common.buttons.save' | translate }}
+    <button mat-raised-button color="primary" type="submit" [disabled]="!canSubmit">
+      <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+      {{ (isEditMode ? 'common.buttons.save' : 'common.buttons.add') | translate }}
     </button>
   </div>
-</form>
+</div>

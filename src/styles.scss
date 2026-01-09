@@ -72,3 +72,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
   /* Transición suave idéntica a la del toolbar para que bajen al unísono */
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* Estilos globales o del componente de diálogo */
+mat-dialog-content {
+  /* Evita que el contenido se pegue a los bordes */
+  padding-top: 8px !important;
+  min-width: 400px; 
+  max-height: 70vh; // Limita el alto para forzar scroll interno si es necesario
+}
+
+mat-dialog-actions {
+  padding: 16px 24px !important;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container-low);
+}
