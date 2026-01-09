@@ -1,11 +1,30 @@
+<!-- Dialog Template -->
 <h2 mat-dialog-title>
   {{ (isEditMode ? 'timeEntry.editTitle' : 'timeEntry.createTitle') | translate }}
 </h2>
 
 <mat-dialog-content>
+  <!-- El scroll solo ocurrirá aquí dentro -->
   <ma-time-entry-form
+    #timeForm
     [entry]="entry"
     (save)="onSave($event)"
     (cancel)="onCancel()"
   ></ma-time-entry-form>
 </mat-dialog-content>
+
+<!-- ESTO QUEDA FIJO ABAJO -->
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">
+    {{ 'common.buttons.cancel' | translate }}
+  </button>
+  
+  <!-- Accedemos al estado del formulario usando la referencia #timeForm -->
+  <button mat-flat-button 
+          color="primary" 
+          [disabled]="!timeForm.canSubmit" 
+          (click)="timeForm.submit()">
+    <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+    {{ (isEditMode ? 'common.buttons.save' : 'common.buttons.add') | translate }}
+  </button>
+</mat-dialog-actions>

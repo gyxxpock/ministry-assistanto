@@ -30,3 +30,24 @@
   width: 100%;
   min-height: 48px;
 }
+
+button[mat-flat-button] {
+  transition: all 0.3s ease;
+  &:disabled {
+    opacity: 0.5;
+    filter: grayscale(1);
+  }
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%; // Ocupa el alto del contenedor padre
+  position: relative;
+}
+
+.form-content {
+  flex: 1; // Toma todo el espacio disponible
+  overflow-y: auto; // Solo esta parte tiene scroll
+  padding: 24px;
+}

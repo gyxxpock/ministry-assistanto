@@ -85,7 +85,27 @@ export class TimeEntryFormComponent implements OnInit {
     this.form.controls.durationMinutes.markAsDirty();
   }
 
-  private today(): string {
-    return new Date().toISOString().slice(0, 10);
+  // time-entry-form.component.ts
+
+  get canSubmit(): boolean {
+    if (this.isEditMode) {
+      // EDICIÓN: El formulario debe ser válido Y debe haber algún cambio (dirty)
+      // Esto incluye si solo se cambió la fecha gracias al evento (dateChange)
+      return this.form.valid && this.form.dirty;
+    } else {
+      // NUEVO: Solo nos importa que sea válido.
+      // Como la fecha ya viene por defecto (es válida), el botón se habilitará 
+      // en cuanto los otros campos requeridos dejen de estar vacíos.
+      return this.form.valid;
+    }
+  }
+
+  // Método para asegurar que el datepicker marque el formulario como "tocado"
+  onDateChange(): void {
+    const dateControl = this.form.get('date');
+    if (dateControl) {
+      dateControl.markAsDirty();
+      dateControl.updateValueAndValidity();
+    }
   }
 }
