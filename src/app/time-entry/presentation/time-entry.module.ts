@@ -27,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
+import { FileUtilService } from '../domain/utils/file-util.service';
 
 const routes: Routes = [
   {
@@ -81,6 +82,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   providers: [
+    FileUtilService,
     TimeEntryFacade,
     {
       provide: TIME_ENTRY_REPOSITORY,
