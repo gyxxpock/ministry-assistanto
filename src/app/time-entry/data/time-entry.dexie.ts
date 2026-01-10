@@ -87,14 +87,19 @@ export class DexieTimeEntryRepository implements ITimeEntryRepository {
   }
 
   async importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void> {
-    const { entries = [], visits = [] } = payload;
+  const { entries = [], visits = [] } = payload;
+  
+  // Usamos una transacción para que si algo falla, no se corrompa la base de datos
+  await this.db.transaction('rw', [this.db.entries, this.db.visits], async () => {
     if (entries.length) {
-      await Promise.all(entries.map(e => this.db.entries.put(e)));
+      await this.db.entries.bulkPut(entries); // Mucho más rápido que .put individual
     }
     if (visits.length) {
-      await Promise.all(visits.map(v => this.db.visits.put(v)));
+      await this.db.visits.bulkPut(visits);
     }
-  }
+  });
+}
+
 }
 
 export default DexieTimeEntryRepository;

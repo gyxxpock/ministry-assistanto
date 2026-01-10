@@ -124,6 +124,15 @@ export class TimeEntryFacade {
     await this.loadMonth();
   }
 
+  async exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[] }> {
+    return this.repository.exportAll();
+  }
+
+  async importAll(data: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void> {
+    await this.repository.importAll(data);
+    await this.loadMonth();
+  }
+
   // ============================
   // UI helpers
   // ============================

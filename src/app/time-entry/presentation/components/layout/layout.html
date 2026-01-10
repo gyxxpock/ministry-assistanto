@@ -1,24 +1,27 @@
-<!-- El contenedor principal de la app Electron -->
 <div class="layout-wrapper" (scroll)="onScroll($event)" [class.nav-is-hidden]="!navVisible()">
-    <!-- Contenido de fondo (Detrás del menú) -->
+    
+    <!-- Capa de Contenido -->
     <main class="content-container">
-        <!-- El título ahora vive aquí y se mueve con el contenido -->
+        <!-- El Header ahora es sutil y se desvanece con el scroll -->
         <header class="page-header" [style.opacity]="headerOpacity()">
             <h1>{{ 'app.title' | translate }}</h1>
         </header>
 
-        <router-outlet></router-outlet>
+        <!-- Aquí se cargan TimeEntryList o Calendar -->
+        <div class="router-wrapper">
+            <router-outlet></router-outlet>
+        </div>
     </main>
 
-    <!-- Menú Flotante Inferior -->
+    <!-- Menú Flotante Inferior (Sincronizado) -->
     <nav class="floating-nav" [class.nav-hidden]="!navVisible()">
         <mat-toolbar class="bottom-toolbar">
-            <button mat-button routerLink="/time-entry/list" routerLinkActive="active-link">
+            <button mat-button routerLink="/time-entry/detail" routerLinkActive="active-link">
                 <mat-icon>calendar_view_day</mat-icon>
                 <span class="label">{{ 'timeEntry.pages.list.title' | translate }}</span>
             </button>
 
-            <button mat-button routerLink="/time-entry/calendar" routerLinkActive="active-link">
+            <button mat-button routerLink="/time-entry/list" routerLinkActive="active-link">
                 <mat-icon>calendar_today</mat-icon>
                 <span class="label">{{ 'timeEntry.pages.calendar.title' | translate }}</span>
             </button>
