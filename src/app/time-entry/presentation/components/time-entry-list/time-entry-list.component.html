@@ -1,54 +1,58 @@
 <div class="time-entry-list-container">
-  <h2 class="page-title">
-    {{ 'timeEntry.monthlySummary' | translate }}
-  </h2>
+  
+  <!-- Acciones de Datos (Top-Left: Share e Import) -->
+  <div class="data-actions">
+    <button mat-mini-fab class="action-btn share" (click)="handleExport()" matTooltip="Exportar JSON">
+      <mat-icon>share</mat-icon>
+    </button>
 
-  <!-- Month Paginator -->
+    <button mat-mini-fab class="action-btn import" (click)="fileInput.click()" matTooltip="Importar Backup">
+      <mat-icon>file_upload</mat-icon>
+    </button>
+
+    <input #fileInput type="file" (change)="handleImport($event)" accept=".json" hidden>
+  </div>
+
+  <!-- Month Paginator (Ahora es el elemento superior principal) -->
   <div class="month-paginator">
     <button mat-icon-button (click)="prevMonth()">
       <mat-icon>chevron_left</mat-icon>
     </button>
     <span class="current-month">{{ currentDate() | date:'MMMM yyyy' }}</span>
     <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()">
-      Hoy
+      {{ 'common.buttons.today' | translate }}
     </button>
     <button mat-icon-button (click)="nextMonth()">
       <mat-icon>chevron_right</mat-icon>
     </button>
   </div>
 
-  <!-- Totals -->
+  <!-- Totals Summary Card -->
   <section class="totals">
     <mat-card>
-      <mat-card-title>
-        {{ 'timeEntry.totalHours' | translate }}
-      </mat-card-title>
-      <mat-card-content>
-        {{ facade.totals()?.totalHours ?? 0 }}
-      </mat-card-content>
+      <mat-card-title>{{ 'timeEntry.totalHours' | translate }}</mat-card-title>
+      <mat-card-content>{{ facade.totals()?.totalHours ?? 0 }}</mat-card-content>
     </mat-card>
 
     <mat-card>
-      <mat-card-title>
-        {{ 'timeEntry.totalCourses' | translate }}
-      </mat-card-title>
-      <mat-card-content>
-        {{ facade.totals()?.totalCourses ?? 0 }}
-      </mat-card-content>
+      <mat-card-title>{{ 'timeEntry.totalCourses' | translate }}</mat-card-title>
+      <mat-card-content>{{ facade.totals()?.totalCourses ?? 0 }}</mat-card-content>
     </mat-card>
   </section>
 
-  <!-- Days -->
+  <!-- List of Days -->
   <section class="days">
-    <ma-time-entry-day *ngFor="let group of groupedEntries()" [date]="group.date" [entries]="group.entries"
+    <ma-time-entry-day 
+      *ngFor="let group of groupedEntries()" 
+      [date]="group.date" 
+      [entries]="group.entries"
       (edit)="editEntry($event)">
     </ma-time-entry-day>
   </section>
 
-  <!-- Botón ADD Moderno (Extended FAB) -->
-  <!-- time-entry-list.component.html -->
+  <!-- Botón ADD Flotante (Extended FAB) -->
   <div class="fab-container">
-    <button mat-fab extended color="primary" class="add-btn" (click)="addEntry()">
+    <button mat-fab extended class="add-btn" (click)="addEntry()">
       <mat-icon>add</mat-icon>
       <span>{{ 'common.buttons.add' | translate }}</span>
     </button>

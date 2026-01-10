@@ -12,7 +12,8 @@
       "confirm": "Confirm",
       "import": "Import",
       "export": "Export",
-      "add": "Add"
+      "add": "Add",
+      "today": "Today"
     }
   },
   "timeEntry": {

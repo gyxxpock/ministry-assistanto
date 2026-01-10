@@ -33,8 +33,17 @@ export function toCSV(entries: TimeEntry[], visits: CourseVisit[]): string {
 
 @Injectable({ providedIn: 'root' })
 export class TimeEntryExporter {
-  toCSV(entries: TimeEntry[], visits: CourseVisit[]) {
+  toCSV(entries: TimeEntry[], visits: CourseVisit[]): string {
     return toCSV(entries, visits);
+  }
+
+  // Para respaldar y restaurar la base de datos (MVP Web)
+  generateJSON(entries: TimeEntry[], visits: CourseVisit[]): string {
+    return JSON.stringify({
+      version: '1.0',
+      timestamp: new Date().toISOString(),
+      data: { entries, visits }
+    }, null, 2);
   }
 }
 
