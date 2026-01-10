@@ -1,99 +1,132 @@
-.time-entry-list {
-  padding: 1rem;
+.time-entry-list-container {
+  padding: 2rem 1rem;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
 }
 
-.page-title {
-  margin-bottom: 1rem;
+/* 1. Acciones de Datos (Top-Left) */
+.data-actions {
+  position: fixed;
+  top: 24px;
+  left: 24px;
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+.action-btn {
+  background-color: var(--mat-sys-surface-container-high) !important;
+  color: var(--mat-sys-primary) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+
+  &:hover {
+    transform: scale(1.1);
+    background-color: var(--mat-sys-primary-container) !important;
+  }
+
+  &.import {
+    color: var(--mat-sys-tertiary) !important;
+  }
+}
+
+/* 2. Paginador de Meses */
 .month-paginator {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  padding-top: 1rem;
 
   .current-month {
-    font-size: 1.25rem;
-    font-weight: 500;
+    font-size: 1.5rem;
+    font-weight: 700;
     text-transform: capitalize;
-    min-width: 160px;
+    min-width: 200px;
     text-align: center;
+    color: var(--mat-sys-on-surface);
   }
 }
 
-/* Totals rediseñados */
+/* 3. Totals Dashboard */
 .totals {
   display: flex;
-  gap: 12px;
-  margin-bottom: 2rem;
+  gap: 16px;
+  margin-bottom: 2.5rem;
 
   mat-card {
     flex: 1;
     background: var(--mat-sys-surface-container-low);
     border: 1px solid var(--mat-sys-outline-variant);
-    border-radius: 20px;
+    border-radius: 24px;
     box-shadow: none;
-    padding: 16px;
+    padding: 20px;
 
     mat-card-title {
-      font-size: 0.8rem;
+      font-size: 0.75rem;
       text-transform: uppercase;
-      letter-spacing: 1px;
+      letter-spacing: 1.5px;
       color: var(--mat-sys-on-surface-variant);
-      margin-bottom: 8px;
+      margin-bottom: 12px;
     }
 
     mat-card-content {
-      font-size: 1.8rem;
-      font-weight: 800;
+      font-size: 2rem;
+      font-weight: 900;
       color: var(--mat-sys-primary);
     }
   }
 }
 
-
-/* Form */
-.form-section {
-  margin-bottom: 2rem;
-}
-
-/* Days */
+/* 4. Lista de Días */
 .days {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
+  padding-bottom: 100px; // Espacio para no chocar con el nav
 }
 
+/* 5. Botón ADD (Sincronizado con Nav) */
 .fab-container {
   position: fixed;
-  /* Se coloca justo encima del menú flotante (70px de toolbar + 30px de margen + 20px de gap) */
   bottom: 120px; 
   right: 24px;
   z-index: 99;
-  display: flex;
-  justify-content: flex-end;
-  pointer-events: none; // Permite clicks debajo del contenedor
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .add-btn {
-  pointer-events: auto; // Reactiva clicks en el botón
-  border-radius: 16px !important; // Forma squircle (tendencia 2026)
+  border-radius: 16px !important;
   padding: 0 24px !important;
-  box-shadow: 0 8px 25px rgba(var(--mat-sys-primary-rgb), 0.3);
-  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1) !important;
   background-color: var(--mat-sys-primary-container) !important;
   color: var(--mat-sys-on-primary-container) !important;
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.1);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
 
   &:hover {
     transform: scale(1.05) translateY(-2px);
   }
+}
 
-  mat-icon {
-    margin-right: 8px;
+/* 6. Lógica de Scroll (Sincronización con layout-wrapper) */
+:host-context(.nav-is-hidden) {
+  .data-actions {
+    opacity: 0;
+    transform: translateX(-60px); // Desliza a la izquierda
+    pointer-events: none;
   }
+
+  .fab-container {
+    transform: translateY(100px); // Desliza abajo
+    opacity: 0;
+  }
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .totals { flex-direction: column; }
+  .month-paginator .current-month { font-size: 1.2rem; min-width: 140px; }
+  .data-actions { top: 16px; left: 16px; }
 }
