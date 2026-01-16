@@ -1,3 +1,5 @@
+/* time-entry-list.component.scss */
+
 .time-entry-list-container {
   padding: 2rem 1rem;
   max-width: 1200px;
@@ -5,53 +7,114 @@
   position: relative;
 }
 
-/* 1. Acciones de Datos (Top-Left) */
-.data-actions {
+/* 1. GRUPO DE ACCIONES SUPERIORES (Top-Right) */
+.top-actions-group {
   position: fixed;
   top: 24px;
-  left: 24px;
-  z-index: 100;
+  right: 24px;
+  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  gap: 12px;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  align-items: center;
+  gap: 16px; // Espacio entre píldora y círculo
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.action-btn {
-  background-color: var(--mat-sys-surface-container-high) !important;
-  color: var(--mat-sys-primary) !important;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+/* 2. PÍLDORA DE UTILIDADES (Slim Glass) */
+.utility-pill {
+  display: flex;
+  align-items: center;
+  padding: 4px 8px;
+  background: rgba(var(--mat-sys-surface-container-rgb), 0.3);
+  backdrop-filter: blur(12px) saturate(150%);
+  -webkit-backdrop-filter: blur(12px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 30px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
-  &:hover {
-    transform: scale(1.1);
-    background-color: var(--mat-sys-primary-container) !important;
+  .glass-icon-btn {
+    width: 36px !important;
+    height: 36px !important;
+    color: var(--mat-sys-on-surface-variant);
+    
+    mat-icon { 
+      font-size: 18px; 
+      width: 18px; 
+      height: 18px; 
+    }
+
+    &:hover {
+      color: var(--mat-sys-primary);
+      background: rgba(255, 255, 255, 0.1);
+    }
   }
 
-  &.import {
-    color: var(--mat-sys-tertiary) !important;
+  .vertical-divider {
+    width: 1px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.15);
+    margin: 0 4px;
   }
 }
 
-/* 2. Paginador de Meses */
+/* 3. BOTÓN ADD (Círculo Perfecto Glass) */
+.primary-action-wrapper {
+  .glass-fab-circle {
+    /* Forzar forma circular perfecta en Angular Material 3 */
+    border-radius: 50% !important; 
+    width: 56px !important;
+    height: 56px !important;
+    min-width: 56px !important;
+    
+    background: rgba(var(--mat-sys-primary-container-rgb), 0.4) !important;
+    color: var(--mat-sys-on-primary-container) !important;
+    backdrop-filter: blur(15px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      transform: scale(1.1) rotate(90deg);
+      background: rgba(var(--mat-sys-primary-container-rgb), 0.6) !important;
+    }
+
+    mat-icon {
+      margin: 0 !important; // Quitar márgenes extra que descuadran el círculo
+    }
+  }
+}
+
+/* 4. LÓGICA DE SCROLL (Desaparece a la derecha) */
+:host-context(.nav-is-hidden) {
+  .top-actions-group {
+    opacity: 0;
+    transform: translateX(100px) scale(0.8); 
+    pointer-events: none;
+  }
+}
+
+/* 5. PAGINADOR DE MESES */
 .month-paginator {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
   margin-bottom: 2rem;
-  padding-top: 1rem;
+  padding-top: 1rem; 
 
   .current-month {
     font-size: 1.5rem;
     font-weight: 700;
     text-transform: capitalize;
-    min-width: 200px;
+    min-width: 220px;
     text-align: center;
     color: var(--mat-sys-on-surface);
   }
 }
 
-/* 3. Totals Dashboard */
+/* 6. TOTALS DASHBOARD */
 .totals {
   display: flex;
   gap: 16px;
@@ -81,52 +144,28 @@
   }
 }
 
-/* 4. Lista de Días */
+/* 7. LISTA DE DÍAS */
 .days {
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  padding-bottom: 100px; // Espacio para no chocar con el nav
+  padding-bottom: 120px; 
 }
 
-/* 5. Botón ADD (Sincronizado con Nav) */
-.fab-container {
-  position: fixed;
-  bottom: 120px; 
-  right: 24px;
-  z-index: 99;
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.add-btn {
-  border-radius: 16px !important;
-  padding: 0 24px !important;
-  background-color: var(--mat-sys-primary-container) !important;
-  color: var(--mat-sys-on-primary-container) !important;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
-
-  &:hover {
-    transform: scale(1.05) translateY(-2px);
-  }
-}
-
-/* 6. Lógica de Scroll (Sincronización con layout-wrapper) */
-:host-context(.nav-is-hidden) {
-  .data-actions {
-    opacity: 0;
-    transform: translateX(-60px); // Desliza a la izquierda
-    pointer-events: none;
-  }
-
-  .fab-container {
-    transform: translateY(100px); // Desliza abajo
-    opacity: 0;
-  }
-}
-
-/* Responsive */
+/* 8. RESPONSIVE */
 @media (max-width: 600px) {
   .totals { flex-direction: column; }
-  .month-paginator .current-month { font-size: 1.2rem; min-width: 140px; }
-  .data-actions { top: 16px; left: 16px; }
+  .month-paginator .current-month { font-size: 1.2rem; min-width: 160px; }
+  
+  .top-actions-group {
+    top: 16px;
+    right: 16px;
+    gap: 12px;
+  }
+
+  .primary-action-wrapper .glass-fab-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+  }
 }

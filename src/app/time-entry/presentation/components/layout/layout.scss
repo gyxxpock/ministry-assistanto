@@ -1,35 +1,19 @@
+/* layout.component.scss */
+
 .layout-wrapper {
   height: 100vh;
   overflow-y: auto;
   position: relative;
   background-color: var(--mat-sys-surface);
-  /* Scroll suave para Electron */
   scroll-behavior: smooth;
+  /* Previene el rebote elástico visual en Mac/Electron */
+  overscroll-behavior-y: none;
 }
 
 .content-container {
   display: flex;
   flex-direction: column;
-  min-height: 101vh; // Suficiente para activar el scroll sutilmente
-}
-
-/* Header Adaptativo */
-.page-header {
-  padding: clamp(30px, 8vh, 60px) 24px 20px;
-  display: flex;
-  justify-content: center; // Centrado para estética de escritorio
-  transition: transform 0.4s ease, opacity 0.3s ease;
-
-  h1 {
-    font-size: clamp(1.8rem, 6vw, 3rem);
-    font-weight: 800;
-    letter-spacing: -1.5px;
-    margin: 0;
-    background: linear-gradient(45deg, var(--mat-sys-primary), var(--mat-sys-tertiary));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-  }
+  min-height: 101vh;
 }
 
 /* Contenedor de Rutas */
@@ -38,76 +22,145 @@
   width: 100%;
 }
 
-/* Menú Flotante Inferior */
+/* 1. HEADER PREMIUM (Desvanecimiento sutil) */
+.page-header {
+  padding: clamp(40px, 10vh, 80px) 24px 40px;
+  display: flex;
+  justify-content: center;
+  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+
+  h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+    font-weight: 900;
+    letter-spacing: -2px;
+    margin: 0;
+    /* Gradiente sutil Liquid Glass */
+    background: linear-gradient(135deg, 
+      var(--mat-sys-primary) 0%, 
+      var(--mat-sys-tertiary) 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 2px 10px rgba(var(--mat-sys-primary-rgb), 0.2));
+  }
+}
+
+/* 2. MENÚ FLOTANTE INFERIOR (Liquid Glass Premium) */
 .floating-nav {
   position: fixed;
   bottom: 32px;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); // Efecto elástico sutil
   z-index: 1000;
 
   &.nav-hidden {
-    bottom: -100px;
+    bottom: -120px;
     opacity: 0;
-    filter: blur(10px);
+    filter: blur(15px);
+    transform: translateX(-50%) scale(0.9);
   }
 }
 
 .bottom-toolbar {
-  border-radius: 32px;
-  background: rgba(var(--mat-sys-surface-container-high-rgb), 0.7);
-  backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  padding: 8px 16px;
-  height: 72px !important;
+  border-radius: 40px;
+  /* Fondo ultraligero con desenfoque masivo */
+  background: rgba(var(--mat-sys-surface-container-rgb), 0.4) !important;
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  
+  /* Borde de luz (Stroke) */
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0 12px;
+  height: 80px !important;
   display: flex;
-  gap: 12px;
-  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+  justify-content: center;
+  gap: 8px;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
 
   button {
-    border-radius: 24px;
-    min-width: 90px;
-    height: 56px;
+    border-radius: 30px;
+    min-width: 100px;
+    height: 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--mat-sys-on-surface-variant);
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    background: transparent;
+    border: none;
     
     .mat-icon { 
-        margin-bottom: 2px;
+        margin-bottom: 4px;
         font-size: 24px;
         width: 24px;
         height: 24px;
+        /* Icono fino por defecto */
+        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
     
     .label { 
         font-size: 10px; 
-        font-weight: 600; 
+        font-weight: 700; 
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
+        opacity: 0.7;
+    }
+
+    &:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--mat-sys-primary);
     }
 
     &.active-link {
-      background-color: var(--mat-sys-secondary-container);
-      color: var(--mat-sys-on-secondary-container);
+      color: var(--mat-sys-primary);
       
-      .mat-icon { font-variation-settings: 'FILL' 1; }
+      /* Resalte sutil en lugar de fondo sólido */
+      &::after {
+          content: '';
+          position: absolute;
+          bottom: 10px;
+          width: 4px;
+          height: 4px;
+          border-radius: 50%;
+          background-color: var(--mat-sys-primary);
+          box-shadow: 0 0 10px var(--mat-sys-primary);
+      }
+
+      .mat-icon { 
+          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+          transform: translateY(-2px);
+      }
+
+      .label { opacity: 1; }
     }
   }
 }
 
-/* Sincronización Global de Salida */
+/* 3. LÓGICA DE SINCRONIZACIÓN GLOBAL */
 .nav-is-hidden {
   .page-header {
-    transform: translateY(-20px);
+    transform: scale(0.95) translateY(-30px);
     opacity: 0;
+    filter: blur(10px);
   }
 }
 
-/* Ajuste para que el contenido respire al final */
-::ng-deep .time-entry-list-container {
-    padding-bottom: 120px !important;
+/* 4. OVERRIDES PARA EL CONTENIDO */
+::ng-deep {
+    .time-entry-list-container {
+        /* Asegura que el contenido termine antes de la barra inferior */
+        padding-bottom: 140px !important;
+    }
+    
+    /* Scrollbar minimalista para Electron */
+    ::-webkit-scrollbar {
+        width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+        background: rgba(var(--mat-sys-primary-rgb), 0.2);
+        border-radius: 10px;
+        &:hover { background: rgba(var(--mat-sys-primary-rgb), 0.5); }
+    }
 }
