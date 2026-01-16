@@ -1,61 +1,87 @@
 <div class="time-entry-list-container">
-  
-  <!-- Acciones de Datos (Top-Left: Share e Import) -->
-  <div class="data-actions">
-    <button mat-mini-fab class="action-btn share" (click)="handleExport()" matTooltip="Exportar JSON">
-      <mat-icon>share</mat-icon>
-    </button>
 
-    <button mat-mini-fab class="action-btn import" (click)="fileInput.click()" matTooltip="Importar Backup">
-      <mat-icon>file_upload</mat-icon>
-    </button>
+  <!-- CONTENEDOR FLOTANTE ÚNICO -->
+  <div class="top-actions-group">
 
-    <input #fileInput type="file" (change)="handleImport($event)" accept=".json" hidden>
+    <!-- 1. PÍLDORA (Utilidades) -->
+    <div class="utility-pill">
+      <button mat-icon-button class="glass-icon-btn" (click)="handleExport()" matTooltip="Exportar JSON">
+        <mat-icon>backup</mat-icon>
+      </button>
+      <div class="vertical-divider"></div>
+      <button mat-icon-button class="glass-icon-btn" (click)="fileInput.click()" matTooltip="Importar Backup">
+        <mat-icon>restore</mat-icon>
+      </button>
+      <input #fileInput type="file" (change)="handleImport($event)" accept=".json" hidden>
+    </div>
+
+    <!-- 2. CÍRCULO (Add) -->
+    <div class="primary-action-wrapper">
+      <button mat-fab class="glass-fab-circle" (click)="addEntry()" matTooltip="Añadir Registro">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+
   </div>
 
-  <!-- Month Paginator (Ahora es el elemento superior principal) -->
-  <div class="month-paginator">
-    <button mat-icon-button (click)="prevMonth()">
-      <mat-icon>chevron_left</mat-icon>
-    </button>
-    <span class="current-month">{{ currentDate() | date:'MMMM yyyy' }}</span>
-    <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()">
-      {{ 'common.buttons.today' | translate }}
-    </button>
-    <button mat-icon-button (click)="nextMonth()">
-      <mat-icon>chevron_right</mat-icon>
-    </button>
+  <div class="month-selector-container">
+    <div class="glass-paginator">
+      <button mat-icon-button (click)="prevMonth()" class="nav-btn">
+        <mat-icon>chevron_left</mat-icon>
+      </button>
+
+      <div class="month-display">
+        <span class="month-text">{{ currentDate() | date:'MMMM' }}</span>
+        <span class="year-text">{{ currentDate() | date:'yyyy' }}</span>
+      </div>
+
+      <button mat-icon-button (click)="nextMonth()" class="nav-btn">
+        <mat-icon>chevron_right</mat-icon>
+      </button>
+
+      <div class="v-divider"></div>
+
+      <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()" class="today-pill-btn">
+        {{ 'common.buttons.today' | translate }}
+      </button>
+    </div>
   </div>
+
+
 
   <!-- Totals Summary Card -->
-  <section class="totals">
-    <mat-card>
-      <mat-card-title>{{ 'timeEntry.totalHours' | translate }}</mat-card-title>
-      <mat-card-content>{{ facade.totals()?.totalHours ?? 0 }}</mat-card-content>
-    </mat-card>
+  <section class="totals-dashboard">
+    <!-- Tarjeta de Horas -->
+    <div class="glass-tile primary">
+      <div class="tile-icon">
+        <mat-icon>schedule</mat-icon>
+      </div>
+      <div class="tile-info">
+        <span class="tile-label">{{ 'timeEntry.totalHours' | translate }}</span>
+        <h2 class="tile-value">{{ facade.totals()?.totalHours ?? 0 }}</h2>
+      </div>
+      <div class="tile-decoration"></div>
+    </div>
 
-    <mat-card>
-      <mat-card-title>{{ 'timeEntry.totalCourses' | translate }}</mat-card-title>
-      <mat-card-content>{{ facade.totals()?.totalCourses ?? 0 }}</mat-card-content>
-    </mat-card>
+    <!-- Tarjeta de Cursos -->
+    <div class="glass-tile tertiary">
+      <div class="tile-icon">
+        <mat-icon>school</mat-icon>
+      </div>
+      <div class="tile-info">
+        <span class="tile-label">{{ 'timeEntry.totalCourses' | translate }}</span>
+        <h2 class="tile-value">{{ facade.totals()?.totalCourses ?? 0 }}</h2>
+      </div>
+      <div class="tile-decoration"></div>
+    </div>
   </section>
+
 
   <!-- List of Days -->
   <section class="days">
-    <ma-time-entry-day 
-      *ngFor="let group of groupedEntries()" 
-      [date]="group.date" 
-      [entries]="group.entries"
+    <ma-time-entry-day *ngFor="let group of groupedEntries()" [date]="group.date" [entries]="group.entries"
       (edit)="editEntry($event)">
     </ma-time-entry-day>
   </section>
-
-  <!-- Botón ADD Flotante (Extended FAB) -->
-  <div class="fab-container">
-    <button mat-fab extended class="add-btn" (click)="addEntry()">
-      <mat-icon>add</mat-icon>
-      <span>{{ 'common.buttons.add' | translate }}</span>
-    </button>
-  </div>
 
 </div>
