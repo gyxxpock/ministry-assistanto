@@ -4,7 +4,7 @@
 
   <div class="entries">
     @for (e of entries; track e.id) {
-    <mat-card class="entry-card modern-card" appearance="outlined">
+    <mat-card class="modern-card" appearance="outlined">
       <mat-card-content class="entry-container">
 
         <div class="entry-details">
@@ -17,13 +17,13 @@
             <p class="type-label">{{ e.typeLabel }}</p>
             <p class="entry-date">Registrado hoy</p>
           </div>
-        </div>
 
-        <mat-chip-set>
-          <mat-chip class="category-chip">
-            {{ e.typeLabel }}
-          </mat-chip>
-        </mat-chip-set>
+          <mat-chip-set>
+            <mat-chip class="category-chip">
+              {{ e.typeLabel }}
+            </mat-chip>
+          </mat-chip-set>
+        </div>
 
         <!-- Sección de Notas -->
         <div class="entry-notes">
@@ -32,9 +32,8 @@
             {{ e.notes || 'Sin observaciones adicionales' }}
           </p>
         </div>
-
-
       </mat-card-content>
+      
       <mat-card-actions align="end">
         <button mat-icon-button aria-label="Edit entry" (click)="onEdit(e)">
           <mat-icon>edit</mat-icon>
@@ -42,7 +41,10 @@
       </mat-card-actions>
     </mat-card>
     } @empty {
-    <div class="empty-state">No hay entradas disponibles.</div>
+    <div class="empty-state">
+      <mat-icon>event_busy</mat-icon>
+      <p>No hay entradas disponibles.</p>
+    </div>
     }
   </div>
 
