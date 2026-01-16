@@ -1,7 +1,7 @@
 <div class="form-container">
   <!-- Área con Scroll: Aquí van todos tus inputs -->
   <div class="form-content">
-    <form class="time-form" [formGroup]="form" (ngSubmit)="submit()">
+    <form class="time-form" [formGroup]="form" (ngSubmit)="submit()" autocomplete="off">
       <!-- Date -->
       <mat-form-field appearance="outline">
         <mat-label>{{ 'timeEntry.form.date' | translate }}</mat-label>
