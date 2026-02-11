@@ -40,7 +40,8 @@ export function computeMonthlyTotals(
   entries: TimeEntry[],
   visits: CourseVisit[],
   year: number,
-  month: number
+  month: number,
+  manualCourseCount: number = 0
 ): MonthlyTotals {
   let totalMinutes = 0;
 
@@ -63,10 +64,10 @@ export function computeMonthlyTotals(
     personKeys.add(key);
   }
 
-  const totalCourses = personKeys.size;
+  const totalVisits = personKeys.size;
   const totalHours = Math.round((totalMinutes / 60) * 100) / 100; // round to 2 decimals
 
-  return { totalMinutes, totalHours, totalCourses };
+  return { totalMinutes, totalHours, totalCourses: manualCourseCount };
 }
 
 export default computeMonthlyTotals;

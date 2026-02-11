@@ -1,4 +1,4 @@
-import { TimeEntry, CourseVisit } from '../domain/models';
+import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../domain/models';
 
 /**
  * Repository contract for TimeEntry persistence.
@@ -13,6 +13,8 @@ export interface ITimeEntryRepository {
   addVisit(visit: CourseVisit): Promise<void>;
   updateVisit(visit: CourseVisit): Promise<void>;
   removeVisit(id: string): Promise<void>;
-  exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[] }>;
+  exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[]; courseCounts: MonthlyCourseCount[] }>;
   importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void>;
+  getCourseCount(year: number, month: number): Promise<number>;
+  setCourseCount(year: number, month: number, count: number): Promise<void>;
 }
