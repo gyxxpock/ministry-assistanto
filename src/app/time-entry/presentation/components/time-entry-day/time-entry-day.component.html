@@ -1,46 +1,28 @@
-<section class="day">
+<section class="day-group">
+  <h3 class="day-header">{{ date | i18nDate:{ dateStyle: 'full' } }}</h3>
 
-  <h3 class="day-title">{{ date | i18nDate:{ dateStyle: 'full' } }}</h3>
+  <!-- Contenedor único para agrupar todas las entradas del día -->
+  <div class="glass-list-container">
+    @for (e of entries; track e.id; let last = $last) {
+      <div class="glass-row" [class.no-border]="last">
+        
+        <!-- Badge de tiempo mini -->
+        <div class="mini-time-badge">
+          <span class="time-val">{{ e.durationMinutes/60 | number:'1.0-1' }}</span>
+          <span class="time-unit">h</span>
+        </div>
 
-  <div class="entries">
-    @for (e of entries; track e.id) {
-    <mat-card class="modern-card" appearance="outlined">
-      <mat-card-content class="entry-container">
-
-        <div class="entry-details">
-          <div class="duration-indicator">
-            <mat-icon>timer</mat-icon>
-            <span class="minutes">{{ e.durationMinutes/60 }} hrs.</span>
+        <div class="row-content">
+          <div class="row-header">
+            <span class="category-tag-mini">{{ e.typeLabel }}</span>
+            <p class="row-notes">{{ e.notes || 'Sin notas' }}</p>
           </div>
-
-          <mat-chip-set>
-            <mat-chip class="category-chip">
-              {{ e.typeLabel }}
-            </mat-chip>
-          </mat-chip-set>
         </div>
 
-        <!-- Sección de Notas -->
-        <div class="entry-notes">
-          <mat-icon class="note-icon">description</mat-icon>
-          <p class="note-text">
-            {{ e.notes || 'Sin observaciones adicionales' }}
-          </p>
-        </div>
-      </mat-card-content>
-      
-      <mat-card-actions align="end">
-        <button mat-icon-button aria-label="Edit entry" (click)="onEdit(e)">
-          <mat-icon>edit</mat-icon>
+        <button class="edit-action action-btn-ios" (click)="onEdit(e)">
+          <mat-icon>chevron_right</mat-icon>
         </button>
-      </mat-card-actions>
-    </mat-card>
-    } @empty {
-    <div class="empty-state">
-      <mat-icon>event_busy</mat-icon>
-      <p>No hay entradas disponibles.</p>
-    </div>
+      </div>
     }
   </div>
-
 </section>

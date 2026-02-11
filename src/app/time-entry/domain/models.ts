@@ -31,3 +31,11 @@ export interface Person {
   name: string;
   contact?: string;
 }
+
+export interface MonthlyCourseCount {
+  id: string; // formato sugerido YYYY-MM
+  year: number;
+  month: number;
+  courseCount: number;
+  updatedAt?: string;
+}

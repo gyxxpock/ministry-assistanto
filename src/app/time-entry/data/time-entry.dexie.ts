@@ -1,18 +1,20 @@
 import Dexie, { Table } from 'dexie';
 import { ITimeEntryRepository } from './time-entry.repository';
-import { TimeEntry, CourseVisit } from '../domain/models';
+import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../domain/models';
 import { Injectable } from '@angular/core';
 import { EntityTable } from 'dexie';
 
 export class TimeEntryDB extends Dexie {
   entries!: EntityTable<TimeEntry, 'id'>;
   visits!: EntityTable<CourseVisit, 'id'>;
+  courseCounts!: EntityTable<MonthlyCourseCount, 'id'>;
 
   constructor(dbName = 'ministry-assistanto-db') {
     super(dbName);
-    this.version(1).stores({
+    this.version(2).stores({
       entries: 'id,date,type,createdAt',
-      visits: 'id,date,personId,personName,createdAt'
+      visits: 'id,date,personId,personName,createdAt',
+      courseCounts: 'id'
     });
 
     // optional: request persistent storage when available
@@ -74,16 +76,31 @@ export class DexieTimeEntryRepository implements ITimeEntryRepository {
     await this.db.visits.delete(id);
   }
 
+  async getCourseCount(year: number, month: number): Promise<number> {
+    const id = `${year}-${String(month).padStart(2, '0')}`;
+    const record = await this.db.courseCounts.get(id);
+    return record?.courseCount ?? 0;
+  }
+
+  async setCourseCount(year: number, month: number, count: number): Promise<void> {
+    const id = `${year}-${String(month).padStart(2, '0')}`;
+    const now = new Date().toISOString();
+    await this.db.courseCounts.put({ id, year, month, courseCount: count, updatedAt: now });
+  }
+
   // helper for tests to clear DB
   async clearAll(): Promise<void> {
     await this.db.entries.clear();
     await this.db.visits.clear();
   }
 
-  async exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[] }> {
-    const entries = await this.db.entries.toArray();
-    const visits = await this.db.visits.toArray();
-    return { entries, visits };
+  async exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[], courseCounts: MonthlyCourseCount[] }> {
+    const [entries, vistis, courseCounts] = await Promise.all([
+      this.db.entries.toArray(),
+      this.db.visits.toArray(),
+      this.db.courseCounts.toArray()
+    ]);
+    return { entries, visits: vistis, courseCounts };
   }
 
   async importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void> {
