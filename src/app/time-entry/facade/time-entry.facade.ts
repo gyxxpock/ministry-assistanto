@@ -22,13 +22,13 @@ export class TimeEntryFacade {
   readonly entries = computed<TimeEntryVM[]>(() =>
     this._entries().map(e => (
       {
-      id: e.id,
-      date: e.date,
-      durationMinutes: e.durationMinutes,
-      type: e.type,
-      notes: e.notes,
-      typeLabel: this.translateType(e.type)
-    }))
+        id: e.id,
+        date: e.date,
+        durationMinutes: e.durationMinutes,
+        type: e.type,
+        notes: e.notes,
+        typeLabel: this.translateType(e.type)
+      }))
   );
 
   readonly visits = computed(() =>
@@ -48,7 +48,7 @@ export class TimeEntryFacade {
   constructor(
     @Inject(TIME_ENTRY_REPOSITORY)
     private readonly repository: ITimeEntryRepository
-  ) {}
+  ) { }
 
   // ============================
   // Load
@@ -132,6 +132,35 @@ export class TimeEntryFacade {
     await this.repository.importAll(data);
     await this.loadMonth();
   }
+
+  // ============================
+  // Report Generation (New)
+  // ============================
+
+  /** 
+   * Genera el texto plano del reporte mensual actual.
+   * Ideal para compartir por WhatsApp/iMessage.
+   */
+  getFormattedMonthlyReport(): string {
+  const totals = this.totals();
+  const year = this.currentYear();
+  const month = this.currentMonth();
+  
+  // Formateo de mes con la primera letra en mayúscula (Estilo Apple Calendar)
+  const monthName = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date(year, month - 1));
+  const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+
+  // Construcción del mensaje con espaciado "Breathable" (UX amigable)
+  let report = `📋 *INFORME DE ACTIVIDAD*\n`;
+  report += `${capitalizedMonth} de ${year}\n\n`;
+  
+  report += `⏱️ *Tiempo total:* ${totals?.totalHours || 0}h\n`;
+  report += `📚 *Cursos:* ${this._visits().length}\n`; // Usamos la longitud de las visitas
+
+  return report;
+}
+
+
 
   // ============================
   // UI helpers
