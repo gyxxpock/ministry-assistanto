@@ -4,6 +4,7 @@ import { TimeEntryVM } from '../../models/time-entry.vm';
 @Component({
   selector: 'ma-time-entry-day',
   templateUrl: './time-entry-day.component.html',
+  styleUrls: ['./time-entry-day.component.scss'],
   standalone: false
 })
 export class TimeEntryDayComponent {
