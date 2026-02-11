@@ -21,6 +21,18 @@ export class TimeEntryListComponent implements OnInit {
   private fileUtil = inject(FileUtilService);
   private exporter = inject(TimeEntryExporter);
 
+  async shareReport() {
+  const text = this.facade.getFormattedMonthlyReport();
+  
+  if (navigator.share) {
+    await navigator.share({
+      text: text // iOS prefiere 'text' sobre 'title' para WhatsApp
+    });
+  }
+}
+
+
+
   async handleExport() {
     this.isExporting.set(true);
     try {
@@ -34,44 +46,44 @@ export class TimeEntryListComponent implements OnInit {
     }
   }
 
-async handleImport(event: Event) {
-  const input = event.target as HTMLInputElement;
-  if (!input.files?.length) return;
+  async handleImport(event: Event) {
+    const input = event.target as HTMLInputElement;
+    if (!input.files?.length) return;
 
-  const file = input.files[0];
-  
-  try {
-    const rawContent = await this.fileUtil.readFile(file);
-    const payload = JSON.parse(rawContent);
+    const file = input.files[0];
 
-    if (payload.data) {
-      const confirmImport = confirm('¿Deseas importar los datos? Se fusionarán con los existentes.');
-      
-      if (confirmImport) {
-        // --- REHIDRATACIÓN DE FECHAS ---
-        // Convertimos los strings de fecha de vuelta a objetos Date nativos
-        const sanitizedData = {
-          entries: (payload.data.entries || []).map((e: any) => ({
-            ...e,
-            date: new Date(e.date) // Conversión string -> Date
-          })),
-          visits: (payload.data.visits || []).map((v: any) => ({
-            ...v,
-            date: new Date(v.date) // Conversión string -> Date
-          }))
-        };
+    try {
+      const rawContent = await this.fileUtil.readFile(file);
+      const payload = JSON.parse(rawContent);
 
-        await this.facade.importAll(sanitizedData);
-        console.log('Importación completada con objetos Date nativos');
+      if (payload.data) {
+        const confirmImport = confirm('¿Deseas importar los datos? Se fusionarán con los existentes.');
+
+        if (confirmImport) {
+          // --- REHIDRATACIÓN DE FECHAS ---
+          // Convertimos los strings de fecha de vuelta a objetos Date nativos
+          const sanitizedData = {
+            entries: (payload.data.entries || []).map((e: any) => ({
+              ...e,
+              date: new Date(e.date) // Conversión string -> Date
+            })),
+            visits: (payload.data.visits || []).map((v: any) => ({
+              ...v,
+              date: new Date(v.date) // Conversión string -> Date
+            }))
+          };
+
+          await this.facade.importAll(sanitizedData);
+          console.log('Importación completada con objetos Date nativos');
+        }
       }
+    } catch (error) {
+      console.error('Error durante la importación:', error);
+      alert('Error al procesar el archivo JSON');
+    } finally {
+      input.value = '';
     }
-  } catch (error) {
-    console.error('Error durante la importación:', error);
-    alert('Error al procesar el archivo JSON');
-  } finally {
-    input.value = '';
   }
-}
 
   private toKey(date: Date | string): string {
     const d = new Date(date);

@@ -1,41 +1,37 @@
-<div class="calendar-container">
+<div class="calendar-container glass-morph">
   <div class="calendar-header">
-    <h2 class="page-title">Vista de Calendario</h2>
+    <h2 class="page-title">Calendario</h2>
 
-    <!-- Paginador de Mes -->
     <div class="month-paginator">
-      <button mat-icon-button (click)="prevMonth()" aria-label="Mes anterior">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
-      <span class="current-month">{{ currentDate() | date:'MMMM yyyy' | uppercase }}</span>
-      <button mat-flat-button (click)="goToToday()" [disabled]="isCurrentMonth()">
+      <button mat-icon-button (click)="prevMonth()"><mat-icon>chevron_left</mat-icon></button>
+      <span class="current-month">{{ currentDate() | date:'MMM yyyy' | uppercase }}</span>
+      <button mat-icon-button (click)="nextMonth()"><mat-icon>chevron_right</mat-icon></button>
+      
+      <!-- Botón Hoy estilo iOS (Píldora pequeña) -->
+      <button class="btn-today-ios" (click)="goToToday()" [disabled]="isCurrentMonth()">
         Hoy
-      </button>
-      <button mat-icon-button (click)="nextMonth()" aria-label="Mes siguiente">
-        <mat-icon>chevron_right</mat-icon>
       </button>
     </div>
   </div>
 
-  <!-- Cuadrícula del Calendario -->
   <div class="calendar-grid">
-    <!-- Encabezados de los días de la semana -->
-    <div *ngFor="let day of weekDays" class="weekday-header">
-      {{ day }}
-    </div>
+    <!-- Headers con iniciales para ahorrar espacio en móvil -->
+    @for (day of weekDays; track day) {
+      <div class="weekday-header">{{ day | slice:0:1 }}</div>
+    }
 
-    <!-- Celdas de los días -->
-    <div *ngFor="let day of calendarGrid()" class="calendar-day" [class.other-month]="!day.isCurrentMonth"
-      [class.today]="day.isToday">
-      <div class="day-number">{{ day.date | date:'d' }}</div>
+    @for (day of calendarGrid(); track day.date) {
+      <div class="calendar-day" 
+           [class.other-month]="!day.isCurrentMonth"
+           [class.today]="day.isToday">
+        
+        <span class="day-number">{{ day.date | date:'d' }}</span>
 
-      @if (day.totalMinutes > 0) {
-      <div class="day-content">
-        <span class="total-badge">
-          {{ formatHours(day.totalMinutes) }}
-        </span>
+        @if (day.totalMinutes > 0) {
+          <div class="dot-indicator"></div>
+          <span class="hours-label">{{ formatHours(day.totalMinutes) }}</span>
+        }
       </div>
-      }
-    </div>
+    }
   </div>
 </div>
