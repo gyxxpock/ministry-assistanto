@@ -28,6 +28,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
 import { FileUtilService } from '../domain/utils/file-util.service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
   {
@@ -74,6 +75,7 @@ const routes: Routes = [
     MatListModule,
     MatButtonModule,
     MatToolbar,
+    MatTooltipModule,
     CommonModule,
     FormsModule,
     TranslateModule,

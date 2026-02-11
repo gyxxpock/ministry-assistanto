@@ -1,28 +1,39 @@
 <div class="time-entry-list-container">
 
-  <!-- CONTENEDOR FLOTANTE ÚNICO -->
   <div class="top-actions-group">
-
     <!-- 1. PÍLDORA (Utilidades) -->
     <div class="utility-pill">
-      <button mat-icon-button class="glass-icon-btn" (click)="handleExport()" matTooltip="Exportar JSON">
-        <mat-icon>backup</mat-icon>
+      <!-- Compartir Reporte -->
+      <button mat-icon-button class="glass-icon-btn" (click)="shareReport()"
+        matTooltip="Enviar Reporte (WhatsApp/iOS Share)" matTooltipPosition="above">
+        <mat-icon>ios_share</mat-icon>
       </button>
+
+      <!-- Backup (Exportar) -->
+      <button mat-icon-button class="glass-icon-btn" (click)="handleExport()"
+        matTooltip="Crear copia de seguridad (JSON)" matTooltipPosition="above">
+        <mat-icon>cloud_upload</mat-icon> <!-- Ícono más descriptivo para Backup -->
+      </button>
+
       <div class="vertical-divider"></div>
-      <button mat-icon-button class="glass-icon-btn" (click)="fileInput.click()" matTooltip="Importar Backup">
-        <mat-icon>restore</mat-icon>
+
+      <!-- Restore (Importar) -->
+      <button mat-icon-button class="glass-icon-btn" (click)="fileInput.click()" matTooltip="Restaurar desde archivo"
+        matTooltipPosition="above">
+        <mat-icon>settings_backup_restore</mat-icon>
       </button>
       <input #fileInput type="file" (change)="handleImport($event)" accept=".json" hidden>
     </div>
 
     <!-- 2. CÍRCULO (Add) -->
     <div class="primary-action-wrapper">
-      <button mat-fab class="glass-fab-circle" (click)="addEntry()" matTooltip="Añadir Registro">
+      <button mat-fab class="glass-fab-circle" (click)="addEntry()" matTooltip="Nuevo Registro"
+        matTooltipPosition="left">
         <mat-icon>add</mat-icon>
       </button>
     </div>
-
   </div>
+
 
   <div class="month-selector-container">
     <div class="glass-paginator">
