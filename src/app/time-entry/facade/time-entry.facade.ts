@@ -14,6 +14,7 @@ export class TimeEntryFacade {
 
   private readonly _entries = signal<TimeEntry[]>([]);
   private readonly _visits = signal<CourseVisit[]>([]);
+  private readonly _manualCourseCounts = signal<number>(0); // key: 'YYYY-MM' -> count
 
   // ============================
   // View Models (UI-ready)
@@ -62,15 +63,17 @@ export class TimeEntryFacade {
     this.currentYear.set(year);
     this.currentMonth.set(month);
 
-    const [entries, visits] = await Promise.all([
+    const [entries, visits, manualCount] = await Promise.all([
       this.repository.listEntriesByMonth(year, month),
-      this.repository.listVisitsByMonth(year, month)
+      this.repository.listVisitsByMonth(year, month),
+      this.repository.getCourseCount(year, month)
     ]);
 
     this._entries.set(entries);
     this._visits.set(visits);
+    this._manualCourseCounts.set(manualCount);
     this.totals.set(
-      computeMonthlyTotals(entries, visits, year, month)
+      computeMonthlyTotals(entries, visits, year, month, manualCount)
     );
   }
 
@@ -134,6 +137,16 @@ export class TimeEntryFacade {
   }
 
   // ============================
+  // Course Manual Commands
+  // ============================
+  async updateManualCourseCount(count: number): Promise<void> {
+    const year = this.currentYear();
+    const month = this.currentMonth();
+    await this.repository.setCourseCount(year, month, count);
+    await this.loadMonth(year, month);
+  }
+
+  // ============================
   // Report Generation (New)
   // ============================
 
@@ -142,23 +155,23 @@ export class TimeEntryFacade {
    * Ideal para compartir por WhatsApp/iMessage.
    */
   getFormattedMonthlyReport(): string {
-  const totals = this.totals();
-  const year = this.currentYear();
-  const month = this.currentMonth();
-  
-  // Formateo de mes con la primera letra en mayúscula (Estilo Apple Calendar)
-  const monthName = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date(year, month - 1));
-  const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+    const totals = this.totals();
+    const year = this.currentYear();
+    const month = this.currentMonth();
 
-  // Construcción del mensaje con espaciado "Breathable" (UX amigable)
-  let report = `📋 *INFORME DE ACTIVIDAD*\n`;
-  report += `${capitalizedMonth} de ${year}\n\n`;
-  
-  report += `⏱️ *Tiempo total:* ${totals?.totalHours || 0}h\n`;
-  report += `📚 *Cursos:* ${this._visits().length}\n`; // Usamos la longitud de las visitas
+    // Formateo de mes con la primera letra en mayúscula (Estilo Apple Calendar)
+    const monthName = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date(year, month - 1));
+    const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
 
-  return report;
-}
+    // Construcción del mensaje con espaciado "Breathable" (UX amigable)
+    let report = `📋 *INFORME DE ACTIVIDAD*\n`;
+    report += `${capitalizedMonth} de ${year}\n\n`;
+
+    report += `⏱️ *Tiempo total:* ${totals?.totalHours || 0}h\n`;
+    report += `📚 *Cursos:* ${totals?.totalCourses || 0}\n`; // Usamos la longitud de las visitas
+
+    return report;
+  }
 
 
 

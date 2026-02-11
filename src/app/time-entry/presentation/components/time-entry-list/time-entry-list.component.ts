@@ -22,14 +22,14 @@ export class TimeEntryListComponent implements OnInit {
   private exporter = inject(TimeEntryExporter);
 
   async shareReport() {
-  const text = this.facade.getFormattedMonthlyReport();
-  
-  if (navigator.share) {
-    await navigator.share({
-      text: text // iOS prefiere 'text' sobre 'title' para WhatsApp
-    });
+    const text = this.facade.getFormattedMonthlyReport();
+
+    if (navigator.share) {
+      await navigator.share({
+        text: text // iOS prefiere 'text' sobre 'title' para WhatsApp
+      });
+    }
   }
-}
 
 
 
@@ -158,5 +158,17 @@ export class TimeEntryListComponent implements OnInit {
       width: '450px',
       data: { entry },
     });
+  }
+
+  incrementCourse() {
+    const current = this.facade.totals()?.totalCourses ?? 0;
+    this.facade.updateManualCourseCount(current + 1);
+  }
+
+  decrementCourse() {
+    const current = this.facade.totals()?.totalCourses ?? 0;
+    if (current > 0) {
+      this.facade.updateManualCourseCount(current - 1);
+    }
   }
 }
