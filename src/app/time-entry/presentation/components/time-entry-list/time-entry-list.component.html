@@ -74,15 +74,29 @@
       <div class="tile-decoration"></div>
     </div>
 
-    <!-- Tarjeta de Cursos -->
+    <!-- Tarjeta de Cursos Interactiva -->
     <div class="glass-tile tertiary">
       <div class="tile-icon">
         <mat-icon>school</mat-icon>
       </div>
+
       <div class="tile-info">
         <span class="tile-label">{{ 'timeEntry.totalCourses' | translate }}</span>
-        <h2 class="tile-value">{{ facade.totals()?.totalCourses ?? 0 }}</h2>
+
+        <!-- Control de Incremento Estilo iOS -->
+        <div class="stepper-container">
+          <button class="step-btn" (click)="decrementCourse()" [disabled]="(facade.totals()?.totalCourses ?? 0) <= 0">
+            <mat-icon>remove</mat-icon>
+          </button>
+
+          <h2 class="tile-value">{{ facade.totals()?.totalCourses ?? 0 }}</h2>
+
+          <button class="step-btn" (click)="incrementCourse()">
+            <mat-icon>add</mat-icon>
+          </button>
+        </div>
       </div>
+
       <div class="tile-decoration"></div>
     </div>
   </section>

@@ -353,3 +353,78 @@
     }
   }
 }
+
+/* --- NUEVOS ESTILOS PARA EL STEPPER DE CURSOS --- */
+
+.stepper-container {
+  display: flex;
+  align-items: center;
+  gap: 12px; // Espaciado orgánico entre botones y número
+  margin-top: 4px;
+  position: relative;
+  z-index: 2; // Asegura que esté por encima de la decoración blur
+}
+
+.step-btn {
+  /* Reseteo de estilos nativos de botón */
+  appearance: none;
+  background: rgba(var(--mat-sys-on-surface-rgb), 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px; // Forma de "Squircle" estilo iOS
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--mat-sys-on-surface);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(5px);
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &:hover:not(:disabled) {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.3);
+    transform: translateY(-1px);
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.9); // Feedback táctil de presión
+    background: rgba(var(--tile-color-rgb), 0.2); // Brillo sutil del color de la tarjeta
+  }
+
+  &:disabled {
+    opacity: 0.2;
+    cursor: not-allowed;
+    filter: grayscale(1);
+  }
+}
+
+/* Ajuste específico para el valor dentro del stepper */
+.glass-tile.tertiary .tile-value {
+  min-width: 34px; // Evita que la tarjeta "salte" cuando cambia de 9 a 10
+  text-align: center;
+  font-variant-numeric: tabular-nums; // Mantiene los números alineados
+}
+
+/* Optimizaciones para Móvil */
+@media (max-width: 600px) {
+  .stepper-container {
+    gap: 8px;
+  }
+  
+  .step-btn {
+    width: 36px; // Un poco más grande para facilitar el toque (Touch Target)
+    height: 36px;
+    border-radius: 10px;
+  }
+
+  .glass-tile.tertiary .tile-value {
+    font-size: 1.8rem;
+  }
+}

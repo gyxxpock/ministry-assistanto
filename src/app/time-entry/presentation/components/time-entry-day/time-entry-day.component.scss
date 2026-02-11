@@ -1,158 +1,139 @@
-/* time-entry-day.component.scss */
-
-.day {
-  margin-bottom: 2.5rem;
-  animation: fadeIn 0.5s ease-out;
+.day-header {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface-variant);
+  text-transform: uppercase;
+  margin: 1.5rem 0 0.5rem 1rem;
+  opacity: 0.6;
 }
 
-.day-title {
-  margin: 0 0 1.25rem 0.5rem;
-  font-size: 1rem;
+.glass-list-container {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-radius: 14px; // Radio estándar de listas iOS
+  border: 0.5px solid rgba(255, 255, 255, 0.2);
+  margin: 0 8px;
+  overflow: hidden;
+}
+
+.glass-row {
+  display: flex;
+  align-items: center;
+  padding: 10px 12px;
+  gap: 12px;
+  position: relative;
+  transition: background 0.2s;
+
+  /* Divisor interno fino estilo Apple */
+  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+
+  &:active {
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  &.no-border {
+    border-bottom: none;
+  }
+}
+
+.mini-time-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  height: 44px;
+  background: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  border-radius: 10px;
+
+  .time-val { font-size: 1.1rem; font-weight: 800; line-height: 1; }
+  .time-unit { font-size: 0.6rem; font-weight: 700; opacity: 0.8; }
+}
+
+.row-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.row-header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.category-tag-mini {
+  font-size: 0.65rem;
   font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1.5px;
   color: var(--mat-sys-primary);
   opacity: 0.9;
 }
 
-/* Cards container */
-.entries {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-}
-
-/* Desktop enhancement - 2 columnas en pantallas medianas */
-@media (min-width: 992px) {
-  .entries {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-.modern-card {
-  border-radius: 24px !important; // Bordes extra redondeados Liquid Glass
-  border: 1px solid var(--mat-sys-outline-variant) !important;
-  background: rgba(var(--mat-sys-surface-container-low-rgb), 0.5) !important;
-  backdrop-filter: blur(10px);
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-  position: relative;
+.row-notes {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--mat-sys-on-surface);
+  white-space: nowrap;
   overflow: hidden;
-
-  &:hover {
-    transform: translateY(-4px);
-    background: rgba(var(--mat-sys-surface-container-rgb), 0.8) !important;
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1) !important;
-    border-color: var(--mat-sys-primary) !important;
-  }
+  text-overflow: ellipsis;
+  opacity: 0.8;
 }
 
-.entry-container {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 20px !important;
-}
-
-/* Layout Superior: Detalles y Chips */
-.entry-details {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-}
-
-.duration-indicator {
+.edit-action {
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  padding: 0;
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  padding: 6px 14px;
-  border-radius: 12px;
-  
-  mat-icon { font-size: 18px; height: 18px; width: 18px; }
-  .minutes { font-weight: 800; font-size: 0.95rem; }
-}
 
-.info-text {
-  flex: 1;
-  margin-left: 16px;
-  
-  .type-label {
-    margin: 0;
-    font-weight: 700;
-    font-size: 1.1rem;
-    color: var(--mat-sys-on-surface);
-  }
-
-  .entry-date {
-    margin: 0;
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--mat-sys-on-surface-variant);
-    opacity: 0.7;
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
   }
 }
 
-/* Chips de Categoría */
-.category-chip {
-  --mdc-chip-label-text-size: 11px;
-  --mdc-chip-label-text-weight: 700;
-  height: 24px !important;
-  background-color: var(--mat-sys-secondary-container) !important;
-  color: var(--mat-sys-on-secondary-container) !important;
-}
-
-/* Sección de Notas */
-.entry-notes {
+/* --- Botón de Acción iOS Visible en Blanco --- */
+.action-btn-ios {
+  background: rgba(0, 122, 255, 0.1); /* Fondo azul traslúcido muy suave */
+  border: none;
+  color: #007AFF; /* Azul nativo de iOS para máxima visibilidad */
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  padding: 12px 16px;
-  background: rgba(var(--mat-sys-on-surface-rgb), 0.03);
-  border-radius: 16px;
-  border: 1px dashed var(--mat-sys-outline-variant);
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0; // Evita que se aplaste en pantallas pequeñas
 
-  .note-icon {
-    font-size: 16px;
-    height: 16px;
-    width: 16px;
-    color: var(--mat-sys-primary);
-    margin-top: 3px;
+  mat-icon {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+    font-weight: bold;
   }
 
-  .note-text {
-    margin: 0;
-    font-size: 0.85rem;
-    line-height: 1.5;
-    color: var(--mat-sys-on-surface-variant);
-    font-weight: 400;
+  /* Feedback al tocar en iPhone */
+  &:active {
+    background: rgba(0, 122, 255, 0.2);
+    transform: scale(0.9);
   }
-}
 
-/* Acciones */
-mat-card-actions {
-  padding: 4px 12px 12px !important;
-  
-  button[mat-icon-button] {
-    color: var(--mat-sys-primary);
-    background: rgba(var(--mat-sys-primary-rgb), 0.05);
-    
-    &:hover {
-      background: var(--mat-sys-primary);
-      color: var(--mat-sys-on-primary);
-    }
+  /* Si prefieres un look más 'Glass' oscuro sobre el blanco */
+  &.dark-glass {
+    background: rgba(0, 0, 0, 0.05);
+    color: rgba(0, 0, 0, 0.4);
   }
 }
 
-.empty-state {
-  padding: 2rem;
-  text-align: center;
-  color: var(--mat-sys-on-surface-variant);
-  font-style: italic;
-  opacity: 0.6;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* Ajuste del contenedor para que el blanco no "se coma" los bordes */
+.glass-list-container {
+  background: rgba(255, 255, 255, 0.6); /* Más opaco para resaltar sobre el fondo blanco */
+  border: 0.5px solid rgba(0, 0, 0, 0.1); /* Borde oscuro muy fino para dar definición */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
