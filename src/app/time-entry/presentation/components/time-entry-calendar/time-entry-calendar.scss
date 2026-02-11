@@ -1,109 +1,104 @@
 :host {
   display: block;
-  padding: 1rem 2rem;
+  padding: 10px; // Reducido para móviles
+  background: transparent;
 }
 
 .calendar-container {
-  max-width: 1400px;
+  max-width: 100%;
   margin: 0 auto;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 20px;
+  padding: 15px;
 }
 
 .calendar-header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column; // Stack en móvil
   align-items: center;
-  margin-bottom: 1.5rem;
-  flex-wrap: wrap;
-  gap: 1rem;
-}
+  gap: 15px;
+  margin-bottom: 20px;
 
-.page-title {
-  margin: 0;
-  font-size: 1.5rem;
+  @media (min-width: 600px) {
+    flex-direction: row;
+    justify-content: space-between;
+  }
 }
 
 .month-paginator {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-
-  .current-month {
-    font-size: 1.2rem;
-    font-weight: 500;
-    min-width: 150px;
-    text-align: center;
-  }
+  background: rgba(0,0,0,0.05);
+  border-radius: 12px;
+  padding: 4px;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  border-top: 1px solid #e0e0e0;
-  border-left: 1px solid #e0e0e0;
-}
-
-.weekday-header {
-  padding: 0.5rem;
-  text-align: center;
-  font-weight: 500;
-  color: #616161;
-  background-color: #f5f5f5;
-  border-bottom: 1px solid #e0e0e0;
-  border-right: 1px solid #e0e0e0;
+  grid-template-columns: repeat(7, 1fr); // 7 columnas iguales siempre
+  gap: 2px; // Espacio sutil en lugar de bordes pesados
 }
 
 .calendar-day {
+  aspect-ratio: 1 / 1.2; // Mantiene la forma sin importar el ancho
+  min-height: 60px; // Mucho menor que tus 120px previos
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   position: relative;
-  min-height: 120px;
-  padding: 0.5rem;
-  border-right: 1px solid #e0e0e0;
-  border-bottom: 1px solid #e0e0e0;
-  background-color: white;
-  transition: background-color 0.2s ease;
-
-  &:hover {
-    background-color: #f9f9f9;
+  
+  &.today .day-number {
+    background: #007AFF;
+    color: white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
-  &.other-month {
-    .day-number {
-      color: #b0bec5;
-    }
-    .total-badge {
-      opacity: 0.6;
-    }
-  }
+  &.other-month { opacity: 0.3; }
+}
 
-  &.today {
-    .day-number {
-      background-color: #1976d2;
-      color: white;
-      border-radius: 50%;
-      width: 28px;
-      height: 28px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+/* Indicador de "Liquid Glass" para las horas */
+.dot-indicator {
+  width: 4px;
+  height: 4px;
+  background: #007AFF;
+  border-radius: 50%;
+  margin-top: 4px;
+}
+
+.hours-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #007AFF;
+  margin-top: 2px;
+  
+  @media (max-width: 400px) {
+    font-size: 8px; // Más pequeño en iPhones mini
   }
 }
 
-.day-number {
-  font-weight: 500;
-  font-size: 0.875rem;
-  margin-bottom: 0.5rem;
-}
-
-.day-content {
+.weekday-header {
+  font-size: 12px;
+  color: #8e8e93;
+  padding-bottom: 10px;
   text-align: center;
 }
 
-.total-badge {
-  display: inline-block;
-  background-color: #e3f2fd;
-  color: #1976d2;
-  padding: 4px 8px;
-  border-radius: 12px;
-  font-size: 0.8rem;
-  font-weight: 500;
+.btn-today-ios {
+  border: none;
+  background: white;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  color: #007AFF;
+  margin-left: 5px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
