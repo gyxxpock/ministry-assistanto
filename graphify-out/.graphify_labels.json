@@ -1,5 +1,5 @@
 {
-  "0": "CourseVisit",
+  "0": "DexieTimeEntryRepository",
   "1": "time-entry.module.ts",
   "2": "options",
   "3": "TimeEntryFacade",
@@ -10,7 +10,7 @@
   "8": "CLEAN Architecture Pattern",
   "9": "app-module.ts",
   "10": "TimeEntryCalendarComponent",
-  "11": "TimeEntryFormComponent",
+  "11": "Dispatcher — Auto-Dispatch de Agentes",
   "12": "check-pr.js",
   "13": "ISyncService",
   "14": "Time Entry List View",
@@ -30,5 +30,16 @@
   "28": "graphify reference: transcribe video and audio",
   "29": "CLAUDE.md",
   "30": ".claude/CLAUDE.md",
-  "31": "extraction-spec.md"
+  "31": "extraction-spec.md",
+  "32": "Estrategia por capa",
+  "33": "SignalsAgent",
+  "34": "ArchitectureGuardian",
+  "35": "DomainAgent",
+  "36": "FacadeAgent",
+  "37": "UIAgent",
+  "38": "AGENTS — Ministry Assistanto",
+  "39": "DataAgent",
+  "40": "AGENTS.md",
+  "41": "Inject",
+  "42": "Injectable"
 }
