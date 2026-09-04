@@ -21,9 +21,11 @@
     }
 
     @for (day of calendarGrid(); track day.date) {
-      <div class="calendar-day" 
+      <div class="calendar-day"
            [class.other-month]="!day.isCurrentMonth"
-           [class.today]="day.isToday">
+           [class.today]="day.isToday"
+           [class.has-entries]="day.totalMinutes > 0"
+           (click)="onDayClick(day)">
         
         <span class="day-number">{{ day.date | date:'d' }}</span>
 

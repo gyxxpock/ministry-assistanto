@@ -24,13 +24,13 @@ import {
 })
 export class TimeEntryFormComponent implements OnInit {
   @Input() entry: TimeEntryVM | undefined;
+  @Input() initialDate?: Date;
   @Output() save = new EventEmitter<CreateTimeEntryVM | UpdateTimeEntryVM>();
   @Output() cancel = new EventEmitter<void>();
 
   private readonly fb = inject(FormBuilder);
   isEditMode = false;
 
-  readonly presets = [60, 90, 120, 150, 180, 240, 300, 360, 480];
   readonly types: TimeEntryTypeVM[] = ['preaching', 'study', 'visiting', 'other'];
 
   readonly form = this.fb.nonNullable.group({
@@ -44,6 +44,8 @@ export class TimeEntryFormComponent implements OnInit {
     if (this.entry) {
       this.isEditMode = true;
       this.form.patchValue(this.entry);
+    } else if (this.initialDate) {
+      this.form.patchValue({ date: this.initialDate });
     }
   }
 
@@ -79,13 +81,6 @@ export class TimeEntryFormComponent implements OnInit {
       this.cancel.emit();
     }
   }
-
-  setPreset(minutes: number): void {
-    this.form.controls.durationMinutes.setValue(minutes);
-    this.form.controls.durationMinutes.markAsDirty();
-  }
-
-  // time-entry-form.component.ts
 
   get canSubmit(): boolean {
     if (this.isEditMode) {

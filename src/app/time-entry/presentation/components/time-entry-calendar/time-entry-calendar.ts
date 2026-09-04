@@ -1,5 +1,7 @@
 import { Component, computed, OnInit, signal } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
+import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
 
 interface CalendarDay {
   date: Date;
@@ -95,7 +97,7 @@ export class TimeEntryCalendarComponent implements OnInit {
     );
   });
 
-  constructor(public facade: TimeEntryFacade) { }
+  constructor(public facade: TimeEntryFacade, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.loadData();
@@ -132,6 +134,27 @@ export class TimeEntryCalendarComponent implements OnInit {
       isToday: date.toDateString() === this.today.toDateString(),
       totalMinutes: dayData?.totalMinutes ?? 0
     };
+  }
+
+  onDayClick(day: CalendarDay): void {
+    if (!day.isCurrentMonth) return;
+
+    if (day.totalMinutes === 0) {
+      this.dialog.open(TimeEntryEditDialogComponent, {
+        width: '450px',
+        data: { initialDate: day.date },
+      });
+      return;
+    }
+
+    const dateKey    = this.toKey(day.date);
+    const dayEntries = this.facade.entries().filter(e => this.toKey(e.date) === dateKey);
+    if (dayEntries.length === 0) return;
+
+    this.dialog.open(TimeEntryEditDialogComponent, {
+      width: '450px',
+      data: { entry: dayEntries[0] },
+    });
   }
 
   formatHours(minutes: number): string {

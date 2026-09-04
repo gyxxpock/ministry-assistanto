@@ -60,6 +60,10 @@ TestingAgent      → .claude/agents/testing-agent.md
 
 ## Paso 4 — Anunciar y responder
 
+**Para tareas no triviales**: lanzar subagentes (`Agent` tool) para exploración y
+planificación antes de responder con código. El anuncio de agentes activos va primero;
+los subagentes se lanzan en paralelo justo después.
+
 Al inicio de la respuesta, incluye una línea de anuncio breve:
 
 ```
