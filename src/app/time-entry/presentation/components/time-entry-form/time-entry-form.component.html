@@ -22,17 +22,7 @@
       </mat-form-field>
 
       <!-- Duration -->
-      <mat-form-field appearance="outline" class="minutes-field">
-        <mat-label>{{ 'timeEntry.form.durationMinutes' | translate }}</mat-label>
-        <input matInput type="number" inputmode="numeric" formControlName="durationMinutes" placeholder="Minutos" />
-      </mat-form-field>
-
-      <!-- Presets -->
-      <div class="presets">
-        <button mat-stroked-button type="button" *ngFor="let p of presets" (click)="setPreset(p)">
-          {{ p/60 }} hrs
-        </button>
-      </div>
+      <ma-duration-wheel-picker formControlName="durationMinutes"></ma-duration-wheel-picker>
 
       <!-- Notes -->
       <mat-form-field appearance="outline" class="full-width">

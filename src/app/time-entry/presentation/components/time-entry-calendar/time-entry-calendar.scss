@@ -49,19 +49,23 @@
   justify-content: center;
   border-radius: t.$radius-sm;
   position: relative;
-  cursor: pointer;
+  cursor: default;
   @include m.transition-fast(background transform box-shadow);
 
-  &:hover:not(.other-month) {
-    background: var(--glass-bg-light);
-    transform: scale(1.05);
-    border-radius: t.$radius-sm;
-  }
+  &.has-entries:not(.other-month) {
+    cursor: pointer;
 
-  &:active:not(.other-month) {
-    transform: scale(0.95);
-    background: var(--glass-bg-medium);
-    transition-duration: t.$dur-fast;
+    &:hover {
+      background: var(--glass-bg-light);
+      transform: scale(1.05);
+      border-radius: t.$radius-sm;
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background: var(--glass-bg-medium);
+      transition-duration: t.$dur-fast;
+    }
   }
 
   &.today .day-number {

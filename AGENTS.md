@@ -51,3 +51,7 @@ TestingAgent: escribe specs solo para el facade, sin tocar las otras capas
 - `ArchitectureGuardian` está siempre activo en modo silencioso — solo interviene si
   detecta una violación de capa en el código que se está escribiendo.
 - La lógica de routing completa vive en `.claude/agents/_dispatcher.md`.
+- **Tareas no triviales requieren subagentes reales**: usar el `Agent` tool para lanzar
+  `Explore`/fork (orientación de codebase) y `Plan` (arquitectura) en paralelo antes de
+  implementar. Leer los `.md` de agentes define las reglas; no reemplaza delegar trabajo
+  real con subagentes.

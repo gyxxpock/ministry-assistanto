@@ -24,47 +24,6 @@
   gap: t.$space-4;
 }
 
-// Input de minutos — centrado y con tipografía tabular
-.minutes-field input {
-  font-size: 1.2rem;
-  text-align: center;
-  font-family: t.$font-system;
-  font-variant-numeric: tabular-nums;
-}
-
-// Preset buttons — píldoras glass
-.presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: t.$space-2;
-  justify-content: center;
-
-  button {
-    min-width: 72px;
-    min-height: 44px;
-    border-radius: t.$radius-pill !important;
-    background: var(--glass-bg-light) !important;
-    backdrop-filter: blur(t.$blur-sm);
-    border: 1px solid var(--glass-border-light) !important;
-    color: var(--mat-sys-primary) !important;
-    font-weight: 700;
-    font-size: 0.8rem;
-    @include m.transition-std(all, t.$dur-normal);
-
-    &:hover {
-      background: var(--glass-tint-primary) !important;
-      border-color: var(--glass-border-medium) !important;
-      transform: translateY(-2px);
-      box-shadow: var(--glass-shadow-sm);
-    }
-
-    &:active {
-      transform: scale(0.94);
-      transition-duration: t.$dur-fast;
-    }
-  }
-}
-
 // Botón submit — pill completo
 .submit-btn {
   width: 100%;

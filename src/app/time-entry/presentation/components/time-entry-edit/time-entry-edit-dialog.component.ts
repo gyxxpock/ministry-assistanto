@@ -11,18 +11,20 @@ import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/
 })
 export class TimeEntryEditDialogComponent implements OnInit {
   entry: TimeEntryVM | undefined;
+  initialDate: Date | undefined;
   isEditMode = false;
   showDeleteConfirm = false;
 
   constructor(
     private facade: TimeEntryFacade,
     private dialogRef: MatDialogRef<TimeEntryEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data?: { entry: TimeEntryVM }
+    @Inject(MAT_DIALOG_DATA) data?: { entry?: TimeEntryVM; initialDate?: Date }
   ) {
     if (data?.entry) {
       this.isEditMode = true;
       this.entry = data.entry;
     }
+    this.initialDate = data?.initialDate;
   }
 
   ngOnInit(): void {}

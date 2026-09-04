@@ -15,6 +15,13 @@ This project uses an auto-dispatch agent system. Before responding to ANY task:
 1. Read `.claude/agents/_dispatcher.md` to run the routing logic.
 2. Identify which agents apply based on the task content.
 3. Read each relevant agent's file from `.claude/agents/`.
+3.5 **Para tareas no triviales** (implementación multi-archivo, exploración de codebase,
+    diseño arquitectónico): lanzar subagentes reales con el `Agent` tool **ANTES** de
+    tocar código:
+    - `Explore` o `subagent_type: "fork"` → orientación de codebase (en lugar de leer archivos raw directamente)
+    - `Plan` → diseño arquitectónico cuando la tarea afecte >1 archivo o capa
+    Lanzar ambos en paralelo cuando sean independientes. Leer los `.md` de agentes
+    identifica qué reglas aplicar; **no reemplaza** delegar trabajo real a subagentes.
 4. Apply their combined rules for the entire response.
 5. Announce active agents in a brief header: `> Agentes: X · Y · Z`
 

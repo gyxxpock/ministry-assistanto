@@ -1,0 +1,46 @@
+<div class="wheel-picker" [class.is-disabled]="isDisabled">
+
+  <!-- Banda de selección (fila central) -->
+  <div class="selection-indicator" aria-hidden="true"></div>
+
+  <!-- Máscaras de fade iOS -->
+  <div class="fade-mask fade-mask--top"    aria-hidden="true"></div>
+  <div class="fade-mask fade-mask--bottom" aria-hidden="true"></div>
+
+  <!-- Columna: Horas -->
+  <div class="wheel-col">
+    <div #hoursWheel class="wheel-scroll" role="listbox" aria-label="Horas">
+      <div class="wheel-item wheel-item--pad"></div>
+      <div class="wheel-item wheel-item--pad"></div>
+      <div
+        *ngFor="let h of hoursItems"
+        class="wheel-item"
+        role="option"
+        [attr.aria-selected]="h === selectedH">
+        {{ h }}
+      </div>
+      <div class="wheel-item wheel-item--pad"></div>
+      <div class="wheel-item wheel-item--pad"></div>
+    </div>
+    <span class="wheel-unit" aria-hidden="true">h</span>
+  </div>
+
+  <!-- Columna: Minutos -->
+  <div class="wheel-col">
+    <div #minutesWheel class="wheel-scroll" role="listbox" aria-label="Minutos">
+      <div class="wheel-item wheel-item--pad"></div>
+      <div class="wheel-item wheel-item--pad"></div>
+      <div
+        *ngFor="let m of minuteItems"
+        class="wheel-item"
+        role="option"
+        [attr.aria-selected]="m === selectedM">
+        {{ m | number:'2.0-0' }}
+      </div>
+      <div class="wheel-item wheel-item--pad"></div>
+      <div class="wheel-item wheel-item--pad"></div>
+    </div>
+    <span class="wheel-unit" aria-hidden="true">min</span>
+  </div>
+
+</div>
