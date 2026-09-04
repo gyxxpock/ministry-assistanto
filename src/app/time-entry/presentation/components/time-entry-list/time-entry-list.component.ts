@@ -3,7 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
 import { TimeEntryVM } from '../../models/time-entry.vm';
-import { FileUtilService } from '../../../domain/utils/file-util.service';
+import { FileUtilService } from '../../../data/utils/file-util.service';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
 
 @Component({
@@ -22,13 +22,22 @@ export class TimeEntryListComponent implements OnInit {
   private exporter = inject(TimeEntryExporter);
 
   async shareReport() {
-    const text = this.facade.getFormattedMonthlyReport();
-
     if (navigator.share) {
-      await navigator.share({
-        text: text // iOS prefiere 'text' sobre 'title' para WhatsApp
-      });
+      await navigator.share({ text: this.getFormattedMonthlyReport() });
     }
+  }
+
+  private getFormattedMonthlyReport(): string {
+    const totals = this.facade.totals();
+    const year = this.facade.currentYear();
+    const month = this.facade.currentMonth();
+    const monthName = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date(year, month - 1));
+    const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
+    let report = `📋 *INFORME DE ACTIVIDAD*\n`;
+    report += `${capitalizedMonth} de ${year}\n\n`;
+    report += `⏱️ *Tiempo total:* ${totals?.totalHours || 0}h\n`;
+    report += `📚 *Cursos:* ${totals?.totalCourses || 0}\n`;
+    return report;
   }
 
 

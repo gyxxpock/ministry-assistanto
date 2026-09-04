@@ -132,10 +132,10 @@
     "semantic_hash": "1a315979826177212b42586c4afcff4c"
   },
   "src/app/time-entry/data/time-entry.dexie.ts": {
-    "mtime": 1788535231.6347067,
-    "seen": 1788536025.448242,
-    "ast_hash": "1ab176ec89da771e0a561ef8a67c1259",
-    "semantic_hash": "1ab176ec89da771e0a561ef8a67c1259"
+    "mtime": 1788548575.1764343,
+    "seen": 1788548795.251744,
+    "ast_hash": "a9a6996c581ee0ae89786b15156ccb5f",
+    "semantic_hash": ""
   },
   "src/app/time-entry/data/time-entry.export.spec.ts": {
     "mtime": 1788535231.6348083,
@@ -143,23 +143,11 @@
     "ast_hash": "7dd88f5fa85f6117672433e9d5b53789",
     "semantic_hash": "7dd88f5fa85f6117672433e9d5b53789"
   },
-  "src/app/time-entry/data/time-entry.repository.ts": {
-    "mtime": 1788535231.634922,
-    "seen": 1788536025.448243,
-    "ast_hash": "be48643663d15bf7a96713bf0f511a24",
-    "semantic_hash": "be48643663d15bf7a96713bf0f511a24"
-  },
   "src/app/time-entry/domain/models.ts": {
     "mtime": 1788535231.6350873,
     "seen": 1788536025.448243,
     "ast_hash": "c20915c844e55f59a9881a0a60d3ce69",
     "semantic_hash": "c20915c844e55f59a9881a0a60d3ce69"
-  },
-  "src/app/time-entry/domain/time-entry.integration.spec.ts": {
-    "mtime": 1788535231.6352053,
-    "seen": 1788536025.4482439,
-    "ast_hash": "0273f4851e848e46ae5106d7f364354f",
-    "semantic_hash": "0273f4851e848e46ae5106d7f364354f"
   },
   "src/app/time-entry/domain/time-entry.usecase.spec.ts": {
     "mtime": 1788545600.652634,
@@ -172,12 +160,6 @@
     "seen": 1788545920.7070131,
     "ast_hash": "293a686d12cce2242c4e9aa07073e45f",
     "semantic_hash": ""
-  },
-  "src/app/time-entry/domain/utils/file-util.service.ts": {
-    "mtime": 1788535231.6355965,
-    "seen": 1788536025.448246,
-    "ast_hash": "a7ab8a717e8ce4b02e12b0dd11aab050",
-    "semantic_hash": "a7ab8a717e8ce4b02e12b0dd11aab050"
   },
   "src/app/time-entry/facade/time-entry.exporter.spec.ts": {
     "mtime": 1788535231.635767,
@@ -198,9 +180,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/facade/time-entry.facade.ts": {
-    "mtime": 1788545458.0196877,
-    "seen": 1788545920.707017,
-    "ast_hash": "ade6ccd582b244515d84dac74ce7c5fc",
+    "mtime": 1788548193.9633555,
+    "seen": 1788548246.840939,
+    "ast_hash": "dcbc4bc297f69886923ff50ae1580ff4",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/layout/layout.spec.ts": {
@@ -246,16 +228,16 @@
     "semantic_hash": "04f9f8b21ff4e73d1d7dd73788f3a299"
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts": {
-    "mtime": 1788535231.6392539,
-    "seen": 1788536025.4482539,
-    "ast_hash": "71ee5981828223edd4a28c2b43922ba3",
-    "semantic_hash": "71ee5981828223edd4a28c2b43922ba3"
+    "mtime": 1788548217.7874017,
+    "seen": 1788548246.840947,
+    "ast_hash": "3e0194b8f7231d87946b9811bcd05cfd",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts": {
-    "mtime": 1788535231.6393864,
-    "seen": 1788536025.4482539,
-    "ast_hash": "413fcfe5f39604218963319ae3828568",
-    "semantic_hash": "413fcfe5f39604218963319ae3828568"
+    "mtime": 1788548200.6888273,
+    "seen": 1788548246.840947,
+    "ast_hash": "30ad2b08c45080a71ad698c890168c4a",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/material/material.module.ts": {
     "mtime": 1788535231.6395888,
@@ -270,16 +252,16 @@
     "semantic_hash": "f9795ec60904325330a1b455ac5798b4"
   },
   "src/app/time-entry/presentation/time-entry.module.ts": {
-    "mtime": 1788535231.6398747,
-    "seen": 1788536025.448256,
-    "ast_hash": "d90bb381ff2d23f921fa0f06e5729fd7",
-    "semantic_hash": "d90bb381ff2d23f921fa0f06e5729fd7"
+    "mtime": 1788548164.3723705,
+    "seen": 1788548246.84095,
+    "ast_hash": "c2cadbad70deeffc5e2182193e476a92",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/tokens/time-entry.tokens.ts": {
-    "mtime": 1788535231.6402004,
-    "seen": 1788536025.448257,
-    "ast_hash": "9789da989182aed9b88133a60690dc49",
-    "semantic_hash": "9789da989182aed9b88133a60690dc49"
+    "mtime": 1788548152.5009797,
+    "seen": 1788548246.840951,
+    "ast_hash": "135c80f686b7024a3579e966d403621f",
+    "semantic_hash": ""
   },
   "src/main.ts": {
     "mtime": 1788535231.640719,
@@ -519,6 +501,42 @@
     "mtime": 1788546737.4028647,
     "seen": 1788546932.5660002,
     "ast_hash": "9fbe569edbf932f463f426466c506a21",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/data/time-entry.integration.spec.ts": {
+    "mtime": 1788548159.1035159,
+    "seen": 1788548246.840929,
+    "ast_hash": "5b51484476cce94fa685f402f7ff5ec4",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/data/utils/file-util.service.ts": {
+    "mtime": 1788548154.42049,
+    "seen": 1788548246.84093,
+    "ast_hash": "2461b3944848d703b3d7c6c1c7a51dd7",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/domain/i-time-entry.repository.ts": {
+    "mtime": 1788548055.9981318,
+    "seen": 1788548246.8409321,
+    "ast_hash": "24adc1a302b452e54b033aeca7f5913e",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts": {
+    "mtime": 1788548580.2787554,
+    "seen": 1788548795.251759,
+    "ast_hash": "c7c665086ebbc3dc0f1e970c7e3b6875",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts": {
+    "mtime": 1788548590.0136485,
+    "seen": 1788548795.2517602,
+    "ast_hash": "1a55b89e2ed35baac3f76328d9fe2837",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts": {
+    "mtime": 1788548782.2103574,
+    "seen": 1788548795.251762,
+    "ast_hash": "56d31862ab9a5987980ee2a351389500",
     "semantic_hash": ""
   }
 }
