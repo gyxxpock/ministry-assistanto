@@ -1,5 +1,5 @@
 import { Injectable, Inject, signal, computed } from '@angular/core';
-import { ITimeEntryRepository } from '../data/time-entry.repository';
+import { ITimeEntryRepository } from '../domain/i-time-entry.repository';
 import { TIME_ENTRY_REPOSITORY } from '../presentation/tokens/time-entry.tokens';
 import { TimeEntry, CourseVisit } from '../domain/models';
 import computeMonthlyTotals, { MonthlyTotals, mergeTimeEntry, toDateKey } from '../domain/time-entry.usecase';
@@ -14,7 +14,7 @@ export class TimeEntryFacade {
 
   private readonly _entries = signal<TimeEntry[]>([]);
   private readonly _visits = signal<CourseVisit[]>([]);
-  private readonly _manualCourseCounts = signal<number>(0); // key: 'YYYY-MM' -> count
+  private readonly _manualCourseCounts = signal<number>(0);
 
   // ============================
   // View Models (UI-ready)
@@ -41,7 +41,15 @@ export class TimeEntryFacade {
     }))
   );
 
-  readonly totals = signal<MonthlyTotals | null>(null);
+  readonly totals = computed<MonthlyTotals | null>(() =>
+    computeMonthlyTotals(
+      this._entries(),
+      this._visits(),
+      this.currentYear(),
+      this.currentMonth(),
+      this._manualCourseCounts()
+    )
+  );
 
   readonly currentYear = signal(new Date().getFullYear());
   readonly currentMonth = signal(new Date().getMonth() + 1);
@@ -72,9 +80,6 @@ export class TimeEntryFacade {
     this._entries.set(entries);
     this._visits.set(visits);
     this._manualCourseCounts.set(manualCount);
-    this.totals.set(
-      computeMonthlyTotals(entries, visits, year, month, manualCount)
-    );
   }
 
   // ============================
@@ -153,33 +158,6 @@ export class TimeEntryFacade {
     const month = this.currentMonth();
     await this.repository.setCourseCount(year, month, count);
     await this.loadMonth(year, month);
-  }
-
-  // ============================
-  // Report Generation (New)
-  // ============================
-
-  /** 
-   * Genera el texto plano del reporte mensual actual.
-   * Ideal para compartir por WhatsApp/iMessage.
-   */
-  getFormattedMonthlyReport(): string {
-    const totals = this.totals();
-    const year = this.currentYear();
-    const month = this.currentMonth();
-
-    // Formateo de mes con la primera letra en mayúscula (Estilo Apple Calendar)
-    const monthName = new Intl.DateTimeFormat('es-ES', { month: 'long' }).format(new Date(year, month - 1));
-    const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
-
-    // Construcción del mensaje con espaciado "Breathable" (UX amigable)
-    let report = `📋 *INFORME DE ACTIVIDAD*\n`;
-    report += `${capitalizedMonth} de ${year}\n\n`;
-
-    report += `⏱️ *Tiempo total:* ${totals?.totalHours || 0}h\n`;
-    report += `📚 *Cursos:* ${totals?.totalCourses || 0}\n`; // Usamos la longitud de las visitas
-
-    return report;
   }
 
 
