@@ -42,7 +42,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "dexietimeentryrepository",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -55,10 +55,23 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "timeentrydb",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
+      "source_location": "L7"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository",
+      "label": "ITimeEntryRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": "itimeentryrepository",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
       "source_location": "L7"
     },
     {
@@ -68,7 +81,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "coursevisit",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -81,7 +94,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "monthlycoursecount",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -94,7 +107,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "person",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -107,7 +120,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "timeentry",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -120,11 +133,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "monthlytotals",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L28"
+      "source_location": "L51"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_exporter_timeentryexporter",
@@ -133,7 +146,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "timeentryexporter",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.ts",
@@ -216,6 +229,19 @@
       "norm_label": "timeentryeditdialogcomponent",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent",
+      "label": "TimeEntryFormComponent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "timeentryformcomponent",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L25"
     },
     {
       "id": "src_app_time_entry_presentation_material_material_module_materialmodule",
@@ -322,19 +348,6 @@
       "source_location": "L18"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent",
-      "label": "TimeEntryFormComponent",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": "timeentryformcomponent",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L25"
-    },
-    {
       "id": "src_app_core_sync_sync_service_isyncservice",
       "label": "ISyncService",
       "_callable": true,
@@ -359,19 +372,6 @@
       "norm_label": "syncevent",
       "source_file": "src/app/core/sync/sync.service.ts",
       "source_location": "L1"
-    },
-    {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository",
-      "label": "ITimeEntryRepository",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": "itimeentryrepository",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L7"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
@@ -444,7 +444,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".addentry()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -456,7 +456,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".addvisit()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -468,7 +468,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".clearall()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -480,7 +480,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -492,7 +492,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".exportall()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -504,7 +504,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".getcoursecount()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -516,7 +516,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".importall()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -528,7 +528,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".listentriesbymonth()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -540,7 +540,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".listvisitsbymonth()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -552,7 +552,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".removeentry()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -564,7 +564,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".removevisit()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -576,7 +576,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".setcoursecount()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -588,7 +588,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".updateentry()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -600,7 +600,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".updatevisit()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -612,7 +612,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -624,11 +624,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".addentry()",
       "source_file": "src/app/time-entry/data/time-entry.repository.ts",
       "source_location": "L10"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_addvisit",
+      "label": ".addVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": ".addvisit()",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
+      "source_location": "L13"
     },
     {
       "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_exportall",
@@ -636,11 +648,47 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".exportall()",
       "source_file": "src/app/time-entry/data/time-entry.repository.ts",
       "source_location": "L16"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_importall",
+      "label": ".importAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": ".importall()",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
+      "source_location": "L17"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_listentriesbymonth",
+      "label": ".listEntriesByMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": ".listentriesbymonth()",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_listvisitsbymonth",
+      "label": ".listVisitsByMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": ".listvisitsbymonth()",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_updateentry",
@@ -648,11 +696,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".updateentry()",
       "source_file": "src/app/time-entry/data/time-entry.repository.ts",
       "source_location": "L11"
+    },
+    {
+      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_updatevisit",
+      "label": ".updateVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": ".updatevisit()",
+      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
+      "source_location": "L14"
     },
     {
       "id": "src_app_time_entry_domain_time_entry_usecase_computemonthlytotals",
@@ -660,11 +720,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "computemonthlytotals()",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L39"
+      "source_location": "L62"
     },
     {
       "id": "src_app_time_entry_domain_time_entry_usecase_inmonth",
@@ -672,11 +732,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "inmonth()",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L15"
+      "source_location": "L38"
+    },
+    {
+      "id": "src_app_time_entry_domain_time_entry_usecase_mergetimeentry",
+      "label": "mergeTimeEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": "mergetimeentry()",
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L21"
     },
     {
       "id": "src_app_time_entry_domain_time_entry_usecase_normalizename",
@@ -684,11 +756,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "normalizename()",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
       "source_location": "L3"
+    },
+    {
+      "id": "src_app_time_entry_domain_time_entry_usecase_todatekey",
+      "label": "toDateKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "DexieTimeEntryRepository",
+      "file_type": "code",
+      "norm_label": "todatekey()",
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_app_time_entry_domain_time_entry_usecase_tokey",
@@ -696,11 +780,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "tokey()",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L8"
+      "source_location": "L34"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_exporter_timeentryexporter_generatejson",
@@ -708,7 +792,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".generatejson()",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.ts",
@@ -720,7 +804,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": ".tocsv()",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.ts",
@@ -732,35 +816,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "tocsv()",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.ts",
       "source_location": "L4"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_exportall",
-      "label": ".exportAll()",
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
+      "label": ".addEntry()",
       "_callable": true,
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
-      "norm_label": ".exportall()",
+      "norm_label": ".addentry()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L130"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleexport",
-      "label": ".handleExport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".handleexport()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L36"
+      "source_location": "L84"
     },
     {
       "id": "src_app_core_i18n_pipes_i18n_date_pipe_i18ndatepipe_transform",
@@ -797,30 +869,6 @@
       "norm_label": ".readfile()",
       "source_file": "src/app/time-entry/domain/utils/file-util.service.ts",
       "source_location": "L38"
-    },
-    {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
-      "label": ".addEntry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": ".addentry()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L84"
-    },
-    {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
-      "label": ".updateEntry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": ".updateentry()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L99"
     },
     {
       "id": "src_app_time_entry_presentation_components_layout_layout_layout_onscroll",
@@ -893,6 +941,90 @@
       "norm_label": ".onsave()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
       "source_location": "L28"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_cansubmit",
+      "label": ".canSubmit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".cansubmit()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L90"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_emitcreate",
+      "label": ".emitCreate()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".emitcreate()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L60"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_emitupdatechanges",
+      "label": ".emitUpdateChanges()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".emitupdatechanges()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L64"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_ngoninit",
+      "label": ".ngOnInit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".ngoninit()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L43"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_ondatechange",
+      "label": ".onDateChange()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".ondatechange()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L104"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_setpreset",
+      "label": ".setPreset()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".setpreset()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L83"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_submit",
+      "label": ".submit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".submit()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L50"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_editentry",
@@ -1015,90 +1147,6 @@
       "source_location": "L36"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_cansubmit",
-      "label": ".canSubmit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".cansubmit()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L90"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_emitcreate",
-      "label": ".emitCreate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".emitcreate()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L60"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_emitupdatechanges",
-      "label": ".emitUpdateChanges()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".emitupdatechanges()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L64"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_ngoninit",
-      "label": ".ngOnInit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".ngoninit()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L43"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_ondatechange",
-      "label": ".onDateChange()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".ondatechange()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L104"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_setpreset",
-      "label": ".setPreset()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".setpreset()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L83"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_submit",
-      "label": ".submit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": ".submit()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
-      "source_location": "L50"
-    },
-    {
       "id": "src_app_core_sync_sync_service_isyncservice_applyserverevents",
       "label": ".applyServerEvents()",
       "_callable": true,
@@ -1195,18 +1243,6 @@
       "source_location": "L6"
     },
     {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_addvisit",
-      "label": ".addVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".addvisit()",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_getcoursecount",
       "label": ".getCourseCount()",
       "_callable": true,
@@ -1217,42 +1253,6 @@
       "norm_label": ".getcoursecount()",
       "source_file": "src/app/time-entry/data/time-entry.repository.ts",
       "source_location": "L18"
-    },
-    {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_importall",
-      "label": ".importAll()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".importall()",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L17"
-    },
-    {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_listentriesbymonth",
-      "label": ".listEntriesByMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".listentriesbymonth()",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_listvisitsbymonth",
-      "label": ".listVisitsByMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".listvisitsbymonth()",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L9"
     },
     {
       "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_removeentry",
@@ -1291,18 +1291,6 @@
       "source_location": "L19"
     },
     {
-      "id": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_updatevisit",
-      "label": ".updateVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".updatevisit()",
-      "source_file": "src/app/time-entry/data/time-entry.repository.ts",
-      "source_location": "L14"
-    },
-    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addvisit",
       "label": ".addVisit()",
       "_callable": true,
@@ -1312,7 +1300,7 @@
       "file_type": "code",
       "norm_label": ".addvisit()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L112"
+      "source_location": "L121"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_constructor",
@@ -1327,6 +1315,18 @@
       "source_location": "L49"
     },
     {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_exportall",
+      "label": ".exportAll()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".exportall()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L139"
+    },
+    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_getformattedmonthlyreport",
       "label": ".getFormattedMonthlyReport()",
       "_callable": true,
@@ -1336,7 +1336,7 @@
       "file_type": "code",
       "norm_label": ".getformattedmonthlyreport()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L157"
+      "source_location": "L166"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_importall",
@@ -1348,7 +1348,7 @@
       "file_type": "code",
       "norm_label": ".importall()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L134"
+      "source_location": "L143"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_loadmonth",
@@ -1372,7 +1372,7 @@
       "file_type": "code",
       "norm_label": ".removeentry()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L107"
+      "source_location": "L116"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_removevisit",
@@ -1384,7 +1384,7 @@
       "file_type": "code",
       "norm_label": ".removevisit()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L125"
+      "source_location": "L134"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_translatetype",
@@ -1396,7 +1396,19 @@
       "file_type": "code",
       "norm_label": ".translatetype()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L182"
+      "source_location": "L191"
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
+      "label": ".updateEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".updateentry()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L108"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatemanualcoursecount",
@@ -1408,7 +1420,7 @@
       "file_type": "code",
       "norm_label": ".updatemanualcoursecount()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L142"
+      "source_location": "L151"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatevisit",
@@ -1420,7 +1432,7 @@
       "file_type": "code",
       "norm_label": ".updatevisit()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L117"
+      "source_location": "L126"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_addentry",
@@ -1469,6 +1481,18 @@
       "norm_label": ".gototoday()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
       "source_location": "L145"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleexport",
+      "label": ".handleExport()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".handleexport()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L36"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleimport",
@@ -1595,7 +1619,7 @@
       "label": "time-entry.dexie.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.dexie.ts",
       "source_file": "src/app/time-entry/data/time-entry.dexie.ts",
@@ -1606,7 +1630,7 @@
       "label": "time-entry.dexie.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.dexie.spec.ts",
       "source_file": "src/app/time-entry/data/time-entry.dexie.spec.ts",
@@ -1617,7 +1641,7 @@
       "label": "Injectable",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "injectable",
       "source_file": "",
@@ -1628,7 +1652,7 @@
       "label": "time-entry.export.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.export.spec.ts",
       "source_file": "src/app/time-entry/data/time-entry.export.spec.ts",
@@ -1639,7 +1663,7 @@
       "label": "time-entry.repository.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.repository.ts",
       "source_file": "src/app/time-entry/data/time-entry.repository.ts",
@@ -1650,7 +1674,7 @@
       "label": "models.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "models.ts",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -1661,7 +1685,7 @@
       "label": "time-entry.integration.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.integration.spec.ts",
       "source_file": "src/app/time-entry/domain/time-entry.integration.spec.ts",
@@ -1672,7 +1696,7 @@
       "label": "time-entry.usecase.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.usecase.ts",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
@@ -1683,7 +1707,7 @@
       "label": "time-entry.usecase.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.usecase.spec.ts",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.spec.ts",
@@ -1694,7 +1718,7 @@
       "label": "time-entry.exporter.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.exporter.ts",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.ts",
@@ -1705,7 +1729,7 @@
       "label": "time-entry.exporter.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.exporter.spec.ts",
       "source_file": "src/app/time-entry/facade/time-entry.exporter.spec.ts",
@@ -1716,7 +1740,7 @@
       "label": "Injectable",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "injectable",
       "source_file": "",
@@ -1727,7 +1751,7 @@
       "label": "time-entry.facade.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.facade.ts",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
@@ -1738,7 +1762,7 @@
       "label": "time-entry.facade.spec.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.facade.spec.ts",
       "source_file": "src/app/time-entry/facade/time-entry.facade.spec.ts",
@@ -1749,7 +1773,7 @@
       "label": "time-entry.tokens.ts",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time-entry.tokens.ts",
       "source_file": "src/app/time-entry/presentation/tokens/time-entry.tokens.ts",
@@ -1760,7 +1784,7 @@
       "label": "TIME_ENTRY_REPOSITORY",
       "_origin": "ast",
       "community": 0,
-      "community_name": "CourseVisit",
+      "community_name": "DexieTimeEntryRepository",
       "file_type": "code",
       "norm_label": "time_entry_repository",
       "source_file": "src/app/time-entry/presentation/tokens/time-entry.tokens.ts",
@@ -1932,6 +1956,39 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_component",
+      "label": "Component",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "component",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_input",
+      "label": "Input",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "input",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_output",
+      "label": "Output",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "output",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component",
       "label": "time-entry-list.component.ts",
       "_origin": "ast",
@@ -1940,17 +1997,6 @@
       "file_type": "code",
       "norm_label": "time-entry-list.component.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_spec",
-      "label": "time-entry-list.component.spec.ts",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": "time-entry-list.component.spec.ts",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts",
       "source_location": "L1"
     },
     {
@@ -2053,37 +2099,124 @@
       "source_location": ""
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_component",
-      "label": "Component",
+      "id": "claude_agents_dispatcher",
+      "label": "_dispatcher.md",
       "_origin": "ast",
       "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": "component",
-      "source_file": "",
-      "source_location": ""
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "_dispatcher.md",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L1"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_input",
-      "label": "Input",
+      "id": "claude_agents_dispatcher_architectureguardian_modo_silencioso_permanente",
+      "label": "ArchitectureGuardian \u2014 modo silencioso permanente",
       "_origin": "ast",
       "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": "input",
-      "source_file": "",
-      "source_location": ""
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "architectureguardian \u2014 modo silencioso permanente",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L38"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_ts_output",
-      "label": "Output",
+      "id": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "label": "Dispatcher \u2014 Auto-Dispatch de Agentes",
       "_origin": "ast",
       "community": 11,
-      "community_name": "TimeEntryFormComponent",
-      "file_type": "code",
-      "norm_label": "output",
-      "source_file": "",
-      "source_location": ""
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dispatcher \u2014 auto-dispatch de agentes",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_dispatcher_override_manual",
+      "label": "Override manual",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "override manual",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L87"
+    },
+    {
+      "id": "claude_agents_dispatcher_paso_1_analizar_la_tarea",
+      "label": "Paso 1 \u2014 Analizar la tarea",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "paso 1 \u2014 analizar la tarea",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L9"
+    },
+    {
+      "id": "claude_agents_dispatcher_paso_2_aplicar_la_matriz_de_routing",
+      "label": "Paso 2 \u2014 Aplicar la matriz de routing",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "paso 2 \u2014 aplicar la matriz de routing",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "claude_agents_dispatcher_paso_3_leer_los_archivos_de_agentes_activos",
+      "label": "Paso 3 \u2014 Leer los archivos de agentes activos",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "paso 3 \u2014 leer los archivos de agentes activos",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "claude_agents_dispatcher_paso_4_anunciar_y_responder",
+      "label": "Paso 4 \u2014 Anunciar y responder",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "paso 4 \u2014 anunciar y responder",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L61"
+    },
+    {
+      "id": "claude_agents_dispatcher_paso_5_orden_de_ejecuci\u00f3n_para_tareas_multi_capa",
+      "label": "Paso 5 \u2014 Orden de ejecuci\u00f3n para tareas multi-capa",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "paso 5 \u2014 orden de ejecucion para tareas multi-capa",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L74"
+    },
+    {
+      "id": "claude_agents_dispatcher_regla_de_feature_completa",
+      "label": "Regla de feature completa",
+      "_origin": "ast",
+      "community": 11,
+      "community_name": "Dispatcher \u2014 Auto-Dispatch de Agentes",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "regla de feature completa",
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L33"
     },
     {
       "id": "scripts_check_pr",
@@ -2618,7 +2751,7 @@
       "file_type": "code",
       "norm_label": "extract-i18n",
       "source_file": "angular.json",
-      "source_location": "L80"
+      "source_location": "L83"
     },
     {
       "id": "angular_architect_serve",
@@ -2629,7 +2762,7 @@
       "file_type": "code",
       "norm_label": "serve",
       "source_file": "angular.json",
-      "source_location": "L68"
+      "source_location": "L71"
     },
     {
       "id": "angular_architect_test",
@@ -2640,7 +2773,7 @@
       "file_type": "code",
       "norm_label": "test",
       "source_file": "angular.json",
-      "source_location": "L83"
+      "source_location": "L86"
     },
     {
       "id": "angular_build_builder",
@@ -2662,7 +2795,7 @@
       "file_type": "code",
       "norm_label": "configurations",
       "source_file": "angular.json",
-      "source_location": "L44"
+      "source_location": "L47"
     },
     {
       "id": "angular_build_defaultconfiguration",
@@ -2673,7 +2806,7 @@
       "file_type": "code",
       "norm_label": "defaultconfiguration",
       "source_file": "angular.json",
-      "source_location": "L66"
+      "source_location": "L69"
     },
     {
       "id": "angular_build_options",
@@ -2695,7 +2828,7 @@
       "file_type": "code",
       "norm_label": "development",
       "source_file": "angular.json",
-      "source_location": "L60"
+      "source_location": "L63"
     },
     {
       "id": "angular_configurations_production",
@@ -2706,7 +2839,7 @@
       "file_type": "code",
       "norm_label": "production",
       "source_file": "angular.json",
-      "source_location": "L45"
+      "source_location": "L48"
     },
     {
       "id": "angular_development_buildtarget",
@@ -2717,7 +2850,7 @@
       "file_type": "code",
       "norm_label": "buildtarget",
       "source_file": "angular.json",
-      "source_location": "L75"
+      "source_location": "L78"
     },
     {
       "id": "angular_development_extractlicenses",
@@ -2728,7 +2861,7 @@
       "file_type": "code",
       "norm_label": "extractlicenses",
       "source_file": "angular.json",
-      "source_location": "L62"
+      "source_location": "L65"
     },
     {
       "id": "angular_development_optimization",
@@ -2739,7 +2872,7 @@
       "file_type": "code",
       "norm_label": "optimization",
       "source_file": "angular.json",
-      "source_location": "L61"
+      "source_location": "L64"
     },
     {
       "id": "angular_development_sourcemap",
@@ -2750,7 +2883,7 @@
       "file_type": "code",
       "norm_label": "sourcemap",
       "source_file": "angular.json",
-      "source_location": "L63"
+      "source_location": "L66"
     },
     {
       "id": "angular_extract_i18n_builder",
@@ -2761,7 +2894,7 @@
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
-      "source_location": "L81"
+      "source_location": "L84"
     },
     {
       "id": "angular_ministry_assistanto_architect",
@@ -2830,6 +2963,17 @@
       "source_location": "L29"
     },
     {
+      "id": "angular_options_stylepreprocessoroptions",
+      "label": "stylePreprocessorOptions",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "stylepreprocessoroptions",
+      "source_file": "angular.json",
+      "source_location": "L43"
+    },
+    {
       "id": "angular_options_styles",
       "label": "styles",
       "_origin": "ast",
@@ -2860,7 +3004,7 @@
       "file_type": "code",
       "norm_label": "budgets",
       "source_file": "angular.json",
-      "source_location": "L46"
+      "source_location": "L49"
     },
     {
       "id": "angular_production_buildtarget",
@@ -2871,7 +3015,7 @@
       "file_type": "code",
       "norm_label": "buildtarget",
       "source_file": "angular.json",
-      "source_location": "L72"
+      "source_location": "L75"
     },
     {
       "id": "angular_production_outputhashing",
@@ -2882,7 +3026,7 @@
       "file_type": "code",
       "norm_label": "outputhashing",
       "source_file": "angular.json",
-      "source_location": "L58"
+      "source_location": "L61"
     },
     {
       "id": "angular_serve_builder",
@@ -2893,7 +3037,7 @@
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
-      "source_location": "L69"
+      "source_location": "L72"
     },
     {
       "id": "angular_serve_configurations",
@@ -2904,7 +3048,7 @@
       "file_type": "code",
       "norm_label": "configurations",
       "source_file": "angular.json",
-      "source_location": "L70"
+      "source_location": "L73"
     },
     {
       "id": "angular_serve_defaultconfiguration",
@@ -2915,7 +3059,18 @@
       "file_type": "code",
       "norm_label": "defaultconfiguration",
       "source_file": "angular.json",
-      "source_location": "L78"
+      "source_location": "L81"
+    },
+    {
+      "id": "angular_stylepreprocessoroptions_includepaths",
+      "label": "includePaths",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "includepaths",
+      "source_file": "angular.json",
+      "source_location": "L44"
     },
     {
       "id": "angular_test_builder",
@@ -2926,7 +3081,7 @@
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
-      "source_location": "L84"
+      "source_location": "L87"
     },
     {
       "id": "angular_test_options",
@@ -2937,7 +3092,18 @@
       "file_type": "code",
       "norm_label": "options",
       "source_file": "angular.json",
-      "source_location": "L85"
+      "source_location": "L88"
+    },
+    {
+      "id": "ref_src",
+      "label": "src",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "concept",
+      "norm_label": "src",
+      "source_file": "angular.json",
+      "source_location": "L44"
     },
     {
       "id": "ref_src_styles_scss",
@@ -2970,7 +3136,7 @@
       "file_type": "concept",
       "norm_label": "zone.js/testing",
       "source_file": "angular.json",
-      "source_location": "L86"
+      "source_location": "L89"
     },
     {
       "id": "src_app_core_i18n_translate_spec",
@@ -3392,6 +3558,30 @@
       "source_location": "L1"
     },
     {
+      "id": "claude_arquitecture_rules_clean_architecture",
+      "label": "Arquitecture Rules (Clean Architecture)",
+      "_origin": "ast",
+      "community": 29,
+      "community_name": "CLAUDE.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "arquitecture rules (clean architecture)",
+      "source_file": "CLAUDE.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "claude_contextual_agents_auto_dispatch",
+      "label": "Contextual Agents (Auto-Dispatch)",
+      "_origin": "ast",
+      "community": 29,
+      "community_name": "CLAUDE.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "contextual agents (auto-dispatch)",
+      "source_file": "CLAUDE.md",
+      "source_location": "L11"
+    },
+    {
       "id": "claude_graphify",
       "label": "graphify",
       "_origin": "ast",
@@ -3404,7 +3594,31 @@
       "source_location": "L1"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_ts_inject",
+      "id": "claude_knowledge_graph_integration",
+      "label": "Knowledge Graph Integration",
+      "_origin": "ast",
+      "community": 29,
+      "community_name": "CLAUDE.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "knowledge graph integration",
+      "source_file": "CLAUDE.md",
+      "source_location": "L36"
+    },
+    {
+      "id": "claude_layer_dependency_rules",
+      "label": "Layer Dependency Rules:",
+      "_origin": "ast",
+      "community": 29,
+      "community_name": "CLAUDE.md",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "layer dependency rules:",
+      "source_file": "CLAUDE.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "inject",
       "label": "Inject",
       "_origin": "ast",
       "community": 3,
@@ -3415,7 +3629,7 @@
       "source_location": ""
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_ts_injectable",
+      "id": "injectable",
       "label": "Injectable",
       "_origin": "ast",
       "community": 3,
@@ -3424,6 +3638,17 @@
       "norm_label": "injectable",
       "source_file": "",
       "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_spec",
+      "label": "time-entry-list.component.spec.ts",
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": "time-entry-list.component.spec.ts",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_ts_component",
@@ -3483,6 +3708,714 @@
       "norm_label": "graphify reference: extraction subagent prompt",
       "source_file": ".claude/skills/graphify/references/extraction-spec.md",
       "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_testing_agent",
+      "label": "testing-agent.md",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "testing-agent.md",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_testing_agent_archivos_de_spec_existentes",
+      "label": "Archivos de spec existentes",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "archivos de spec existentes",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_testing_agent_convenciones",
+      "label": "Convenciones",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "convenciones",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L76"
+    },
+    {
+      "id": "claude_agents_testing_agent_data_tests_de_integraci\u00f3n_con_dexie_real_fake_indexeddb",
+      "label": "Data \u2014 tests de integraci\u00f3n con Dexie real (fake-indexeddb)",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "data \u2014 tests de integracion con dexie real (fake-indexeddb)",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L43"
+    },
+    {
+      "id": "claude_agents_testing_agent_domain_tests_puros_sin_angular_testbed",
+      "label": "Domain \u2014 tests puros, sin Angular TestBed",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "domain \u2014 tests puros, sin angular testbed",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "claude_agents_testing_agent_estrategia_por_capa",
+      "label": "Estrategia por capa",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "estrategia por capa",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L29"
+    },
+    {
+      "id": "claude_agents_testing_agent_facade_mockear_itimeentryrepository",
+      "label": "Facade \u2014 mockear ITimeEntryRepository",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "facade \u2014 mockear itimeentryrepository",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L53"
+    },
+    {
+      "id": "claude_agents_testing_agent_presentation_testbed_con_facade_mockeado",
+      "label": "Presentation \u2014 TestBed con Facade mockeado",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "presentation \u2014 testbed con facade mockeado",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "claude_agents_testing_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L84"
+    },
+    {
+      "id": "claude_agents_testing_agent_testingagent",
+      "label": "TestingAgent",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "Estrategia por capa",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "testingagent",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_signals_agent",
+      "label": "signals-agent.md",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "signals-agent.md",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_signals_agent_cu\u00e1ndo_adoptar_signals",
+      "label": "Cu\u00e1ndo adoptar Signals",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "cuando adoptar signals",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L13"
+    },
+    {
+      "id": "claude_agents_signals_agent_estado_actual_del_proyecto",
+      "label": "Estado actual del proyecto",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "estado actual del proyecto",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L7"
+    },
+    {
+      "id": "claude_agents_signals_agent_orden_recomendado_de_migraci\u00f3n",
+      "label": "Orden recomendado de migraci\u00f3n",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "orden recomendado de migracion",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L17"
+    },
+    {
+      "id": "claude_agents_signals_agent_patrones_para_este_proyecto",
+      "label": "Patrones para este proyecto",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "patrones para este proyecto",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "claude_agents_signals_agent_restricciones",
+      "label": "Restricciones",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "restricciones",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L58"
+    },
+    {
+      "id": "claude_agents_signals_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L65"
+    },
+    {
+      "id": "claude_agents_signals_agent_signals_vs_rxjs_regla_de_decisi\u00f3n",
+      "label": "Signals vs RxJS \u2014 regla de decisi\u00f3n",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "signals vs rxjs \u2014 regla de decision",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "claude_agents_signals_agent_signalsagent",
+      "label": "SignalsAgent",
+      "_origin": "ast",
+      "community": 33,
+      "community_name": "SignalsAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "signalsagent",
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_architecture_guardian",
+      "label": "architecture-guardian.md",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "architecture-guardian.md",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_architectureguardian",
+      "label": "ArchitectureGuardian",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "architectureguardian",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_checklist_de_revisi\u00f3n",
+      "label": "Checklist de revisi\u00f3n",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "checklist de revision",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_c\u00f3mo_detectar_violaciones",
+      "label": "C\u00f3mo detectar violaciones",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "como detectar violaciones",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L34"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_las_4_capas_de_este_proyecto",
+      "label": "Las 4 capas de este proyecto",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "las 4 capas de este proyecto",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_reglas_de_intervenci\u00f3n",
+      "label": "Reglas de intervenci\u00f3n",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "reglas de intervencion",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L56"
+    },
+    {
+      "id": "claude_agents_architecture_guardian_violaciones_conocidas_pendientes_de_corregir",
+      "label": "Violaciones conocidas (pendientes de corregir)",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "violaciones conocidas (pendientes de corregir)",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L16"
+    },
+    {
+      "id": "claude_agents_domain_agent",
+      "label": "domain-agent.md",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "domain-agent.md",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_domain_agent_alcance",
+      "label": "Alcance",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "alcance",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_domain_agent_convenciones_de_este_proyecto",
+      "label": "Convenciones de este proyecto",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "convenciones de este proyecto",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L39"
+    },
+    {
+      "id": "claude_agents_domain_agent_domainagent",
+      "label": "DomainAgent",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "domainagent",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_domain_agent_responsabilidades",
+      "label": "Responsabilidades",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "responsabilidades",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L18"
+    },
+    {
+      "id": "claude_agents_domain_agent_restricciones_absolutas",
+      "label": "Restricciones absolutas",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "restricciones absolutas",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "claude_agents_domain_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 35,
+      "community_name": "DomainAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L33"
+    },
+    {
+      "id": "claude_agents_facade_agent_alcance",
+      "label": "Alcance",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "alcance",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_facade_agent_camino_hacia_signals",
+      "label": "Camino hacia Signals",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "camino hacia signals",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L36"
+    },
+    {
+      "id": "claude_agents_facade_agent_estado_actual_y_deuda_t\u00e9cnica",
+      "label": "Estado actual y deuda t\u00e9cnica",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "estado actual y deuda tecnica",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L30"
+    },
+    {
+      "id": "claude_agents_facade_agent_facadeagent",
+      "label": "FacadeAgent",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "facadeagent",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_facade_agent_responsabilidades",
+      "label": "Responsabilidades",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "responsabilidades",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "claude_agents_facade_agent_restricciones_absolutas",
+      "label": "Restricciones absolutas",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "restricciones absolutas",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L22"
+    },
+    {
+      "id": "claude_agents_facade_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 36,
+      "community_name": "FacadeAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L49"
+    },
+    {
+      "id": "claude_agents_ui_agent_alcance",
+      "label": "Alcance",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "alcance",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_ui_agent_camino_hacia_signals",
+      "label": "Camino hacia Signals",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "camino hacia signals",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L45"
+    },
+    {
+      "id": "claude_agents_ui_agent_convenciones_de_este_proyecto",
+      "label": "Convenciones de este proyecto",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "convenciones de este proyecto",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L38"
+    },
+    {
+      "id": "claude_agents_ui_agent_responsabilidades",
+      "label": "Responsabilidades",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "responsabilidades",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L23"
+    },
+    {
+      "id": "claude_agents_ui_agent_restricciones_absolutas",
+      "label": "Restricciones absolutas",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "restricciones absolutas",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L31"
+    },
+    {
+      "id": "claude_agents_ui_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L50"
+    },
+    {
+      "id": "claude_agents_ui_agent_uiagent",
+      "label": "UIAgent",
+      "_origin": "ast",
+      "community": 37,
+      "community_name": "UIAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "uiagent",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_agents_ministry_assistanto",
+      "label": "AGENTS \u2014 Ministry Assistanto",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "agents \u2014 ministry assistanto",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "agents_auto_dispatch_modo_por_defecto",
+      "label": "Auto-dispatch (modo por defecto)",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "auto-dispatch (modo por defecto)",
+      "source_file": "AGENTS.md",
+      "source_location": "L8"
+    },
+    {
+      "id": "agents_modo_de_activaci\u00f3n",
+      "label": "Modo de activaci\u00f3n",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "modo de activacion",
+      "source_file": "AGENTS.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "agents_override_manual_cuando_quieres_forzar_un_agente_espec\u00edfico",
+      "label": "Override manual (cuando quieres forzar un agente espec\u00edfico)",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "override manual (cuando quieres forzar un agente especifico)",
+      "source_file": "AGENTS.md",
+      "source_location": "L26"
+    },
+    {
+      "id": "agents_reglas_del_sistema",
+      "label": "Reglas del sistema",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "reglas del sistema",
+      "source_file": "AGENTS.md",
+      "source_location": "L47"
+    },
+    {
+      "id": "agents_\u00edndice_de_agentes",
+      "label": "\u00cdndice de agentes",
+      "_origin": "ast",
+      "community": 38,
+      "community_name": "AGENTS \u2014 Ministry Assistanto",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "indice de agentes",
+      "source_file": "AGENTS.md",
+      "source_location": "L35"
+    },
+    {
+      "id": "claude_agents_data_agent_alcance",
+      "label": "Alcance",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "alcance",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L6"
+    },
+    {
+      "id": "claude_agents_data_agent_dataagent",
+      "label": "DataAgent",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "dataagent",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_data_agent_patrones_dexie_de_este_proyecto",
+      "label": "Patrones Dexie de este proyecto",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "patrones dexie de este proyecto",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L28"
+    },
+    {
+      "id": "claude_agents_data_agent_responsabilidades",
+      "label": "Responsabilidades",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "responsabilidades",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L14"
+    },
+    {
+      "id": "claude_agents_data_agent_restricciones_absolutas",
+      "label": "Restricciones absolutas",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "restricciones absolutas",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L21"
+    },
+    {
+      "id": "claude_agents_data_agent_se\u00f1ales_de_alerta",
+      "label": "Se\u00f1ales de alerta",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "senales de alerta",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L35"
     },
     {
       "id": "package_dependencies",
@@ -3804,6 +4737,76 @@
       "source_location": "L41"
     },
     {
+      "id": "agents",
+      "label": "AGENTS.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "agents.md",
+      "source_file": "AGENTS.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_data_agent",
+      "label": "data-agent.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "data-agent.md",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_facade_agent",
+      "label": "facade-agent.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "facade-agent.md",
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_ui_agent",
+      "label": "ui-agent.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "ui-agent.md",
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_ts_inject",
+      "label": "Inject",
+      "_origin": "ast",
+      "community": 41,
+      "community_name": "Inject",
+      "file_type": "code",
+      "norm_label": "inject",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_ts_injectable",
+      "label": "Injectable",
+      "_origin": "ast",
+      "community": 42,
+      "community_name": "Injectable",
+      "file_type": "code",
+      "norm_label": "injectable",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "package_devdependencies",
       "label": "devDependencies",
       "_origin": "ast",
@@ -3958,17 +4961,6 @@
       "source_location": "L44"
     },
     {
-      "id": "angular_cli",
-      "label": "@angular/cli",
-      "_origin": "ast",
-      "community": 5,
-      "community_name": "devDependencies",
-      "file_type": "concept",
-      "norm_label": "@angular/cli",
-      "source_file": "package.json",
-      "source_location": "L45"
-    },
-    {
       "id": "angular_cli_ghpages",
       "label": "angular-cli-ghpages",
       "_origin": "ast",
@@ -4057,6 +5049,17 @@
       "source_location": "L54"
     },
     {
+      "id": "package_json_angular_cli",
+      "label": "@angular/cli",
+      "_origin": "ast",
+      "community": 5,
+      "community_name": "devDependencies",
+      "file_type": "concept",
+      "norm_label": "@angular/cli",
+      "source_file": "package.json",
+      "source_location": "L45"
+    },
+    {
       "id": "types_jasmine",
       "label": "@types/jasmine",
       "_origin": "ast",
@@ -4088,6 +5091,28 @@
       "norm_label": "angular.json",
       "source_file": "angular.json",
       "source_location": "L1"
+    },
+    {
+      "id": "angular_cli_analytics",
+      "label": "analytics",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "analytics",
+      "source_file": "angular.json",
+      "source_location": "L113"
+    },
+    {
+      "id": "angular_json_angular_cli",
+      "label": "cli",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "cli",
+      "source_file": "angular.json",
+      "source_location": "L112"
     },
     {
       "id": "angular_ministry_assistanto_prefix",
@@ -4996,7 +6021,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L49",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -5008,7 +6033,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L49",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -5020,7 +6045,19 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L63",
+      "source_location": "L86",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase_tokey",
+      "target": "src_app_time_entry_domain_time_entry_usecase_todatekey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L35",
       "weight": 1.0
     },
     {
@@ -5032,7 +6069,31 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L96",
+      "source_location": "L105",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
+      "target": "src_app_time_entry_domain_time_entry_usecase_todatekey",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L85",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
+      "target": "src_app_time_entry_domain_time_entry_usecase_mergetimeentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "call",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -5044,7 +6105,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L114",
+      "source_location": "L123",
       "weight": 1.0
     },
     {
@@ -5056,7 +6117,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L136",
+      "source_location": "L145",
       "weight": 1.0
     },
     {
@@ -5080,7 +6141,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L109",
+      "source_location": "L118",
       "weight": 1.0
     },
     {
@@ -5092,7 +6153,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L127",
+      "source_location": "L136",
       "weight": 1.0
     },
     {
@@ -5104,7 +6165,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L104",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -5116,7 +6177,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L146",
+      "source_location": "L155",
       "weight": 1.0
     },
     {
@@ -5128,7 +6189,7 @@
       "confidence_score": 1.0,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L122",
+      "source_location": "L131",
       "weight": 1.0
     },
     {
@@ -5349,7 +6410,7 @@
     },
     {
       "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
-      "target": "src_app_time_entry_facade_time_entry_facade_ts_injectable",
+      "target": "injectable",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5361,7 +6422,7 @@
     },
     {
       "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_constructor",
-      "target": "src_app_time_entry_facade_time_entry_facade_ts_inject",
+      "target": "inject",
       "relation": "references",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -5756,30 +6817,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_exportall",
-      "target": "src_app_time_entry_domain_models_coursevisit",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L130",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_exportall",
-      "target": "src_app_time_entry_domain_models_timeentry",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "generic_arg",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L130",
-      "weight": 1.0
-    },
-    {
       "source": "angular_options_polyfills",
       "target": "ref_zone_js",
       "relation": "extends",
@@ -5788,7 +6825,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "angular.json",
-      "source_location": "L86",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -5800,7 +6837,7 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "angular.json",
-      "source_location": "L86",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -5812,7 +6849,19 @@
       "confidence_score": 1.0,
       "context": "import",
       "source_file": "angular.json",
-      "source_location": "L98",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_stylepreprocessoroptions_includepaths",
+      "target": "ref_src",
+      "relation": "extends",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "angular.json",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -5997,7 +7046,7 @@
     },
     {
       "source": "package_devdependencies_angular_cli",
-      "target": "angular_cli",
+      "target": "package_json_angular_cli",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -6393,6 +7442,30 @@
     },
     {
       "source": "src_app_time_entry_domain_time_entry_usecase_spec",
+      "target": "src_app_time_entry_domain_time_entry_usecase_mergetimeentry",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase_spec",
+      "target": "src_app_time_entry_domain_time_entry_usecase_todatekey",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.spec.ts",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase_spec",
       "target": "src_app_time_entry_domain_models_coursevisit",
       "relation": "imports",
       "_origin": "ast",
@@ -6537,7 +7610,31 @@
     },
     {
       "source": "src_app_time_entry_facade_time_entry_facade",
+      "target": "src_app_time_entry_domain_time_entry_usecase_mergetimeentry",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade",
       "target": "src_app_time_entry_domain_time_entry_usecase_monthlytotals",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade",
+      "target": "src_app_time_entry_domain_time_entry_usecase_todatekey",
       "relation": "imports",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -7808,90 +8905,6 @@
       "weight": 1.0
     },
     {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
-      "target": "src_app_time_entry_presentation_models_time_entry_vm_createtimeentryvm",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L84",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addvisit",
-      "target": "src_app_time_entry_domain_models_coursevisit",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L112",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_constructor",
-      "target": "src_app_time_entry_data_time_entry_repository_itimeentryrepository",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L49",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_importall",
-      "target": "src_app_time_entry_domain_models_coursevisit",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L134",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_importall",
-      "target": "src_app_time_entry_domain_models_timeentry",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L134",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
-      "target": "src_app_time_entry_presentation_models_time_entry_vm_updatetimeentryvm",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L99",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatevisit",
-      "target": "src_app_time_entry_domain_models_coursevisit",
-      "relation": "references",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "context": "parameter_type",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L117",
-      "weight": 1.0
-    },
-    {
       "source": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_constructor",
       "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
       "relation": "references",
@@ -8000,6 +9013,83 @@
       "weight": 1.0
     },
     {
+      "source": "agents",
+      "target": "agents_agents_ministry_assistanto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agents_ministry_assistanto",
+      "target": "agents_\u00edndice_de_agentes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agents_ministry_assistanto",
+      "target": "agents_reglas_del_sistema",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L47",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_agents_ministry_assistanto",
+      "target": "agents_modo_de_activaci\u00f3n",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_modo_de_activaci\u00f3n",
+      "target": "agents_override_manual_cuando_quieres_forzar_un_agente_espec\u00edfico",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "agents_modo_de_activaci\u00f3n",
+      "target": "agents_auto_dispatch_modo_por_defecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
+      "source": "angular",
+      "target": "angular_json_angular_cli",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L112",
+      "weight": 1.0
+    },
+    {
       "source": "angular",
       "target": "angular_schema",
       "relation": "contains",
@@ -8073,7 +9163,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L44",
+      "source_location": "L47",
       "weight": 1.0
     },
     {
@@ -8084,7 +9174,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L66",
+      "source_location": "L69",
       "weight": 1.0
     },
     {
@@ -8095,7 +9185,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L81",
+      "source_location": "L84",
       "weight": 1.0
     },
     {
@@ -8106,7 +9196,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L69",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -8117,7 +9207,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L70",
+      "source_location": "L73",
       "weight": 1.0
     },
     {
@@ -8128,7 +9218,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L78",
+      "source_location": "L81",
       "weight": 1.0
     },
     {
@@ -8139,7 +9229,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L84",
+      "source_location": "L87",
       "weight": 1.0
     },
     {
@@ -8150,7 +9240,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L85",
+      "source_location": "L88",
       "weight": 1.0
     },
     {
@@ -8161,7 +9251,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L45",
+      "source_location": "L48",
       "weight": 1.0
     },
     {
@@ -8172,7 +9262,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L60",
+      "source_location": "L63",
       "weight": 1.0
     },
     {
@@ -8253,6 +9343,17 @@
       "weight": 1.0
     },
     {
+      "source": "angular_build_options",
+      "target": "angular_options_stylepreprocessoroptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
       "source": "angular_configurations_development",
       "target": "angular_development_optimization",
       "relation": "contains",
@@ -8260,7 +9361,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L61",
+      "source_location": "L64",
       "weight": 1.0
     },
     {
@@ -8271,7 +9372,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L62",
+      "source_location": "L65",
       "weight": 1.0
     },
     {
@@ -8282,7 +9383,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L63",
+      "source_location": "L66",
       "weight": 1.0
     },
     {
@@ -8293,7 +9394,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L75",
+      "source_location": "L78",
       "weight": 1.0
     },
     {
@@ -8304,7 +9405,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L46",
+      "source_location": "L49",
       "weight": 1.0
     },
     {
@@ -8315,7 +9416,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L58",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -8326,7 +9427,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L72",
+      "source_location": "L75",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_json_angular_cli",
+      "target": "angular_cli_analytics",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L113",
       "weight": 1.0
     },
     {
@@ -8348,7 +9460,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L68",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -8359,7 +9471,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L80",
+      "source_location": "L83",
       "weight": 1.0
     },
     {
@@ -8370,7 +9482,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L83",
+      "source_location": "L86",
       "weight": 1.0
     },
     {
@@ -8404,6 +9516,17 @@
       "confidence_score": 1.0,
       "source_file": "angular.json",
       "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_options_stylepreprocessoroptions",
+      "target": "angular_stylepreprocessoroptions_includepaths",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -8535,7 +9658,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L71",
+      "source_location": "L74",
       "weight": 1.0
     },
     {
@@ -8546,51 +9669,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L74",
-      "weight": 1.0
-    },
-    {
-      "source": "angular_test_options",
-      "target": "angular_options_polyfills",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "angular.json",
-      "source_location": "L86",
-      "weight": 1.0
-    },
-    {
-      "source": "angular_test_options",
-      "target": "angular_options_tsconfig",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "angular.json",
-      "source_location": "L90",
-      "weight": 1.0
-    },
-    {
-      "source": "angular_test_options",
-      "target": "angular_options_inlinestylelanguage",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "angular.json",
-      "source_location": "L91",
-      "weight": 1.0
-    },
-    {
-      "source": "angular_test_options",
-      "target": "angular_options_assets",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "angular.json",
-      "source_location": "L92",
+      "source_location": "L77",
       "weight": 1.0
     },
     {
@@ -8601,7 +9680,62 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L98",
+      "source_location": "L101",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_stylepreprocessoroptions",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L104",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_polyfills",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L89",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_tsconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_inlinestylelanguage",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L94",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_assets",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L95",
       "weight": 1.0
     },
     {
@@ -8613,6 +9747,688 @@
       "confidence_score": 1.0,
       "source_file": "CLAUDE.md",
       "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude",
+      "target": "claude_contextual_agents_auto_dispatch",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "claude",
+      "target": "claude_arquitecture_rules_clean_architecture",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian",
+      "target": "claude_agents_architecture_guardian_architectureguardian",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian_architectureguardian",
+      "target": "claude_agents_architecture_guardian_violaciones_conocidas_pendientes_de_corregir",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L16",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian_architectureguardian",
+      "target": "claude_agents_architecture_guardian_checklist_de_revisi\u00f3n",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian_architectureguardian",
+      "target": "claude_agents_architecture_guardian_c\u00f3mo_detectar_violaciones",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian_architectureguardian",
+      "target": "claude_agents_architecture_guardian_reglas_de_intervenci\u00f3n",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L56",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_architecture_guardian_architectureguardian",
+      "target": "claude_agents_architecture_guardian_las_4_capas_de_este_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent",
+      "target": "claude_agents_data_agent_dataagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent_dataagent",
+      "target": "claude_agents_data_agent_responsabilidades",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent_dataagent",
+      "target": "claude_agents_data_agent_restricciones_absolutas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L21",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent_dataagent",
+      "target": "claude_agents_data_agent_patrones_dexie_de_este_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L28",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent_dataagent",
+      "target": "claude_agents_data_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L35",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_data_agent_dataagent",
+      "target": "claude_agents_data_agent_alcance",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher",
+      "target": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_paso_2_aplicar_la_matriz_de_routing",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_paso_3_leer_los_archivos_de_agentes_activos",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_paso_4_anunciar_y_responder",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L61",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_paso_5_orden_de_ejecuci\u00f3n_para_tareas_multi_capa",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L74",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_override_manual",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L87",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_dispatcher_auto_dispatch_de_agentes",
+      "target": "claude_agents_dispatcher_paso_1_analizar_la_tarea",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L9",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_paso_2_aplicar_la_matriz_de_routing",
+      "target": "claude_agents_dispatcher_regla_de_feature_completa",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_dispatcher_paso_2_aplicar_la_matriz_de_routing",
+      "target": "claude_agents_dispatcher_architectureguardian_modo_silencioso_permanente",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/_dispatcher.md",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent",
+      "target": "claude_agents_domain_agent_domainagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent_domainagent",
+      "target": "claude_agents_domain_agent_responsabilidades",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L18",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent_domainagent",
+      "target": "claude_agents_domain_agent_restricciones_absolutas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L26",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent_domainagent",
+      "target": "claude_agents_domain_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L33",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent_domainagent",
+      "target": "claude_agents_domain_agent_convenciones_de_este_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_domain_agent_domainagent",
+      "target": "claude_agents_domain_agent_alcance",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/domain-agent.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent",
+      "target": "claude_agents_facade_agent_facadeagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_responsabilidades",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L14",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_restricciones_absolutas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L22",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_estado_actual_y_deuda_t\u00e9cnica",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L30",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_camino_hacia_signals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L36",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L49",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_facade_agent_facadeagent",
+      "target": "claude_agents_facade_agent_alcance",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent",
+      "target": "claude_agents_signals_agent_signalsagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_cu\u00e1ndo_adoptar_signals",
+      "target": "claude_agents_signals_agent_orden_recomendado_de_migraci\u00f3n",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L17",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_cu\u00e1ndo_adoptar_signals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L13",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_patrones_para_este_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_signals_vs_rxjs_regla_de_decisi\u00f3n",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_restricciones",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L58",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_signals_agent_signalsagent",
+      "target": "claude_agents_signals_agent_estado_actual_del_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L7",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent",
+      "target": "claude_agents_testing_agent_testingagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_estrategia_por_capa",
+      "target": "claude_agents_testing_agent_domain_tests_puros_sin_angular_testbed",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_estrategia_por_capa",
+      "target": "claude_agents_testing_agent_data_tests_de_integraci\u00f3n_con_dexie_real_fake_indexeddb",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_estrategia_por_capa",
+      "target": "claude_agents_testing_agent_facade_mockear_itimeentryrepository",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L53",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_estrategia_por_capa",
+      "target": "claude_agents_testing_agent_presentation_testbed_con_facade_mockeado",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L65",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_testingagent",
+      "target": "claude_agents_testing_agent_estrategia_por_capa",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_testingagent",
+      "target": "claude_agents_testing_agent_archivos_de_spec_existentes",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_testingagent",
+      "target": "claude_agents_testing_agent_convenciones",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L76",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_testingagent",
+      "target": "claude_agents_testing_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L84",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent",
+      "target": "claude_agents_ui_agent_uiagent",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_responsabilidades",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_restricciones_absolutas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L31",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_convenciones_de_este_proyecto",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_camino_hacia_signals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_se\u00f1ales_de_alerta",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L50",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_ui_agent_uiagent",
+      "target": "claude_agents_ui_agent_alcance",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/ui-agent.md",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_arquitecture_rules_clean_architecture",
+      "target": "claude_layer_dependency_rules",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L29",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_arquitecture_rules_clean_architecture",
+      "target": "claude_knowledge_graph_integration",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L36",
       "weight": 1.0
     },
     {
@@ -10047,24 +11863,13 @@
     },
     {
       "source": "src_app_time_entry_domain_time_entry_usecase",
-      "target": "src_app_time_entry_domain_time_entry_usecase_inmonth",
+      "target": "src_app_time_entry_domain_time_entry_usecase_mergetimeentry",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L15",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_domain_time_entry_usecase",
-      "target": "src_app_time_entry_domain_time_entry_usecase_monthlytotals",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L28",
+      "source_location": "L21",
       "weight": 1.0
     },
     {
@@ -10080,24 +11885,57 @@
     },
     {
       "source": "src_app_time_entry_domain_time_entry_usecase",
-      "target": "src_app_time_entry_domain_time_entry_usecase_computemonthlytotals",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L39",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_domain_time_entry_usecase",
       "target": "src_app_time_entry_domain_time_entry_usecase_tokey",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
-      "source_location": "L8",
+      "source_location": "L34",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase",
+      "target": "src_app_time_entry_domain_time_entry_usecase_inmonth",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L38",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase",
+      "target": "src_app_time_entry_domain_time_entry_usecase_monthlytotals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L51",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase",
+      "target": "src_app_time_entry_domain_time_entry_usecase_computemonthlytotals",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L62",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_domain_time_entry_usecase",
+      "target": "src_app_time_entry_domain_time_entry_usecase_todatekey",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/domain/time-entry.usecase.ts",
+      "source_location": "L9",
       "weight": 1.0
     },
     {
@@ -10727,13 +12565,24 @@
     },
     {
       "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
+      "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
+      "relation": "method",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L108",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
       "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_removeentry",
       "relation": "method",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L107",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -10744,7 +12593,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L112",
+      "source_location": "L121",
       "weight": 1.0
     },
     {
@@ -10755,7 +12604,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L117",
+      "source_location": "L126",
       "weight": 1.0
     },
     {
@@ -10766,7 +12615,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L125",
+      "source_location": "L134",
       "weight": 1.0
     },
     {
@@ -10777,7 +12626,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L130",
+      "source_location": "L139",
       "weight": 1.0
     },
     {
@@ -10788,7 +12637,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L134",
+      "source_location": "L143",
       "weight": 1.0
     },
     {
@@ -10799,7 +12648,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L142",
+      "source_location": "L151",
       "weight": 1.0
     },
     {
@@ -10810,7 +12659,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L157",
+      "source_location": "L166",
       "weight": 1.0
     },
     {
@@ -10821,7 +12670,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L182",
+      "source_location": "L191",
       "weight": 1.0
     },
     {
@@ -10855,17 +12704,6 @@
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
       "source_location": "L84",
-      "weight": 1.0
-    },
-    {
-      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
-      "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
-      "relation": "method",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -11265,6 +13103,94 @@
       "weight": 1.0
     },
     {
+      "source": "agents",
+      "target": "claude_agents_domain_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L39",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_data_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L40",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_facade_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L41",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_ui_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L42",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_architecture_guardian",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L43",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_signals_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L44",
+      "weight": 1.0
+    },
+    {
+      "source": "agents",
+      "target": "claude_agents_testing_agent",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "AGENTS.md",
+      "source_location": "L45",
+      "weight": 1.0
+    },
+    {
+      "source": "claude",
+      "target": "agents",
+      "relation": "references",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "CLAUDE.md",
+      "source_location": "L24",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
       "target": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_addentry",
       "relation": "calls",
@@ -11273,7 +13199,19 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L95",
+      "source_location": "L102",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
+      "target": "src_app_time_entry_data_time_entry_repository_itimeentryrepository_updateentry",
+      "relation": "calls",
+      "_origin": "ast",
+      "confidence": "INFERRED",
+      "confidence_score": 0.8,
+      "context": "call",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L91",
       "weight": 1.0
     },
     {
@@ -11285,7 +13223,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L113",
+      "source_location": "L122",
       "weight": 1.0
     },
     {
@@ -11297,7 +13235,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L131",
+      "source_location": "L140",
       "weight": 1.0
     },
     {
@@ -11309,7 +13247,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L135",
+      "source_location": "L144",
       "weight": 1.0
     },
     {
@@ -11357,7 +13295,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L108",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -11369,7 +13307,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L126",
+      "source_location": "L135",
       "weight": 1.0
     },
     {
@@ -11381,7 +13319,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L100",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -11393,7 +13331,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L145",
+      "source_location": "L154",
       "weight": 1.0
     },
     {
@@ -11405,7 +13343,7 @@
       "confidence_score": 0.8,
       "context": "call",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L118",
+      "source_location": "L127",
       "weight": 1.0
     },
     {
@@ -11801,5 +13739,5 @@
       "source_file": "src/app/time-entry/presentation/components/layout/layout.html"
     }
   ],
-  "built_at_commit": "7c67f6c07adf00025dae98ad0438b7032982dca0"
+  "built_at_commit": "93c32c885b310e654db36942403791d00976ab52"
 }
