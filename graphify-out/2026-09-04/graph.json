@@ -62,19 +62,6 @@
       "source_location": "L7"
     },
     {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository",
-      "label": "ITimeEntryRepository",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": "itimeentryrepository",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L7"
-    },
-    {
       "id": "src_app_time_entry_domain_models_coursevisit",
       "label": "CourseVisit",
       "_callable": true,
@@ -164,6 +151,19 @@
       "norm_label": "inmemoryrepository",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "src_app_time_entry_presentation_time_entry_module_timeentrymodule",
+      "label": "TimeEntryModule",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourseVisit",
+      "file_type": "code",
+      "norm_label": "timeentrymodule",
+      "source_file": "src/app/time-entry/presentation/time-entry.module.ts",
+      "source_location": "L95"
     },
     {
       "id": "src_app_core_i18n_pipes_i18n_date_pipe_i18ndatepipe",
@@ -309,19 +309,6 @@
       "source_location": "L21"
     },
     {
-      "id": "src_app_time_entry_presentation_time_entry_module_timeentrymodule",
-      "label": "TimeEntryModule",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": "timeentrymodule",
-      "source_file": "src/app/time-entry/presentation/time-entry.module.ts",
-      "source_location": "L95"
-    },
-    {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_calendarday",
       "label": "CalendarDay",
       "_callable": true,
@@ -372,6 +359,19 @@
       "norm_label": "syncevent",
       "source_file": "src/app/core/sync/sync.service.ts",
       "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository",
+      "label": "ITimeEntryRepository",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": "itimeentryrepository",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L7"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
@@ -658,30 +658,6 @@
       "source_location": "L12"
     },
     {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_addentry",
-      "label": ".addEntry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".addentry()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L10"
-    },
-    {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_addvisit",
-      "label": ".addVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".addvisit()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L13"
-    },
-    {
       "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_exportall",
       "label": ".exportAll()",
       "_callable": true,
@@ -704,42 +680,6 @@
       "norm_label": ".importall()",
       "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
       "source_location": "L17"
-    },
-    {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_listentriesbymonth",
-      "label": ".listEntriesByMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".listentriesbymonth()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L8"
-    },
-    {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_listvisitsbymonth",
-      "label": ".listVisitsByMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".listvisitsbymonth()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L9"
-    },
-    {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_updatevisit",
-      "label": ".updateVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".updatevisit()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L14"
     },
     {
       "id": "src_app_time_entry_domain_time_entry_usecase_computemonthlytotals",
@@ -850,18 +790,6 @@
       "source_location": "L4"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addvisit",
-      "label": ".addVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".addvisit()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L126"
-    },
-    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_exportall",
       "label": ".exportAll()",
       "_callable": true,
@@ -884,18 +812,6 @@
       "norm_label": ".importall()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
       "source_location": "L148"
-    },
-    {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatevisit",
-      "label": ".updateVisit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".updatevisit()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L131"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_spec_inmemoryrepository_addentry",
@@ -1042,6 +958,30 @@
       "source_location": "L36"
     },
     {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleexport",
+      "label": ".handleExport()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourseVisit",
+      "file_type": "code",
+      "norm_label": ".handleexport()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L45"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleimport",
+      "label": ".handleImport()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourseVisit",
+      "file_type": "code",
+      "norm_label": ".handleimport()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L58"
+    },
+    {
       "id": "src_app_core_i18n_pipes_i18n_date_pipe_i18ndatepipe_transform",
       "label": ".transform()",
       "_callable": true,
@@ -1078,6 +1018,30 @@
       "source_location": "L22"
     },
     {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
+      "label": ".updateEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".updateentry()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L113"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec_makeentry",
+      "label": "makeEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "makeentry()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L6"
+    },
+    {
       "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_timeentrydaycomponent_onedit",
       "label": ".onEdit()",
       "_callable": true,
@@ -1088,6 +1052,42 @@
       "norm_label": ".onedit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts",
       "source_location": "L16"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makedialogref",
+      "label": "makeDialogRef()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "makedialogref()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makeentry",
+      "label": "makeEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "makeentry()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makefacade",
+      "label": "makeFacade()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "makefacade()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L23"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent_constructor",
@@ -1148,6 +1148,30 @@
       "norm_label": ".ondeleterequest()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
       "source_location": "L43"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent_onsave",
+      "label": ".onSave()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".onsave()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
+      "source_location": "L30"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec_makeentry",
+      "label": "makeEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "makeentry()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L7"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent_cansubmit",
@@ -1232,18 +1256,6 @@
       "norm_label": ".submit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
       "source_location": "L50"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_editentry",
-      "label": ".editEntry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": ".editentry()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L165"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_createcaendarday",
@@ -1438,6 +1450,30 @@
       "source_location": "L6"
     },
     {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_addentry",
+      "label": ".addEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".addentry()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L10"
+    },
+    {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_addvisit",
+      "label": ".addVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".addvisit()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L13"
+    },
+    {
       "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_getcoursecount",
       "label": ".getCourseCount()",
       "_callable": true,
@@ -1448,6 +1484,30 @@
       "norm_label": ".getcoursecount()",
       "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
       "source_location": "L18"
+    },
+    {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_listentriesbymonth",
+      "label": ".listEntriesByMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".listentriesbymonth()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L8"
+    },
+    {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_listvisitsbymonth",
+      "label": ".listVisitsByMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".listvisitsbymonth()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L9"
     },
     {
       "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_removeentry",
@@ -1498,6 +1558,18 @@
       "source_location": "L11"
     },
     {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_updatevisit",
+      "label": ".updateVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".updatevisit()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L14"
+    },
+    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addentry",
       "label": ".addEntry()",
       "_callable": true,
@@ -1508,6 +1580,18 @@
       "norm_label": ".addentry()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
       "source_location": "L89"
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_addvisit",
+      "label": ".addVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".addvisit()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L126"
     },
     {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_constructor",
@@ -1570,18 +1654,6 @@
       "source_location": "L169"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updateentry",
-      "label": ".updateEntry()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".updateentry()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L113"
-    },
-    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatemanualcoursecount",
       "label": ".updateManualCourseCount()",
       "_callable": true,
@@ -1592,6 +1664,18 @@
       "norm_label": ".updatemanualcoursecount()",
       "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
       "source_location": "L156"
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatevisit",
+      "label": ".updateVisit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".updatevisit()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L131"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_constructor",
@@ -1616,18 +1700,6 @@
       "norm_label": ".ondeleteconfirm()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
       "source_location": "L51"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent_onsave",
-      "label": ".onSave()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".onsave()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
-      "source_location": "L30"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_addentry",
@@ -1666,6 +1738,18 @@
       "source_location": "L177"
     },
     {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_editentry",
+      "label": ".editEntry()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 3,
+      "community_name": "TimeEntryFacade",
+      "file_type": "code",
+      "norm_label": ".editentry()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L165"
+    },
+    {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_getformattedmonthlyreport",
       "label": ".getFormattedMonthlyReport()",
       "_callable": true,
@@ -1688,30 +1772,6 @@
       "norm_label": ".gototoday()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
       "source_location": "L154"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleexport",
-      "label": ".handleExport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".handleexport()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L45"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_handleimport",
-      "label": ".handleImport()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 3,
-      "community_name": "TimeEntryFacade",
-      "file_type": "code",
-      "norm_label": ".handleimport()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L58"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_incrementcourse",
@@ -2047,6 +2107,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_time_entry_presentation_time_entry_module_ts_ngmodule",
+      "label": "NgModule",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourseVisit",
+      "file_type": "code",
+      "norm_label": "ngmodule",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
       "id": "src_app_time_entry_presentation_tokens_time_entry_tokens",
       "label": "time-entry.tokens.ts",
       "_origin": "ast",
@@ -2124,6 +2195,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "label": "time-entry-day.component.spec.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "time-entry-day.component.spec.ts",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_ts_component",
       "label": "Component",
       "_origin": "ast",
@@ -2168,6 +2250,17 @@
       "source_location": "L1"
     },
     {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "label": "time-entry-edit-dialog.component.spec.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "time-entry-edit-dialog.component.spec.ts",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_ts_component",
       "label": "Component",
       "_origin": "ast",
@@ -2198,6 +2291,17 @@
       "file_type": "code",
       "norm_label": "time-entry-form.component.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "label": "time-entry-form.component.spec.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "time-entry-form.component.spec.ts",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
       "source_location": "L1"
     },
     {
@@ -2298,17 +2402,6 @@
       "norm_label": "routes",
       "source_file": "src/app/time-entry/presentation/time-entry.module.ts",
       "source_location": "L33"
-    },
-    {
-      "id": "src_app_time_entry_presentation_time_entry_module_ts_ngmodule",
-      "label": "NgModule",
-      "_origin": "ast",
-      "community": 1,
-      "community_name": "time-entry.module.ts",
-      "file_type": "code",
-      "norm_label": "ngmodule",
-      "source_file": "",
-      "source_location": ""
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar",
@@ -2981,7 +3074,7 @@
       "label": "angular.json",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "angular.json",
       "source_file": "angular.json",
@@ -2992,7 +3085,7 @@
       "label": "build",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "build",
       "source_file": "angular.json",
@@ -3003,7 +3096,7 @@
       "label": "extract-i18n",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "extract-i18n",
       "source_file": "angular.json",
@@ -3014,7 +3107,7 @@
       "label": "serve",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "serve",
       "source_file": "angular.json",
@@ -3025,7 +3118,7 @@
       "label": "test",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "test",
       "source_file": "angular.json",
@@ -3036,7 +3129,7 @@
       "label": "builder",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
@@ -3047,7 +3140,7 @@
       "label": "configurations",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "configurations",
       "source_file": "angular.json",
@@ -3058,29 +3151,18 @@
       "label": "defaultConfiguration",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "defaultconfiguration",
       "source_file": "angular.json",
       "source_location": "L69"
     },
     {
-      "id": "angular_build_options",
-      "label": "options",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "options",
-      "source_file": "angular.json",
-      "source_location": "L26"
-    },
-    {
       "id": "angular_cli_analytics",
       "label": "analytics",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "analytics",
       "source_file": "angular.json",
@@ -3091,7 +3173,7 @@
       "label": "development",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "development",
       "source_file": "angular.json",
@@ -3102,7 +3184,7 @@
       "label": "production",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "production",
       "source_file": "angular.json",
@@ -3113,7 +3195,7 @@
       "label": "buildTarget",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "buildtarget",
       "source_file": "angular.json",
@@ -3124,7 +3206,7 @@
       "label": "extractLicenses",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "extractlicenses",
       "source_file": "angular.json",
@@ -3135,7 +3217,7 @@
       "label": "optimization",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "optimization",
       "source_file": "angular.json",
@@ -3146,7 +3228,7 @@
       "label": "sourceMap",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "sourcemap",
       "source_file": "angular.json",
@@ -3157,7 +3239,7 @@
       "label": "builder",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
@@ -3168,7 +3250,7 @@
       "label": "cli",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "cli",
       "source_file": "angular.json",
@@ -3179,7 +3261,7 @@
       "label": "architect",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "architect",
       "source_file": "angular.json",
@@ -3190,7 +3272,7 @@
       "label": "prefix",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "prefix",
       "source_file": "angular.json",
@@ -3201,7 +3283,7 @@
       "label": "projectType",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "projecttype",
       "source_file": "angular.json",
@@ -3212,18 +3294,29 @@
       "label": "root",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "root",
       "source_file": "angular.json",
       "source_location": "L20"
     },
     {
+      "id": "angular_ministry_assistanto_schematics",
+      "label": "schematics",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "schematics",
+      "source_file": "angular.json",
+      "source_location": "L8"
+    },
+    {
       "id": "angular_ministry_assistanto_sourceroot",
       "label": "sourceRoot",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "sourceroot",
       "source_file": "angular.json",
@@ -3234,106 +3327,18 @@
       "label": "newProjectRoot",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "newprojectroot",
       "source_file": "angular.json",
       "source_location": "L4"
     },
     {
-      "id": "angular_options_assets",
-      "label": "assets",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "assets",
-      "source_file": "angular.json",
-      "source_location": "L34"
-    },
-    {
-      "id": "angular_options_browser",
-      "label": "browser",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "browser",
-      "source_file": "angular.json",
-      "source_location": "L28"
-    },
-    {
-      "id": "angular_options_index",
-      "label": "index",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "index",
-      "source_file": "angular.json",
-      "source_location": "L27"
-    },
-    {
-      "id": "angular_options_inlinestylelanguage",
-      "label": "inlineStyleLanguage",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "inlinestylelanguage",
-      "source_file": "angular.json",
-      "source_location": "L33"
-    },
-    {
-      "id": "angular_options_polyfills",
-      "label": "polyfills",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "polyfills",
-      "source_file": "angular.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "angular_options_stylepreprocessoroptions",
-      "label": "stylePreprocessorOptions",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "stylepreprocessoroptions",
-      "source_file": "angular.json",
-      "source_location": "L43"
-    },
-    {
-      "id": "angular_options_styles",
-      "label": "styles",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "styles",
-      "source_file": "angular.json",
-      "source_location": "L40"
-    },
-    {
-      "id": "angular_options_tsconfig",
-      "label": "tsConfig",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "tsconfig",
-      "source_file": "angular.json",
-      "source_location": "L32"
-    },
-    {
       "id": "angular_production_budgets",
       "label": "budgets",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "budgets",
       "source_file": "angular.json",
@@ -3344,7 +3349,7 @@
       "label": "buildTarget",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "buildtarget",
       "source_file": "angular.json",
@@ -3355,7 +3360,7 @@
       "label": "outputHashing",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "outputhashing",
       "source_file": "angular.json",
@@ -3366,7 +3371,7 @@
       "label": "projects",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "projects",
       "source_file": "angular.json",
@@ -3377,7 +3382,7 @@
       "label": "ministry-assistanto",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "ministry-assistanto",
       "source_file": "angular.json",
@@ -3388,18 +3393,95 @@
       "label": "$schema",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "$schema",
       "source_file": "angular.json",
       "source_location": "L2"
     },
     {
+      "id": "angular_schematics_angular_component_standalone",
+      "label": "standalone",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "standalone",
+      "source_file": "angular.json",
+      "source_location": "L11"
+    },
+    {
+      "id": "angular_schematics_angular_component_style",
+      "label": "style",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "style",
+      "source_file": "angular.json",
+      "source_location": "L10"
+    },
+    {
+      "id": "angular_schematics_angular_directive_standalone",
+      "label": "standalone",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "standalone",
+      "source_file": "angular.json",
+      "source_location": "L14"
+    },
+    {
+      "id": "angular_schematics_angular_pipe_standalone",
+      "label": "standalone",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "standalone",
+      "source_file": "angular.json",
+      "source_location": "L17"
+    },
+    {
+      "id": "angular_schematics_schematics_angular_component",
+      "label": "@schematics/angular:component",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "@schematics/angular:component",
+      "source_file": "angular.json",
+      "source_location": "L9"
+    },
+    {
+      "id": "angular_schematics_schematics_angular_directive",
+      "label": "@schematics/angular:directive",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "@schematics/angular:directive",
+      "source_file": "angular.json",
+      "source_location": "L13"
+    },
+    {
+      "id": "angular_schematics_schematics_angular_pipe",
+      "label": "@schematics/angular:pipe",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "@schematics/angular:pipe",
+      "source_file": "angular.json",
+      "source_location": "L16"
+    },
+    {
       "id": "angular_serve_builder",
       "label": "builder",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
@@ -3410,7 +3492,7 @@
       "label": "configurations",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "configurations",
       "source_file": "angular.json",
@@ -3421,99 +3503,33 @@
       "label": "defaultConfiguration",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "defaultconfiguration",
       "source_file": "angular.json",
       "source_location": "L81"
     },
     {
-      "id": "angular_stylepreprocessoroptions_includepaths",
-      "label": "includePaths",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "includepaths",
-      "source_file": "angular.json",
-      "source_location": "L44"
-    },
-    {
       "id": "angular_test_builder",
       "label": "builder",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
       "source_location": "L87"
     },
     {
-      "id": "angular_test_options",
-      "label": "options",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "code",
-      "norm_label": "options",
-      "source_file": "angular.json",
-      "source_location": "L88"
-    },
-    {
       "id": "angular_version",
       "label": "version",
       "_origin": "ast",
       "community": 2,
-      "community_name": "options",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "version",
       "source_file": "angular.json",
       "source_location": "L3"
-    },
-    {
-      "id": "ref_src",
-      "label": "src",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "concept",
-      "norm_label": "src",
-      "source_file": "angular.json",
-      "source_location": "L44"
-    },
-    {
-      "id": "ref_src_styles_scss",
-      "label": "src/styles.scss",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "concept",
-      "norm_label": "src/styles.scss",
-      "source_file": "angular.json",
-      "source_location": "L40"
-    },
-    {
-      "id": "ref_zone_js",
-      "label": "zone.js",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "concept",
-      "norm_label": "zone.js",
-      "source_file": "angular.json",
-      "source_location": "L29"
-    },
-    {
-      "id": "ref_zone_js_testing",
-      "label": "zone.js/testing",
-      "_origin": "ast",
-      "community": 2,
-      "community_name": "options",
-      "file_type": "concept",
-      "norm_label": "zone.js/testing",
-      "source_file": "angular.json",
-      "source_location": "L89"
     },
     {
       "id": "src_app_core_i18n_translate_spec",
@@ -4196,18 +4212,6 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_agents_signals_agent",
-      "label": "signals-agent.md",
-      "_origin": "ast",
-      "community": 33,
-      "community_name": "SignalsAgent",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "signals-agent.md",
-      "source_file": ".claude/agents/signals-agent.md",
-      "source_location": "L1"
-    },
-    {
       "id": "claude_agents_signals_agent_cu\u00e1ndo_adoptar_signals",
       "label": "Cu\u00e1ndo adoptar Signals",
       "_origin": "ast",
@@ -4712,6 +4716,18 @@
       "source_location": "L35"
     },
     {
+      "id": "claude_agents_data_agent",
+      "label": "data-agent.md",
+      "_origin": "ast",
+      "community": 39,
+      "community_name": "DataAgent",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "data-agent.md",
+      "source_file": ".claude/agents/data-agent.md",
+      "source_location": "L1"
+    },
+    {
       "id": "claude_agents_data_agent_alcance",
       "label": "Alcance",
       "_origin": "ast",
@@ -5115,18 +5131,6 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_agents_data_agent",
-      "label": "data-agent.md",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "data-agent.md",
-      "source_file": ".claude/agents/data-agent.md",
-      "source_location": "L1"
-    },
-    {
       "id": "claude_agents_facade_agent",
       "label": "facade-agent.md",
       "_origin": "ast",
@@ -5136,6 +5140,18 @@
       "node_kind": "page",
       "norm_label": "facade-agent.md",
       "source_file": ".claude/agents/facade-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_signals_agent",
+      "label": "signals-agent.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "signals-agent.md",
+      "source_file": ".claude/agents/signals-agent.md",
       "source_location": "L1"
     },
     {
@@ -5492,92 +5508,169 @@
       "source_location": "L55"
     },
     {
-      "id": "angular_ministry_assistanto_schematics",
-      "label": "schematics",
+      "id": "angular_build_options",
+      "label": "options",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "schematics",
+      "norm_label": "options",
       "source_file": "angular.json",
-      "source_location": "L8"
+      "source_location": "L26"
     },
     {
-      "id": "angular_schematics_angular_component_standalone",
-      "label": "standalone",
+      "id": "angular_options_assets",
+      "label": "assets",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "standalone",
+      "norm_label": "assets",
       "source_file": "angular.json",
-      "source_location": "L11"
+      "source_location": "L34"
     },
     {
-      "id": "angular_schematics_angular_component_style",
-      "label": "style",
+      "id": "angular_options_browser",
+      "label": "browser",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "style",
+      "norm_label": "browser",
       "source_file": "angular.json",
-      "source_location": "L10"
+      "source_location": "L28"
     },
     {
-      "id": "angular_schematics_angular_directive_standalone",
-      "label": "standalone",
+      "id": "angular_options_index",
+      "label": "index",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "standalone",
+      "norm_label": "index",
       "source_file": "angular.json",
-      "source_location": "L14"
+      "source_location": "L27"
     },
     {
-      "id": "angular_schematics_angular_pipe_standalone",
-      "label": "standalone",
+      "id": "angular_options_inlinestylelanguage",
+      "label": "inlineStyleLanguage",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "standalone",
+      "norm_label": "inlinestylelanguage",
       "source_file": "angular.json",
-      "source_location": "L17"
+      "source_location": "L33"
     },
     {
-      "id": "angular_schematics_schematics_angular_component",
-      "label": "@schematics/angular:component",
+      "id": "angular_options_polyfills",
+      "label": "polyfills",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "@schematics/angular:component",
+      "norm_label": "polyfills",
       "source_file": "angular.json",
-      "source_location": "L9"
+      "source_location": "L29"
     },
     {
-      "id": "angular_schematics_schematics_angular_directive",
-      "label": "@schematics/angular:directive",
+      "id": "angular_options_stylepreprocessoroptions",
+      "label": "stylePreprocessorOptions",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "@schematics/angular:directive",
+      "norm_label": "stylepreprocessoroptions",
       "source_file": "angular.json",
-      "source_location": "L13"
+      "source_location": "L43"
     },
     {
-      "id": "angular_schematics_schematics_angular_pipe",
-      "label": "@schematics/angular:pipe",
+      "id": "angular_options_styles",
+      "label": "styles",
       "_origin": "ast",
       "community": 6,
-      "community_name": "schematics",
+      "community_name": "options",
       "file_type": "code",
-      "norm_label": "@schematics/angular:pipe",
+      "norm_label": "styles",
       "source_file": "angular.json",
-      "source_location": "L16"
+      "source_location": "L40"
+    },
+    {
+      "id": "angular_options_tsconfig",
+      "label": "tsConfig",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "tsconfig",
+      "source_file": "angular.json",
+      "source_location": "L32"
+    },
+    {
+      "id": "angular_stylepreprocessoroptions_includepaths",
+      "label": "includePaths",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "includepaths",
+      "source_file": "angular.json",
+      "source_location": "L44"
+    },
+    {
+      "id": "angular_test_options",
+      "label": "options",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "options",
+      "source_file": "angular.json",
+      "source_location": "L88"
+    },
+    {
+      "id": "ref_src",
+      "label": "src",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "concept",
+      "norm_label": "src",
+      "source_file": "angular.json",
+      "source_location": "L44"
+    },
+    {
+      "id": "ref_src_styles_scss",
+      "label": "src/styles.scss",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "concept",
+      "norm_label": "src/styles.scss",
+      "source_file": "angular.json",
+      "source_location": "L40"
+    },
+    {
+      "id": "ref_zone_js",
+      "label": "zone.js",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "concept",
+      "norm_label": "zone.js",
+      "source_file": "angular.json",
+      "source_location": "L29"
+    },
+    {
+      "id": "ref_zone_js_testing",
+      "label": "zone.js/testing",
+      "_origin": "ast",
+      "community": 6,
+      "community_name": "options",
+      "file_type": "concept",
+      "norm_label": "zone.js/testing",
+      "source_file": "angular.json",
+      "source_location": "L89"
     },
     {
       "id": "package",
@@ -8187,6 +8280,30 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_timeentrydaycomponent",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm_timeentryvm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component",
       "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
       "relation": "imports",
@@ -8235,6 +8352,42 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_facade_time_entry_facade_timeentryfacade",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm_timeentryvm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component",
       "target": "src_app_time_entry_presentation_models_time_entry_vm_createtimeentryvm",
       "relation": "imports",
@@ -8280,6 +8433,54 @@
       "context": "import",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm_createtimeentryvm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm_timeentryvm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm_updatetimeentryvm",
+      "relation": "imports",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -8955,6 +9156,30 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component",
       "target": "src_app_time_entry_facade_time_entry_facade",
       "relation": "imports_from",
@@ -8979,6 +9204,42 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_facade_time_entry_facade",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L5",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component",
       "target": "src_app_time_entry_presentation_models_time_entry_vm",
       "relation": "imports_from",
@@ -8988,6 +9249,30 @@
       "context": "import",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
       "source_location": "L11",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L4",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_models_time_entry_vm",
+      "relation": "imports_from",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "context": "import",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L5",
       "weight": 1.0
     },
     {
@@ -12818,6 +13103,17 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec_makeentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
+      "source_location": "L6",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component",
       "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent",
       "relation": "contains",
@@ -12829,6 +13125,39 @@
       "weight": 1.0
     },
     {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makedialogref",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L19",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makefacade",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L23",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_spec_makeentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
+      "source_location": "L8",
+      "weight": 1.0
+    },
+    {
       "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component",
       "target": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_timeentryformcomponent",
       "relation": "contains",
@@ -12837,6 +13166,17 @@
       "confidence_score": 1.0,
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
       "source_location": "L25",
+      "weight": 1.0
+    },
+    {
+      "source": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec",
+      "target": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec_makeentry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
+      "source_location": "L7",
       "weight": 1.0
     },
     {

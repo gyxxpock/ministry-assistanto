@@ -132,9 +132,9 @@
     "semantic_hash": "1a315979826177212b42586c4afcff4c"
   },
   "src/app/time-entry/data/time-entry.dexie.ts": {
-    "mtime": 1788548151.720525,
-    "seen": 1788548246.840926,
-    "ast_hash": "739d96acbc2a1f6a75e63f74092ee013",
+    "mtime": 1788548575.1764343,
+    "seen": 1788548795.251744,
+    "ast_hash": "a9a6996c581ee0ae89786b15156ccb5f",
     "semantic_hash": ""
   },
   "src/app/time-entry/data/time-entry.export.spec.ts": {
@@ -519,6 +519,24 @@
     "mtime": 1788548055.9981318,
     "seen": 1788548246.8409321,
     "ast_hash": "24adc1a302b452e54b033aeca7f5913e",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts": {
+    "mtime": 1788548580.2787554,
+    "seen": 1788548795.251759,
+    "ast_hash": "c7c665086ebbc3dc0f1e970c7e3b6875",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts": {
+    "mtime": 1788548590.0136485,
+    "seen": 1788548795.2517602,
+    "ast_hash": "1a55b89e2ed35baac3f76328d9fe2837",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts": {
+    "mtime": 1788548782.2103574,
+    "seen": 1788548795.251762,
+    "ast_hash": "56d31862ab9a5987980ee2a351389500",
     "semantic_hash": ""
   }
 }

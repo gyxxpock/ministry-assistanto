@@ -1,8 +1,8 @@
 {
-  "0": "CourseVisit",
-  "1": "time-entry.module.ts",
+  "0": "time-entry.module.ts",
+  "1": "TimeEntryFormComponent",
   "2": "ministry-assistanto",
-  "3": "TimeEntryFacade",
+  "3": "ITimeEntryRepository",
   "4": "dependencies",
   "5": "devDependencies",
   "6": "options",
@@ -40,5 +40,10 @@
   "38": "AGENTS — Ministry Assistanto",
   "39": "DataAgent",
   "40": "AGENTS.md",
-  "41": "ThemeService"
+  "41": "ThemeService",
+  "42": "DexieTimeEntryRepository",
+  "43": "InMemoryRepository",
+  "44": "Inject",
+  "45": "Component",
+  "46": "NgModule"
 }
