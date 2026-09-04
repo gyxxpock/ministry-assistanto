@@ -24,6 +24,11 @@
                 <mat-icon>date_range</mat-icon>
                 <span class="label">{{ 'timeEntry.pages.calendar.title' | translate }}</span>
             </button>
+
+            <button mat-button class="theme-toggle-btn" (click)="themeService.toggle()" [title]="'theme.' + themeService.mode() | translate">
+                <mat-icon>{{ themeIcon }}</mat-icon>
+                <span class="label">{{ ('theme.' + themeService.mode()) | translate }}</span>
+            </button>
         </mat-toolbar>
     </nav>
 </div>

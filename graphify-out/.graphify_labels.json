@@ -1,11 +1,11 @@
 {
-  "0": "DexieTimeEntryRepository",
+  "0": "CourseVisit",
   "1": "time-entry.module.ts",
-  "2": "options",
+  "2": "ministry-assistanto",
   "3": "TimeEntryFacade",
   "4": "dependencies",
   "5": "devDependencies",
-  "6": "ministry-assistanto",
+  "6": "options",
   "7": "scripts",
   "8": "CLEAN Architecture Pattern",
   "9": "app-module.ts",
@@ -40,6 +40,6 @@
   "38": "AGENTS — Ministry Assistanto",
   "39": "DataAgent",
   "40": "AGENTS.md",
-  "41": "Inject",
-  "42": "Injectable"
+  "41": "ThemeService",
+  "42": "TimeEntryFormComponent"
 }

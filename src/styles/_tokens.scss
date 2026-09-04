@@ -23,11 +23,11 @@ $radius-xl:   20px;
 $radius-2xl:  28px;
 $radius-pill: 50px;
 
-// Blur scale (efectos glass)
-$blur-sm: 10px;
-$blur-md: 15px;
-$blur-lg: 20px;
-$blur-xl: 25px;
+// Blur scale — Liquid Glass requiere blur fuerte para efecto visible
+$blur-sm: 16px;
+$blur-md: 24px;
+$blur-lg: 32px;
+$blur-xl: 40px;
 
 // Easing — Material Motion
 $ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
@@ -35,17 +35,80 @@ $ease-spring:   cubic-bezier(0.34, 1.56, 0.64, 1);
 $ease-out-back: cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 // Duration
-$dur-fast:   0.2s;
-$dur-normal: 0.3s;
+$dur-fast:   0.15s;
+$dur-normal: 0.25s;
 $dur-slow:   0.4s;
-$dur-slower: 0.6s;
+$dur-slower: 0.55s;
 
 // Z-index
 $z-nav:    1000;
 $z-dialog: 1050;
 
-// Glass — opacidades para el mixin
-$glass-bg-low:    0.2;
-$glass-bg-mid:    0.3;
-$glass-bg-high:   0.5;
-$glass-border:    0.15;
+// Glass — opacidades legacy (mantenidas para compatibilidad interna)
+$glass-bg-low:    0.12;
+$glass-bg-mid:    0.20;
+$glass-bg-high:   0.35;
+$glass-border:    0.20;
+
+// Typography
+$font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text',
+              'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+
+// =============================================================================
+// CSS Custom Properties — glass colors (runtime-overridable para dark mode)
+// =============================================================================
+:root {
+  // Superficies glass — modo claro
+  --glass-bg-light:       rgba(255, 255, 255, 0.14);
+  --glass-bg-medium:      rgba(255, 255, 255, 0.22);
+  --glass-bg-strong:      rgba(255, 255, 255, 0.38);
+
+  // Bordes glass — modo claro
+  --glass-border-light:   rgba(255, 255, 255, 0.28);
+  --glass-border-medium:  rgba(255, 255, 255, 0.45);
+
+  // Highlight especular — reflejo superior característico del Liquid Glass
+  --glass-specular:       rgba(255, 255, 255, 0.55);
+
+  // Sombras con specular inset (usadas en box-shadow)
+  --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.08),  inset 0 1px 0 var(--glass-specular);
+  --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.13), inset 0 1px 0 var(--glass-specular);
+  --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.20), inset 0 1px 0 var(--glass-specular);
+
+  // Tints — color primario/terciario filtrando a la superficie glass
+  --glass-tint-primary:   color-mix(in srgb, var(--mat-sys-primary)  8%, transparent);
+  --glass-tint-tertiary:  color-mix(in srgb, var(--mat-sys-tertiary) 8%, transparent);
+
+  // Orbs del fondo animado
+  --orb-opacity: 0.55;
+}
+
+// Dark mode — override de CSS vars (prefers-color-scheme)
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    --glass-bg-light:       rgba(0, 0, 0, 0.20);
+    --glass-bg-medium:      rgba(0, 0, 0, 0.30);
+    --glass-bg-strong:      rgba(0, 0, 0, 0.48);
+    --glass-border-light:   rgba(255, 255, 255, 0.06);
+    --glass-border-medium:  rgba(255, 255, 255, 0.12);
+    --glass-specular:       rgba(255, 255, 255, 0.08);
+    --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-specular);
+    --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
+    --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
+    --orb-opacity: 0.30;
+  }
+}
+
+// Manual dark (toggle)
+:root[data-theme='dark'] {
+  --glass-bg-light:       rgba(0, 0, 0, 0.20);
+  --glass-bg-medium:      rgba(0, 0, 0, 0.30);
+  --glass-bg-strong:      rgba(0, 0, 0, 0.48);
+  --glass-border-light:   rgba(255, 255, 255, 0.06);
+  --glass-border-medium:  rgba(255, 255, 255, 0.12);
+  --glass-specular:       rgba(255, 255, 255, 0.08);
+  --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-specular);
+  --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
+  --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
+  --orb-opacity: 0.30;
+}

@@ -10,7 +10,7 @@
 .calendar-container {
   max-width: 100%;
   margin: 0 auto;
-  @include m.glass-surface(t.$blur-sm, t.$glass-bg-low, t.$radius-xl);
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'light');
   padding: t.$space-3 t.$space-4;
 }
 
@@ -28,10 +28,9 @@
 }
 
 .month-paginator {
+  @include m.glass-pill(t.$blur-sm, 'light');
   display: flex;
   align-items: center;
-  background: color-mix(in srgb, var(--mat-sys-on-surface) 5%, transparent);
-  border-radius: t.$radius-md;
   padding: t.$space-1;
 }
 
@@ -50,19 +49,34 @@
   justify-content: center;
   border-radius: t.$radius-sm;
   position: relative;
+  cursor: pointer;
+  @include m.transition-fast(background transform box-shadow);
+
+  &:hover:not(.other-month) {
+    background: var(--glass-bg-light);
+    transform: scale(1.05);
+    border-radius: t.$radius-sm;
+  }
+
+  &:active:not(.other-month) {
+    transform: scale(0.95);
+    background: var(--glass-bg-medium);
+    transition-duration: t.$dur-fast;
+  }
 
   &.today .day-number {
     background: var(--mat-sys-primary);
     color: var(--mat-sys-on-primary);
     border-radius: 50%;
-    width: 24px;
-    height: 24px;
+    width: 26px;
+    height: 26px;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 0 14px color-mix(in srgb, var(--mat-sys-primary) 55%, transparent);
   }
 
-  &.other-month { opacity: 0.3; }
+  &.other-month { opacity: 0.3; cursor: default; }
 }
 
 .dot-indicator {
@@ -88,18 +102,28 @@
   padding-bottom: t.$space-2;
   text-align: center;
   opacity: 0.7;
+  font-weight: 600;
 }
 
 .btn-today-ios {
-  border: 1px solid var(--mat-sys-outline-variant);
-  background: var(--mat-sys-surface);
+  @include m.glass-pill(t.$blur-sm, 'light');
+  background: var(--glass-tint-primary);
   padding: 6px t.$space-3;
-  border-radius: t.$radius-sm;
-  font-weight: 600;
+  font-weight: 700;
   font-size: 12px;
   color: var(--mat-sys-primary);
   margin-left: t.$space-1;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   cursor: pointer;
   @include m.transition-fast();
+
+  &:hover {
+    background: color-mix(in srgb, var(--mat-sys-primary) 14%, transparent);
+    border-color: var(--glass-border-medium);
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition-duration: t.$dur-fast;
+  }
 }

@@ -25,8 +25,8 @@
   display: flex;
   align-items: center;
   padding: t.$space-1 t.$space-2;
-  @include m.glass-pill(t.$blur-md, t.$glass-bg-low);
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  @include m.glass-pill(t.$blur-md, 'light');
+  box-shadow: var(--glass-shadow-sm);
 
   .glass-icon-btn {
     width: 36px !important;
@@ -41,7 +41,7 @@
 
     &:hover {
       color: var(--mat-sys-primary);
-      background: rgba(255, 255, 255, 0.1);
+      background: var(--glass-bg-light);
     }
   }
 
@@ -65,8 +65,8 @@
     background: color-mix(in srgb, var(--mat-sys-primary-container) 40%, transparent) !important;
     color: var(--mat-sys-on-primary-container) !important;
     backdrop-filter: blur(t.$blur-md);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
+    border: 1px solid var(--glass-border-light);
+    box-shadow: var(--glass-shadow-md) !important;
 
     display: flex;
     align-items: center;
@@ -103,14 +103,14 @@
   align-items: center;
   gap: t.$space-2;
   padding: 6px t.$space-3;
-  @include m.glass-pill(t.$blur-xl, t.$glass-bg-low);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  @include m.glass-pill(t.$blur-xl, 'light');
+  box-shadow: var(--glass-shadow-sm);
   @include m.transition-std();
 
   &:hover {
-    background: color-mix(in srgb, var(--mat-sys-surface-container) 40%, transparent);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-    border-color: rgba(255, 255, 255, 0.2);
+    background: var(--glass-bg-medium);
+    box-shadow: var(--glass-shadow-md);
+    border-color: var(--glass-border-medium);
   }
 }
 
@@ -194,33 +194,38 @@
   gap: t.$space-5;
   padding: t.$space-6;
   overflow: hidden;
-  @include m.glass-surface(t.$blur-lg, t.$glass-bg-mid, t.$radius-2xl);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-  @include m.transition-std(all, t.$dur-slow);
-  transition-timing-function: t.$ease-out-back;
-
-  &:hover {
-    transform: translateY(-5px) rotateX(4deg);
-    background: color-mix(in srgb, var(--mat-sys-surface-container) 50%, transparent);
-    border-color: rgba(255, 255, 255, 0.3);
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-
-    .tile-icon { transform: scale(1.1) rotate(-5deg); }
-    .tile-decoration { opacity: 0.6; }
-  }
+  @include m.glass-surface(t.$blur-lg, t.$radius-2xl, 'medium');
+  @include m.glass-interactive(-5px);
 
   &.primary {
     --tile-color: var(--mat-sys-primary);
+    background: color-mix(in srgb, var(--glass-bg-medium), var(--glass-tint-primary));
+
     .tile-decoration {
       background: radial-gradient(circle, var(--mat-sys-primary-container) 0%, transparent 70%);
+    }
+
+    &:hover {
+      background: color-mix(in srgb, var(--glass-bg-strong), var(--glass-tint-primary));
     }
   }
 
   &.tertiary {
     --tile-color: var(--mat-sys-tertiary);
+    background: color-mix(in srgb, var(--glass-bg-medium), var(--glass-tint-tertiary));
+
     .tile-decoration {
       background: radial-gradient(circle, var(--mat-sys-tertiary-container) 0%, transparent 70%);
     }
+
+    &:hover {
+      background: color-mix(in srgb, var(--glass-bg-strong), var(--glass-tint-tertiary));
+    }
+  }
+
+  &:hover {
+    .tile-icon { transform: scale(1.1) rotate(-5deg); }
+    .tile-decoration { opacity: 0.6; }
   }
 }
 
@@ -300,8 +305,8 @@
 
 .step-btn {
   appearance: none;
-  background: color-mix(in srgb, var(--mat-sys-on-surface) 5%, transparent);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--glass-bg-light);
+  border: 1px solid var(--glass-border-light);
   border-radius: t.$radius-md;
   cursor: pointer;
   display: flex;
@@ -311,7 +316,7 @@
   height: 32px;
   color: var(--mat-sys-on-surface);
   @include m.transition-fast();
-  backdrop-filter: blur(5px);
+  backdrop-filter: blur(t.$blur-sm);
 
   mat-icon {
     font-size: 18px;
@@ -320,9 +325,10 @@
   }
 
   &:hover:not(:disabled) {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.3);
+    background: var(--glass-bg-medium);
+    border-color: var(--glass-border-medium);
     transform: translateY(-1px);
+    box-shadow: var(--glass-shadow-sm);
   }
 
   &:active:not(:disabled) {
