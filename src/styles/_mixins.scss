@@ -1,0 +1,49 @@
+// =============================================================================
+// Mixins — ministry-assistanto
+// =============================================================================
+// Importar en componentes: @use 'styles/mixins' as m;
+// Uso: @include m.glass-surface();  @include m.transition-std();
+
+@use 'styles/tokens' as t;
+
+// -----------------------------------------------------------------------------
+// Glass Surface
+// Usa color-mix() en lugar de rgba(var(--mat-sys-*-rgb)) para no depender de
+// variantes *-rgb que Material 3 no garantiza exportar.
+// Soportado: Chrome 111+, Safari 16.2+, Firefox 113+
+// -----------------------------------------------------------------------------
+@mixin glass-surface(
+  $blur:    t.$blur-lg,
+  $opacity: t.$glass-bg-mid,
+  $radius:  t.$radius-2xl
+) {
+  background: color-mix(
+    in srgb,
+    var(--mat-sys-surface-container) #{$opacity * 100%},
+    transparent
+  );
+  backdrop-filter: blur($blur) saturate(180%);
+  -webkit-backdrop-filter: blur($blur) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, t.$glass-border);
+  border-radius: $radius;
+}
+
+// Variante pill (para paginadores, chips)
+@mixin glass-pill($blur: t.$blur-xl, $opacity: t.$glass-bg-mid) {
+  @include glass-surface($blur, $opacity, t.$radius-pill);
+}
+
+// -----------------------------------------------------------------------------
+// Transitions
+// -----------------------------------------------------------------------------
+@mixin transition-std($props: all, $dur: t.$dur-slow) {
+  transition: $props $dur t.$ease-standard;
+}
+
+@mixin transition-spring($props: all, $dur: t.$dur-slower) {
+  transition: $props $dur t.$ease-spring;
+}
+
+@mixin transition-fast($props: all) {
+  transition: $props t.$dur-fast t.$ease-standard;
+}
