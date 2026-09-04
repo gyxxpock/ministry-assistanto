@@ -6,11 +6,13 @@ import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/
 @Component({
   selector: 'ma-time-entry-edit-dialog',
   templateUrl: './time-entry-edit-dialog.component.html',
+  styleUrls: ['./time-entry-edit-dialog.component.scss'],
   standalone: false,
 })
 export class TimeEntryEditDialogComponent implements OnInit {
   entry: TimeEntryVM | undefined;
   isEditMode = false;
+  showDeleteConfirm = false;
 
   constructor(
     private facade: TimeEntryFacade,
@@ -35,6 +37,19 @@ export class TimeEntryEditDialogComponent implements OnInit {
   }
 
   onCancel() {
+    this.dialogRef.close();
+  }
+
+  onDeleteRequest() {
+    this.showDeleteConfirm = true;
+  }
+
+  onDeleteCancel() {
+    this.showDeleteConfirm = false;
+  }
+
+  async onDeleteConfirm() {
+    await this.facade.removeEntry(this.entry!.id);
     this.dialogRef.close();
   }
 }

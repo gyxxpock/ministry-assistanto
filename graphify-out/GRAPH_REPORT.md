@@ -1,27 +1,27 @@
 # Graph Report - ministry-assistanto  (2026-09-04)
 
 ## Corpus Check
-- 76 files · ~25,325 words
+- 77 files · ~25,570 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 502 nodes · 679 edges · 43 communities (32 shown, 9 thin omitted)
-- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
+- 512 nodes · 704 edges · 43 communities (33 shown, 8 thin omitted)
+- Extraction: 96% EXTRACTED · 4% INFERRED · 0% AMBIGUOUS · INFERRED: 27 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `93c32c88`
+- Built from commit: `0cd1591f`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
-- DexieTimeEntryRepository
+- CourseVisit
 - time-entry.module.ts
-- options
+- ministry-assistanto
 - TimeEntryFacade
 - dependencies
 - devDependencies
-- ministry-assistanto
+- options
 - scripts
 - CLEAN Architecture Pattern
 - app-module.ts
@@ -54,20 +54,20 @@
 - UIAgent
 - AGENTS — Ministry Assistanto
 - DataAgent
-- Inject
-- Injectable
+- ThemeService
+- TimeEntryFormComponent
 
 ## God Nodes (most connected - your core abstractions)
-1. `TimeEntryFacade` - 23 edges
-2. `DexieTimeEntryRepository` - 22 edges
-3. `CourseVisit` - 21 edges
-4. `TimeEntry` - 21 edges
-5. `TimeEntryListComponent` - 18 edges
-6. `ITimeEntryRepository` - 17 edges
+1. `CourseVisit` - 25 edges
+2. `TimeEntry` - 23 edges
+3. `TimeEntryFacade` - 23 edges
+4. `DexieTimeEntryRepository` - 22 edges
+5. `ITimeEntryRepository` - 18 edges
+6. `TimeEntryListComponent` - 18 edges
 7. `TimeEntryFormComponent` - 14 edges
 8. `TimeEntryVM` - 13 edges
 9. `TimeEntryCalendarComponent` - 12 edges
-10. `What You Must Do When Invoked` - 12 edges
+10. `TimeEntryEditDialogComponent` - 12 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `MinistryAssistanto App` --conceptually_related_to--> `CLEAN Architecture Pattern`  [INFERRED]
@@ -78,8 +78,8 @@
   src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html → .github/copilot-instructions.md
 - `i18n Runtime Implementation PR` --semantically_similar_to--> `i18n PR Changes Summary`  [INFERRED] [semantically similar]
   .github/PULL_REQUEST_TEMPLATE_PR_BODY.md → .github/pr-comments/i18n-summary.md
-- `PR Checklist` --references--> `CLEAN Architecture Pattern`  [EXTRACTED]
-  .github/PULL_REQUEST_TEMPLATE.md → .github/copilot-instructions.md
+- `DexieTimeEntryRepository` --implements--> `ITimeEntryRepository`  [EXTRACTED]
+  src/app/time-entry/data/time-entry.dexie.ts → src/app/time-entry/data/time-entry.repository.ts
 
 ## Import Cycles
 - None detected.
@@ -88,23 +88,23 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (43 total, 9 thin omitted)
+## Communities (43 total, 8 thin omitted)
 
-### Community 0 - "DexieTimeEntryRepository"
+### Community 0 - "CourseVisit"
 Cohesion: 0.09
-Nodes (19): DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person, TimeEntry (+11 more)
+Nodes (17): DexieTimeEntryRepository, TimeEntryDB, Injectable, CourseVisit, MonthlyCourseCount, Person, TimeEntry, computeMonthlyTotals() (+9 more)
 
 ### Community 1 - "time-entry.module.ts"
-Cohesion: 0.06
-Nodes (27): Pipe, I18nDatePipe, TimeEntryType, FileUtilService, Injectable, Layout, Component, TimeEntryDayComponent (+19 more)
+Cohesion: 0.08
+Nodes (23): Pipe, I18nDatePipe, TimeEntryType, FileUtilService, Injectable, CalendarDay, TimeEntryDayComponent, Component (+15 more)
 
-### Community 2 - "options"
-Cohesion: 0.07
-Nodes (37): build, extract-i18n, serve, test, builder, configurations, defaultConfiguration, options (+29 more)
+### Community 2 - "ministry-assistanto"
+Cohesion: 0.05
+Nodes (41): build, extract-i18n, serve, test, builder, configurations, defaultConfiguration, analytics (+33 more)
 
 ### Community 3 - "TimeEntryFacade"
-Cohesion: 0.09
-Nodes (5): Inject, Injectable, TimeEntryFacade, TimeEntryListComponent, Component
+Cohesion: 0.07
+Nodes (6): ITimeEntryRepository, TimeEntryFacade, Inject, Injectable, TimeEntryListComponent, Component
 
 ### Community 4 - "dependencies"
 Cohesion: 0.07
@@ -114,9 +114,9 @@ Nodes (29): @angular/cdk, @angular/common, @angular/compiler, @angular/core, @an
 Cohesion: 0.08
 Nodes (25): @angular/build, angular-cli-ghpages, @angular/compiler-cli, jasmine-core, karma, karma-chrome-launcher, karma-coverage, karma-jasmine (+17 more)
 
-### Community 6 - "ministry-assistanto"
-Cohesion: 0.10
-Nodes (19): analytics, cli, prefix, projectType, root, schematics, sourceRoot, newProjectRoot (+11 more)
+### Community 6 - "options"
+Cohesion: 0.18
+Nodes (15): options, assets, browser, index, inlineStyleLanguage, polyfills, stylePreprocessorOptions, styles (+7 more)
 
 ### Community 7 - "scripts"
 Cohesion: 0.12
@@ -129,10 +129,6 @@ Nodes (14): CLEAN Architecture Pattern, Data Layer, Domain Layer, Facade Layer, 
 ### Community 9 - "app-module.ts"
 Cohesion: 0.19
 Nodes (7): App, AppModule, NgModule, AppRoutingModule, routes, NgModule, Component
-
-### Community 10 - "TimeEntryCalendarComponent"
-Cohesion: 0.20
-Nodes (3): CalendarDay, TimeEntryCalendarComponent, Component
 
 ### Community 11 - "Dispatcher — Auto-Dispatch de Agentes"
 Cohesion: 0.20
@@ -218,25 +214,33 @@ Nodes (6): AGENTS — Ministry Assistanto, Auto-dispatch (modo por defecto), Mod
 Cohesion: 0.33
 Nodes (6): Alcance, DataAgent, Patrones Dexie de este proyecto, Responsabilidades, Restricciones absolutas, Señales de alerta
 
+### Community 41 - "ThemeService"
+Cohesion: 0.19
+Nodes (6): MODE_CYCLE, ThemeMode, ThemeService, Injectable, Layout, Component
+
+### Community 42 - "TimeEntryFormComponent"
+Cohesion: 0.22
+Nodes (4): TimeEntryFormComponent, Component, Input, Output
+
 ## Knowledge Gaps
-- **197 isolated node(s):** `Paso 1 — Analizar la tarea`, `Regla de feature completa`, `ArchitectureGuardian — modo silencioso permanente`, `Paso 3 — Leer los archivos de agentes activos`, `Paso 4 — Anunciar y responder` (+192 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 261 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **9 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **198 isolated node(s):** `{ Octokit }`, `[owner, repo]`, `$schema`, `version`, `newProjectRoot` (+193 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 265 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `TimeEntryFacade` connect `TimeEntryFacade` to `DexieTimeEntryRepository`, `time-entry.module.ts`, `TimeEntryCalendarComponent`?**
+- **Why does `TimeEntryFacade` connect `TimeEntryFacade` to `CourseVisit`, `time-entry.module.ts`?**
   _High betweenness centrality (0.020) - this node is a cross-community bridge._
-- **Why does `DexieTimeEntryRepository` connect `DexieTimeEntryRepository` to `time-entry.module.ts`?**
-  _High betweenness centrality (0.018) - this node is a cross-community bridge._
+- **Why does `DexieTimeEntryRepository` connect `CourseVisit` to `time-entry.module.ts`, `TimeEntryFacade`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `TimeEntryListComponent` connect `TimeEntryFacade` to `time-entry.module.ts`?**
-  _High betweenness centrality (0.015) - this node is a cross-community bridge._
-- **What connects `Paso 1 — Analizar la tarea`, `Regla de feature completa`, `ArchitectureGuardian — modo silencioso permanente` to the rest of the system?**
-  _197 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `DexieTimeEntryRepository` be split into smaller, more focused modules?**
-  _Cohesion score 0.08590441621294616 - nodes in this community are weakly interconnected._
+  _High betweenness centrality (0.016) - this node is a cross-community bridge._
+- **What connects `{ Octokit }`, `[owner, repo]`, `$schema` to the rest of the system?**
+  _198 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `CourseVisit` be split into smaller, more focused modules?**
+  _Cohesion score 0.09438775510204081 - nodes in this community are weakly interconnected._
 - **Should `time-entry.module.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.06060606060606061 - nodes in this community are weakly interconnected._
-- **Should `options` be split into smaller, more focused modules?**
-  _Cohesion score 0.06606606606606606 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.07955596669750231 - nodes in this community are weakly interconnected._
+- **Should `ministry-assistanto` be split into smaller, more focused modules?**
+  _Cohesion score 0.04994192799070848 - nodes in this community are weakly interconnected._

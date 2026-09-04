@@ -6,42 +6,73 @@
 
 @use 'styles/tokens' as t;
 
-// -----------------------------------------------------------------------------
-// Glass Surface
-// Usa color-mix() en lugar de rgba(var(--mat-sys-*-rgb)) para no depender de
-// variantes *-rgb que Material 3 no garantiza exportar.
-// Soportado: Chrome 111+, Safari 16.2+, Firefox 113+
-// -----------------------------------------------------------------------------
+// =============================================================================
+// Glass Surface — Apple Liquid Glass
+// Signature: glass-surface($blur, $radius, $strength)
+//   $strength: 'light' | 'medium' | 'strong'  (default: 'medium')
+//
+// Las variables de color son CSS custom properties definidas en _tokens.scss,
+// lo que permite que dark mode las sobreescriba en tiempo de ejecución.
+// =============================================================================
 @mixin glass-surface(
-  $blur:    t.$blur-lg,
-  $opacity: t.$glass-bg-mid,
-  $radius:  t.$radius-2xl
+  $blur:     t.$blur-lg,
+  $radius:   t.$radius-2xl,
+  $strength: 'medium'
 ) {
-  background: color-mix(
-    in srgb,
-    var(--mat-sys-surface-container) #{$opacity * 100%},
-    transparent
-  );
-  backdrop-filter: blur($blur) saturate(180%);
-  -webkit-backdrop-filter: blur($blur) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, t.$glass-border);
+  $bg:     if($strength == 'light',  var(--glass-bg-light),
+           if($strength == 'strong', var(--glass-bg-strong),
+                                      var(--glass-bg-medium)));
+  $border: if($strength == 'light',  var(--glass-border-light),
+                                      var(--glass-border-medium));
+
+  background: $bg;
+  backdrop-filter: blur($blur) saturate(190%);
+  -webkit-backdrop-filter: blur($blur) saturate(190%);
+  border: 1px solid $border;
   border-radius: $radius;
+  box-shadow: var(--glass-shadow-md);
 }
 
-// Variante pill (para paginadores, chips)
-@mixin glass-pill($blur: t.$blur-xl, $opacity: t.$glass-bg-mid) {
-  @include glass-surface($blur, $opacity, t.$radius-pill);
+// Variante pill (para nav, paginadores, chips)
+@mixin glass-pill($blur: t.$blur-xl, $strength: 'medium') {
+  @include glass-surface($blur, t.$radius-pill, $strength);
 }
 
-// -----------------------------------------------------------------------------
+// =============================================================================
+// Glass Interactive — spring hover/press para elementos clickables
+// Añade elevación al hover y compresión al active usando ease-spring.
+// =============================================================================
+@mixin glass-interactive($lift: -5px) {
+  @include transition-spring(transform box-shadow background border-color, t.$dur-normal);
+
+  &:hover {
+    transform: translateY($lift);
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border-medium);
+    box-shadow: var(--glass-shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: var(--glass-shadow-sm);
+    transition-duration: t.$dur-fast;
+  }
+}
+
+// =============================================================================
 // Transitions
-// -----------------------------------------------------------------------------
+// =============================================================================
 @mixin transition-std($props: all, $dur: t.$dur-slow) {
   transition: $props $dur t.$ease-standard;
 }
 
+// Acepta lista de propiedades separadas por espacio
 @mixin transition-spring($props: all, $dur: t.$dur-slower) {
-  transition: $props $dur t.$ease-spring;
+  $transitions: ();
+  @each $p in $props {
+    $transitions: append($transitions, #{$p} $dur t.$ease-spring, comma);
+  }
+  transition: $transitions;
 }
 
 @mixin transition-fast($props: all) {

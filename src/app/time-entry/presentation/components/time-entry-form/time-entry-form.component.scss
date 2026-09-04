@@ -1,47 +1,6 @@
 @use 'styles/tokens' as t;
 @use 'styles/mixins' as m;
 
-.time-form {
-  width: 100%;
-  max-width: 420px;
-  margin: 0 auto;
-  padding: t.$space-4;
-  box-sizing: border-box;
-  display: grid;
-  gap: t.$space-4;
-}
-
-.minutes-field input {
-  font-size: 1.2rem;
-  text-align: center;
-}
-
-.presets {
-  display: flex;
-  flex-wrap: wrap;
-  gap: t.$space-2;
-  justify-content: center;
-
-  button {
-    min-width: 64px;
-    min-height: 44px;
-  }
-}
-
-.submit-btn {
-  width: 100%;
-  min-height: 48px;
-}
-
-button[mat-flat-button] {
-  @include m.transition-std(all, t.$dur-normal);
-
-  &:disabled {
-    opacity: 0.5;
-    filter: grayscale(1);
-  }
-}
-
 .form-container {
   display: flex;
   flex-direction: column;
@@ -54,3 +13,120 @@ button[mat-flat-button] {
   overflow-y: auto;
   padding: t.$space-6;
 }
+
+.time-form {
+  width: 100%;
+  max-width: 420px;
+  margin: 0 auto;
+  padding: t.$space-4;
+  box-sizing: border-box;
+  display: grid;
+  gap: t.$space-4;
+}
+
+// Input de minutos — centrado y con tipografía tabular
+.minutes-field input {
+  font-size: 1.2rem;
+  text-align: center;
+  font-family: t.$font-system;
+  font-variant-numeric: tabular-nums;
+}
+
+// Preset buttons — píldoras glass
+.presets {
+  display: flex;
+  flex-wrap: wrap;
+  gap: t.$space-2;
+  justify-content: center;
+
+  button {
+    min-width: 72px;
+    min-height: 44px;
+    border-radius: t.$radius-pill !important;
+    background: var(--glass-bg-light) !important;
+    backdrop-filter: blur(t.$blur-sm);
+    border: 1px solid var(--glass-border-light) !important;
+    color: var(--mat-sys-primary) !important;
+    font-weight: 700;
+    font-size: 0.8rem;
+    @include m.transition-std(all, t.$dur-normal);
+
+    &:hover {
+      background: var(--glass-tint-primary) !important;
+      border-color: var(--glass-border-medium) !important;
+      transform: translateY(-2px);
+      box-shadow: var(--glass-shadow-sm);
+    }
+
+    &:active {
+      transform: scale(0.94);
+      transition-duration: t.$dur-fast;
+    }
+  }
+}
+
+// Botón submit — pill completo
+.submit-btn {
+  width: 100%;
+  min-height: 52px;
+  border-radius: t.$radius-pill !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.3px;
+  @include m.transition-std(all, t.$dur-normal);
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: var(--glass-shadow-md);
+  }
+
+  &:active {
+    transform: scale(0.97);
+    transition-duration: t.$dur-fast;
+  }
+}
+
+// Material flat button — estado disabled
+button[mat-flat-button] {
+  @include m.transition-std(all, t.$dur-normal);
+
+  &:disabled {
+    opacity: 0.4;
+    filter: grayscale(0.8);
+  }
+}
+
+// =============================================================================
+// Angular Material form fields — glass treatment
+// ::ng-deep necesario: los elementos internos de MAT MDC están fuera del
+// encapsulamiento del componente, igual que en layout.scss para el scrollbar.
+// =============================================================================
+/* stylelint-disable selector-pseudo-element-no-unknown */
+::ng-deep .mat-mdc-text-field-wrapper {
+  background: var(--glass-bg-light) !important;
+  backdrop-filter: blur(t.$blur-sm);
+  border-radius: t.$radius-lg !important;
+  @include m.transition-std(background box-shadow, t.$dur-normal);
+
+  &:hover {
+    background: var(--glass-bg-medium) !important;
+  }
+}
+
+::ng-deep .mdc-notched-outline__leading,
+::ng-deep .mdc-notched-outline__notch,
+::ng-deep .mdc-notched-outline__trailing {
+  border-color: var(--glass-border-light) !important;
+}
+
+::ng-deep .mat-mdc-form-field.mat-focused {
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: var(--mat-sys-primary) !important;
+  }
+
+  .mat-mdc-text-field-wrapper {
+    box-shadow: 0 0 0 3px color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
+  }
+}
+/* stylelint-enable selector-pseudo-element-no-unknown */
