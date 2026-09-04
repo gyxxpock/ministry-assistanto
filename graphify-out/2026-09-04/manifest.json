@@ -54,15 +54,15 @@
     "semantic_hash": ""
   },
   "public/assets/i18n/en.json": {
-    "mtime": 1788546114.6506422,
-    "seen": 1788546150.549045,
-    "ast_hash": "fb803f0b24f3454e2e5af2b103c132ee",
+    "mtime": 1788546753.7260184,
+    "seen": 1788546932.565991,
+    "ast_hash": "7f4bac4569f2d26468bb5c18743e91b5",
     "semantic_hash": ""
   },
   "public/assets/i18n/es.json": {
-    "mtime": 1788546112.0291758,
-    "seen": 1788546150.549047,
-    "ast_hash": "a9a532551cef8148f525924893d6951a",
+    "mtime": 1788546752.784357,
+    "seen": 1788546932.5659919,
+    "ast_hash": "704d3dc1cb66f70f24fed0860f0e0651",
     "semantic_hash": ""
   },
   "scripts/check-i18n.js": {
@@ -210,10 +210,10 @@
     "semantic_hash": "a8bdf656d7051ff4ec50b9225f1ad97b"
   },
   "src/app/time-entry/presentation/components/layout/layout.ts": {
-    "mtime": 1788535231.6367936,
-    "seen": 1788536025.44825,
-    "ast_hash": "ef5996c88fbe7d35555988837420fd24",
-    "semantic_hash": "ef5996c88fbe7d35555988837420fd24"
+    "mtime": 1788546911.1010027,
+    "seen": 1788546932.566014,
+    "ast_hash": "c6e14957408f8a827111d33a89aec4a2",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts": {
     "mtime": 1788535231.637382,
@@ -234,9 +234,9 @@
     "semantic_hash": "d2c4ee8b78d0a6185ca61da3a965d5cf"
   },
   "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts": {
-    "mtime": 1788546109.165842,
-    "seen": 1788546150.5490701,
-    "ast_hash": "5602df1a097b84397e179475a79f7712",
+    "mtime": 1788546856.5916173,
+    "seen": 1788546932.566018,
+    "ast_hash": "2f42ba45211310cfc4dc5a5b5d518878",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts": {
@@ -354,10 +354,10 @@
     "semantic_hash": "92b5943b800a66a310a32614ee6e4e97"
   },
   "src/app/time-entry/presentation/components/layout/layout.html": {
-    "mtime": 1788535231.6364107,
-    "seen": 1788536025.448265,
-    "ast_hash": "82ed4e7e5b02215c0fcd4b150cd5b74e",
-    "semantic_hash": "82ed4e7e5b02215c0fcd4b150cd5b74e"
+    "mtime": 1788546747.7463646,
+    "seen": 1788546932.566056,
+    "ast_hash": "835b1c40f21892cb9446cebde799c21e",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.html": {
     "mtime": 1788535231.6371613,
@@ -513,6 +513,12 @@
     "mtime": 1788545153.1657743,
     "seen": 1788545920.707052,
     "ast_hash": "350c7ce7d940d8d79527056de4111275",
+    "semantic_hash": ""
+  },
+  "src/app/core/services/theme.service.ts": {
+    "mtime": 1788546737.4028647,
+    "seen": 1788546932.5660002,
+    "ast_hash": "9fbe569edbf932f463f426466c506a21",
     "semantic_hash": ""
   }
 }

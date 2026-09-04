@@ -1,11 +1,11 @@
 {
   "0": "CourseVisit",
   "1": "time-entry.module.ts",
-  "2": "ministry-assistanto",
+  "2": "options",
   "3": "TimeEntryFacade",
   "4": "dependencies",
   "5": "devDependencies",
-  "6": "options",
+  "6": "ministry-assistanto",
   "7": "scripts",
   "8": "CLEAN Architecture Pattern",
   "9": "app-module.ts",
@@ -41,5 +41,6 @@
   "39": "DataAgent",
   "40": "AGENTS.md",
   "41": "ThemeService",
-  "42": "TimeEntryFormComponent"
+  "42": "Injectable",
+  "43": "Inject"
 }
