@@ -5,12 +5,35 @@ function normalizeName(name?: string): string | undefined {
   return name.trim().toLowerCase().replace(/\s+/g, ' ');
 }
 
+/** Normaliza cualquier fecha a string YYYY-MM-DD ignorando timezone. */
+export function toDateKey(date: Date | string): string {
+  const d = new Date(date);
+  return d.getFullYear() + '-' +
+    String(d.getMonth() + 1).padStart(2, '0') + '-' +
+    String(d.getDate()).padStart(2, '0');
+}
+
+/**
+ * Combina una entrada existente con datos nuevos del mismo (date, type).
+ * Acumula durationMinutes; reemplaza notes solo si se provee uno nuevo.
+ * Función pura: no tiene efectos secundarios.
+ */
+export function mergeTimeEntry(
+  existing: TimeEntry,
+  incoming: { durationMinutes: number; notes?: string }
+): TimeEntry {
+  return {
+    ...existing,
+    durationMinutes: existing.durationMinutes + incoming.durationMinutes,
+    notes: incoming.notes?.trim() || existing.notes,
+    updatedAt: new Date().toISOString(),
+  };
+}
+
+// Alias interno para compatibilidad con inMonth()
 function toKey(date: Date | string): string {
-    const d = new Date(date);
-    return d.getFullYear() + '-' +
-      String(d.getMonth() + 1).padStart(2, '0') + '-' +
-      String(d.getDate()).padStart(2, '0');
-  }
+  return toDateKey(date);
+}
 
 function inMonth(dateStr: string, year: number, month: number): boolean {
   // Handle date-only strings (YYYY-MM-DD) without causing timezone shifts

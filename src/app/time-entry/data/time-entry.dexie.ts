@@ -1,7 +1,7 @@
 import Dexie, { Table } from 'dexie';
-import { ITimeEntryRepository } from './time-entry.repository';
+import { ITimeEntryRepository } from '../domain/i-time-entry.repository';
 import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../domain/models';
-import { Injectable } from '@angular/core';
+import { Injectable, Optional } from '@angular/core';
 import { EntityTable } from 'dexie';
 
 export class TimeEntryDB extends Dexie {
@@ -34,8 +34,8 @@ export class TimeEntryDB extends Dexie {
 export class DexieTimeEntryRepository implements ITimeEntryRepository {
   private db: TimeEntryDB;
 
-  constructor() {
-    this.db = new TimeEntryDB();
+  constructor(@Optional() db?: TimeEntryDB) {
+    this.db = db ?? new TimeEntryDB();
   }
 
   async listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]> {

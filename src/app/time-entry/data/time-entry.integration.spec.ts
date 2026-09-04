@@ -1,5 +1,5 @@
-import { DexieTimeEntryRepository, TimeEntryDB } from '../data/time-entry.dexie';
-import { computeMonthlyTotals } from './time-entry.usecase';
+import { DexieTimeEntryRepository, TimeEntryDB } from './time-entry.dexie';
+import { computeMonthlyTotals } from '../domain/time-entry.usecase';
 
 describe('Integration: Dexie repository + computeMonthlyTotals', () => {
   let db: TimeEntryDB;

@@ -4,27 +4,56 @@
 </h2>
 
 <mat-dialog-content>
-  <!-- El scroll solo ocurrirá aquí dentro -->
   <ma-time-entry-form
     #timeForm
     [entry]="entry"
+    [initialDate]="initialDate"
     (save)="onSave($event)"
     (cancel)="onCancel()"
   ></ma-time-entry-form>
+
+  <div *ngIf="showDeleteConfirm" class="delete-confirm-panel">
+    <mat-icon color="warn">warning</mat-icon>
+    <span>{{ 'timeEntry.deleteConfirmMessage' | translate }}</span>
+  </div>
 </mat-dialog-content>
 
-<!-- ESTO QUEDA FIJO ABAJO -->
-<mat-dialog-actions align="end">
-  <button mat-button (click)="onCancel()">
-    {{ 'common.buttons.cancel' | translate }}
-  </button>
-  
-  <!-- Accedemos al estado del formulario usando la referencia #timeForm -->
-  <button mat-flat-button 
-          color="primary" 
-          [disabled]="!timeForm.canSubmit" 
-          (click)="timeForm.submit()">
-    <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
-    {{ (isEditMode ? 'common.buttons.save' : 'common.buttons.add') | translate }}
-  </button>
+<mat-dialog-actions class="dialog-actions">
+  <!-- Zona izquierda: botón eliminar (solo en modo edición) -->
+  <div class="dialog-actions__left">
+    <button
+      *ngIf="isEditMode && !showDeleteConfirm"
+      mat-stroked-button
+      color="warn"
+      (click)="onDeleteRequest()">
+      <mat-icon>delete</mat-icon>
+      {{ 'common.buttons.delete' | translate }}
+    </button>
+
+    <button
+      *ngIf="showDeleteConfirm"
+      mat-flat-button
+      color="warn"
+      (click)="onDeleteConfirm()">
+      <mat-icon>delete_forever</mat-icon>
+      {{ 'common.buttons.confirm' | translate }}
+    </button>
+  </div>
+
+  <!-- Zona derecha: cancelar / guardar -->
+  <div class="dialog-actions__right">
+    <button mat-button (click)="showDeleteConfirm ? onDeleteCancel() : onCancel()">
+      {{ 'common.buttons.cancel' | translate }}
+    </button>
+
+    <button
+      *ngIf="!showDeleteConfirm"
+      mat-flat-button
+      color="primary"
+      [disabled]="!timeForm.canSubmit"
+      (click)="timeForm.submit()">
+      <mat-icon>{{ isEditMode ? 'save' : 'add' }}</mat-icon>
+      {{ (isEditMode ? 'common.buttons.save' : 'common.buttons.add') | translate }}
+    </button>
+  </div>
 </mat-dialog-actions>

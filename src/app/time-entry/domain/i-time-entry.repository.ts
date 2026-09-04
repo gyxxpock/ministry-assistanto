@@ -1,8 +1,8 @@
-import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../domain/models';
+import { TimeEntry, CourseVisit, MonthlyCourseCount } from './models';
 
 /**
  * Repository contract for TimeEntry persistence.
- * This is part of the DOMAIN boundary (port).
+ * Domain port — implemented by the Data layer.
  */
 export interface ITimeEntryRepository {
   listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]>;

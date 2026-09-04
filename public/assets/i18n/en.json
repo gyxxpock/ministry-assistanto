@@ -16,6 +16,11 @@
       "today": "Today"
     }
   },
+  "theme": {
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  },
   "timeEntry": {
     "pages": {
       "list": {
@@ -35,6 +40,7 @@
     "courseVisitsTitle": "Course Visits",
     "createTitle": "Add Time",
     "editTitle": "Edit Time",
+    "deleteConfirmMessage": "Delete this record? This action cannot be undone.",
     "form": {
       "date": "Date",
       "durationMinutes": "Duration (minutes)",

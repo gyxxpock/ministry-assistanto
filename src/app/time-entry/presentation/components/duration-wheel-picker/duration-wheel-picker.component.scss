@@ -1,0 +1,126 @@
+@use 'styles/tokens' as t;
+
+$item-h:        44px;
+$visible-items: 5;
+$picker-h:      $item-h * $visible-items;  // 220px
+$fade-h:        $item-h * 2;               // 88px — cubre 2 ítems arriba/abajo
+
+// ── Contenedor principal ──────────────────────────────────────────────
+.wheel-picker {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: $picker-h;
+  overflow: hidden;
+  border-radius: t.$radius-xl;
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(t.$blur-sm);
+  -webkit-backdrop-filter: blur(t.$blur-sm);
+  border: 1px solid var(--glass-border-light);
+  user-select: none;
+  -webkit-user-select: none;
+
+  &.is-disabled {
+    opacity: 0.4;
+    pointer-events: none;
+  }
+}
+
+// ── Banda de selección — detrás de las ruedas (z:0) ───────────────────
+.selection-indicator {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  transform: translateY(-50%);
+  height: $item-h;
+  background: var(--glass-bg-medium);
+  border-top:    0.5px solid var(--glass-border-medium);
+  border-bottom: 0.5px solid var(--glass-border-medium);
+  box-shadow: inset 0 1px 0 var(--glass-specular);
+  z-index: 0;
+  pointer-events: none;
+}
+
+// ── Máscaras degradado iOS — encima de las ruedas (z:2) ───────────────
+.fade-mask {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: $fade-h;
+  z-index: 2;
+  pointer-events: none;
+
+  &--top {
+    top: 0;
+    background: linear-gradient(to bottom,
+      var(--glass-bg-light) 0%,
+      transparent 100%
+    );
+  }
+
+  &--bottom {
+    bottom: 0;
+    background: linear-gradient(to top,
+      var(--glass-bg-light) 0%,
+      transparent 100%
+    );
+  }
+}
+
+// ── Columna — entre indicador (z:0) y máscaras (z:2) ─────────────────
+.wheel-col {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+// ── Scroll drum ───────────────────────────────────────────────────────
+.wheel-scroll {
+  width: 100%;
+  height: $picker-h;
+  overflow-y: scroll;
+  scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+// ── Ítems ─────────────────────────────────────────────────────────────
+.wheel-item {
+  height: $item-h;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  scroll-snap-align: center;
+  font-family: t.$font-system;
+  font-variant-numeric: tabular-nums;
+  font-size: 1.375rem;
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  color: var(--mat-sys-on-surface);
+
+  &--pad {
+    pointer-events: none;
+    visibility: hidden;
+    scroll-snap-align: none;
+  }
+}
+
+// ── Etiqueta de unidad (h / min) ──────────────────────────────────────
+.wheel-unit {
+  position: absolute;
+  top: 50%;
+  right: t.$space-3;
+  transform: translateY(-50%);
+  font-family: t.$font-system;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--mat-sys-on-surface-variant, rgba(0 0 0 / 0.5));
+  pointer-events: none;
+  z-index: 3;
+}

@@ -20,6 +20,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { TimeEntryEditDialogComponent } from './components/time-entry-edit/time-entry-edit-dialog.component';
+import { DurationWheelPickerComponent } from './components/duration-wheel-picker/duration-wheel-picker.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
@@ -27,7 +28,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
-import { FileUtilService } from '../domain/utils/file-util.service';
+import { FileUtilService } from '../data/utils/file-util.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
 const routes: Routes = [
@@ -57,6 +58,7 @@ const routes: Routes = [
   declarations: [
     TimeEntryListComponent,
     TimeEntryFormComponent,
+    DurationWheelPickerComponent,
     TimeEntryDayComponent,
     TimeEntryEditDialogComponent,
     I18nDatePipe,

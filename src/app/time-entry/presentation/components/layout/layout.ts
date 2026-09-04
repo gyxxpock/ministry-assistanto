@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ThemeService, ThemeMode } from '../../../../core/services/theme.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,10 +8,20 @@ import { Component, signal } from '@angular/core';
   styleUrl: './layout.scss',
 })
 export class Layout {
-  // Signal para controlar la visibilidad del menú
+  readonly themeService = inject(ThemeService);
+
   navVisible = signal(true);
   headerOpacity = signal(1);
   private lastScrollTop = 0;
+
+  get themeIcon(): string {
+    const icons: Record<ThemeMode, string> = {
+      light: 'light_mode',
+      dark: 'dark_mode',
+      system: 'brightness_auto',
+    };
+    return icons[this.themeService.mode()];
+  }
 
   // Método que captura el evento de scroll definido en el HTML
   onScroll(event: Event): void {

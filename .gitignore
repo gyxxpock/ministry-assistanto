@@ -43,3 +43,5 @@ Thumbs.db
 
 # AI generated files
 GEMINI.md
+# Graphify Outputs y Cache
+graphify-out/cache/

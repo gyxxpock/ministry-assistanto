@@ -1,0 +1,80 @@
+// =============================================================================
+// Mixins — ministry-assistanto
+// =============================================================================
+// Importar en componentes: @use 'styles/mixins' as m;
+// Uso: @include m.glass-surface();  @include m.transition-std();
+
+@use 'styles/tokens' as t;
+
+// =============================================================================
+// Glass Surface — Apple Liquid Glass
+// Signature: glass-surface($blur, $radius, $strength)
+//   $strength: 'light' | 'medium' | 'strong'  (default: 'medium')
+//
+// Las variables de color son CSS custom properties definidas en _tokens.scss,
+// lo que permite que dark mode las sobreescriba en tiempo de ejecución.
+// =============================================================================
+@mixin glass-surface(
+  $blur:     t.$blur-lg,
+  $radius:   t.$radius-2xl,
+  $strength: 'medium'
+) {
+  $bg:     if($strength == 'light',  var(--glass-bg-light),
+           if($strength == 'strong', var(--glass-bg-strong),
+                                      var(--glass-bg-medium)));
+  $border: if($strength == 'light',  var(--glass-border-light),
+                                      var(--glass-border-medium));
+
+  background: $bg;
+  backdrop-filter: blur($blur) saturate(190%);
+  -webkit-backdrop-filter: blur($blur) saturate(190%);
+  border: 1px solid $border;
+  border-radius: $radius;
+  box-shadow: var(--glass-shadow-md);
+}
+
+// Variante pill (para nav, paginadores, chips)
+@mixin glass-pill($blur: t.$blur-xl, $strength: 'medium') {
+  @include glass-surface($blur, t.$radius-pill, $strength);
+}
+
+// =============================================================================
+// Glass Interactive — spring hover/press para elementos clickables
+// Añade elevación al hover y compresión al active usando ease-spring.
+// =============================================================================
+@mixin glass-interactive($lift: -5px) {
+  @include transition-spring(transform box-shadow background border-color, t.$dur-normal);
+
+  &:hover {
+    transform: translateY($lift);
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border-medium);
+    box-shadow: var(--glass-shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: var(--glass-shadow-sm);
+    transition-duration: t.$dur-fast;
+  }
+}
+
+// =============================================================================
+// Transitions
+// =============================================================================
+@mixin transition-std($props: all, $dur: t.$dur-slow) {
+  transition: $props $dur t.$ease-standard;
+}
+
+// Acepta lista de propiedades separadas por espacio
+@mixin transition-spring($props: all, $dur: t.$dur-slower) {
+  $transitions: ();
+  @each $p in $props {
+    $transitions: append($transitions, #{$p} $dur t.$ease-spring, comma);
+  }
+  transition: $transitions;
+}
+
+@mixin transition-fast($props: all) {
+  transition: $props t.$dur-fast t.$ease-standard;
+}
