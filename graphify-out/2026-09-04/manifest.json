@@ -132,9 +132,9 @@
     "semantic_hash": "1a315979826177212b42586c4afcff4c"
   },
   "src/app/time-entry/data/time-entry.dexie.ts": {
-    "mtime": 1788548575.1764343,
-    "seen": 1788548795.251744,
-    "ast_hash": "a9a6996c581ee0ae89786b15156ccb5f",
+    "mtime": 1788549312.625906,
+    "seen": 1788549518.6847968,
+    "ast_hash": "e018d981d975d5719905b8afb7a590df",
     "semantic_hash": ""
   },
   "src/app/time-entry/data/time-entry.export.spec.ts": {
