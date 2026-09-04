@@ -1,40 +1,41 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
 .day-header {
   font-size: 0.75rem;
   font-weight: 600;
   color: var(--mat-sys-on-surface-variant);
   text-transform: uppercase;
-  margin: 1.5rem 0 0.5rem 1rem;
+  margin: 1.5rem 0 t.$space-2 t.$space-4;
   opacity: 0.6;
 }
 
 .glass-list-container {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border-radius: 14px; // Radio estándar de listas iOS
-  border: 0.5px solid rgba(255, 255, 255, 0.2);
-  margin: 0 8px;
+  @include m.glass-surface(t.$blur-lg, t.$radius-lg, 'medium');
+  margin: 0 t.$space-2;
   overflow: hidden;
 }
 
 .glass-row {
   display: flex;
   align-items: center;
-  padding: 10px 12px;
-  gap: 12px;
+  padding: t.$space-2 t.$space-3;
+  gap: t.$space-3;
   position: relative;
-  transition: background 0.2s;
+  @include m.transition-fast(background transform);
+  border-bottom: 0.5px solid var(--glass-border-light);
 
-  /* Divisor interno fino estilo Apple */
-  border-bottom: 0.5px solid rgba(255, 255, 255, 0.1);
+  &:hover {
+    background: var(--glass-bg-light);
+  }
 
   &:active {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg-medium);
+    transform: scale(0.99);
+    transition-duration: t.$dur-fast;
   }
 
-  &.no-border {
-    border-bottom: none;
-  }
+  &.no-border { border-bottom: none; }
 }
 
 .mini-time-badge {
@@ -44,11 +45,13 @@
   justify-content: center;
   min-width: 44px;
   height: 44px;
-  background: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
-  border-radius: 10px;
+  background: var(--glass-tint-primary);
+  backdrop-filter: blur(t.$blur-sm);
+  border: 1px solid var(--glass-border-light);
+  color: var(--mat-sys-primary);
+  border-radius: t.$radius-sm;
 
-  .time-val { font-size: 1.1rem; font-weight: 800; line-height: 1; }
+  .time-val  { font-size: 1.1rem; font-weight: 800; line-height: 1; }
   .time-unit { font-size: 0.6rem; font-weight: 700; opacity: 0.8; }
 }
 
@@ -83,7 +86,7 @@
 .edit-action {
   background: transparent;
   border: none;
-  color: rgba(255, 255, 255, 0.3);
+  color: color-mix(in srgb, var(--mat-sys-on-surface-variant) 30%, transparent);
   cursor: pointer;
   padding: 0;
   display: flex;
@@ -96,11 +99,10 @@
   }
 }
 
-/* --- Botón de Acción iOS Visible en Blanco --- */
 .action-btn-ios {
-  background: rgba(0, 122, 255, 0.1); /* Fondo azul traslúcido muy suave */
-  border: none;
-  color: #007AFF; /* Azul nativo de iOS para máxima visibilidad */
+  background: var(--glass-tint-primary);
+  border: 1px solid var(--glass-border-light);
+  color: var(--mat-sys-primary);
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -108,8 +110,9 @@
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: all 0.2s ease;
-  flex-shrink: 0; // Evita que se aplaste en pantallas pequeñas
+  @include m.transition-fast();
+  flex-shrink: 0;
+  backdrop-filter: blur(t.$blur-sm);
 
   mat-icon {
     font-size: 20px;
@@ -118,22 +121,20 @@
     font-weight: bold;
   }
 
-  /* Feedback al tocar en iPhone */
+  &:hover {
+    background: var(--glass-bg-medium);
+    border-color: var(--glass-border-medium);
+    transform: translateY(-1px);
+  }
+
   &:active {
-    background: rgba(0, 122, 255, 0.2);
+    background: color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
     transform: scale(0.9);
   }
 
-  /* Si prefieres un look más 'Glass' oscuro sobre el blanco */
   &.dark-glass {
-    background: rgba(0, 0, 0, 0.05);
-    color: rgba(0, 0, 0, 0.4);
+    background: var(--glass-bg-light);
+    color: color-mix(in srgb, var(--mat-sys-on-surface) 50%, transparent);
+    border-color: var(--glass-border-light);
   }
-}
-
-/* Ajuste del contenedor para que el blanco no "se coma" los bordes */
-.glass-list-container {
-  background: rgba(255, 255, 255, 0.6); /* Más opaco para resaltar sobre el fondo blanco */
-  border: 0.5px solid rgba(0, 0, 0, 0.1); /* Borde oscuro muy fino para dar definición */
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }

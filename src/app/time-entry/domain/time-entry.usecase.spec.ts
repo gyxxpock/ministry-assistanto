@@ -1,4 +1,4 @@
-import { computeMonthlyTotals } from './time-entry.usecase';
+import { computeMonthlyTotals, mergeTimeEntry, toDateKey } from './time-entry.usecase';
 import { TimeEntry, CourseVisit } from './models';
 
 describe('computeMonthlyTotals', () => {
@@ -107,5 +107,73 @@ describe('computeMonthlyTotals', () => {
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
 
     expect(res.totalCourses).toBe(2);
+  });
+});
+
+describe('toDateKey', () => {
+  it('returns YYYY-MM-DD unchanged for a date-only string', () => {
+    expect(toDateKey('2025-11-05')).toBe('2025-11-05');
+  });
+
+  it('pads single-digit month and day', () => {
+    expect(toDateKey('2025-01-07')).toBe('2025-01-07');
+  });
+
+  it('converts a Date object to YYYY-MM-DD using local date parts', () => {
+    const d = new Date(2025, 10, 5); // month is 0-indexed
+    expect(toDateKey(d)).toBe('2025-11-05');
+  });
+});
+
+describe('mergeTimeEntry', () => {
+  const base: TimeEntry = {
+    id: 'e1',
+    date: '2025-11-05',
+    durationMinutes: 60,
+    type: 'preaching',
+    notes: 'morning',
+    createdAt: '2025-11-05T08:00:00.000Z',
+    source: 'local',
+  };
+
+  it('accumulates durationMinutes', () => {
+    const result = mergeTimeEntry(base, { durationMinutes: 90 });
+    expect(result.durationMinutes).toBe(150);
+  });
+
+  it('keeps all fields from existing entry', () => {
+    const result = mergeTimeEntry(base, { durationMinutes: 30 });
+    expect(result.id).toBe('e1');
+    expect(result.date).toBe('2025-11-05');
+    expect(result.type).toBe('preaching');
+    expect(result.createdAt).toBe(base.createdAt);
+  });
+
+  it('replaces notes when incoming provides a non-empty string', () => {
+    const result = mergeTimeEntry(base, { durationMinutes: 30, notes: 'afternoon' });
+    expect(result.notes).toBe('afternoon');
+  });
+
+  it('keeps existing notes when incoming notes is undefined', () => {
+    const result = mergeTimeEntry(base, { durationMinutes: 30 });
+    expect(result.notes).toBe('morning');
+  });
+
+  it('keeps existing notes when incoming notes is blank', () => {
+    const result = mergeTimeEntry(base, { durationMinutes: 30, notes: '   ' });
+    expect(result.notes).toBe('morning');
+  });
+
+  it('sets updatedAt to a recent ISO string', () => {
+    const before = Date.now();
+    const result = mergeTimeEntry(base, { durationMinutes: 10 });
+    const after = Date.now();
+    expect(new Date(result.updatedAt!).getTime()).toBeGreaterThanOrEqual(before);
+    expect(new Date(result.updatedAt!).getTime()).toBeLessThanOrEqual(after);
+  });
+
+  it('does not mutate the original entry', () => {
+    mergeTimeEntry(base, { durationMinutes: 100 });
+    expect(base.durationMinutes).toBe(60);
   });
 });

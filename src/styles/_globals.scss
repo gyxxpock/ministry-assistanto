@@ -1,0 +1,172 @@
+// =============================================================================
+// Estilos globales y utilitarios
+// =============================================================================
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+// =============================================================================
+// Reset
+// =============================================================================
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: t.$font-system;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// Eliminamos el highlight azul de tap en iOS
+button, [role='button'], a {
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+// =============================================================================
+// Background animado — Liquid Glass Mesh Gradient
+// Los orbs usan los colores del tema M3, por lo que se adaptan automáticamente
+// al dark mode cuando Material cambia sus CSS vars.
+// =============================================================================
+html {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse 80% 80% at 15% 10%,
+      color-mix(in srgb, var(--mat-sys-primary) 28%, transparent) 0%,
+      transparent 65%),
+    radial-gradient(ellipse 70% 70% at 85% 5%,
+      color-mix(in srgb, var(--mat-sys-tertiary) 22%, transparent) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 60% 60% at 55% 85%,
+      color-mix(in srgb, var(--mat-sys-secondary) 18%, transparent) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 50% 50% at 5% 85%,
+      color-mix(in srgb, var(--mat-sys-primary-container) 35%, transparent) 0%,
+      transparent 55%),
+    var(--mat-sys-surface);
+  background-attachment: fixed;
+  background-size: cover;
+  animation: gradientDrift 24s ease-in-out infinite alternate;
+}
+
+@keyframes gradientDrift {
+  0% {
+    background-position: 0% 0%, 100% 0%, 50% 100%, 0% 100%, center;
+  }
+  25% {
+    background-position: 8% 18%, 92% 12%, 44% 88%, 12% 82%, center;
+  }
+  50% {
+    background-position: 18% 35%, 82% 28%, 58% 78%, 6% 70%, center;
+  }
+  75% {
+    background-position: 12% 22%, 88% 18%, 50% 85%, 15% 78%, center;
+  }
+  100% {
+    background-position: 5% 8%, 95% 5%, 46% 92%, 8% 88%, center;
+  }
+}
+
+// Dark mode — orbs más sutiles para no sobresaturar
+@media (prefers-color-scheme: dark) {
+  html:not([data-theme='light']) {
+    background:
+      radial-gradient(ellipse 80% 80% at 15% 10%,
+        color-mix(in srgb, var(--mat-sys-primary) 18%, transparent) 0%,
+        transparent 65%),
+      radial-gradient(ellipse 70% 70% at 85% 5%,
+        color-mix(in srgb, var(--mat-sys-tertiary) 14%, transparent) 0%,
+        transparent 60%),
+      radial-gradient(ellipse 60% 60% at 55% 85%,
+        color-mix(in srgb, var(--mat-sys-secondary) 12%, transparent) 0%,
+        transparent 60%),
+      radial-gradient(ellipse 50% 50% at 5% 85%,
+        color-mix(in srgb, var(--mat-sys-primary-container) 20%, transparent) 0%,
+        transparent 55%),
+      var(--mat-sys-surface);
+    background-attachment: fixed;
+  }
+}
+
+html[data-theme='dark'] {
+  background:
+    radial-gradient(ellipse 80% 80% at 15% 10%,
+      color-mix(in srgb, var(--mat-sys-primary) 18%, transparent) 0%,
+      transparent 65%),
+    radial-gradient(ellipse 70% 70% at 85% 5%,
+      color-mix(in srgb, var(--mat-sys-tertiary) 14%, transparent) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 60% 60% at 55% 85%,
+      color-mix(in srgb, var(--mat-sys-secondary) 12%, transparent) 0%,
+      transparent 60%),
+    radial-gradient(ellipse 50% 50% at 5% 85%,
+      color-mix(in srgb, var(--mat-sys-primary-container) 20%, transparent) 0%,
+      transparent 55%),
+    var(--mat-sys-surface);
+  background-attachment: fixed;
+}
+
+// =============================================================================
+// FAB — animación de entrada
+// =============================================================================
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.fab-container {
+  animation: slideUp t.$dur-slower t.$ease-spring;
+  transition: all t.$dur-slow t.$ease-standard;
+}
+
+.nav-is-hidden .fab-container {
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+// =============================================================================
+// Focus ring — reemplaza el outline del navegador por uno glass-aware
+// =============================================================================
+:focus-visible {
+  outline: 2px solid var(--mat-sys-primary);
+  outline-offset: 3px;
+  border-radius: t.$radius-sm;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--mat-sys-primary) 20%, transparent);
+}
+
+// =============================================================================
+// Angular Material — overrides de dialogs con glass
+// !important necesario: Angular Material aplica estilos inline que no tienen
+// selector equivalente en la API pública de M3 theming.
+// =============================================================================
+mat-dialog-content {
+  padding-top: t.$space-2 !important;
+  min-width: min(400px, 90vw);
+  max-height: 70vh;
+}
+
+mat-dialog-actions {
+  padding: t.$space-4 t.$space-6 !important;
+  border-top: 1px solid var(--glass-border-light);
+  background: var(--glass-bg-light);
+  backdrop-filter: blur(t.$blur-sm);
+}
+
+// Superficie del dialog — glass completo
+.mat-mdc-dialog-container .mdc-dialog__surface {
+  background: var(--glass-bg-strong) !important;
+  backdrop-filter: blur(t.$blur-xl) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(t.$blur-xl) saturate(200%) !important;
+  border: 1px solid var(--glass-border-medium) !important;
+  border-radius: t.$radius-2xl !important;
+  overflow: hidden;
+  box-shadow: var(--glass-shadow-lg), 0 40px 80px rgba(0, 0, 0, 0.25) !important;
+}
+
+// Reduce el ripple de Material para que no compita con el glass
+.mat-mdc-button-ripple,
+.mat-ripple-element {
+  opacity: 0.04 !important;
+}

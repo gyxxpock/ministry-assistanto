@@ -1,0 +1,63 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: t.$space-3 t.$space-4;
+  gap: t.$space-3;
+}
+
+.dialog-actions__right {
+  display: flex;
+  gap: t.$space-2;
+  align-items: center;
+}
+
+.dialog-actions__left {
+  display: flex;
+  gap: t.$space-2;
+  align-items: center;
+}
+
+// Panel de confirmación de borrado — glass con tint de error
+.delete-confirm-panel {
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  margin-top: t.$space-3;
+  padding: t.$space-3 t.$space-4;
+  border-radius: t.$radius-lg;
+  background: color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
+  backdrop-filter: blur(t.$blur-sm);
+  border: 1px solid color-mix(in srgb, var(--mat-sys-error) 30%, transparent);
+  color: var(--mat-sys-error);
+  @include m.transition-std(all, t.$dur-normal);
+  animation: slideUp t.$dur-normal t.$ease-spring;
+
+  mat-icon { flex-shrink: 0; }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(8px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+// Botones — pill shape con spring
+button[mat-stroked-button],
+button[mat-flat-button],
+button[mat-button] {
+  border-radius: t.$radius-pill !important;
+  font-weight: 600;
+  @include m.transition-std(all, t.$dur-normal);
+
+  &:not(:disabled):hover {
+    transform: translateY(-1px);
+  }
+
+  &:active {
+    transform: scale(0.96) !important;
+    transition-duration: t.$dur-fast !important;
+  }
+}

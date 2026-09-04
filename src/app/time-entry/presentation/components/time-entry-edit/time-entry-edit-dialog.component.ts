@@ -6,21 +6,25 @@ import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/
 @Component({
   selector: 'ma-time-entry-edit-dialog',
   templateUrl: './time-entry-edit-dialog.component.html',
+  styleUrls: ['./time-entry-edit-dialog.component.scss'],
   standalone: false,
 })
 export class TimeEntryEditDialogComponent implements OnInit {
   entry: TimeEntryVM | undefined;
+  initialDate: Date | undefined;
   isEditMode = false;
+  showDeleteConfirm = false;
 
   constructor(
     private facade: TimeEntryFacade,
     private dialogRef: MatDialogRef<TimeEntryEditDialogComponent>,
-    @Inject(MAT_DIALOG_DATA) data?: { entry: TimeEntryVM }
+    @Inject(MAT_DIALOG_DATA) data?: { entry?: TimeEntryVM; initialDate?: Date }
   ) {
     if (data?.entry) {
       this.isEditMode = true;
       this.entry = data.entry;
     }
+    this.initialDate = data?.initialDate;
   }
 
   ngOnInit(): void {}
@@ -35,6 +39,19 @@ export class TimeEntryEditDialogComponent implements OnInit {
   }
 
   onCancel() {
+    this.dialogRef.close();
+  }
+
+  onDeleteRequest() {
+    this.showDeleteConfirm = true;
+  }
+
+  onDeleteCancel() {
+    this.showDeleteConfirm = false;
+  }
+
+  async onDeleteConfirm() {
+    await this.facade.removeEntry(this.entry!.id);
     this.dialogRef.close();
   }
 }

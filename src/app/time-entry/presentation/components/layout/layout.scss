@@ -1,12 +1,13 @@
-/* layout.component.scss */
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
 
 .layout-wrapper {
   height: 100vh;
   overflow-y: auto;
   position: relative;
-  background-color: var(--mat-sys-surface);
+  isolation: isolate;        // crea stacking context; el html gradient pasa a través
+  background: transparent;
   scroll-behavior: smooth;
-  /* Previene el rebote elástico visual en Mac/Electron */
   overscroll-behavior-y: none;
 }
 
@@ -16,151 +17,151 @@
   min-height: 101vh;
 }
 
-/* Contenedor de Rutas */
 .router-wrapper {
   flex: 1;
   width: 100%;
 }
 
-/* 1. HEADER PREMIUM (Desvanecimiento sutil) */
+// 1. HEADER
 .page-header {
-  padding: clamp(40px, 10vh, 80px) 24px 40px;
+  padding: clamp(40px, 10vh, 80px) t.$space-6 t.$space-10;
   display: flex;
   justify-content: center;
-  transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  @include m.transition-std(all, t.$dur-slower);
 
   h1 {
+    font-family: t.$font-system;
     font-size: clamp(2rem, 8vw, 3.5rem);
     font-weight: 900;
     letter-spacing: -2px;
     margin: 0;
-    /* Gradiente sutil Liquid Glass */
-    background: linear-gradient(135deg, 
-      var(--mat-sys-primary) 0%, 
-      var(--mat-sys-tertiary) 100%
-    );
+    background: linear-gradient(135deg, var(--mat-sys-primary) 0%, var(--mat-sys-tertiary) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    filter: drop-shadow(0 2px 10px rgba(var(--mat-sys-primary-rgb), 0.2));
+    filter: drop-shadow(0 2px 10px color-mix(in srgb, var(--mat-sys-primary) 20%, transparent));
   }
 }
 
-/* 2. MENÚ FLOTANTE INFERIOR (Liquid Glass Premium) */
+// 2. NAV FLOTANTE
 .floating-nav {
   position: fixed;
-  bottom: 32px;
+  bottom: t.$space-8;
   left: 50%;
   transform: translateX(-50%);
-  transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1); // Efecto elástico sutil
-  z-index: 1000;
+  @include m.transition-spring();
+  z-index: t.$z-nav;
 
   &.nav-hidden {
     bottom: -120px;
     opacity: 0;
-    filter: blur(15px);
+    filter: blur(t.$blur-md);
     transform: translateX(-50%) scale(0.9);
   }
 }
 
 .bottom-toolbar {
-  border-radius: 40px;
-  /* Fondo ultraligero con desenfoque masivo */
-  background: rgba(var(--mat-sys-surface-container-rgb), 0.4) !important;
-  backdrop-filter: blur(25px) saturate(180%);
-  -webkit-backdrop-filter: blur(25px) saturate(180%);
-  
-  /* Borde de luz (Stroke) */
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  padding: 0 12px;
+  border-radius: t.$radius-pill;
+  @include m.glass-pill(t.$blur-xl, 'medium');
+  padding: 0 t.$space-3;
   height: 80px !important;
   display: flex;
   justify-content: center;
-  gap: 8px;
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+  gap: t.$space-2;
 
   button {
-    border-radius: 30px;
-    min-width: 100px;
+    border-radius: t.$radius-xl;
+    min-width: 88px;
     height: 64px;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     color: var(--mat-sys-on-surface-variant);
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    @include m.transition-std(all, t.$dur-normal);
     background: transparent;
     border: none;
-    
-    .mat-icon { 
-        margin-bottom: 4px;
-        font-size: 24px;
-        width: 24px;
-        height: 24px;
-        /* Icono fino por defecto */
-        font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
+
+    .mat-icon {
+      margin-bottom: t.$space-1;
+      font-size: 24px;
+      width: 24px;
+      height: 24px;
+      font-variation-settings: 'FILL' 0, 'wght' 300, 'GRAD' 0, 'opsz' 24;
     }
-    
-    .label { 
-        font-size: 10px; 
-        font-weight: 700; 
-        text-transform: uppercase;
-        letter-spacing: 0.8px;
-        opacity: 0.7;
+
+    .label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      opacity: 0.7;
     }
 
     &:hover {
-        background: rgba(255, 255, 255, 0.05);
-        color: var(--mat-sys-primary);
+      background: var(--glass-bg-light);
+      color: var(--mat-sys-primary);
+      transform: translateY(-2px);
+    }
+
+    &:active {
+      transform: scale(0.94) translateY(0);
+      transition-duration: t.$dur-fast;
     }
 
     &.active-link {
+      background: var(--glass-tint-primary);
+      border-radius: t.$radius-lg;
       color: var(--mat-sys-primary);
-      
-      /* Resalte sutil en lugar de fondo sólido */
+
       &::after {
-          content: '';
-          position: absolute;
-          bottom: 10px;
-          width: 4px;
-          height: 4px;
-          border-radius: 50%;
-          background-color: var(--mat-sys-primary);
-          box-shadow: 0 0 10px var(--mat-sys-primary);
+        content: '';
+        position: absolute;
+        bottom: 10px;
+        width: 4px;
+        height: 4px;
+        border-radius: 50%;
+        background-color: var(--mat-sys-primary);
+        box-shadow: 0 0 10px var(--mat-sys-primary);
       }
 
-      .mat-icon { 
-          font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-          transform: translateY(-2px);
+      .mat-icon {
+        font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        transform: translateY(-2px);
       }
 
       .label { opacity: 1; }
     }
   }
-}
 
-/* 3. LÓGICA DE SINCRONIZACIÓN GLOBAL */
-.nav-is-hidden {
-  .page-header {
-    transform: scale(0.95) translateY(-30px);
-    opacity: 0;
-    filter: blur(10px);
+  // Botón de tema — ligeramente más pequeño que los nav buttons
+  .theme-toggle-btn {
+    min-width: 64px;
+    opacity: 0.7;
+
+    &:hover { opacity: 1; }
   }
 }
 
-/* 4. OVERRIDES PARA EL CONTENIDO */
-::ng-deep {
-    .time-entry-list-container {
-        /* Asegura que el contenido termine antes de la barra inferior */
-        padding-bottom: 140px !important;
-    }
-    
-    /* Scrollbar minimalista para Electron */
-    ::-webkit-scrollbar {
-        width: 6px;
-    }
-    ::-webkit-scrollbar-thumb {
-        background: rgba(var(--mat-sys-primary-rgb), 0.2);
-        border-radius: 10px;
-        &:hover { background: rgba(var(--mat-sys-primary-rgb), 0.5); }
-    }
+// 3. SINCRONIZACIÓN CON SCROLL
+.nav-is-hidden .page-header {
+  transform: scale(0.95) translateY(-30px);
+  opacity: 0;
+  filter: blur(t.$blur-sm);
 }
+
+// 4. SCROLLBAR MINIMALISTA
+// ::ng-deep necesario: los estilos de scrollbar no pueden apuntarse desde el
+// host del componente sin perforar el encapsulamiento.
+/* stylelint-disable selector-pseudo-element-no-unknown */
+::ng-deep ::-webkit-scrollbar {
+  width: 4px;
+}
+::ng-deep ::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+  border-radius: t.$radius-sm;
+
+  &:hover {
+    background: color-mix(in srgb, var(--mat-sys-primary) 55%, transparent);
+  }
+}
+/* stylelint-enable selector-pseudo-element-no-unknown */
