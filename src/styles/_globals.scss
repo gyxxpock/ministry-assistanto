@@ -1,0 +1,49 @@
+// =============================================================================
+// Estilos globales y utilitarios
+// =============================================================================
+@use 'styles/tokens' as t;
+
+// Reset
+html, body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+// FAB — animación de entrada
+@keyframes slideUp {
+  from { transform: translateY(100px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.fab-container {
+  animation: slideUp t.$dur-slower t.$ease-spring;
+  transition: all t.$dur-slow t.$ease-standard;
+}
+
+// FAB — sincronización cuando el nav se oculta
+.nav-is-hidden .fab-container {
+  transform: translateY(80px);
+  opacity: 0;
+  pointer-events: none;
+}
+
+// Overrides de Angular Material para diálogos
+// !important necesario: Angular Material aplica estilos inline que no tienen
+// selector equivalente en la API pública de M3 theming.
+mat-dialog-content {
+  padding-top: t.$space-2 !important;
+  min-width: 400px;
+  max-height: 70vh;
+}
+
+mat-dialog-actions {
+  padding: t.$space-4 t.$space-6 !important;
+  border-top: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface-container-low);
+}

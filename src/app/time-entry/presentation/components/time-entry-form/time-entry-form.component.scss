@@ -1,12 +1,14 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
 .time-form {
   width: 100%;
   max-width: 420px;
   margin: 0 auto;
-  padding: 16px;
+  padding: t.$space-4;
   box-sizing: border-box;
-
   display: grid;
-  gap: 16px;
+  gap: t.$space-4;
 }
 
 .minutes-field input {
@@ -17,7 +19,7 @@
 .presets {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: t.$space-2;
   justify-content: center;
 
   button {
@@ -32,7 +34,8 @@
 }
 
 button[mat-flat-button] {
-  transition: all 0.3s ease;
+  @include m.transition-std(all, t.$dur-normal);
+
   &:disabled {
     opacity: 0.5;
     filter: grayscale(1);
@@ -42,12 +45,12 @@ button[mat-flat-button] {
 .form-container {
   display: flex;
   flex-direction: column;
-  height: 100%; // Ocupa el alto del contenedor padre
+  height: 100%;
   position: relative;
 }
 
 .form-content {
-  flex: 1; // Toma todo el espacio disponible
-  overflow-y: auto; // Solo esta parte tiene scroll
-  padding: 24px;
+  flex: 1;
+  overflow-y: auto;
+  padding: t.$space-6;
 }

@@ -1,24 +1,25 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
 :host {
   display: block;
-  padding: 10px; // Reducido para móviles
+  padding: t.$space-2 t.$space-3;
   background: transparent;
 }
 
 .calendar-container {
   max-width: 100%;
   margin: 0 auto;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 20px;
-  padding: 15px;
+  @include m.glass-surface(t.$blur-sm, t.$glass-bg-low, t.$radius-xl);
+  padding: t.$space-3 t.$space-4;
 }
 
 .calendar-header {
   display: flex;
-  flex-direction: column; // Stack en móvil
+  flex-direction: column;
   align-items: center;
-  gap: 15px;
-  margin-bottom: 20px;
+  gap: t.$space-3;
+  margin-bottom: t.$space-5;
 
   @media (min-width: 600px) {
     flex-direction: row;
@@ -29,30 +30,30 @@
 .month-paginator {
   display: flex;
   align-items: center;
-  background: rgba(0,0,0,0.05);
-  border-radius: 12px;
-  padding: 4px;
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 5%, transparent);
+  border-radius: t.$radius-md;
+  padding: t.$space-1;
 }
 
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr); // 7 columnas iguales siempre
-  gap: 2px; // Espacio sutil en lugar de bordes pesados
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
 }
 
 .calendar-day {
-  aspect-ratio: 1 / 1.2; // Mantiene la forma sin importar el ancho
-  min-height: 60px; // Mucho menor que tus 120px previos
+  aspect-ratio: 1 / 1.2;
+  min-height: 60px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
+  border-radius: t.$radius-sm;
   position: relative;
-  
+
   &.today .day-number {
-    background: #007AFF;
-    color: white;
+    background: var(--mat-sys-primary);
+    color: var(--mat-sys-on-primary);
     border-radius: 50%;
     width: 24px;
     height: 24px;
@@ -64,41 +65,41 @@
   &.other-month { opacity: 0.3; }
 }
 
-/* Indicador de "Liquid Glass" para las horas */
 .dot-indicator {
   width: 4px;
   height: 4px;
-  background: #007AFF;
+  background: var(--mat-sys-primary);
   border-radius: 50%;
-  margin-top: 4px;
+  margin-top: t.$space-1;
 }
 
 .hours-label {
   font-size: 10px;
   font-weight: 600;
-  color: #007AFF;
+  color: var(--mat-sys-primary);
   margin-top: 2px;
-  
-  @media (max-width: 400px) {
-    font-size: 8px; // Más pequeño en iPhones mini
-  }
+
+  @media (max-width: 400px) { font-size: 8px; }
 }
 
 .weekday-header {
   font-size: 12px;
-  color: #8e8e93;
-  padding-bottom: 10px;
+  color: var(--mat-sys-on-surface-variant);
+  padding-bottom: t.$space-2;
   text-align: center;
+  opacity: 0.7;
 }
 
 .btn-today-ios {
-  border: none;
-  background: white;
-  padding: 6px 12px;
-  border-radius: 8px;
+  border: 1px solid var(--mat-sys-outline-variant);
+  background: var(--mat-sys-surface);
+  padding: 6px t.$space-3;
+  border-radius: t.$radius-sm;
   font-weight: 600;
   font-size: 12px;
-  color: #007AFF;
-  margin-left: 5px;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  color: var(--mat-sys-primary);
+  margin-left: t.$space-1;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  @include m.transition-fast();
 }

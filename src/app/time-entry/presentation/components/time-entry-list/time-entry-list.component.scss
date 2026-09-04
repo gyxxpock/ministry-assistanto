@@ -1,34 +1,31 @@
-/* time-entry-list.component.scss */
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
 
 .time-entry-list-container {
-  padding: 2rem 1rem;
+  padding: t.$space-8 t.$space-4 140px;  // 140px reserva espacio para el nav flotante
   max-width: 1200px;
   margin: 0 auto;
   position: relative;
 }
 
-/* 1. GRUPO DE ACCIONES SUPERIORES (Top-Right) */
+// 1. GRUPO DE ACCIONES SUPERIORES
 .top-actions-group {
   position: fixed;
-  top: 24px;
-  right: 24px;
-  z-index: 1000;
+  top: t.$space-6;
+  right: t.$space-6;
+  z-index: t.$z-nav;
   display: flex;
   align-items: center;
-  gap: 16px; // Espacio entre píldora y círculo
-  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  gap: t.$space-4;
+  @include m.transition-std();
 }
 
-/* 2. PÍLDORA DE UTILIDADES (Slim Glass) */
+// 2. PÍLDORA DE UTILIDADES
 .utility-pill {
   display: flex;
   align-items: center;
-  padding: 4px 8px;
-  background: rgba(var(--mat-sys-surface-container-rgb), 0.3);
-  backdrop-filter: blur(12px) saturate(150%);
-  -webkit-backdrop-filter: blur(12px) saturate(150%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 30px;
+  padding: t.$space-1 t.$space-2;
+  @include m.glass-pill(t.$blur-md, t.$glass-bg-low);
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 
   .glass-icon-btn {
@@ -52,22 +49,22 @@
     width: 1px;
     height: 16px;
     background: rgba(255, 255, 255, 0.15);
-    margin: 0 4px;
+    margin: 0 t.$space-1;
   }
 }
 
-/* 3. BOTÓN ADD (Círculo Perfecto Glass) */
+// 3. BOTÓN ADD (FAB circular)
 .primary-action-wrapper {
   .glass-fab-circle {
-    /* Forzar forma circular perfecta en Angular Material 3 */
     border-radius: 50% !important;
     width: 56px !important;
     height: 56px !important;
     min-width: 56px !important;
 
-    background: rgba(var(--mat-sys-primary-container-rgb), 0.4) !important;
+    // !important necesario: Angular Material sobreescribe background en botones fab
+    background: color-mix(in srgb, var(--mat-sys-primary-container) 40%, transparent) !important;
     color: var(--mat-sys-on-primary-container) !important;
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(t.$blur-md);
     border: 1px solid rgba(255, 255, 255, 0.2);
     box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2) !important;
 
@@ -77,16 +74,14 @@
 
     &:hover {
       transform: scale(1.1) rotate(90deg);
-      background: rgba(var(--mat-sys-primary-container-rgb), 0.6) !important;
+      background: color-mix(in srgb, var(--mat-sys-primary-container) 60%, transparent) !important;
     }
 
-    mat-icon {
-      margin: 0 !important; // Quitar márgenes extra que descuadran el círculo
-    }
+    mat-icon { margin: 0 !important; }
   }
 }
 
-/* 4. LÓGICA DE SCROLL (Desaparece a la derecha) */
+// 4. SCROLL — ocultar acciones al hacer scroll
 :host-context(.nav-is-hidden) {
   .top-actions-group {
     opacity: 0;
@@ -95,32 +90,25 @@
   }
 }
 
-/* 5. AERO MONTH PAGINATOR (Liquid Glass Control) */
+// 5. PAGINADOR DE MES
 .month-selector-container {
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
-  padding-top: 20px; // Espacio para no chocar con las acciones superiores
+  padding-top: t.$space-5;
 }
 
 .glass-paginator {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 12px;
-  
-  /* Estética Liquid Glass coincidente con el resto de la app */
-  background: rgba(var(--mat-sys-surface-container-rgb), 0.2);
-  backdrop-filter: blur(25px) saturate(160%);
-  -webkit-backdrop-filter: blur(25px) saturate(160%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 50px;
+  gap: t.$space-2;
+  padding: 6px t.$space-3;
+  @include m.glass-pill(t.$blur-xl, t.$glass-bg-low);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-  
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  @include m.transition-std();
 
   &:hover {
-    background: rgba(var(--mat-sys-surface-container-rgb), 0.4);
+    background: color-mix(in srgb, var(--mat-sys-surface-container) 40%, transparent);
     box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.2);
   }
@@ -131,7 +119,7 @@
   flex-direction: column;
   align-items: center;
   min-width: 140px;
-  padding: 0 8px;
+  padding: 0 t.$space-2;
 
   .month-text {
     font-size: 1.1rem;
@@ -153,7 +141,7 @@
 
 .nav-btn {
   color: var(--mat-sys-on-surface-variant) !important;
-  transition: transform 0.2s ease;
+  @include m.transition-fast(transform);
 
   &:hover:not(:disabled) {
     color: var(--mat-sys-primary) !important;
@@ -164,20 +152,20 @@
 .v-divider {
   width: 1px;
   height: 24px;
-  background: rgba(var(--mat-sys-outline-variant-rgb), 0.3);
-  margin: 0 8px;
+  background: color-mix(in srgb, var(--mat-sys-outline-variant) 30%, transparent);
+  margin: 0 t.$space-2;
 }
 
 .today-pill-btn {
   height: 32px !important;
   line-height: 32px !important;
-  border-radius: 20px !important;
+  border-radius: t.$radius-pill !important;
   font-size: 0.75rem !important;
   font-weight: 700 !important;
-  padding: 0 16px !important;
-  background: rgba(var(--mat-sys-primary-rgb), 0.1) !important;
+  padding: 0 t.$space-4 !important;
+  background: color-mix(in srgb, var(--mat-sys-primary) 10%, transparent) !important;
   color: var(--mat-sys-primary) !important;
-  transition: all 0.3s ease !important;
+  @include m.transition-std(all, t.$dur-normal);
 
   &:hover:not(:disabled) {
     background: var(--mat-sys-primary) !important;
@@ -190,53 +178,39 @@
   }
 }
 
-
-/* 6. AERO TOTALS DASHBOARD (Liquid Glass Premium) */
+// 6. DASHBOARD DE TOTALES
 .totals-dashboard {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 20px;
+  gap: t.$space-5;
   margin-bottom: 3rem;
-  perspective: 1000px; // Necesario para el efecto 3D al hacer hover
+  perspective: 1000px;
 }
 
 .glass-tile {
   position: relative;
   display: flex;
   align-items: center;
-  gap: 20px;
-  padding: 24px;
-  border-radius: 28px;
+  gap: t.$space-5;
+  padding: t.$space-6;
   overflow: hidden;
-
-  /* Estética Liquid Glass */
-  background: rgba(var(--mat-sys-surface-container-rgb), 0.3);
-  backdrop-filter: blur(20px) saturate(180%);
-  -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  @include m.glass-surface(t.$blur-lg, t.$glass-bg-mid, t.$radius-2xl);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  @include m.transition-std(all, t.$dur-slow);
+  transition-timing-function: t.$ease-out-back;
 
   &:hover {
     transform: translateY(-5px) rotateX(4deg);
-    background: rgba(var(--mat-sys-surface-container-rgb), 0.5);
+    background: color-mix(in srgb, var(--mat-sys-surface-container) 50%, transparent);
     border-color: rgba(255, 255, 255, 0.3);
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
 
-    .tile-icon {
-      transform: scale(1.1) rotate(-5deg);
-    }
-
-    .tile-decoration {
-      opacity: 0.6;
-    }
+    .tile-icon { transform: scale(1.1) rotate(-5deg); }
+    .tile-decoration { opacity: 0.6; }
   }
 
-  /* Variaciones de Color */
   &.primary {
     --tile-color: var(--mat-sys-primary);
-
     .tile-decoration {
       background: radial-gradient(circle, var(--mat-sys-primary-container) 0%, transparent 70%);
     }
@@ -244,7 +218,6 @@
 
   &.tertiary {
     --tile-color: var(--mat-sys-tertiary);
-
     .tile-decoration {
       background: radial-gradient(circle, var(--mat-sys-tertiary-container) 0%, transparent 70%);
     }
@@ -257,10 +230,10 @@
   justify-content: center;
   width: 56px;
   height: 56px;
-  border-radius: 18px;
+  border-radius: t.$radius-lg;
   background: var(--tile-color);
-  color: var(--mat-sys-on-primary); // O usa white
-  transition: transform 0.3s ease;
+  color: var(--mat-sys-on-primary);
+  @include m.transition-std(transform);
 
   mat-icon {
     font-size: 28px;
@@ -280,7 +253,7 @@
     text-transform: uppercase;
     letter-spacing: 1.2px;
     color: var(--mat-sys-on-surface-variant);
-    margin-bottom: 4px;
+    margin-bottom: t.$space-1;
     opacity: 0.8;
   }
 
@@ -304,11 +277,10 @@
   filter: blur(40px);
   opacity: 0.2;
   z-index: 0;
-  transition: opacity 0.4s ease;
+  @include m.transition-std(opacity);
 }
 
-
-/* 7. LISTA DE DÍAS */
+// 7. LISTA DE DÍAS
 .days {
   display: flex;
   flex-direction: column;
@@ -316,61 +288,21 @@
   padding-bottom: 120px;
 }
 
-/* 8. RESPONSIVE */
-@media (max-width: 600px) {
-  .month-paginator .current-month {
-    font-size: 1.2rem;
-    min-width: 160px;
-  }
-
-  .top-actions-group {
-    top: 16px;
-    right: 16px;
-    gap: 12px;
-  }
-
-  .primary-action-wrapper .glass-fab-circle {
-    width: 48px !important;
-    height: 48px !important;
-    min-width: 48px !important;
-  }
-
-  .glass-tile {
-    padding: 16px;
-    gap: 12px;
-  }
-
-  .tile-value {
-    font-size: 1.8rem;
-  }
-
-  .tile-icon {
-    width: 44px;
-    height: 44px;
-
-    mat-icon {
-      font-size: 22px;
-    }
-  }
-}
-
-/* --- NUEVOS ESTILOS PARA EL STEPPER DE CURSOS --- */
-
+// 8. STEPPER DE CURSOS
 .stepper-container {
   display: flex;
   align-items: center;
-  gap: 12px; // Espaciado orgánico entre botones y número
-  margin-top: 4px;
+  gap: t.$space-3;
+  margin-top: t.$space-1;
   position: relative;
-  z-index: 2; // Asegura que esté por encima de la decoración blur
+  z-index: 2;
 }
 
 .step-btn {
-  /* Reseteo de estilos nativos de botón */
   appearance: none;
-  background: rgba(var(--mat-sys-on-surface-rgb), 0.05);
+  background: color-mix(in srgb, var(--mat-sys-on-surface) 5%, transparent);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px; // Forma de "Squircle" estilo iOS
+  border-radius: t.$radius-md;
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -378,7 +310,7 @@
   width: 32px;
   height: 32px;
   color: var(--mat-sys-on-surface);
-  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  @include m.transition-fast();
   backdrop-filter: blur(5px);
 
   mat-icon {
@@ -394,8 +326,7 @@
   }
 
   &:active:not(:disabled) {
-    transform: scale(0.9); // Feedback táctil de presión
-    background: rgba(var(--tile-color-rgb), 0.2); // Brillo sutil del color de la tarjeta
+    transform: scale(0.9);
   }
 
   &:disabled {
@@ -405,26 +336,46 @@
   }
 }
 
-/* Ajuste específico para el valor dentro del stepper */
 .glass-tile.tertiary .tile-value {
-  min-width: 34px; // Evita que la tarjeta "salte" cuando cambia de 9 a 10
+  min-width: 34px;
   text-align: center;
-  font-variant-numeric: tabular-nums; // Mantiene los números alineados
+  font-variant-numeric: tabular-nums;
 }
 
-/* Optimizaciones para Móvil */
+// 9. RESPONSIVE
 @media (max-width: 600px) {
-  .stepper-container {
-    gap: 8px;
+  .top-actions-group {
+    top: t.$space-4;
+    right: t.$space-4;
+    gap: t.$space-3;
   }
-  
+
+  .primary-action-wrapper .glass-fab-circle {
+    width: 48px !important;
+    height: 48px !important;
+    min-width: 48px !important;
+  }
+
+  .glass-tile {
+    padding: t.$space-4;
+    gap: t.$space-3;
+  }
+
+  .tile-value { font-size: 1.8rem; }
+
+  .tile-icon {
+    width: 44px;
+    height: 44px;
+    mat-icon { font-size: 22px; }
+  }
+
+  .stepper-container { gap: t.$space-2; }
+
   .step-btn {
-    width: 36px; // Un poco más grande para facilitar el toque (Touch Target)
+    width: 36px;
     height: 36px;
     border-radius: 10px;
   }
 
-  .glass-tile.tertiary .tile-value {
-    font-size: 1.8rem;
-  }
+  .glass-tile.tertiary .tile-value { font-size: 1.8rem; }
 }

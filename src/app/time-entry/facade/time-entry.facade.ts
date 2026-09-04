@@ -2,7 +2,7 @@ import { Injectable, Inject, signal, computed } from '@angular/core';
 import { ITimeEntryRepository } from '../data/time-entry.repository';
 import { TIME_ENTRY_REPOSITORY } from '../presentation/tokens/time-entry.tokens';
 import { TimeEntry, CourseVisit } from '../domain/models';
-import computeMonthlyTotals, { MonthlyTotals } from '../domain/time-entry.usecase';
+import computeMonthlyTotals, { MonthlyTotals, mergeTimeEntry, toDateKey } from '../domain/time-entry.usecase';
 import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../presentation/models/time-entry.vm';
 
 @Injectable()
@@ -82,17 +82,26 @@ export class TimeEntryFacade {
   // ============================
 
   async addEntry(vm: CreateTimeEntryVM): Promise<void> {
-    const entry: TimeEntry = {
-      id: crypto.randomUUID(),
-      date: vm.date,
-      durationMinutes: vm.durationMinutes,
-      type: vm.type,
-      notes: vm.notes,
-      createdAt: new Date().toISOString(),
-      source: 'local'
-    };
+    const dateKey = toDateKey(vm.date);
+    const existing = this._entries().find(
+      e => toDateKey(e.date) === dateKey && e.type === vm.type
+    );
 
-    await this.repository.addEntry(entry);
+    if (existing) {
+      await this.repository.updateEntry(mergeTimeEntry(existing, vm));
+    } else {
+      const entry: TimeEntry = {
+        id: crypto.randomUUID(),
+        date: vm.date,
+        durationMinutes: vm.durationMinutes,
+        type: vm.type,
+        notes: vm.notes,
+        createdAt: new Date().toISOString(),
+        source: 'local',
+      };
+      await this.repository.addEntry(entry);
+    }
+
     await this.loadMonth();
   }
 
