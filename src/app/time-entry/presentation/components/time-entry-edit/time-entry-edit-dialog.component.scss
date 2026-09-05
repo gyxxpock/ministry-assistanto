@@ -39,7 +39,7 @@
   backdrop-filter: blur(t.$blur-sm);
   border: 1px solid color-mix(in srgb, var(--mat-sys-error) 30%, transparent);
   color: var(--mat-sys-error);
-  @include m.transition-std(all, t.$dur-normal);
+  @include m.transition-std(opacity transform background, t.$dur-normal);
   animation: slideUp t.$dur-normal t.$ease-spring;
 
   mat-icon { flex-shrink: 0; }
@@ -56,7 +56,8 @@ button[mat-flat-button],
 button[mat-button] {
   border-radius: t.$radius-pill !important;
   font-weight: 600;
-  @include m.transition-std(all, t.$dur-normal);
+  min-height: 44px;
+  @include m.transition-std(transform box-shadow background, t.$dur-normal);
 
   &:not(:disabled):hover {
     transform: translateY(-1px);

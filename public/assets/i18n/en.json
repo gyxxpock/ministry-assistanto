@@ -2,6 +2,9 @@
   "app": {
     "title": "Ministry Assistanto"
   },
+  "errors": {
+    "required": "This field is required"
+  },
   "common": {
     "buttons": {
       "close": "Close",
@@ -41,6 +44,7 @@
     "createTitle": "Add Time",
     "editTitle": "Edit Time",
     "deleteConfirmMessage": "Delete this record? This action cannot be undone.",
+    "restoreConfirmMessage": "Restore data from file? It will be merged with existing data.",
     "form": {
       "date": "Date",
       "durationMinutes": "Duration (minutes)",

@@ -2,6 +2,9 @@
   "app": {
     "title": "Asistente del ministerio"
   },
+  "errors": {
+    "required": "Este campo es requerido"
+  },
   "common": {
     "buttons": {
       "close": "Cerrar",
@@ -41,6 +44,7 @@
     "createTitle": "Agregar tiempo",
     "editTitle": "Editar tiempo",
     "deleteConfirmMessage": "¿Eliminar este registro? Esta acción no se puede deshacer.",
+    "restoreConfirmMessage": "¿Restaurar datos desde archivo? Se fusionarán con los existentes.",
     "form": {
       "date": "Fecha",
       "durationMinutes": "Duración (minutos)",

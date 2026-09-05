@@ -78,3 +78,14 @@
 @mixin transition-fast($props: all) {
   transition: $props t.$dur-fast t.$ease-standard;
 }
+
+// =============================================================================
+// Safe Area — iOS home indicator / Dynamic Island helpers
+// =============================================================================
+@mixin safe-area-bottom($prop: padding-bottom, $extra: 0px) {
+  #{$prop}: calc(#{$extra} + env(safe-area-inset-bottom, 0px));
+}
+
+@mixin safe-area-top($prop: padding-top, $extra: 0px) {
+  #{$prop}: calc(#{$extra} + env(safe-area-inset-top, 0px));
+}
