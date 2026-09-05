@@ -26,6 +26,7 @@ agentes, no menos. ArchitectureGuardian está siempre activo en modo silencioso.
 | "Dexie", "IndexedDB", "repositorio", "persistencia", "migración", "schema", "DexieTimeEntryRepository" | **DataAgent** |
 | "facade", "estado", "orquestación", "exponer al componente", "importar", "exportar", "BehaviorSubject", "loadMonth" | **FacadeAgent** |
 | "componente", "template", "SCSS", "estilo", "vista", "pantalla", "UI", "Material", "Angular Material", "ViewModel", "TimeEntryVM" | **UIAgent** |
+| "UX", "experiencia de usuario", "interacción", "visible", "scroll", "confirmación", "alerta", "animación", "iOS", "liquid glass", "accesibilidad", "táctil", "mobile", "toast", "feedback visual" | **UXAgent** (actívalo junto a UIAgent) |
 | "signal", "computed", "effect", "reactivo", "migrar RxJS", "signals", "estado reactivo" | **SignalsAgent** |
 | "test", "spec", "prueba", "cobertura", "jasmine", "karma", "*.spec.ts" | **TestingAgent** |
 | "revisar capa", "violación", "Clean Architecture", "importa desde", "¿esta clase pertenece?" | **ArchitectureGuardian** (exclusivo) |
@@ -51,6 +52,7 @@ DomainAgent       → .claude/agents/domain-agent.md
 DataAgent         → .claude/agents/data-agent.md
 FacadeAgent       → .claude/agents/facade-agent.md
 UIAgent           → .claude/agents/ui-agent.md
+UXAgent           → .claude/agents/ux-agent.md
 ArchitectureGuardian → .claude/agents/architecture-guardian.md
 SignalsAgent      → .claude/agents/signals-agent.md
 TestingAgent      → .claude/agents/testing-agent.md
