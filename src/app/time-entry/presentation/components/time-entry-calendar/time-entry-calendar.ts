@@ -29,7 +29,6 @@ export class TimeEntryCalendarComponent implements OnInit {
       const dayData = map.get(dateKey) ?? { totalMinutes: 0 };
       dayData.totalMinutes += entry.durationMinutes;
       map.set(dateKey, dayData);
-      console.log('totalMinutes for', dateKey, 'is now', dayData.totalMinutes);
     }
     return map;
   });
@@ -127,7 +126,6 @@ export class TimeEntryCalendarComponent implements OnInit {
   private createCaendarDay(date: Date, isCurrentMonth: boolean, entriesMap: Map<string, { totalMinutes: number; }>): CalendarDay {
     const dateStr = this.toKey(date);
     const dayData = entriesMap.get(dateStr);
-    console.log('Creating calendar day for', dateStr, ' totalMinutes:', dayData?.totalMinutes ?? 0);
     return {
       date,
       isCurrentMonth,
@@ -158,7 +156,6 @@ export class TimeEntryCalendarComponent implements OnInit {
   }
 
   formatHours(minutes: number): string {
-    console.log('formatHours called with minutes:', minutes);
     if (minutes === 0) return '';
     const h = Math.floor(minutes / 60);
     const m = minutes % 60;

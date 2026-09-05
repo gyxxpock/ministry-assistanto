@@ -54,15 +54,15 @@
     "semantic_hash": ""
   },
   "public/assets/i18n/en.json": {
-    "mtime": 1788546753.7260184,
-    "seen": 1788546932.565991,
-    "ast_hash": "7f4bac4569f2d26468bb5c18743e91b5",
+    "mtime": 1788585498.5437052,
+    "seen": 1788585535.896949,
+    "ast_hash": "0d4c5777c3c092800677d340c25ba4e5",
     "semantic_hash": ""
   },
   "public/assets/i18n/es.json": {
-    "mtime": 1788546752.784357,
-    "seen": 1788546932.5659919,
-    "ast_hash": "704d3dc1cb66f70f24fed0860f0e0651",
+    "mtime": 1788585497.472836,
+    "seen": 1788585535.896951,
+    "ast_hash": "2ce24385297126c6f5d2a538ca06ca84",
     "semantic_hash": ""
   },
   "scripts/check-i18n.js": {
@@ -204,9 +204,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts": {
-    "mtime": 1788558132.6786518,
-    "seen": 1788558180.220263,
-    "ast_hash": "6c6f2812e39eb025bf91124d36c91975",
+    "mtime": 1788584964.9489617,
+    "seen": 1788585535.896977,
+    "ast_hash": "492d14725e4e6c4db62fd7ab575184f9",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts": {
@@ -234,9 +234,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts": {
-    "mtime": 1788548200.6888273,
-    "seen": 1788548246.840947,
-    "ast_hash": "30ad2b08c45080a71ad698c890168c4a",
+    "mtime": 1788585320.7734013,
+    "seen": 1788585535.896984,
+    "ast_hash": "5868e803ff7fa5b694c8c8d3eae7d959",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/material/material.module.ts": {
@@ -348,28 +348,28 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.html": {
-    "mtime": 1788535231.6376798,
-    "seen": 1788536025.448266,
-    "ast_hash": "6ec4d7849f6e036fb97eae781cf11f87",
-    "semantic_hash": "6ec4d7849f6e036fb97eae781cf11f87"
+    "mtime": 1788584965.2785378,
+    "seen": 1788585535.897019,
+    "ast_hash": "6303ccc99a082a54a0005fbb4ef7681d",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.html": {
-    "mtime": 1788558130.2680852,
-    "seen": 1788558180.2203038,
-    "ast_hash": "1858670fa96406d7ab19410a9ae31f7d",
+    "mtime": 1788582356.0440915,
+    "seen": 1788584783.706846,
+    "ast_hash": "1cf21d866265d3ac69c78b9eafbbacd6",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html": {
-    "mtime": 1788550191.5824676,
-    "seen": 1788558180.220305,
-    "ast_hash": "73496cb8ce7cb14758f7d2612f8973d8",
+    "mtime": 1788585003.8671525,
+    "seen": 1788585535.8970208,
+    "ast_hash": "b654eb931d4994db96498e891f055aa6",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.html": {
-    "mtime": 1788535231.6389418,
-    "seen": 1788536025.448268,
-    "ast_hash": "4fcae57139e10118487dc80c5bd95458",
-    "semantic_hash": "4fcae57139e10118487dc80c5bd95458"
+    "mtime": 1788585314.5161326,
+    "seen": 1788585535.897022,
+    "ast_hash": "f78c50a995b0ab0b3990876f0fb60ec3",
+    "semantic_hash": ""
   },
   "src/index.html": {
     "mtime": 1788535231.640451,
@@ -444,9 +444,9 @@
     "semantic_hash": ""
   },
   ".claude/agents/_dispatcher.md": {
-    "mtime": 1788554760.6919277,
-    "seen": 1788558180.220278,
-    "ast_hash": "365ac92f35bafffa0f0a27e6dc2de52e",
+    "mtime": 1788582875.7484267,
+    "seen": 1788584783.706817,
+    "ast_hash": "0d08b3d48ca4658f55ffc744d10ebe0c",
     "semantic_hash": ""
   },
   ".claude/agents/architecture-guardian.md": {
@@ -492,9 +492,9 @@
     "semantic_hash": ""
   },
   "AGENTS.md": {
-    "mtime": 1788554756.639176,
-    "seen": 1788558180.2202969,
-    "ast_hash": "4697e47df5865f12bf39ce6b431283c3",
+    "mtime": 1788582879.8852985,
+    "seen": 1788584783.706839,
+    "ast_hash": "97f467169b64aecb8692bd54249eddd0",
     "semantic_hash": ""
   },
   "src/app/core/services/theme.service.ts": {
@@ -549,6 +549,24 @@
     "mtime": 1788550167.107818,
     "seen": 1788558180.2203012,
     "ast_hash": "3600cf95244fc7a28f7b9e2c692c7c60",
+    "semantic_hash": ""
+  },
+  ".claude/agents/ux-agent.md": {
+    "mtime": 1788582862.817617,
+    "seen": 1788584783.7068238,
+    "ast_hash": "a9ada31c8d5557a67727f67cfa9f32d2",
+    "semantic_hash": ""
+  },
+  ".claude/scripts/issues.sh": {
+    "mtime": 1788586814.3007076,
+    "seen": 1788587045.210475,
+    "ast_hash": "36747b8d8378100a21ae1d3c0b3c54a1",
+    "semantic_hash": ""
+  },
+  ".claude/skills/issues/SKILL.md": {
+    "mtime": 1788586839.2243502,
+    "seen": 1788587045.210546,
+    "ast_hash": "18dcbf57f05764f814a8fb12dc5797c0",
     "semantic_hash": ""
   }
 }

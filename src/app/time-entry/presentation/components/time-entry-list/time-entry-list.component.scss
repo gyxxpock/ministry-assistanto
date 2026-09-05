@@ -11,7 +11,7 @@
 // 1. GRUPO DE ACCIONES SUPERIORES
 .top-actions-group {
   position: fixed;
-  top: t.$space-6;
+  top: calc(t.$space-6 + env(safe-area-inset-top, 0px));
   right: t.$space-6;
   z-index: t.$z-nav;
   display: flex;
@@ -29,8 +29,8 @@
   box-shadow: var(--glass-shadow-sm);
 
   .glass-icon-btn {
-    width: 36px !important;
-    height: 36px !important;
+    width: 44px !important;
+    height: 44px !important;
     color: var(--mat-sys-on-surface-variant);
 
     mat-icon {
@@ -42,6 +42,11 @@
     &:hover {
       color: var(--mat-sys-primary);
       background: var(--glass-bg-light);
+    }
+
+    &:active {
+      transform: scale(0.90);
+      transition-duration: t.$dur-fast;
     }
   }
 
@@ -75,6 +80,11 @@
     &:hover {
       transform: scale(1.1) rotate(90deg);
       background: color-mix(in srgb, var(--mat-sys-primary-container) 60%, transparent) !important;
+    }
+
+    &:active {
+      transform: scale(0.92);
+      transition-duration: t.$dur-fast;
     }
 
     mat-icon { margin: 0 !important; }
@@ -147,6 +157,11 @@
     color: var(--mat-sys-primary) !important;
     transform: scale(1.2);
   }
+
+  &:active {
+    transform: scale(0.94);
+    transition-duration: t.$dur-fast;
+  }
 }
 
 .v-divider {
@@ -170,6 +185,11 @@
   &:hover:not(:disabled) {
     background: var(--mat-sys-primary) !important;
     color: var(--mat-sys-on-primary) !important;
+  }
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+    transition-duration: t.$dur-fast;
   }
 
   &:disabled {
@@ -312,8 +332,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 32px;
-  height: 32px;
+  width: 44px;
+  height: 44px;
   color: var(--mat-sys-on-surface);
   @include m.transition-fast();
   backdrop-filter: blur(t.$blur-sm);
@@ -351,7 +371,7 @@
 // 9. RESPONSIVE
 @media (max-width: 600px) {
   .top-actions-group {
-    top: t.$space-4;
+    top: calc(t.$space-4 + env(safe-area-inset-top, 0px));
     right: t.$space-4;
     gap: t.$space-3;
   }
@@ -378,10 +398,38 @@
   .stepper-container { gap: t.$space-2; }
 
   .step-btn {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 10px;
   }
 
   .glass-tile.tertiary .tile-value { font-size: 1.8rem; }
+}
+
+// 10. PANEL DE CONFIRMACIÓN DE RESTAURAR
+.restore-confirm-inline {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  padding: t.$space-2 t.$space-3;
+  border-radius: t.$radius-lg;
+  background: color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--mat-sys-error) 25%, transparent);
+  backdrop-filter: blur(t.$blur-sm);
+  color: var(--mat-sys-error);
+  animation: slideUp t.$dur-normal t.$ease-spring;
+  flex-wrap: wrap;
+  max-width: 320px;
+
+  .restore-confirm-text {
+    font-size: 12px;
+    font-weight: 500;
+    flex: 1;
+    min-width: 120px;
+  }
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(6px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
 }
