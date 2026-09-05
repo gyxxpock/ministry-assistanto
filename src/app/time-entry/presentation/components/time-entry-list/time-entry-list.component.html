@@ -17,12 +17,27 @@
 
       <div class="vertical-divider"></div>
 
-      <!-- Restore (Importar) -->
-      <button mat-icon-button class="glass-icon-btn" (click)="fileInput.click()" matTooltip="Restaurar desde archivo"
+      <!-- Restore (Importar) — confirmación de dos pasos -->
+      <button *ngIf="!showRestoreConfirm"
+        mat-icon-button class="glass-icon-btn"
+        (click)="onRestoreRequest()"
+        matTooltip="Restaurar desde archivo"
         matTooltipPosition="above">
         <mat-icon>settings_backup_restore</mat-icon>
       </button>
       <input #fileInput type="file" (change)="handleImport($event)" accept=".json" hidden>
+    </div>
+
+    <!-- Panel de confirmación inline — glass tint de error, animación slideUp -->
+    <div *ngIf="showRestoreConfirm" class="restore-confirm-inline">
+      <mat-icon>warning</mat-icon>
+      <span class="restore-confirm-text">{{ 'timeEntry.restoreConfirmMessage' | translate }}</span>
+      <button mat-icon-button class="glass-icon-btn" (click)="fileInput.click()">
+        <mat-icon>check</mat-icon>
+      </button>
+      <button mat-icon-button class="glass-icon-btn" (click)="onRestoreCancel()">
+        <mat-icon>close</mat-icon>
+      </button>
     </div>
 
     <!-- 2. CÍRCULO (Add) -->

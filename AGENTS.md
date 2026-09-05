@@ -40,6 +40,7 @@ TestingAgent: escribe specs solo para el facade, sin tocar las otras capas
 | [DataAgent](.claude/agents/data-agent.md) | `data-agent.md` | `src/app/**/data/` |
 | [FacadeAgent](.claude/agents/facade-agent.md) | `facade-agent.md` | `src/app/**/facade/` |
 | [UIAgent](.claude/agents/ui-agent.md) | `ui-agent.md` | `src/app/**/presentation/` |
+| [UXAgent](.claude/agents/ux-agent.md) | `ux-agent.md` | `src/app/**/presentation/` (UX + iOS) |
 | [ArchitectureGuardian](.claude/agents/architecture-guardian.md) | `architecture-guardian.md` | Transversal |
 | [SignalsAgent](.claude/agents/signals-agent.md) | `signals-agent.md` | Transversal (estado) |
 | [TestingAgent](.claude/agents/testing-agent.md) | `testing-agent.md` | Transversal (specs) |

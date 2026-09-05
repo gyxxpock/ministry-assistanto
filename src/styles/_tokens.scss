@@ -76,8 +76,10 @@ $font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text'
   --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.20), inset 0 1px 0 var(--glass-specular);
 
   // Tints — color primario/terciario filtrando a la superficie glass
-  --glass-tint-primary:   color-mix(in srgb, var(--mat-sys-primary)  8%, transparent);
-  --glass-tint-tertiary:  color-mix(in srgb, var(--mat-sys-tertiary) 8%, transparent);
+  --glass-tint-primary:        color-mix(in srgb, var(--mat-sys-primary)  8%, transparent);
+  --glass-tint-tertiary:       color-mix(in srgb, var(--mat-sys-tertiary) 8%, transparent);
+  --glass-tint-error:          color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
+  --glass-tint-error-border:   color-mix(in srgb, var(--mat-sys-error) 25%, transparent);
 
   // Orbs del fondo animado
   --orb-opacity: 0.55;

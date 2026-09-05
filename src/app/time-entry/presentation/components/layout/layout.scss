@@ -27,7 +27,7 @@
   padding: clamp(40px, 10vh, 80px) t.$space-6 t.$space-10;
   display: flex;
   justify-content: center;
-  @include m.transition-std(all, t.$dur-slower);
+  @include m.transition-std(opacity transform backdrop-filter, t.$dur-slower);
 
   h1 {
     font-family: t.$font-system;
@@ -45,7 +45,7 @@
 // 2. NAV FLOTANTE
 .floating-nav {
   position: fixed;
-  bottom: t.$space-8;
+  bottom: calc(t.$space-8 + env(safe-area-inset-bottom, 0px));
   left: 50%;
   transform: translateX(-50%);
   @include m.transition-spring();
@@ -77,7 +77,7 @@
     align-items: center;
     justify-content: center;
     color: var(--mat-sys-on-surface-variant);
-    @include m.transition-std(all, t.$dur-normal);
+    @include m.transition-std(background color transform opacity, t.$dur-normal);
     background: transparent;
     border: none;
 
