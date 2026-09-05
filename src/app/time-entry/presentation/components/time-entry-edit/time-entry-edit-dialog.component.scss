@@ -3,9 +3,16 @@
 
 .dialog-actions {
   display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: t.$space-3 t.$space-4;
+  gap: t.$space-2;
+}
+
+.dialog-actions__row {
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: t.$space-3 t.$space-4;
   gap: t.$space-3;
 }
 
@@ -21,12 +28,11 @@
   align-items: center;
 }
 
-// Panel de confirmación de borrado — glass con tint de error
+// Panel de confirmación de borrado — glass con tint de error, en footer sticky
 .delete-confirm-panel {
   display: flex;
   align-items: center;
   gap: t.$space-3;
-  margin-top: t.$space-3;
   padding: t.$space-3 t.$space-4;
   border-radius: t.$radius-lg;
   background: color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
