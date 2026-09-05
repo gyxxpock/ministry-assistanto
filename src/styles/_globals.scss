@@ -117,7 +117,8 @@ html[data-theme='dark'] {
 
 .fab-container {
   animation: slideUp t.$dur-slower t.$ease-spring;
-  transition: all t.$dur-slow t.$ease-standard;
+  transition: transform t.$dur-slow t.$ease-standard,
+              opacity   t.$dur-slow t.$ease-standard;
 }
 
 .nav-is-hidden .fab-container {
@@ -144,11 +145,11 @@ html[data-theme='dark'] {
 mat-dialog-content {
   padding-top: t.$space-2 !important;
   min-width: min(400px, 90vw);
-  max-height: 70vh;
+  max-height: calc(70vh - env(safe-area-inset-bottom, 0px));
 }
 
 mat-dialog-actions {
-  padding: t.$space-4 t.$space-6 !important;
+  padding: t.$space-4 t.$space-6;
   border-top: 1px solid var(--glass-border-light);
   background: var(--glass-bg-light);
   backdrop-filter: blur(t.$blur-sm);
