@@ -556,5 +556,17 @@
     "seen": 1788584783.7068238,
     "ast_hash": "a9ada31c8d5557a67727f67cfa9f32d2",
     "semantic_hash": ""
+  },
+  ".claude/scripts/issues.sh": {
+    "mtime": 1788586814.3007076,
+    "seen": 1788587045.210475,
+    "ast_hash": "36747b8d8378100a21ae1d3c0b3c54a1",
+    "semantic_hash": ""
+  },
+  ".claude/skills/issues/SKILL.md": {
+    "mtime": 1788586839.2243502,
+    "seen": 1788587045.210546,
+    "ast_hash": "18dcbf57f05764f814a8fb12dc5797c0",
+    "semantic_hash": ""
   }
 }
