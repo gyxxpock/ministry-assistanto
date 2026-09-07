@@ -100,12 +100,24 @@
   }
 }
 
-// 5. PAGINADOR DE MES
+// 5. STICKY HEADER — selector de mes + dashboard de totales siempre visibles
+// top = space-6(24) + FAB(56) + space-2(8) + safe-area = 88px + safe-area
+.sticky-header {
+  position: sticky;
+  top: calc(#{t.$space-6 + 56px + t.$space-2} + env(safe-area-inset-top, 0px));
+  z-index: t.$z-nav - 1;
+  padding-bottom: t.$space-8;
+  background: color-mix(in srgb, var(--mat-sys-surface) 55%, transparent);
+  backdrop-filter: blur(t.$blur-xl) saturate(180%);
+  -webkit-backdrop-filter: blur(t.$blur-xl) saturate(180%);
+}
+
+// 5b. PAGINADOR DE MES
 .month-selector-container {
   display: flex;
   justify-content: center;
   margin-bottom: 2.5rem;
-  padding-top: t.$space-5;
+  padding-top: t.$space-4;
 }
 
 .glass-paginator {
@@ -203,8 +215,8 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: t.$space-5;
-  margin-bottom: 3rem;
   perspective: 1000px;
+  // margin-bottom gestionado por .sticky-header padding-bottom
 }
 
 .glass-tile {
@@ -376,6 +388,12 @@
     gap: t.$space-3;
   }
 
+  // En móvil: top = space-4(16) + FAB(48) + space-2(8) = 72px + safe-area
+  .sticky-header {
+    top: calc(#{t.$space-4 + 48px + t.$space-2} + env(safe-area-inset-top, 0px));
+    padding-bottom: t.$space-6;
+  }
+
   .primary-action-wrapper .glass-fab-circle {
     width: 48px !important;
     height: 48px !important;
@@ -406,7 +424,78 @@
   .glass-tile.tertiary .tile-value { font-size: 1.8rem; }
 }
 
-// 10. PANEL DE CONFIRMACIÓN DE RESTAURAR
+// 10. TILES COMPACTOS — iPhone SE y pantallas ≤430px
+// Fuerza dos columnas para reducir altura total de ~164px → ~56px
+@media (max-width: 430px) {
+  .sticky-header {
+    padding-bottom: t.$space-4;
+  }
+
+  .month-selector-container {
+    margin-bottom: t.$space-4;
+    padding-top: t.$space-3;
+  }
+
+  .month-display {
+    min-width: 110px;
+  }
+
+  .totals-dashboard {
+    grid-template-columns: 1fr 1fr;
+    gap: t.$space-3;
+  }
+
+  .glass-tile {
+    padding: t.$space-2 t.$space-3;
+    gap: t.$space-2;
+  }
+
+  .tile-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: t.$radius-sm;
+
+    mat-icon {
+      font-size: 18px;
+      width: 18px;
+      height: 18px;
+    }
+  }
+
+  .tile-info {
+    .tile-label {
+      font-size: 0.62rem;
+      letter-spacing: 0.8px;
+      margin-bottom: 0;
+    }
+
+    .tile-value { font-size: 1.4rem; }
+  }
+
+  .stepper-container {
+    gap: t.$space-1;
+    margin-top: 1px;
+  }
+
+  .step-btn {
+    width: 28px;
+    height: 28px;
+    border-radius: t.$radius-sm;
+
+    mat-icon {
+      font-size: 14px;
+      width: 14px;
+      height: 14px;
+    }
+  }
+
+  .glass-tile.tertiary .tile-value {
+    font-size: 1.4rem;
+    min-width: 20px;
+  }
+}
+
+// 11. PANEL DE CONFIRMACIÓN DE RESTAURAR
 .restore-confirm-inline {
   display: flex;
   align-items: center;
