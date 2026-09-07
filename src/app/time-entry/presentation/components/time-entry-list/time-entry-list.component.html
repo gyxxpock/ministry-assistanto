@@ -50,33 +50,33 @@
   </div>
 
 
-  <div class="month-selector-container">
-    <div class="glass-paginator">
-      <button mat-icon-button (click)="prevMonth()" class="nav-btn">
-        <mat-icon>chevron_left</mat-icon>
-      </button>
+  <header class="sticky-header">
 
-      <div class="month-display">
-        <span class="month-text">{{ currentDate() | date:'MMMM' }}</span>
-        <span class="year-text">{{ currentDate() | date:'yyyy' }}</span>
+    <div class="month-selector-container">
+      <div class="glass-paginator">
+        <button mat-icon-button (click)="prevMonth()" class="nav-btn">
+          <mat-icon>chevron_left</mat-icon>
+        </button>
+
+        <div class="month-display">
+          <span class="month-text">{{ currentDate() | date:'MMMM' }}</span>
+          <span class="year-text">{{ currentDate() | date:'yyyy' }}</span>
+        </div>
+
+        <button mat-icon-button (click)="nextMonth()" class="nav-btn">
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+
+        <div class="v-divider"></div>
+
+        <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()" class="today-pill-btn">
+          {{ 'common.buttons.today' | translate }}
+        </button>
       </div>
-
-      <button mat-icon-button (click)="nextMonth()" class="nav-btn">
-        <mat-icon>chevron_right</mat-icon>
-      </button>
-
-      <div class="v-divider"></div>
-
-      <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()" class="today-pill-btn">
-        {{ 'common.buttons.today' | translate }}
-      </button>
     </div>
-  </div>
 
-
-
-  <!-- Totals Summary Card -->
-  <section class="totals-dashboard">
+    <!-- Totals Summary Card -->
+    <section class="totals-dashboard">
     <!-- Tarjeta de Horas -->
     <div class="glass-tile primary">
       <div class="tile-icon">
@@ -116,6 +116,7 @@
     </div>
   </section>
 
+  </header>
 
   <!-- List of Days -->
   <section class="days">
