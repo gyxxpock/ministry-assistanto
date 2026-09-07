@@ -34,15 +34,30 @@
   padding: t.$space-1;
 }
 
+// Wrapper con scroll horizontal para pantallas pequeñas.
+// El grid mantiene un ancho mínimo de 308px (7 × 44px) para garantizar
+// celdas funcionales; si el viewport es menor, se activa el scroll.
+.calendar-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+    border-radius: t.$radius-sm;
+  }
+}
+
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(44px, 1fr));
+  min-width: #{7 * 44px}; // 308px — mínimo 44px por columna (touch target iOS)
   gap: 2px;
 }
 
 .calendar-day {
   aspect-ratio: 1 / 1.2;
-  min-height: 60px;
+  min-height: 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -99,8 +114,15 @@
   font-weight: 600;
   color: var(--mat-sys-primary);
   margin-top: 2px;
+  min-height: 1em; // reserva espacio para que el día siempre quede en la misma posición
 
   @media (max-width: 400px) { font-size: 8px; }
+}
+
+// Celdas sin entradas: indicadores invisibles pero ocupan espacio (evita que el número del día se mueva)
+.calendar-day:not(.has-entries) {
+  .dot-indicator,
+  .hours-label { visibility: hidden; }
 }
 
 .weekday-header {
