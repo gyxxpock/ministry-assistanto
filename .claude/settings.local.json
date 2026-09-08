@@ -26,7 +26,8 @@
       "Bash(npm install *)",
       "Bash(ng build *)",
       "Bash(pkill -f \"ng serve\")",
-      "Bash(ng serve *)"
+      "Bash(ng serve *)",
+      "Bash(curl -s http://localhost:4201/)"
     ]
   },
   "theme": "auto",

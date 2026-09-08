@@ -81,6 +81,42 @@ export class LayoutComponent {
 }
 ```
 
+## Module-Level Navigation Shell (Lesson from 2026-09-08)
+
+**Pattern**: TimeEntryModule owns the Layout shell. New features that need the floating navigation
+should be lazy-loaded AS CHILDREN of TimeEntryModule, not as sibling routes at app level.
+
+### Why this matters
+- **Layout** contains stateful scroll-aware UI (header opacity, nav visibility, banners).
+- Layout depends on **TimeEntryFacade**, **TimeEntryExporter**, **BackupReminderService** → module-scoped.
+- A sibling route (e.g., `/goals` at app level) cannot reach TimeEntryModule's Layout.
+- Result: New feature renders without navigation, breaking UX.
+
+### Correct structure
+```
+AppRoutingModule
+  └─ /time-entry → TimeEntryModule (lazy)
+     └─ Layout shell (component) with floating nav
+        ├─ /list → TimeEntryListComponent
+        ├─ /calendar → TimeEntryCalendarComponent
+        ├─ /goals → GoalsModule (lazy child, INSIDE time-entry)
+        └─ /settings → SettingsComponent
+```
+
+### When adding a new feature with shared navigation
+1. **Add a child route** in `time-entry.module.ts`:
+   ```typescript
+   { path: 'goals', loadChildren: () => import('../../goals/...').then(m => m.GoalsModule) }
+   ```
+2. **Do NOT add to app-routing-module.ts** as a sibling route.
+3. **Add i18n entry** for the nav button label.
+4. **Add button to layout.html** with `routerLink="/time-entry/goals"`.
+
+### Red flags
+- A new module declared as sibling to `time-entry` in app-routing → Wrong architecture.
+- A new feature's route doesn't include `/time-entry/` prefix → Outside the Layout shell.
+- A feature has a floating nav that's different from time-entry's → Duplicate UI, code smell.
+
 ## Intervention rules
 
 - If you detect a violation in a PR or diff, flag it before continuing with the task.
@@ -89,3 +125,5 @@ export class LayoutComponent {
   do not block delivery if there is no time.
 - God Nodes (`TimeEntryFacade`, `TimeEntry`) must not grow without justification:
   ask that extracting responsibilities be evaluated before adding more edges.
+- **NEW**: Routing violations (sibling routes that should be children of Layout shell)
+  → catch early, before implementation spreads across multiple files.
