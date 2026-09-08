@@ -267,19 +267,11 @@ export class GoalConfigComponent {
     this.dialogRef.close(undefined);
   }
 
-  /**
-   * Computed property to determine if the form is in auxiliary mode.
-   */
-  readonly isAuxiliaryMode = computed(
-    () => this.configForm.get('type')?.value === 'auxiliary',
-  );
+  get isAuxiliaryMode(): boolean {
+    return this.configForm.get('type')?.value === 'auxiliary';
+  }
 
-  /**
-   * Computed property to determine if month range fields should be visible.
-   */
-  readonly showMonthRange = computed(
-    () =>
-      this.isAuxiliaryMode() &&
-      this.configForm.get('permanent')?.value === false,
-  );
+  get showMonthRange(): boolean {
+    return this.isAuxiliaryMode && this.configForm.get('permanent')?.value === false;
+  }
 }

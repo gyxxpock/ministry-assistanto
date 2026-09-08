@@ -22,7 +22,7 @@
     </mat-form-field>
 
     <!-- Regular Goal Section -->
-    <div *ngIf="!isAuxiliaryMode()" class="section-regular">
+    <div *ngIf="!isAuxiliaryMode" class="section-regular">
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>{{ 'goals.config.service-year' | translate }}</mat-label>
         <mat-select formControlName="serviceYear">
@@ -45,7 +45,7 @@
     </div>
 
     <!-- Auxiliary Goal Section -->
-    <div *ngIf="isAuxiliaryMode()" class="section-auxiliary">
+    <div *ngIf="isAuxiliaryMode" class="section-auxiliary">
       <!-- Monthly Target Selection (Radio Buttons) -->
       <div class="control-group">
         <label class="control-label">
@@ -75,7 +75,7 @@
       </div>
 
       <!-- Month Range (Conditional) -->
-      <div *ngIf="showMonthRange()" class="month-range">
+      <div *ngIf="showMonthRange" class="month-range">
         <mat-form-field appearance="outline" class="month-field">
           <mat-label>{{ 'goals.config.start-month' | translate }}</mat-label>
           <mat-select formControlName="startMonth">
@@ -125,7 +125,7 @@
         *ngIf="
           configForm.errors?.['monthRangeRequired'] &&
           configForm.touched &&
-          showMonthRange()
+          showMonthRange
         "
         class="form-error"
       >
