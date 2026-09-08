@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1788888646.2265673,
-    "seen": 1788888707.46435,
-    "ast_hash": "06be948d77648f245a3d492e67bb403e",
+    "mtime": 1788888952.0233295,
+    "seen": 1788889193.2428422,
+    "ast_hash": "e19fbcf22831bbaeba0018d47fc885a7",
     "semantic_hash": ""
   },
   ".github/scripts/verify-pr.js": {
@@ -900,39 +900,39 @@
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-config/goal-config.component.ts": {
-    "mtime": 1788887939.5091598,
-    "seen": 1788888085.3305101,
+    "mtime": 1788889023.242957,
+    "seen": 1788889193.242887,
     "ast_hash": "8915de992b3be45e468243237b0bacef",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-progress-visual/goal-progress-visual.component.spec.ts": {
-    "mtime": 1788887861.5389974,
-    "seen": 1788887888.243304,
+    "mtime": 1788889023.2442207,
+    "seen": 1788889193.242888,
     "ast_hash": "1e13a532e781eeea28c9aa83afe6a6b6",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-progress-visual/goal-progress-visual.component.ts": {
-    "mtime": 1788887908.2783217,
-    "seen": 1788888085.3305118,
-    "ast_hash": "f4f501212abfa9e47dfefdaa5d644214",
+    "mtime": 1788889149.1169329,
+    "seen": 1788889193.242889,
+    "ast_hash": "ce3788b343ca21b942c6e1cc148be0a2",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-status-badge/goal-status-badge.component.ts": {
-    "mtime": 1788887846.8811116,
-    "seen": 1788887888.243305,
-    "ast_hash": "2b4bc8e248e212b3344d9d9f4662cebf",
+    "mtime": 1788889152.381477,
+    "seen": 1788889193.242891,
+    "ast_hash": "292f7ec8ba62c30bdda257d5e53c135c",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goals/goals.component.spec.ts": {
-    "mtime": 1788888366.151076,
-    "seen": 1788888707.4643981,
+    "mtime": 1788889023.2478852,
+    "seen": 1788889193.242891,
     "ast_hash": "5af881d2ca706799778a220559d9b746",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goals/goals.component.ts": {
-    "mtime": 1788887999.690627,
-    "seen": 1788888085.330515,
-    "ast_hash": "26c32f93e2d25ae992a8d83af0d2096b",
+    "mtime": 1788889135.0791516,
+    "seen": 1788889193.242892,
+    "ast_hash": "87a17e0ef4f1c74704165b25297807ed",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/goals.module.ts": {
@@ -948,32 +948,32 @@
     "semantic_hash": ""
   },
   "src/app/shared/presentation/shared.module.ts": {
-    "mtime": 1788888553.5386596,
-    "seen": 1788888707.4644082,
-    "ast_hash": "dac6d6b6e76fee55cd08060c8d908bc1",
+    "mtime": 1788888834.8674316,
+    "seen": 1788889193.2428968,
+    "ast_hash": "bfbbb7742d86a1f975b18c8b79d37621",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-config/goal-config.component.html": {
-    "mtime": 1788887951.7085905,
-    "seen": 1788888085.330593,
+    "mtime": 1788889023.241909,
+    "seen": 1788889193.242974,
     "ast_hash": "40906fec0923ef4ae37c2bce75dce58d",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-progress-visual/goal-progress-visual.component.html": {
-    "mtime": 1788887865.1299212,
-    "seen": 1788887888.2433789,
+    "mtime": 1788889023.243386,
+    "seen": 1788889193.242975,
     "ast_hash": "6ad3a8b05af67f3292b17cbe71e73b70",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-status-badge/goal-status-badge.component.html": {
-    "mtime": 1788887849.2509053,
-    "seen": 1788887888.24338,
+    "mtime": 1788889023.2450821,
+    "seen": 1788889193.242976,
     "ast_hash": "df290c4e7835dfb81857686db8aefb46",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goals/goals.component.html": {
-    "mtime": 1788887881.5151598,
-    "seen": 1788887888.24338,
+    "mtime": 1788889023.247052,
+    "seen": 1788889193.242976,
     "ast_hash": "bca39304d94cee128352f8db8a74793e",
     "semantic_hash": ""
   },
@@ -1008,14 +1008,14 @@
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-config/goal-config.component.spec.ts": {
-    "mtime": 1788888345.358627,
-    "seen": 1788888707.464393,
+    "mtime": 1788889023.242515,
+    "seen": 1788889193.2428858,
     "ast_hash": "5e3a822576fa803bc6ae840d7353fd62",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-status-badge/goal-status-badge.component.spec.ts": {
-    "mtime": 1788888662.6093392,
-    "seen": 1788888707.464396,
+    "mtime": 1788889023.245999,
+    "seen": 1788889193.24289,
     "ast_hash": "fa5077dfb0e530f06675fbee5e79e5f4",
     "semantic_hash": ""
   },
