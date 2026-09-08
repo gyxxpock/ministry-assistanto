@@ -1,0 +1,43 @@
+<div class="goals-container">
+  <mat-toolbar color="primary" class="goals-toolbar">
+    <h1>{{ 'goals.title' | translate }}</h1>
+    <span class="spacer"></span>
+    <button
+      mat-icon-button
+      (click)="openGoalConfig()"
+      [matTooltip]="'goals.actions.configure' | translate"
+      class="action-button"
+    >
+      <mat-icon>{{ facade.activeGoal() ? 'edit' : 'add' }}</mat-icon>
+    </button>
+  </mat-toolbar>
+
+  <div class="goals-content">
+    <!-- Display active goal progress -->
+    <div *ngIf="facade.activeGoal() as goal" class="goal-view">
+      <app-goal-progress-visual
+        [goalProgress]="facade.goalProgress()"
+        [goalConfig]="goal.config"
+      ></app-goal-progress-visual>
+
+      <button
+        mat-raised-button
+        color="warn"
+        (click)="clearActiveGoal()"
+        class="clear-button"
+      >
+        {{ 'goals.actions.clear' | translate }}
+      </button>
+    </div>
+
+    <!-- Empty state if no goal -->
+    <div *ngIf="!facade.activeGoal()" class="empty-state">
+      <mat-icon class="empty-icon">flag_circle</mat-icon>
+      <h2>{{ 'goals.empty-state.title' | translate }}</h2>
+      <p>{{ 'goals.empty-state.description' | translate }}</p>
+      <button mat-raised-button color="primary" (click)="openGoalConfig()">
+        {{ 'goals.empty-state.cta' | translate }}
+      </button>
+    </div>
+  </div>
+</div>
