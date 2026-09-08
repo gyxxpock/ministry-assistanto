@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { OptionPillGroupComponent, PillOption } from './option-pill-group.component';
 
-@Pipe({ name: 'translate' })
+@Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
   transform(value: string): string { return value; }
 }
@@ -18,7 +18,8 @@ describe('OptionPillGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OptionPillGroupComponent, TranslateStub],
+      declarations: [OptionPillGroupComponent],
+      imports: [TranslateStub],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

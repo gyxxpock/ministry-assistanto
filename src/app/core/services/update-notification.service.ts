@@ -1,4 +1,5 @@
 import { computed, Injectable, inject, signal } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
 import { filter, take } from 'rxjs/operators';
@@ -33,7 +34,8 @@ export class UpdateNotificationService {
     // Result is written to a Signal, following the loadMonth pattern.
     this.swUpdate.versionUpdates.pipe(
       filter((e): e is VersionReadyEvent => e.type === 'VERSION_READY'),
-      take(1)
+      take(1),
+      takeUntilDestroyed(),
     ).subscribe(() => {
       this._available.set(true);
       this.fetchChangelog();

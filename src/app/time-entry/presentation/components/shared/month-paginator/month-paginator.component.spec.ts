@@ -2,12 +2,12 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { MonthPaginatorComponent } from './month-paginator.component';
 
-@Pipe({ name: 'i18nDate' })
+@Pipe({ name: 'i18nDate', standalone: true })
 class I18nDateStub implements PipeTransform {
   transform(): string { return ''; }
 }
 
-@Pipe({ name: 'translate' })
+@Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
   transform(value: string): string { return value; }
 }
@@ -18,7 +18,8 @@ describe('MonthPaginatorComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MonthPaginatorComponent, I18nDateStub, TranslateStub],
+      declarations: [MonthPaginatorComponent],
+      imports: [I18nDateStub, TranslateStub],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

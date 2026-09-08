@@ -41,7 +41,9 @@
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src"]
+              "includePaths": [
+                "src"
+              ]
             }
           },
           "configurations": {
@@ -88,8 +90,6 @@
           "builder": "@angular/build:karma",
           "options": {
             "codeCoverage": true,
-            "karmaConfig": "karma.conf.js",
-            "coverageReporters": ["html", "json-summary", "text-summary"],
             "polyfills": [
               "zone.js",
               "zone.js/testing"
@@ -106,7 +106,9 @@
               "src/styles.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src"]
+              "includePaths": [
+                "src"
+              ]
             }
           }
         }

@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { UpdateBannerComponent } from './update-banner.component';
 import { ChangeEntry } from '../../../../core/services/update-notification.service';
 
@@ -14,6 +15,7 @@ describe('UpdateBannerComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [UpdateBannerComponent],
+      imports: [TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

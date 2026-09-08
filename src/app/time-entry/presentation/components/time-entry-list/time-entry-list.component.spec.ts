@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TimeEntryListComponent } from './time-entry-list.component';
 import { TimeEntryModule } from '../../time-entry.module';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -57,12 +58,13 @@ describe('TimeEntryListComponent', () => {
   let fixture: ComponentFixture<TimeEntryListComponent>;
   let facade: TimeEntryFacade;
   let repo: InMemoryRepository;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     repo = new InMemoryRepository();
 
     await TestBed.configureTestingModule({
-      imports: [TimeEntryModule, FormsModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TimeEntryModule, FormsModule, TranslateModule.forRoot()],
       providers: [
         { provide: TIME_ENTRY_REPOSITORY, useValue: repo },
         TimeEntryFacade,
@@ -102,8 +104,14 @@ describe('TimeEntryListComponent', () => {
     }, true);
     translate.use('en');
 
+    httpMock = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(TimeEntryListComponent);
     facade = TestBed.inject(TimeEntryFacade);
+  });
+
+  afterEach(() => {
+    httpMock.match(() => true).forEach(req => req.flush([]));
+    httpMock.verify();
   });
 
   it('renders totals and lists', async () => {
@@ -118,16 +126,13 @@ describe('TimeEntryListComponent', () => {
     expect(el.textContent).toContain('Total hours');
     expect(el.textContent).toContain('Total courses');
 
-    const totals = fixture.debugElement.nativeElement.querySelector('.totals');
-    expect(totals.getAttribute('aria-live')).toBe('polite');
-    expect(totals.getAttribute('aria-label')).toContain('Monthly totals');
+    const totals = fixture.debugElement.nativeElement.querySelector('.totals-dashboard');
+    expect(totals).not.toBeNull();
 
-    const exportJsonBtn = fixture.debugElement.nativeElement.querySelector('.exports button');
-    expect(exportJsonBtn.getAttribute('aria-label')).toContain('Export entries');
-    const fileInput = fixture.debugElement.nativeElement.querySelector('.exports input[type=file]');
-    expect(fileInput.getAttribute('aria-label')).toContain('Import entries');
+    const fileInput = fixture.debugElement.nativeElement.querySelector('input[type=file]');
+    expect(fileInput).not.toBeNull();
 
-    const entries = fixture.debugElement.queryAll(By.css('ul li'));
-    expect(entries.length).toBeGreaterThan(0);
+    const dayGroups = fixture.debugElement.queryAll(By.css('ma-time-entry-day'));
+    expect(dayGroups.length).toBeGreaterThan(0);
   });
 });

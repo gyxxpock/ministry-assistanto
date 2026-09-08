@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { TimeEntryCalendarComponent } from './time-entry-calendar';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
@@ -38,6 +39,7 @@ describe('TimeEntryCalendarComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TimeEntryCalendarComponent],
+      imports: [TranslateModule.forRoot()],
       providers: [
         { provide: TimeEntryFacade, useValue: mockFacade },
         { provide: MatDialog,       useValue: dialogSpy },

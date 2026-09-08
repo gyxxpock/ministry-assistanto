@@ -51,8 +51,8 @@
   "49": "InMemoryRepository",
   "50": "MonthPaginatorComponent",
   "51": "OptionPillGroupComponent",
-  "52": "UpdateNotificationService",
-  "53": "time-entry.facade.ts",
+  "52": "update-notification.service.spec.ts",
+  "53": "TimeEntryVM",
   "54": "Component",
   "55": "development",
   "56": "scripts",
@@ -62,6 +62,8 @@
   "60": "NgModule",
   "61": "production",
   "62": "angular.json",
-  "63": "architect",
-  "64": "ministry-assistanto"
+  "63": "ministry-assistanto",
+  "64": "TimeEntryCalendarComponent",
+  "65": "check-coverage.sh",
+  "66": "karma.conf.js"
 }

@@ -179,6 +179,19 @@
       "source_location": "L9"
     },
     {
+      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice",
+      "label": "FileUtilService",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "fileutilservice",
+      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
+      "source_location": "L4"
+    },
+    {
       "id": "src_app_time_entry_presentation_material_material_module_materialmodule",
       "label": "MaterialModule",
       "_callable": true,
@@ -348,17 +361,17 @@
       "source_location": "L8"
     },
     {
-      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice",
-      "label": "FileUtilService",
+      "id": "src_app_core_services_update_notification_service_updatenotificationservice",
+      "label": "UpdateNotificationService",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 46,
       "community_name": "layout.ts",
       "file_type": "code",
-      "norm_label": "fileutilservice",
-      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
-      "source_location": "L4"
+      "norm_label": "updatenotificationservice",
+      "source_file": "src/app/core/services/update-notification.service.ts",
+      "source_location": "L17"
     },
     {
       "id": "src_app_time_entry_presentation_components_layout_layout_layout",
@@ -465,26 +478,13 @@
       "source_location": "L5"
     },
     {
-      "id": "src_app_core_services_update_notification_service_updatenotificationservice",
-      "label": "UpdateNotificationService",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": "updatenotificationservice",
-      "source_file": "src/app/core/services/update-notification.service.ts",
-      "source_location": "L17"
-    },
-    {
       "id": "src_app_time_entry_domain_models_timeentrytype",
       "label": "TimeEntryType",
       "_callable": true,
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentrytype",
       "source_file": "src/app/time-entry/domain/models.ts",
@@ -497,24 +497,11 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "calendarday",
       "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
       "source_location": "L8"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent",
-      "label": "TimeEntryCalendarComponent",
-      "_callable": true,
-      "_callable_class": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "timeentrycalendarcomponent",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L22"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_timeentrydaycomponent",
@@ -523,7 +510,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentrydaycomponent",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts",
@@ -536,7 +523,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentryeditdialogcomponent",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -549,7 +536,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentryformcomponent",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -562,7 +549,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "createtimeentryvm",
       "source_file": "src/app/time-entry/presentation/models/time-entry.vm.ts",
@@ -575,7 +562,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentrytypevm",
       "source_file": "src/app/time-entry/presentation/models/time-entry.vm.ts",
@@ -588,7 +575,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "timeentryvm",
       "source_file": "src/app/time-entry/presentation/models/time-entry.vm.ts",
@@ -601,7 +588,7 @@
       "_callable_class": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "updatetimeentryvm",
       "source_file": "src/app/time-entry/presentation/models/time-entry.vm.ts",
@@ -632,6 +619,19 @@
       "norm_label": "durationwheelpickercomponent",
       "source_file": "src/app/time-entry/presentation/components/duration-wheel-picker/duration-wheel-picker.component.ts",
       "source_location": "L34"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent",
+      "label": "TimeEntryCalendarComponent",
+      "_callable": true,
+      "_callable_class": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": "timeentrycalendarcomponent",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L22"
     },
     {
       "id": "src_app_core_services_update_notification_service_changeentry",
@@ -987,18 +987,6 @@
       "source_location": "L15"
     },
     {
-      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_setcoursecount",
-      "label": ".setCourseCount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".setcoursecount()",
-      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
-      "source_location": "L19"
-    },
-    {
       "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_updateentry",
       "label": ".updateEntry()",
       "_callable": true,
@@ -1263,18 +1251,6 @@
       "source_location": "L113"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatemanualcoursecount",
-      "label": ".updateManualCourseCount()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".updatemanualcoursecount()",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L156"
-    },
-    {
       "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatevisit",
       "label": ".updateVisit()",
       "_callable": true,
@@ -1299,42 +1275,6 @@
       "source_location": "L53"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent_onsave",
-      "label": ".onSave()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".onsave()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
-      "source_location": "L32"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_decrementcourse",
-      "label": ".decrementCourse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".decrementcourse()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L174"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_incrementcourse",
-      "label": ".incrementCourse()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 0,
-      "community_name": "CourseVisit",
-      "file_type": "code",
-      "norm_label": ".incrementcourse()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L169"
-    },
-    {
       "id": "src_app_core_i18n_pipes_i18n_date_pipe_i18ndatepipe_transform",
       "label": ".transform()",
       "_callable": true,
@@ -1345,6 +1285,54 @@
       "norm_label": ".transform()",
       "source_file": "src/app/core/i18n/pipes/i18n-date.pipe.ts",
       "source_location": "L12"
+    },
+    {
+      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice_downloadfile",
+      "label": ".downloadFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".downloadfile()",
+      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
+      "source_location": "L6"
+    },
+    {
+      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice_readfile",
+      "label": ".readFile()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": ".readfile()",
+      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
+      "source_location": "L22"
+    },
+    {
+      "id": "src_app_time_entry_domain_i_time_entry_repository_itimeentryrepository_setcoursecount",
+      "label": ".setCourseCount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "TimeEntryListComponent",
+      "file_type": "code",
+      "norm_label": ".setcoursecount()",
+      "source_file": "src/app/time-entry/domain/i-time-entry.repository.ts",
+      "source_location": "L19"
+    },
+    {
+      "id": "src_app_time_entry_facade_time_entry_facade_timeentryfacade_updatemanualcoursecount",
+      "label": ".updateManualCourseCount()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "TimeEntryListComponent",
+      "file_type": "code",
+      "norm_label": ".updatemanualcoursecount()",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L156"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_addentry",
@@ -1369,6 +1357,18 @@
       "norm_label": ".constructor()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
       "source_location": "L129"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_decrementcourse",
+      "label": ".decrementCourse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "TimeEntryListComponent",
+      "file_type": "code",
+      "norm_label": ".decrementcourse()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L174"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_editentry",
@@ -1429,6 +1429,18 @@
       "norm_label": ".handleimport()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
       "source_location": "L70"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_incrementcourse",
+      "label": ".incrementCourse()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 10,
+      "community_name": "TimeEntryListComponent",
+      "file_type": "code",
+      "norm_label": ".incrementcourse()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
+      "source_location": "L169"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_timeentrylistcomponent_loaddata",
@@ -1791,28 +1803,52 @@
       "source_location": "L10"
     },
     {
-      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice_downloadfile",
-      "label": ".downloadFile()",
+      "id": "src_app_core_services_update_notification_service_updatenotificationservice_applyupdate",
+      "label": ".applyUpdate()",
       "_callable": true,
       "_origin": "ast",
       "community": 46,
       "community_name": "layout.ts",
       "file_type": "code",
-      "norm_label": ".downloadfile()",
-      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
-      "source_location": "L6"
+      "norm_label": ".applyupdate()",
+      "source_file": "src/app/core/services/update-notification.service.ts",
+      "source_location": "L43"
     },
     {
-      "id": "src_app_time_entry_data_utils_file_util_service_fileutilservice_readfile",
-      "label": ".readFile()",
+      "id": "src_app_core_services_update_notification_service_updatenotificationservice_constructor",
+      "label": ".constructor()",
       "_callable": true,
       "_origin": "ast",
       "community": 46,
       "community_name": "layout.ts",
       "file_type": "code",
-      "norm_label": ".readfile()",
-      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
-      "source_location": "L22"
+      "norm_label": ".constructor()",
+      "source_file": "src/app/core/services/update-notification.service.ts",
+      "source_location": "L29"
+    },
+    {
+      "id": "src_app_core_services_update_notification_service_updatenotificationservice_dismiss",
+      "label": ".dismiss()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "layout.ts",
+      "file_type": "code",
+      "norm_label": ".dismiss()",
+      "source_file": "src/app/core/services/update-notification.service.ts",
+      "source_location": "L47"
+    },
+    {
+      "id": "src_app_core_services_update_notification_service_updatenotificationservice_fetchchangelog",
+      "label": ".fetchChangelog()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 46,
+      "community_name": "layout.ts",
+      "file_type": "code",
+      "norm_label": ".fetchchangelog()",
+      "source_file": "src/app/core/services/update-notification.service.ts",
+      "source_location": "L51"
     },
     {
       "id": "src_app_time_entry_presentation_components_layout_layout_layout_handlebannerbackup",
@@ -2060,59 +2096,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 52,
-      "community_name": "UpdateNotificationService",
+      "community_name": "update-notification.service.spec.ts",
       "file_type": "code",
       "norm_label": "makeversionready()",
       "source_file": "src/app/core/services/update-notification.service.spec.ts",
       "source_location": "L7"
-    },
-    {
-      "id": "src_app_core_services_update_notification_service_updatenotificationservice_applyupdate",
-      "label": ".applyUpdate()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": ".applyupdate()",
-      "source_file": "src/app/core/services/update-notification.service.ts",
-      "source_location": "L43"
-    },
-    {
-      "id": "src_app_core_services_update_notification_service_updatenotificationservice_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "src/app/core/services/update-notification.service.ts",
-      "source_location": "L29"
-    },
-    {
-      "id": "src_app_core_services_update_notification_service_updatenotificationservice_dismiss",
-      "label": ".dismiss()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": ".dismiss()",
-      "source_file": "src/app/core/services/update-notification.service.ts",
-      "source_location": "L47"
-    },
-    {
-      "id": "src_app_core_services_update_notification_service_updatenotificationservice_fetchchangelog",
-      "label": ".fetchChangelog()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": ".fetchchangelog()",
-      "source_file": "src/app/core/services/update-notification.service.ts",
-      "source_location": "L51"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_spec_makeentry",
@@ -2120,131 +2108,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makeentry()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts",
       "source_location": "L14"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_constructor",
-      "label": ".constructor()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".constructor()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L102"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_createcaendarday",
-      "label": ".createCaendarDay()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".createcaendarday()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L129"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_formathours",
-      "label": ".formatHours()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".formathours()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L161"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_gototoday",
-      "label": ".goToToday()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".gototoday()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L124"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_loaddata",
-      "label": ".loadData()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".loaddata()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L108"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_nextmonth",
-      "label": ".nextMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".nextmonth()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L118"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_ngoninit",
-      "label": ".ngOnInit()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".ngoninit()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L104"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_ondayclick",
-      "label": ".onDayClick()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".ondayclick()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L140"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_prevmonth",
-      "label": ".prevMonth()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".prevmonth()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L112"
-    },
-    {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_weekdays",
-      "label": ".weekDays()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": ".weekdays()",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
-      "source_location": "L27"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_spec_makeentry",
@@ -2252,7 +2120,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makeentry()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
@@ -2264,7 +2132,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".onedit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts",
@@ -2276,7 +2144,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makedialogref()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
@@ -2288,7 +2156,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makeentry()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
@@ -2300,7 +2168,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makefacade()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
@@ -2312,7 +2180,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".constructor()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -2324,7 +2192,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".ngoninit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -2336,7 +2204,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".oncancel()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -2348,7 +2216,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".ondeletecancel()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -2360,11 +2228,23 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".ondeleterequest()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
       "source_location": "L45"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_timeentryeditdialogcomponent_onsave",
+      "label": ".onSave()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 53,
+      "community_name": "TimeEntryVM",
+      "file_type": "code",
+      "norm_label": ".onsave()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
+      "source_location": "L32"
     },
     {
       "id": "src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_spec_makeentry",
@@ -2372,7 +2252,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "makeentry()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
@@ -2384,7 +2264,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".cansubmit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -2396,7 +2276,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".emitcreate()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -2408,7 +2288,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".emitupdatechanges()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -2420,7 +2300,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".ngoninit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -2432,7 +2312,7 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".ondatechange()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -2444,23 +2324,11 @@
       "_callable": true,
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": ".submit()",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
       "source_location": "L52"
-    },
-    {
-      "id": "src_app_time_entry_presentation_utils_date_utils_todatekey",
-      "label": "toDateKey()",
-      "_callable": true,
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "todatekey()",
-      "source_file": "src/app/time-entry/presentation/utils/date.utils.ts",
-      "source_location": "L1"
     },
     {
       "id": "src_app_app_app_constructor",
@@ -2617,6 +2485,138 @@
       "norm_label": ".writevalue()",
       "source_file": "src/app/time-entry/presentation/components/duration-wheel-picker/duration-wheel-picker.component.ts",
       "source_location": "L61"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_constructor",
+      "label": ".constructor()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".constructor()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L102"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_createcaendarday",
+      "label": ".createCaendarDay()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".createcaendarday()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L129"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_formathours",
+      "label": ".formatHours()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".formathours()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L161"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_gototoday",
+      "label": ".goToToday()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".gototoday()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L124"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_loaddata",
+      "label": ".loadData()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".loaddata()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L108"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_nextmonth",
+      "label": ".nextMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".nextmonth()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L118"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_ngoninit",
+      "label": ".ngOnInit()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".ngoninit()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L104"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_ondayclick",
+      "label": ".onDayClick()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".ondayclick()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L140"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_prevmonth",
+      "label": ".prevMonth()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".prevmonth()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L112"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_timeentrycalendarcomponent_weekdays",
+      "label": ".weekDays()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": ".weekdays()",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
+      "source_location": "L27"
+    },
+    {
+      "id": "src_app_time_entry_presentation_utils_date_utils_todatekey",
+      "label": "toDateKey()",
+      "_callable": true,
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": "todatekey()",
+      "source_file": "src/app/time-entry/presentation/utils/date.utils.ts",
+      "source_location": "L1"
     },
     {
       "id": "src_app_time_entry_presentation_components_update_banner_update_banner_component_spec_makeentry",
@@ -2822,6 +2822,17 @@
       "source_location": ""
     },
     {
+      "id": "src_app_time_entry_facade_time_entry_facade",
+      "label": "time-entry.facade.ts",
+      "_origin": "ast",
+      "community": 0,
+      "community_name": "CourseVisit",
+      "file_type": "code",
+      "norm_label": "time-entry.facade.ts",
+      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
+      "source_location": "L1"
+    },
+    {
       "id": "src_app_time_entry_facade_time_entry_facade_spec",
       "label": "time-entry.facade.spec.ts",
       "_origin": "ast",
@@ -2907,6 +2918,39 @@
       "file_type": "code",
       "norm_label": "i18n-date.pipe.ts",
       "source_file": "src/app/core/i18n/pipes/i18n-date.pipe.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_data_utils_file_util_service",
+      "label": "file-util.service.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "file-util.service.ts",
+      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_data_utils_file_util_service_ts_injectable",
+      "label": "Injectable",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "injectable",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component",
+      "label": "time-entry-list.component.ts",
+      "_origin": "ast",
+      "community": 1,
+      "community_name": "time-entry.module.ts",
+      "file_type": "code",
+      "norm_label": "time-entry-list.component.ts",
+      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
       "source_location": "L1"
     },
     {
@@ -3642,6 +3686,28 @@
       "source_location": "L28"
     },
     {
+      "id": "angular_options_codecoverage",
+      "label": "codeCoverage",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "codecoverage",
+      "source_file": "angular.json",
+      "source_location": "L90"
+    },
+    {
+      "id": "angular_options_coveragereporters",
+      "label": "coverageReporters",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "coveragereporters",
+      "source_file": "angular.json",
+      "source_location": "L92"
+    },
+    {
       "id": "angular_options_index",
       "label": "index",
       "_origin": "ast",
@@ -3662,6 +3728,17 @@
       "norm_label": "inlinestylelanguage",
       "source_file": "angular.json",
       "source_location": "L33"
+    },
+    {
+      "id": "angular_options_karmaconfig",
+      "label": "karmaConfig",
+      "_origin": "ast",
+      "community": 2,
+      "community_name": "options",
+      "file_type": "code",
+      "norm_label": "karmaconfig",
+      "source_file": "angular.json",
+      "source_location": "L91"
     },
     {
       "id": "angular_options_polyfills",
@@ -4628,6 +4705,18 @@
       "source_location": "L53"
     },
     {
+      "id": "claude_agents_testing_agent_flujo_de_enforcement",
+      "label": "Flujo de enforcement",
+      "_origin": "ast",
+      "community": 32,
+      "community_name": "TestingAgent",
+      "file_type": "document",
+      "node_kind": "heading",
+      "norm_label": "flujo de enforcement",
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L122"
+    },
+    {
       "id": "claude_agents_testing_agent_mandato_de_cobertura",
       "label": "Mandato de cobertura",
       "_origin": "ast",
@@ -4818,6 +4907,18 @@
       "norm_label": "trampa: ts2571 \"object is of type unknown\" dentro de computed()",
       "source_file": ".claude/agents/signals-agent.md",
       "source_location": "L65"
+    },
+    {
+      "id": "claude_agents_architecture_guardian",
+      "label": "architecture-guardian.md",
+      "_origin": "ast",
+      "community": 34,
+      "community_name": "ArchitectureGuardian",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "architecture-guardian.md",
+      "source_file": ".claude/agents/architecture-guardian.md",
+      "source_location": "L1"
     },
     {
       "id": "claude_agents_architecture_guardian_architectureguardian",
@@ -5070,18 +5171,6 @@
       "norm_label": "senales de alerta",
       "source_file": ".claude/agents/facade-agent.md",
       "source_location": "L49"
-    },
-    {
-      "id": "claude_agents_ui_agent",
-      "label": "ui-agent.md",
-      "_origin": "ast",
-      "community": 37,
-      "community_name": "UIAgent",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "ui-agent.md",
-      "source_file": ".claude/agents/ui-agent.md",
-      "source_location": "L1"
     },
     {
       "id": "claude_agents_ui_agent_1_date_no_responde_al_idioma_en_runtime",
@@ -5560,18 +5649,6 @@
       "source_location": "L1"
     },
     {
-      "id": "claude_agents_architecture_guardian",
-      "label": "architecture-guardian.md",
-      "_origin": "ast",
-      "community": 40,
-      "community_name": "AGENTS.md",
-      "file_type": "document",
-      "node_kind": "page",
-      "norm_label": "architecture-guardian.md",
-      "source_file": ".claude/agents/architecture-guardian.md",
-      "source_location": "L1"
-    },
-    {
       "id": "claude_agents_facade_agent",
       "label": "facade-agent.md",
       "_origin": "ast",
@@ -5593,6 +5670,18 @@
       "node_kind": "page",
       "norm_label": "signals-agent.md",
       "source_file": ".claude/agents/signals-agent.md",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_agents_ui_agent",
+      "label": "ui-agent.md",
+      "_origin": "ast",
+      "community": 40,
+      "community_name": "AGENTS.md",
+      "file_type": "document",
+      "node_kind": "page",
+      "norm_label": "ui-agent.md",
+      "source_file": ".claude/agents/ui-agent.md",
       "source_location": "L1"
     },
     {
@@ -6129,7 +6218,7 @@
       "node_kind": "heading",
       "norm_label": "crear un issue nuevo",
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L52"
+      "source_location": "L61"
     },
     {
       "id": "claude_skills_issues_skill_cu\u00e1ndo_activar_este_skill",
@@ -6153,7 +6242,7 @@
       "node_kind": "heading",
       "norm_label": "etiquetas disponibles",
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L98"
+      "source_location": "L107"
     },
     {
       "id": "claude_skills_issues_skill_flujo_de_sesi\u00f3n",
@@ -6177,7 +6266,7 @@
       "node_kind": "heading",
       "norm_label": "formato del cuerpo (bug)",
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L63"
+      "source_location": "L72"
     },
     {
       "id": "claude_skills_issues_skill_formato_del_cuerpo_feature",
@@ -6189,7 +6278,7 @@
       "node_kind": "heading",
       "norm_label": "formato del cuerpo (feature)",
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L80"
+      "source_location": "L89"
     },
     {
       "id": "claude_skills_issues_skill_reglas",
@@ -6201,7 +6290,7 @@
       "node_kind": "heading",
       "norm_label": "reglas",
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L111"
+      "source_location": "L120"
     },
     {
       "id": "claude_skills_issues_skill_skill_issues",
@@ -6246,18 +6335,7 @@
       "source_location": "L1"
     },
     {
-      "id": "src_app_time_entry_data_utils_file_util_service",
-      "label": "file-util.service.ts",
-      "_origin": "ast",
-      "community": 46,
-      "community_name": "layout.ts",
-      "file_type": "code",
-      "norm_label": "file-util.service.ts",
-      "source_file": "src/app/time-entry/data/utils/file-util.service.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_time_entry_data_utils_file_util_service_ts_injectable",
+      "id": "injectable",
       "label": "Injectable",
       "_origin": "ast",
       "community": 46,
@@ -6562,17 +6640,6 @@
       "source_location": "L56"
     },
     {
-      "id": "input",
-      "label": "Input",
-      "_origin": "ast",
-      "community": 50,
-      "community_name": "MonthPaginatorComponent",
-      "file_type": "code",
-      "norm_label": "input",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "output",
       "label": "Output",
       "_origin": "ast",
@@ -6624,6 +6691,17 @@
       "community_name": "MonthPaginatorComponent",
       "file_type": "code",
       "norm_label": "component",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "input",
+      "label": "Input",
+      "_origin": "ast",
+      "community": 51,
+      "community_name": "OptionPillGroupComponent",
+      "file_type": "code",
+      "norm_label": "input",
       "source_file": "",
       "source_location": ""
     },
@@ -6694,22 +6772,11 @@
       "source_location": ""
     },
     {
-      "id": "injectable",
-      "label": "Injectable",
-      "_origin": "ast",
-      "community": 52,
-      "community_name": "UpdateNotificationService",
-      "file_type": "code",
-      "norm_label": "injectable",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "src_app_core_services_update_notification_service_spec",
       "label": "update-notification.service.spec.ts",
       "_origin": "ast",
       "community": 52,
-      "community_name": "UpdateNotificationService",
+      "community_name": "update-notification.service.spec.ts",
       "file_type": "code",
       "norm_label": "update-notification.service.spec.ts",
       "source_file": "src/app/core/services/update-notification.service.spec.ts",
@@ -6720,7 +6787,7 @@
       "label": "@angular/service-worker",
       "_origin": "ast",
       "community": 52,
-      "community_name": "UpdateNotificationService",
+      "community_name": "update-notification.service.spec.ts",
       "file_type": "concept",
       "norm_label": "@angular/service-worker",
       "source_file": "package.json",
@@ -6731,29 +6798,18 @@
       "label": "rxjs",
       "_origin": "ast",
       "community": 52,
-      "community_name": "UpdateNotificationService",
+      "community_name": "update-notification.service.spec.ts",
       "file_type": "concept",
       "norm_label": "rxjs",
       "source_file": "package.json",
       "source_location": "L40"
     },
     {
-      "id": "src_app_time_entry_facade_time_entry_facade",
-      "label": "time-entry.facade.ts",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "time-entry.facade.ts",
-      "source_file": "src/app/time-entry/facade/time-entry.facade.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar",
       "label": "time-entry-calendar.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-calendar.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts",
@@ -6764,7 +6820,7 @@
       "label": "time-entry-calendar.spec.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-calendar.spec.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts",
@@ -6775,29 +6831,18 @@
       "label": "today",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "today",
       "source_file": "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts",
       "source_location": "L11"
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_ts_component",
-      "label": "Component",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "component",
-      "source_file": "",
-      "source_location": ""
-    },
-    {
       "id": "src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component",
       "label": "time-entry-day.component.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-day.component.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts",
@@ -6808,7 +6853,7 @@
       "label": "time-entry-day.component.spec.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-day.component.spec.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts",
@@ -6819,7 +6864,7 @@
       "label": "Component",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "component",
       "source_file": "",
@@ -6830,7 +6875,7 @@
       "label": "Input",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "input",
       "source_file": "",
@@ -6841,7 +6886,7 @@
       "label": "Output",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "output",
       "source_file": "",
@@ -6852,7 +6897,7 @@
       "label": "time-entry-edit-dialog.component.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-edit-dialog.component.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts",
@@ -6863,7 +6908,7 @@
       "label": "time-entry-edit-dialog.component.spec.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-edit-dialog.component.spec.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts",
@@ -6874,7 +6919,7 @@
       "label": "Component",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "component",
       "source_file": "",
@@ -6885,7 +6930,7 @@
       "label": "Inject",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "inject",
       "source_file": "",
@@ -6896,7 +6941,7 @@
       "label": "time-entry-form.component.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-form.component.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts",
@@ -6907,7 +6952,7 @@
       "label": "time-entry-form.component.spec.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry-form.component.spec.ts",
       "source_file": "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts",
@@ -6918,7 +6963,7 @@
       "label": "Component",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "component",
       "source_file": "",
@@ -6929,7 +6974,7 @@
       "label": "Input",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "input",
       "source_file": "",
@@ -6940,54 +6985,21 @@
       "label": "Output",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "output",
       "source_file": "",
       "source_location": ""
     },
     {
-      "id": "src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component",
-      "label": "time-entry-list.component.ts",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "time-entry-list.component.ts",
-      "source_file": "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts",
-      "source_location": "L1"
-    },
-    {
       "id": "src_app_time_entry_presentation_models_time_entry_vm",
       "label": "time-entry.vm.ts",
       "_origin": "ast",
       "community": 53,
-      "community_name": "time-entry.facade.ts",
+      "community_name": "TimeEntryVM",
       "file_type": "code",
       "norm_label": "time-entry.vm.ts",
       "source_file": "src/app/time-entry/presentation/models/time-entry.vm.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_time_entry_presentation_utils_date_utils",
-      "label": "date.utils.ts",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "date.utils.ts",
-      "source_file": "src/app/time-entry/presentation/utils/date.utils.ts",
-      "source_location": "L1"
-    },
-    {
-      "id": "src_app_time_entry_presentation_utils_date_utils_spec",
-      "label": "date.utils.spec.ts",
-      "_origin": "ast",
-      "community": 53,
-      "community_name": "time-entry.facade.ts",
-      "file_type": "code",
-      "norm_label": "date.utils.spec.ts",
-      "source_file": "src/app/time-entry/presentation/utils/date.utils.spec.ts",
       "source_location": "L1"
     },
     {
@@ -7002,48 +7014,15 @@
       "source_location": ""
     },
     {
-      "id": "angular_architect_build",
-      "label": "build",
+      "id": "angular_architect_serve",
+      "label": "serve",
       "_origin": "ast",
       "community": 55,
       "community_name": "development",
       "file_type": "code",
-      "norm_label": "build",
+      "norm_label": "serve",
       "source_file": "angular.json",
-      "source_location": "L24"
-    },
-    {
-      "id": "angular_build_builder",
-      "label": "builder",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "development",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "angular.json",
-      "source_location": "L25"
-    },
-    {
-      "id": "angular_build_configurations",
-      "label": "configurations",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "development",
-      "file_type": "code",
-      "norm_label": "configurations",
-      "source_file": "angular.json",
-      "source_location": "L47"
-    },
-    {
-      "id": "angular_build_defaultconfiguration",
-      "label": "defaultConfiguration",
-      "_origin": "ast",
-      "community": 55,
-      "community_name": "development",
-      "file_type": "code",
-      "norm_label": "defaultconfiguration",
-      "source_file": "angular.json",
-      "source_location": "L70"
+      "source_location": "L72"
     },
     {
       "id": "angular_configurations_development",
@@ -7099,6 +7078,39 @@
       "norm_label": "sourcemap",
       "source_file": "angular.json",
       "source_location": "L67"
+    },
+    {
+      "id": "angular_serve_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "development",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "angular.json",
+      "source_location": "L73"
+    },
+    {
+      "id": "angular_serve_configurations",
+      "label": "configurations",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "development",
+      "file_type": "code",
+      "norm_label": "configurations",
+      "source_file": "angular.json",
+      "source_location": "L74"
+    },
+    {
+      "id": "angular_serve_defaultconfiguration",
+      "label": "defaultConfiguration",
+      "_origin": "ast",
+      "community": 55,
+      "community_name": "development",
+      "file_type": "code",
+      "norm_label": "defaultconfiguration",
+      "source_file": "angular.json",
+      "source_location": "L82"
     },
     {
       "id": "package_scripts",
@@ -7365,15 +7377,48 @@
       "source_location": ""
     },
     {
-      "id": "angular_architect_serve",
-      "label": "serve",
+      "id": "angular_architect_build",
+      "label": "build",
       "_origin": "ast",
       "community": 61,
       "community_name": "production",
       "file_type": "code",
-      "norm_label": "serve",
+      "norm_label": "build",
       "source_file": "angular.json",
-      "source_location": "L72"
+      "source_location": "L24"
+    },
+    {
+      "id": "angular_build_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "production",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "angular.json",
+      "source_location": "L25"
+    },
+    {
+      "id": "angular_build_configurations",
+      "label": "configurations",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "production",
+      "file_type": "code",
+      "norm_label": "configurations",
+      "source_file": "angular.json",
+      "source_location": "L47"
+    },
+    {
+      "id": "angular_build_defaultconfiguration",
+      "label": "defaultConfiguration",
+      "_origin": "ast",
+      "community": 61,
+      "community_name": "production",
+      "file_type": "code",
+      "norm_label": "defaultconfiguration",
+      "source_file": "angular.json",
+      "source_location": "L70"
     },
     {
       "id": "angular_configurations_production",
@@ -7431,39 +7476,6 @@
       "source_location": "L62"
     },
     {
-      "id": "angular_serve_builder",
-      "label": "builder",
-      "_origin": "ast",
-      "community": 61,
-      "community_name": "production",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "angular.json",
-      "source_location": "L73"
-    },
-    {
-      "id": "angular_serve_configurations",
-      "label": "configurations",
-      "_origin": "ast",
-      "community": 61,
-      "community_name": "production",
-      "file_type": "code",
-      "norm_label": "configurations",
-      "source_file": "angular.json",
-      "source_location": "L74"
-    },
-    {
-      "id": "angular_serve_defaultconfiguration",
-      "label": "defaultConfiguration",
-      "_origin": "ast",
-      "community": 61,
-      "community_name": "production",
-      "file_type": "code",
-      "norm_label": "defaultconfiguration",
-      "source_file": "angular.json",
-      "source_location": "L82"
-    },
-    {
       "id": "angular",
       "label": "angular.json",
       "_origin": "ast",
@@ -7483,7 +7495,7 @@
       "file_type": "code",
       "norm_label": "cli",
       "source_file": "angular.json",
-      "source_location": "L113"
+      "source_location": "L116"
     },
     {
       "id": "angular_cli_analytics",
@@ -7494,7 +7506,7 @@
       "file_type": "code",
       "norm_label": "analytics",
       "source_file": "angular.json",
-      "source_location": "L114"
+      "source_location": "L117"
     },
     {
       "id": "angular_newprojectroot",
@@ -7545,7 +7557,7 @@
       "label": "extract-i18n",
       "_origin": "ast",
       "community": 63,
-      "community_name": "architect",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "extract-i18n",
       "source_file": "angular.json",
@@ -7556,7 +7568,7 @@
       "label": "test",
       "_origin": "ast",
       "community": 63,
-      "community_name": "architect",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "test",
       "source_file": "angular.json",
@@ -7567,7 +7579,7 @@
       "label": "builder",
       "_origin": "ast",
       "community": 63,
-      "community_name": "architect",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "builder",
       "source_file": "angular.json",
@@ -7578,28 +7590,17 @@
       "label": "architect",
       "_origin": "ast",
       "community": 63,
-      "community_name": "architect",
+      "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "architect",
       "source_file": "angular.json",
       "source_location": "L23"
     },
     {
-      "id": "angular_test_builder",
-      "label": "builder",
-      "_origin": "ast",
-      "community": 63,
-      "community_name": "architect",
-      "file_type": "code",
-      "norm_label": "builder",
-      "source_file": "angular.json",
-      "source_location": "L88"
-    },
-    {
       "id": "angular_ministry_assistanto_prefix",
       "label": "prefix",
       "_origin": "ast",
-      "community": 64,
+      "community": 63,
       "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "prefix",
@@ -7610,7 +7611,7 @@
       "id": "angular_ministry_assistanto_projecttype",
       "label": "projectType",
       "_origin": "ast",
-      "community": 64,
+      "community": 63,
       "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "projecttype",
@@ -7621,7 +7622,7 @@
       "id": "angular_ministry_assistanto_root",
       "label": "root",
       "_origin": "ast",
-      "community": 64,
+      "community": 63,
       "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "root",
@@ -7632,7 +7633,7 @@
       "id": "angular_ministry_assistanto_sourceroot",
       "label": "sourceRoot",
       "_origin": "ast",
-      "community": 64,
+      "community": 63,
       "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "sourceroot",
@@ -7643,12 +7644,97 @@
       "id": "angular_projects_ministry_assistanto",
       "label": "ministry-assistanto",
       "_origin": "ast",
-      "community": 64,
+      "community": 63,
       "community_name": "ministry-assistanto",
       "file_type": "code",
       "norm_label": "ministry-assistanto",
       "source_file": "angular.json",
       "source_location": "L6"
+    },
+    {
+      "id": "angular_test_builder",
+      "label": "builder",
+      "_origin": "ast",
+      "community": 63,
+      "community_name": "ministry-assistanto",
+      "file_type": "code",
+      "norm_label": "builder",
+      "source_file": "angular.json",
+      "source_location": "L88"
+    },
+    {
+      "id": "src_app_time_entry_presentation_components_time_entry_calendar_time_entry_calendar_ts_component",
+      "label": "Component",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": "component",
+      "source_file": "",
+      "source_location": ""
+    },
+    {
+      "id": "src_app_time_entry_presentation_utils_date_utils",
+      "label": "date.utils.ts",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": "date.utils.ts",
+      "source_file": "src/app/time-entry/presentation/utils/date.utils.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "src_app_time_entry_presentation_utils_date_utils_spec",
+      "label": "date.utils.spec.ts",
+      "_origin": "ast",
+      "community": 64,
+      "community_name": "TimeEntryCalendarComponent",
+      "file_type": "code",
+      "norm_label": "date.utils.spec.ts",
+      "source_file": "src/app/time-entry/presentation/utils/date.utils.spec.ts",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_scripts_check_coverage",
+      "label": "check-coverage.sh",
+      "_origin": "ast",
+      "community": 65,
+      "community_name": "check-coverage.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "file"
+      },
+      "norm_label": "check-coverage.sh",
+      "source_file": ".claude/scripts/check-coverage.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "claude_scripts_check_coverage_sh__entry",
+      "label": "check-coverage.sh script",
+      "_origin": "ast",
+      "community": 65,
+      "community_name": "check-coverage.sh",
+      "file_type": "code",
+      "metadata": {
+        "language": "bash",
+        "kind": "bash_entrypoint"
+      },
+      "norm_label": "check-coverage.sh script",
+      "source_file": ".claude/scripts/check-coverage.sh",
+      "source_location": "L1"
+    },
+    {
+      "id": "karma_conf",
+      "label": "karma.conf.js",
+      "_origin": "ast",
+      "community": 66,
+      "community_name": "karma.conf.js",
+      "file_type": "code",
+      "norm_label": "karma.conf.js",
+      "source_file": "karma.conf.js",
+      "source_location": "L1"
     },
     {
       "id": "src_app_core_services_update_notification_service",
@@ -13319,7 +13405,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L113",
+      "source_location": "L116",
       "weight": 1.0
     },
     {
@@ -13594,7 +13680,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L114",
+      "source_location": "L117",
       "weight": 1.0
     },
     {
@@ -13770,7 +13856,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L106",
+      "source_location": "L109",
       "weight": 1.0
     },
     {
@@ -13924,7 +14010,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L102",
+      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -13935,12 +14021,12 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L105",
+      "source_location": "L108",
       "weight": 1.0
     },
     {
       "source": "angular_test_options",
-      "target": "angular_options_polyfills",
+      "target": "angular_options_codecoverage",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
@@ -13951,13 +14037,46 @@
     },
     {
       "source": "angular_test_options",
+      "target": "angular_options_karmaconfig",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L91",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_coveragereporters",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L92",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
+      "target": "angular_options_polyfills",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "angular.json",
+      "source_location": "L93",
+      "weight": 1.0
+    },
+    {
+      "source": "angular_test_options",
       "target": "angular_options_tsconfig",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L94",
+      "source_location": "L97",
       "weight": 1.0
     },
     {
@@ -13968,7 +14087,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L95",
+      "source_location": "L98",
       "weight": 1.0
     },
     {
@@ -13979,7 +14098,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": "angular.json",
-      "source_location": "L96",
+      "source_location": "L99",
       "weight": 1.0
     },
     {
@@ -14589,6 +14708,17 @@
     },
     {
       "source": "claude_agents_testing_agent_mandato_de_cobertura",
+      "target": "claude_agents_testing_agent_flujo_de_enforcement",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/agents/testing-agent.md",
+      "source_location": "L122",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_agents_testing_agent_mandato_de_cobertura",
       "target": "claude_agents_testing_agent_qu\u00e9_testear_por_tipo_de_archivo",
       "relation": "contains",
       "_origin": "ast",
@@ -14936,6 +15066,17 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/CLAUDE.md",
+      "source_location": "L1",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_scripts_check_coverage",
+      "target": "claude_scripts_check_coverage_sh__entry",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/scripts/check-coverage.sh",
       "source_location": "L1",
       "weight": 1.0
     },
@@ -15541,7 +15682,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L63",
+      "source_location": "L72",
       "weight": 1.0
     },
     {
@@ -15552,7 +15693,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L80",
+      "source_location": "L89",
       "weight": 1.0
     },
     {
@@ -15612,13 +15753,24 @@
     },
     {
       "source": "claude_skills_issues_skill_skill_issues",
+      "target": "claude_skills_issues_skill_etiquetas_disponibles",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/issues/SKILL.md",
+      "source_location": "L107",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_skills_issues_skill_skill_issues",
       "target": "claude_skills_issues_skill_reglas",
       "relation": "contains",
       "_origin": "ast",
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L111",
+      "source_location": "L120",
       "weight": 1.0
     },
     {
@@ -15640,18 +15792,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L52",
-      "weight": 1.0
-    },
-    {
-      "source": "claude_skills_issues_skill_skill_issues",
-      "target": "claude_skills_issues_skill_etiquetas_disponibles",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".claude/skills/issues/SKILL.md",
-      "source_location": "L98",
+      "source_location": "L61",
       "weight": 1.0
     },
     {
@@ -19556,5 +19697,5 @@
       "source_file": "src/app/time-entry/presentation/components/layout/layout.html"
     }
   ],
-  "built_at_commit": "49586e042219874f3e82a07058bdb2a1c65c1365"
+  "built_at_commit": "1fbc3c29b1078d6484240bcaecf8905a72d8c0e8"
 }

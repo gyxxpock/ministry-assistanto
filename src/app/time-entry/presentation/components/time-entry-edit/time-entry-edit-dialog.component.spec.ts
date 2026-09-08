@@ -1,5 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
@@ -39,6 +40,7 @@ describe('TimeEntryEditDialogComponent — create mode', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TimeEntryEditDialogComponent],
+      imports: [TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: TimeEntryFacade, useValue: facade },
@@ -86,6 +88,7 @@ describe('TimeEntryEditDialogComponent — edit mode', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TimeEntryEditDialogComponent],
+      imports: [TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: TimeEntryFacade, useValue: facade },
