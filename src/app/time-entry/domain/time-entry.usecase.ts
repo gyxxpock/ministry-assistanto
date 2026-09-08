@@ -87,10 +87,10 @@ export function computeMonthlyTotals(
     personKeys.add(key);
   }
 
-  const totalVisits = personKeys.size;
   const totalHours = Math.round((totalMinutes / 60) * 100) / 100; // round to 2 decimals
+  const totalCourses = manualCourseCount > 0 ? manualCourseCount : personKeys.size;
 
-  return { totalMinutes, totalHours, totalCourses: totalVisits };
+  return { totalMinutes, totalHours, totalCourses };
 }
 
 export default computeMonthlyTotals;

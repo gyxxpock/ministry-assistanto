@@ -84,4 +84,84 @@ describe('TimeEntryFacade', () => {
       expect(facade.entries()[0].notes).toBe('morning');
     });
   });
+
+  describe('visits CRUD', () => {
+    it('addVisit stores visit and reloads month', async () => {
+      await facade.loadMonth(2025, 11);
+      await facade.addVisit({ id: 'v1', date: new Date('2025-11-05'), durationMinutes: 60, personId: 'p1' });
+      expect(facade.visits().length).toBe(1);
+    });
+
+    it('updateVisit modifies durationMinutes', async () => {
+      await repo.addVisit({ id: 'v1', date: new Date('2025-11-05'), durationMinutes: 60, personId: 'p1' });
+      await facade.loadMonth(2025, 11);
+      await facade.updateVisit({ id: 'v1', date: new Date('2025-11-05'), durationMinutes: 90, personId: 'p1' });
+      expect(facade.visits()[0].minutes).toBe(90);
+    });
+
+    it('removeVisit deletes the visit', async () => {
+      await repo.addVisit({ id: 'v1', date: new Date('2025-11-05'), durationMinutes: 60, personId: 'p1' });
+      await facade.loadMonth(2025, 11);
+      await facade.removeVisit('v1');
+      expect(facade.visits().length).toBe(0);
+    });
+
+    it('visits() uses personName when present', async () => {
+      await facade.loadMonth(2025, 11);
+      await facade.addVisit({ id: 'v2', date: new Date('2025-11-05'), durationMinutes: 30, personId: 'p2', personName: 'Alice' });
+      expect(facade.visits()[0].person).toBe('Alice');
+    });
+  });
+
+  describe('export and import', () => {
+    it('exportAll returns all stored entries and visits', async () => {
+      await repo.addEntry({ id: 'e1', date: new Date('2025-11-05'), durationMinutes: 60, type: 'preaching' });
+      await repo.addVisit({ id: 'v1', date: new Date('2025-11-05'), durationMinutes: 30, personId: 'p1' });
+      const result = await facade.exportAll();
+      expect(result.entries.length).toBe(1);
+      expect(result.visits.length).toBe(1);
+    });
+
+    it('importAll adds entries and reloads month', async () => {
+      await facade.loadMonth(2025, 11);
+      await facade.importAll({
+        entries: [{ id: 'e2', date: new Date('2025-11-10'), durationMinutes: 45, type: 'visiting', createdAt: new Date().toISOString(), source: 'local' }]
+      });
+      expect(facade.entries().length).toBe(1);
+    });
+
+    it('importAll with empty payload does not throw', async () => {
+      await facade.loadMonth(2025, 11);
+      await expectAsync(facade.importAll({})).toBeResolved();
+    });
+  });
+
+  describe('updateManualCourseCount', () => {
+    it('persists the count in the repository', async () => {
+      await facade.loadMonth(2025, 11);
+      await facade.updateManualCourseCount(5);
+      const stored = await repo.getCourseCount(2025, 11);
+      expect(stored).toBe(5);
+    });
+  });
+
+  describe('translateType — all switch branches', () => {
+    beforeEach(async () => { await facade.loadMonth(2025, 11); });
+
+    it('translates visiting type', async () => {
+      await facade.addEntry({ date: new Date('2025-11-05'), durationMinutes: 60, type: 'visiting' });
+      expect(facade.entries().find(e => e.type === 'visiting')?.typeLabel).toBe('Visita');
+    });
+
+    it('translates other type', async () => {
+      await facade.addEntry({ date: new Date('2025-11-05'), durationMinutes: 60, type: 'other' });
+      expect(facade.entries().find(e => e.type === 'other')?.typeLabel).toBe('Otro');
+    });
+
+    it('returns type string as-is for unknown types (default branch)', async () => {
+      await repo.addEntry({ id: 'ex', date: new Date('2025-11-05'), durationMinutes: 60, type: 'unknown' as any });
+      await facade.loadMonth(2025, 11);
+      expect(facade.entries().find(e => (e.type as any) === 'unknown')?.typeLabel).toBe('unknown');
+    });
+  });
 });

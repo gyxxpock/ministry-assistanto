@@ -168,4 +168,30 @@ describe('BackupReminderService', () => {
       expect(service.isReminderDue()).toBe(false);
     });
   });
+
+  describe('nextReminderDate', () => {
+    it('returns null when frequency is disabled', () => {
+      localStorage.setItem(FREQ_KEY, 'disabled');
+      service = inject();
+      expect(service.nextReminderDate()).toBeNull();
+    });
+
+    it('returns today when no backup date recorded', () => {
+      service = inject();
+      const today = new Date().toISOString().split('T')[0];
+      const result = service.nextReminderDate()!;
+      expect(result.toISOString().split('T')[0]).toBe(today);
+    });
+
+    it('returns last backup date + frequency days', () => {
+      localStorage.setItem(FREQ_KEY, 'weekly');
+      localStorage.setItem(DATE_KEY, daysAgo(0));
+      service = inject();
+      const next = service.nextReminderDate()!;
+      // Verify it's a valid Date approximately 7 days from now (±1 for timezone handling)
+      const diffDays = Math.round((next.getTime() - Date.now()) / 86_400_000);
+      expect(diffDays).toBeGreaterThanOrEqual(6);
+      expect(diffDays).toBeLessThanOrEqual(8);
+    });
+  });
 });
