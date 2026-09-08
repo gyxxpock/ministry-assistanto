@@ -7,6 +7,17 @@
         </div>
     </main>
 
+    <!-- Banner de actualización PWA (z-index > backup banner) -->
+    @if (showUpdateBanner()) {
+      <div class="update-banner-wrapper">
+        <ma-update-banner
+          [changes]="updateChanges()"
+          (applyUpdate)="handleUpdateApply()"
+          (dismiss)="handleUpdateDismiss()">
+        </ma-update-banner>
+      </div>
+    }
+
     <!-- Banner de recordatorio de respaldo (posicionado sobre el nav) -->
     @if (showBanner()) {
       <div class="backup-banner-wrapper">

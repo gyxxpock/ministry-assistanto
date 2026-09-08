@@ -1,8 +1,8 @@
 export function toDateKey(date: Date | string): string {
-  const d = new Date(date);
+  if (typeof date === 'string') return date.slice(0, 10);
   return (
-    d.getFullYear() + '-' +
-    String(d.getMonth() + 1).padStart(2, '0') + '-' +
-    String(d.getDate()).padStart(2, '0')
+    date.getFullYear() + '-' +
+    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getDate()).padStart(2, '0')
   );
 }

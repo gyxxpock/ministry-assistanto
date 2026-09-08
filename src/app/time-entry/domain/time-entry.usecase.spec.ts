@@ -1,16 +1,21 @@
 import { computeMonthlyTotals, mergeTimeEntry, toDateKey } from './time-entry.usecase';
 import { TimeEntry, CourseVisit } from './models';
 
+/** Local-midnight Date from ISO components — avoids UTC-offset month drift */
+function d(y: number, m: number, day: number): Date {
+  return new Date(y, m - 1, day);
+}
+
 describe('computeMonthlyTotals', () => {
   it('sums time entries and course visits and counts unique course persons', () => {
     const entries: TimeEntry[] = [
-      { id: 'e1', date: '2025-11-05', durationMinutes: 180, type: 'preaching' },
-      { id: 'e2', date: '2025-11-10', durationMinutes: 180, type: 'study' }
+      { id: 'e1', date: d(2025, 11, 5),  durationMinutes: 180, type: 'preaching' },
+      { id: 'e2', date: d(2025, 11, 10), durationMinutes: 180, type: 'study' }
     ];
 
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-12', durationMinutes: 60, personId: 'p1' },
-      { id: 'v2', date: '2025-11-13', durationMinutes: 60, personId: 'p2' }
+      { id: 'v1', date: d(2025, 11, 12), durationMinutes: 60, personId: 'p1' },
+      { id: 'v2', date: d(2025, 11, 13), durationMinutes: 60, personId: 'p2' }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -23,9 +28,9 @@ describe('computeMonthlyTotals', () => {
   it('deduplicates visits to same person (same personId)', () => {
     const entries: TimeEntry[] = [];
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-01', durationMinutes: 60, personId: 'p1' },
-      { id: 'v2', date: '2025-11-02', durationMinutes: 45, personId: 'p1' },
-      { id: 'v3', date: '2025-11-03', durationMinutes: 30, personId: 'p2' }
+      { id: 'v1', date: d(2025, 11, 1), durationMinutes: 60, personId: 'p1' },
+      { id: 'v2', date: d(2025, 11, 2), durationMinutes: 45, personId: 'p1' },
+      { id: 'v3', date: d(2025, 11, 3), durationMinutes: 30, personId: 'p2' }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -37,9 +42,9 @@ describe('computeMonthlyTotals', () => {
   it('deduplicates visits by normalized personName when personId missing', () => {
     const entries: TimeEntry[] = [];
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-01', durationMinutes: 30, personName: 'Juan Perez' },
-      { id: 'v2', date: '2025-11-02', durationMinutes: 30, personName: '  juan  perez ' },
-      { id: 'v3', date: '2025-11-03', durationMinutes: 30, personName: 'María' }
+      { id: 'v1', date: d(2025, 11, 1), durationMinutes: 30, personName: 'Juan Perez' },
+      { id: 'v2', date: d(2025, 11, 2), durationMinutes: 30, personName: '  juan  perez ' },
+      { id: 'v3', date: d(2025, 11, 3), durationMinutes: 30, personName: 'María' }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -50,13 +55,13 @@ describe('computeMonthlyTotals', () => {
 
   it('ignores entries and visits outside the month', () => {
     const entries: TimeEntry[] = [
-      { id: 'e1', date: '2025-10-31', durationMinutes: 120, type: 'preaching' },
-      { id: 'e2', date: '2025-11-01', durationMinutes: 60, type: 'preaching' }
+      { id: 'e1', date: d(2025, 10, 31), durationMinutes: 120, type: 'preaching' },
+      { id: 'e2', date: d(2025, 11, 1),  durationMinutes: 60,  type: 'preaching' }
     ];
 
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-05', durationMinutes: 30, personId: 'p1' },
-      { id: 'v2', date: '2025-12-01', durationMinutes: 30, personId: 'p2' }
+      { id: 'v1', date: d(2025, 11, 5),  durationMinutes: 30, personId: 'p1' },
+      { id: 'v2', date: d(2025, 12, 1),  durationMinutes: 30, personId: 'p2' }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -67,12 +72,12 @@ describe('computeMonthlyTotals', () => {
 
   it('skips non-positive durations', () => {
     const entries: TimeEntry[] = [
-      { id: 'e1', date: '2025-11-05', durationMinutes: 0, type: 'preaching' },
-      { id: 'e2', date: '2025-11-10', durationMinutes: -30, type: 'study' }
+      { id: 'e1', date: d(2025, 11, 5),  durationMinutes: 0,   type: 'preaching' },
+      { id: 'e2', date: d(2025, 11, 10), durationMinutes: -30, type: 'study' }
     ];
 
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-12', durationMinutes: 0, personId: 'p1' }
+      { id: 'v1', date: d(2025, 11, 12), durationMinutes: 0, personId: 'p1' }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -83,11 +88,11 @@ describe('computeMonthlyTotals', () => {
 
   it('floors fractional durations and rounds hours to 2 decimals', () => {
     const entries = [
-      { id: 'e1', date: '2025-11-05', durationMinutes: 30.9, type: 'preaching' },
+      { id: 'e1', date: d(2025, 11, 5), durationMinutes: 30.9, type: 'preaching' },
     ] as any as TimeEntry[];
 
     const visits = [
-      { id: 'v1', date: '2025-11-06', durationMinutes: 30.9, personId: 'p1' },
+      { id: 'v1', date: d(2025, 11, 6), durationMinutes: 30.9, personId: 'p1' },
     ] as any as CourseVisit[];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -100,8 +105,8 @@ describe('computeMonthlyTotals', () => {
   it('counts visits with no personId or personName as unique visits', () => {
     const entries: TimeEntry[] = [];
     const visits: CourseVisit[] = [
-      { id: 'v1', date: '2025-11-01', durationMinutes: 15 },
-      { id: 'v2', date: '2025-11-02', durationMinutes: 20 }
+      { id: 'v1', date: d(2025, 11, 1), durationMinutes: 15 },
+      { id: 'v2', date: d(2025, 11, 2), durationMinutes: 20 }
     ];
 
     const res = computeMonthlyTotals(entries, visits, 2025, 11);
@@ -120,15 +125,15 @@ describe('toDateKey', () => {
   });
 
   it('converts a Date object to YYYY-MM-DD using local date parts', () => {
-    const d = new Date(2025, 10, 5); // month is 0-indexed
-    expect(toDateKey(d)).toBe('2025-11-05');
+    const date = new Date(2025, 10, 5); // month is 0-indexed
+    expect(toDateKey(date)).toBe('2025-11-05');
   });
 });
 
 describe('mergeTimeEntry', () => {
   const base: TimeEntry = {
     id: 'e1',
-    date: '2025-11-05',
+    date: d(2025, 11, 5),
     durationMinutes: 60,
     type: 'preaching',
     notes: 'morning',
@@ -144,7 +149,7 @@ describe('mergeTimeEntry', () => {
   it('keeps all fields from existing entry', () => {
     const result = mergeTimeEntry(base, { durationMinutes: 30 });
     expect(result.id).toBe('e1');
-    expect(result.date).toBe('2025-11-05');
+    expect(result.date).toEqual(d(2025, 11, 5));
     expect(result.type).toBe('preaching');
     expect(result.createdAt).toBe(base.createdAt);
   });

@@ -99,6 +99,9 @@ El script imprime la URL del PR. Presentarla al usuario.
 - [ ] Build limpio (`npm run build`) antes de hacer push.
 - [ ] Issue relacionado cerrado (o en estado correcto).
 - [ ] Sin archivos sensibles en el diff (`.env`, credenciales, tokens).
+- [ ] `public/assets/changelog.json` actualizado con los cambios de esta entrega
+      (tipos: `feature` para funcionalidad nueva, `fix` para bugs corregidos,
+      `ux` para mejoras de performance/visuales menores agrupadas).
 
 ---
 

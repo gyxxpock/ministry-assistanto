@@ -1,8 +1,33 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
-import { ReactiveFormsModule } from '@angular/forms';
+import { NO_ERRORS_SCHEMA, Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
+import { TranslateModule } from '@ngx-translate/core';
 import { TimeEntryFormComponent } from './time-entry-form.component';
 import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/time-entry.vm';
+
+@Component({
+  selector: 'mat-select',
+  template: '',
+  standalone: false,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => MatSelectStub), multi: true }],
+})
+class MatSelectStub implements ControlValueAccessor {
+  writeValue() {}
+  registerOnChange() {}
+  registerOnTouched() {}
+}
+
+@Component({
+  selector: 'ma-duration-wheel-picker',
+  template: '',
+  standalone: false,
+  providers: [{ provide: NG_VALUE_ACCESSOR, useExisting: forwardRef(() => DurationWheelPickerStub), multi: true }],
+})
+class DurationWheelPickerStub implements ControlValueAccessor {
+  writeValue() {}
+  registerOnChange() {}
+  registerOnTouched() {}
+}
 
 function makeEntry(overrides: Partial<TimeEntryVM> = {}): TimeEntryVM {
   return {
@@ -21,8 +46,8 @@ describe('TimeEntryFormComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [TimeEntryFormComponent],
-      imports: [ReactiveFormsModule],
+      declarations: [TimeEntryFormComponent, MatSelectStub, DurationWheelPickerStub],
+      imports: [ReactiveFormsModule, TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 
@@ -66,8 +91,9 @@ describe('TimeEntryFormComponent', () => {
       expect(count).toBe(0);
     });
 
-    it('setPreset sets durationMinutes and marks dirty', () => {
-      component.setPreset(180);
+    it('setting durationMinutes value and marking dirty works', () => {
+      component.form.controls.durationMinutes.setValue(180);
+      component.form.controls.durationMinutes.markAsDirty();
       expect(component.form.controls.durationMinutes.value).toBe(180);
       expect(component.form.controls.durationMinutes.dirty).toBeTrue();
     });

@@ -1,5 +1,6 @@
 import { Component, computed, inject, signal } from '@angular/core';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
+import { UpdateNotificationService } from '../../../../core/services/update-notification.service';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
 import { FileUtilService } from '../../../data/utils/file-util.service';
@@ -11,7 +12,8 @@ import { FileUtilService } from '../../../data/utils/file-util.service';
   styleUrl: './layout.scss',
 })
 export class Layout {
-  private readonly backupService = inject(BackupReminderService);
+  private readonly backupService: BackupReminderService = inject(BackupReminderService);
+  private readonly updateService: UpdateNotificationService = inject(UpdateNotificationService);
   private readonly facade = inject(TimeEntryFacade);
   private readonly exporter = inject(TimeEntryExporter);
   private readonly fileUtil = inject(FileUtilService);
@@ -19,6 +21,8 @@ export class Layout {
   navVisible = signal(true);
   headerOpacity = signal(1);
   readonly showBanner = computed(() => this.backupService.isReminderDue());
+  readonly showUpdateBanner = computed(() => this.updateService.isUpdateAvailable());
+  readonly updateChanges = computed(() => this.updateService.changes());
   private lastScrollTop = 0;
 
   onScroll(event: Event): void {
@@ -35,6 +39,14 @@ export class Layout {
     }
 
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
+
+  handleUpdateApply(): void {
+    this.updateService.applyUpdate();
+  }
+
+  handleUpdateDismiss(): void {
+    this.updateService.dismiss();
   }
 
   async handleBannerBackup(): Promise<void> {
