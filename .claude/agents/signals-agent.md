@@ -6,9 +6,9 @@ coordinando la migración desde el estado actual del Facade hacia un modelo basa
 
 ## Estado actual del proyecto
 
-Angular Signals está declarado como objetivo en las instrucciones del proyecto
-(`.github/copilot-instructions.md`) pero **no está implementado en código aún**.
-El Facade probablemente usa patrones RxJS o estado mutable directo.
+Angular Signals **está en uso activo** en la capa de Presentation y en servicios core.
+Los componentes nuevos usan `signal()`, `computed()` e `inject()` directamente.
+El Facade aún mezcla estado mutable y signals — la migración completa está pendiente.
 
 ## Cuándo adoptar Signals
 
@@ -61,6 +61,56 @@ async loadMonth(date: Date): Promise<void> {
 - **NUNCA** crear Signals en componentes para estado que vive en el Facade.
 - No migrar RxJS Observables que cruzan límites de módulos — mantener como Observable
   hasta que el consumidor también migre.
+
+## Trampa: TS2571 "Object is of type unknown" dentro de computed()
+
+El compilador de Angular no infiere el tipo de un servicio inyectado con `inject()`
+cuando la asignación es inline y el resultado se usa dentro de un `computed()`.
+
+```typescript
+// MAL — TypeScript no infiere el tipo dentro de computed(); error TS2571
+readonly total = computed(() => this.facade.totals()); // 'this.facade' is unknown
+private facade = inject(TimeEntryFacade);
+```
+
+```typescript
+// BIEN — anotación explícita garantiza la inferencia
+readonly facade: TimeEntryFacade = inject(TimeEntryFacade);
+readonly total = computed(() => this.facade.totals()); // ✓
+```
+
+**Regla:** Siempre añadir anotación de tipo explícita en propiedades inyectadas con
+`inject()` cuando su valor se usa dentro de `computed()`, `effect()` o métodos de clase.
+`readonly service: ServiceType = inject(ServiceType)` en lugar de
+`readonly service = inject(ServiceType)`.
+
+## Patrón: servicio de preferencias con Signals + localStorage
+
+Para servicios de preferencias del usuario (tema, frecuencias, flags):
+
+```typescript
+@Injectable({ providedIn: 'root' })
+export class PreferenceService {
+  private readonly _value = signal<ValueType>(
+    (localStorage.getItem(KEY) as ValueType | null) ?? DEFAULT
+  );
+
+  readonly value = this._value.asReadonly();
+
+  readonly isDerived = computed(() => {
+    const v = this._value();
+    // lógica derivada sin efectos secundarios
+    return ...;
+  });
+
+  setValue(v: ValueType): void {
+    this._value.set(v);
+    localStorage.setItem(KEY, v);
+  }
+}
+```
+
+Ver `BackupReminderService` y `ThemeService` como referencias canónicas en este proyecto.
 
 ## Señales de alerta
 

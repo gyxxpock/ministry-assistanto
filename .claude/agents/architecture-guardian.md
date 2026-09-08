@@ -53,6 +53,34 @@ graphify update .
 graphify query "import violations between layers"
 ```
 
+## Restricción de scope DI: root vs module-scoped
+
+`@Injectable({ providedIn: 'root' })` **no puede inyectar proveedores con scope de módulo**
+(servicios declarados en `providers: []` de un NgModule o con `providedIn: SomeModule`).
+Si se intenta, Angular lanza un error en runtime.
+
+En este proyecto, `TimeEntryFacade`, `TimeEntryExporter` y `FileUtilService` son
+module-scoped (`TimeEntryModule`). Un servicio root que los inyecte fallará.
+
+**Solución:** Si se necesita orquestar servicios module-scoped, inyectarlos directamente
+en el componente (que sí vive en el mismo módulo), no crear un servicio root intermediario.
+
+```typescript
+// MAL — root-scoped no puede inyectar module-scoped
+@Injectable({ providedIn: 'root' })
+export class BackupOrchestratorService {
+  private facade = inject(TimeEntryFacade); // ← falla en runtime
+}
+
+// BIEN — el componente (module-scoped) orquesta directamente
+@Component({ ... })
+export class LayoutComponent {
+  private facade = inject(TimeEntryFacade);     // ✓ mismo módulo
+  private exporter = inject(TimeEntryExporter); // ✓ mismo módulo
+  private backupService = inject(BackupReminderService); // ✓ root → OK en module-scoped
+}
+```
+
 ## Reglas de intervención
 
 - Si detectas una violación en una PR o diff, señálala antes de continuar con la tarea.
