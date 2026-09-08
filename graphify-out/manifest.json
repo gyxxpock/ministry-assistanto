@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1788896208.32175,
-    "seen": 1788896220.596886,
-    "ast_hash": "41405f414abea130e4c98b79073d2107",
+    "mtime": 1788896227.51276,
+    "seen": 1788896341.6733508,
+    "ast_hash": "d7424450fc493daa6f173dbe7d9b83d4",
     "semantic_hash": ""
   },
   ".github/scripts/verify-pr.js": {
@@ -54,15 +54,15 @@
     "semantic_hash": ""
   },
   "public/assets/i18n/en.json": {
-    "mtime": 1788895801.0323057,
-    "seen": 1788895934.134816,
-    "ast_hash": "6256dd05b53ece6ec3692c413a298805",
+    "mtime": 1788896328.7435844,
+    "seen": 1788896341.673362,
+    "ast_hash": "66e7b44b2fafd1551cdeb46c251bad80",
     "semantic_hash": ""
   },
   "public/assets/i18n/es.json": {
-    "mtime": 1788895801.0328054,
-    "seen": 1788895934.1348171,
-    "ast_hash": "079f4a1cf5b1e5b94792acf4dcbea19b",
+    "mtime": 1788896336.3752909,
+    "seen": 1788896341.673362,
+    "ast_hash": "68b3c31554e80cc866cd37b49434546f",
     "semantic_hash": ""
   },
   "scripts/check-i18n.js": {

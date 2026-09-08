@@ -128,9 +128,60 @@ overflows on screens ≤ 375px (iPhone SE).
 
 ---
 
+## Navigation & Module Architecture
+
+When adding a new feature (e.g., Goals) that should share the floating navigation with time-entry:
+
+### ✅ CORRECT PATTERN
+```
+TimeEntryModule (lazy-loaded, has Layout shell)
+  ├── /time-entry/list → TimeEntryListComponent
+  ├── /time-entry/calendar → TimeEntryCalendarComponent
+  ├── /time-entry/goals → GoalsComponent (lazy-loaded child)
+  └── /time-entry/settings → SettingsComponent
+```
+
+**Why**: Goals renders under TimeEntryModule's Layout shell, so it inherits:
+- Floating bottom navigation with all buttons
+- Scroll-aware header opacity & nav visibility
+- Update & backup banners (z-index layering)
+- Glassmorphic styling and animations
+
+### ❌ WRONG PATTERN (2026-09-08 incident)
+```
+AppRoutingModule
+  ├── /time-entry (lazy, has internal Layout shell)
+  └── /goals (separate lazy module)  ← Goals renders OUTSIDE Layout
+```
+
+**Why this breaks**: Goals module has no navigation shell, user sees broken UX.
+
+### Navigation Button Requirements
+When adding a new nav button to Layout:
+1. **i18n key must exist** in `public/assets/i18n/{en,es}.json`:
+   ```json
+   {
+     "goals": {
+       "pages": {
+         "list": { "title": "Goals" }
+       }
+     }
+   }
+   ```
+2. **Add button to layout.html** with same URL pattern:
+   ```html
+   <button mat-button routerLink="/time-entry/goals">
+     <mat-icon>flag</mat-icon>
+     <span class="label">{{ 'goals.pages.list.title' | translate }}</span>
+   </button>
+   ```
+3. **Add route to time-entry.module.ts** as loadChildren child
+4. **Do NOT create separate app-level route** for features that need nav
+
 ## Warning signs
 
 - A component calls `usecase.execute()` directly → move the call to the Facade.
 - `TimeEntryListComponent` grows further → consider sub-components.
 - A template contains complex conditional logic → move it to a `computed()` or VM getter.
 - New component without a sibling `.spec.ts` → create before considering the task complete.
+- **NEW**: A new feature module doesn't appear in nav → check if it's a sibling route instead of time-entry child.
