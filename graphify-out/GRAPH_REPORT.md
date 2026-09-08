@@ -1,22 +1,22 @@
 # Graph Report - ministry-assistanto  (2026-09-07)
 
 ## Corpus Check
-- 106 files · ~37,294 words
+- 110 files · ~40,523 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 695 nodes · 996 edges · 67 communities (48 shown, 16 thin omitted)
-- Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
+- 711 nodes · 1040 edges · 67 communities (47 shown, 17 thin omitted)
+- Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `1fbc3c29`
+- Built from commit: `7acffc74`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - CourseVisit
-- time-entry.module.ts
+- OptionPillGroupComponent
 - options
 - package.json
 - dependencies
@@ -59,14 +59,13 @@
 - Flujo completo
 - Skill: issues
 - issues.sh
-- layout.ts
+- Injectable
 - schematics
 - pr.sh
 - InMemoryRepository
-- MonthPaginatorComponent
-- OptionPillGroupComponent
 - update-notification.service.spec.ts
-- TimeEntryVM
+- Pipe
+- time-entry.module.ts
 - Component
 - development
 - scripts
@@ -76,21 +75,22 @@
 - NgModule
 - production
 - angular.json
-- ministry-assistanto
+- architect
 - TimeEntryCalendarComponent
 - check-coverage.sh
+- ministry-assistanto
 
 ## God Nodes (most connected - your core abstractions)
-1. `CourseVisit` - 26 edges
-2. `TimeEntry` - 24 edges
-3. `TimeEntryFacade` - 24 edges
-4. `DexieTimeEntryRepository` - 22 edges
+1. `TimeEntryFacade` - 25 edges
+2. `CourseVisit` - 24 edges
+3. `DexieTimeEntryRepository` - 22 edges
+4. `TimeEntry` - 22 edges
 5. `TimeEntryListComponent` - 20 edges
 6. `ITimeEntryRepository` - 19 edges
-7. `TimeEntryVM` - 16 edges
-8. `DurationWheelPickerComponent` - 16 edges
-9. `TimeEntryEditDialogComponent` - 15 edges
-10. `TimeEntryCalendarComponent` - 14 edges
+7. `DurationWheelPickerComponent` - 17 edges
+8. `@angular/core` - 17 edges
+9. `TimeEntryVM` - 16 edges
+10. `TimeEntryEditDialogComponent` - 15 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `MinistryAssistanto App` --conceptually_related_to--> `CLEAN Architecture Pattern`  [INFERRED]
@@ -111,23 +111,23 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (67 total, 16 thin omitted)
+## Communities (67 total, 17 thin omitted)
 
 ### Community 0 - "CourseVisit"
-Cohesion: 0.07
-Nodes (23): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+15 more)
+Cohesion: 0.06
+Nodes (20): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+12 more)
 
-### Community 1 - "time-entry.module.ts"
-Cohesion: 0.15
-Nodes (9): Pipe, I18nDatePipe, FileUtilService, Injectable, MaterialModule, NgModule, routes, TimeEntryModule (+1 more)
+### Community 1 - "OptionPillGroupComponent"
+Cohesion: 0.22
+Nodes (7): OptionPillGroupComponent, PillOption, TEST_OPTIONS, TranslateStub, Pipe, Component, Output
 
 ### Community 2 - "options"
-Cohesion: 0.20
-Nodes (14): options, assets, browser, codeCoverage, coverageReporters, index, inlineStyleLanguage, karmaConfig (+6 more)
+Cohesion: 0.24
+Nodes (12): options, assets, browser, codeCoverage, index, inlineStyleLanguage, polyfills, stylePreprocessorOptions (+4 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.08
-Nodes (24): name, private, version, @angular/build, @angular/cdk, @angular/cli, angular-cli-ghpages, @angular/common (+16 more)
+Cohesion: 0.09
+Nodes (21): name, private, version, @angular/build, @angular/cdk, @angular/cli, angular-cli-ghpages, @angular/compiler (+13 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.12
@@ -138,20 +138,20 @@ Cohesion: 0.15
 Nodes (13): devDependencies, @angular/build, @angular/cli, angular-cli-ghpages, @angular/compiler-cli, jasmine-core, karma, karma-chrome-launcher (+5 more)
 
 ### Community 6 - "DurationWheelPickerComponent"
-Cohesion: 0.19
-Nodes (3): DurationWheelPickerComponent, Component, ViewChild
+Cohesion: 0.17
+Nodes (4): @angular/common, DurationWheelPickerComponent, Component, ViewChild
 
 ### Community 7 - "@angular/core"
-Cohesion: 0.30
-Nodes (5): @angular/core, ChangeEntry, ChangelogEntry, Component, UpdateBannerComponent
+Cohesion: 0.07
+Nodes (18): Input, Output, @angular/core, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, FileUtilService (+10 more)
 
 ### Community 8 - "CLEAN Architecture Pattern"
 Cohesion: 0.16
 Nodes (14): CLEAN Architecture Pattern, Data Layer, Domain Layer, Facade Layer, Internationalization Convention, ngx-translate i18n Library, Presentation Layer, i18n PR Changes Summary (+6 more)
 
 ### Community 9 - "app-module.ts"
-Cohesion: 0.20
-Nodes (8): @angular/platform-browser, @ngx-translate/core, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
+Cohesion: 0.22
+Nodes (7): @angular/platform-browser, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
 
 ### Community 11 - "Dispatcher — Auto-Dispatch de Agentes"
 Cohesion: 0.20
@@ -238,8 +238,8 @@ Cohesion: 0.29
 Nodes (6): Alcance, DataAgent, Patrones Dexie de este proyecto, Responsabilidades, Restricciones absolutas, Señales de alerta
 
 ### Community 41 - "BackupReminderService"
-Cohesion: 0.07
-Nodes (17): Component, BackupReminderFrequency, BackupReminderService, DAYS, Injectable, MODE_CYCLE, ThemeMode, ThemeService (+9 more)
+Cohesion: 0.05
+Nodes (19): Component, Pipe, BackupReminderFrequency, BackupReminderService, DAYS, Injectable, MODE_CYCLE, ThemeMode (+11 more)
 
 ### Community 42 - "UXAgent"
 Cohesion: 0.15
@@ -253,25 +253,13 @@ Nodes (10): 1. Verificar estado, 2. Push, 3. Construir título y cuerpo del PR, 
 Cohesion: 0.15
 Nodes (12): 1. Inicio — listar y elegir, 2. Arrancar un issue, 3. Implementar, 4. Cerrar, Crear un issue nuevo, Cuándo activar este skill, Etiquetas disponibles, Flujo de sesión (+4 more)
 
-### Community 46 - "layout.ts"
-Cohesion: 0.18
-Nodes (4): Injectable, UpdateNotificationService, Layout, Component
-
 ### Community 47 - "schematics"
 Cohesion: 0.25
 Nodes (8): schematics, standalone, style, standalone, standalone, @schematics/angular:component, @schematics/angular:directive, @schematics/angular:pipe
 
-### Community 50 - "MonthPaginatorComponent"
-Cohesion: 0.24
-Nodes (6): Output, MonthPaginatorComponent, I18nDateStub, TranslateStub, Pipe, Component
-
-### Community 51 - "OptionPillGroupComponent"
-Cohesion: 0.20
-Nodes (8): Input, OptionPillGroupComponent, PillOption, TEST_OPTIONS, TranslateStub, Pipe, Component, Output
-
-### Community 53 - "TimeEntryVM"
-Cohesion: 0.08
-Nodes (18): TimeEntryType, CalendarDay, today, TimeEntryDayComponent, Component, Input, Output, TimeEntryEditDialogComponent (+10 more)
+### Community 53 - "time-entry.module.ts"
+Cohesion: 0.06
+Nodes (31): @angular/forms, @ngx-translate/core, I18nDatePipe, TimeEntryType, TimeEntryFacade, Inject, Injectable, CalendarDay (+23 more)
 
 ### Community 55 - "development"
 Cohesion: 0.22
@@ -280,6 +268,10 @@ Nodes (9): serve, development, buildTarget, extractLicenses, optimization, sourc
 ### Community 56 - "scripts"
 Cohesion: 0.22
 Nodes (9): scripts, build, build:gh, deploy, i18n:check, ng, start, test (+1 more)
+
+### Community 57 - "App"
+Cohesion: 0.40
+Nodes (3): @angular/router, App, Component
 
 ### Community 58 - "ngsw-config.json"
 Cohesion: 0.50
@@ -297,33 +289,37 @@ Nodes (9): build, builder, configurations, defaultConfiguration, production, bud
 Cohesion: 0.29
 Nodes (6): cli, analytics, newProjectRoot, projects, $schema, version
 
-### Community 63 - "ministry-assistanto"
-Cohesion: 0.20
-Nodes (10): extract-i18n, test, builder, architect, prefix, projectType, root, sourceRoot (+2 more)
+### Community 63 - "architect"
+Cohesion: 0.40
+Nodes (5): extract-i18n, test, builder, architect, builder
 
 ### Community 64 - "TimeEntryCalendarComponent"
 Cohesion: 0.19
 Nodes (3): TimeEntryCalendarComponent, Component, toDateKey()
 
+### Community 68 - "ministry-assistanto"
+Cohesion: 0.40
+Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
+
 ## Knowledge Gaps
-- **263 isolated node(s):** `Archivos de spec existentes`, `Domain — tests puros, sin Angular TestBed`, `Data — tests de integración con Dexie real (fake-indexeddb)`, `Facade — mockear ITimeEntryRepository`, `Presentation — TestBed con Facade mockeado` (+258 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 403 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **16 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **261 isolated node(s):** `today`, `Person`, `SyncEvent`, `CalendarDay`, `ChangelogEntry` (+256 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 412 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@angular/core` connect `@angular/core` to `time-entry.module.ts`, `package.json`, `app-module.ts`, `BackupReminderService`, `layout.ts`, `MonthPaginatorComponent`, `OptionPillGroupComponent`, `TimeEntryVM`?**
-  _High betweenness centrality (0.047) - this node is a cross-community bridge._
+- **Why does `@angular/core` connect `@angular/core` to `CourseVisit`, `OptionPillGroupComponent`, `package.json`, `app-module.ts`, `BackupReminderService`, `time-entry.module.ts`?**
+  _High betweenness centrality (0.055) - this node is a cross-community bridge._
+- **Why does `@ngx-translate/core` connect `time-entry.module.ts` to `CourseVisit`, `package.json`, `@angular/core`, `app-module.ts`, `BackupReminderService`, `App`?**
+  _High betweenness centrality (0.035) - this node is a cross-community bridge._
 - **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `CourseVisit`, `time-entry.module.ts`?**
   _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **Why does `TimeEntryFacade` connect `CourseVisit` to `time-entry.module.ts`, `TimeEntryListComponent`, `TimeEntryVM`, `layout.ts`?**
-  _High betweenness centrality (0.023) - this node is a cross-community bridge._
-- **What connects `Archivos de spec existentes`, `Domain — tests puros, sin Angular TestBed`, `Data — tests de integración con Dexie real (fake-indexeddb)` to the rest of the system?**
-  _263 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `today`, `Person`, `SyncEvent` to the rest of the system?**
+  _261 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
-  _Cohesion score 0.06526806526806526 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.06317907444668008 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.08 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.125 - nodes in this community are weakly interconnected._
