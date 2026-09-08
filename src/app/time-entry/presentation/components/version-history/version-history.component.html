@@ -1,0 +1,27 @@
+<mat-accordion class="version-accordion">
+  @for (entry of entries; track entry.version; let i = $index) {
+    <mat-expansion-panel [expanded]="i === 0">
+      <mat-expansion-panel-header>
+        <mat-panel-title class="version-title">
+          {{ formatVersion(entry.version) }}
+          @if (i === 0) {
+            <span class="version-current-chip">
+              {{ 'settings.about.current' | translate }}
+            </span>
+          }
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <ul class="change-list">
+        @for (change of entry.changes; track change.text) {
+          <li class="change-item">
+            <span class="change-badge badge-{{ change.type }}">
+              {{ 'update.changeTypes.' + change.type | translate }}
+            </span>
+            <span class="change-text">{{ change.text }}</span>
+          </li>
+        }
+      </ul>
+    </mat-expansion-panel>
+  }
+</mat-accordion>

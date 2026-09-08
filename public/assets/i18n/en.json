@@ -50,6 +50,11 @@
         "doBackup": "Back up",
         "dismiss": "Dismiss"
       }
+    },
+    "about": {
+      "title": "About",
+      "current": "current",
+      "loading": "Loading history..."
     }
   },
   "update": {
@@ -59,7 +64,8 @@
     "uxChanges": "User experience improvements",
     "changeTypes": {
       "feature": "New",
-      "fix": "Fixed"
+      "fix": "Fixed",
+      "ux": "UX"
     }
   },
   "timeEntry": {

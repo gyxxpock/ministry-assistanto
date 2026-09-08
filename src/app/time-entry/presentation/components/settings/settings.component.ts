@@ -2,6 +2,7 @@ import { Component, computed, inject } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { ThemeMode, ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderFrequency, BackupReminderService } from '../../../../core/services/backup-reminder.service';
+import { ChangelogService } from '../../../../core/services/changelog.service';
 import { PillOption } from '../shared/option-pill-group/option-pill-group.component';
 
 @Component({
@@ -13,6 +14,7 @@ import { PillOption } from '../shared/option-pill-group/option-pill-group.compon
 export class SettingsComponent {
   readonly themeService: ThemeService = inject(ThemeService);
   readonly backupService: BackupReminderService = inject(BackupReminderService);
+  readonly changelogService: ChangelogService = inject(ChangelogService);
   private readonly translate = inject(TranslateService);
 
   readonly themeOptions: PillOption[] = [
