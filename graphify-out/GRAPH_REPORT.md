@@ -1,7 +1,7 @@
 # Graph Report - ministry-assistanto  (2026-09-07)
 
 ## Corpus Check
-- 92 files · ~31,439 words
+- 92 files · ~31,602 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
@@ -10,7 +10,7 @@
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e795d161`
+- Built from commit: `01a0fd08`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -263,7 +263,7 @@ Cohesion: 0.24
 Nodes (4): TimeEntryFormComponent, Component, Input, Output
 
 ## Knowledge Gaps
-- **231 isolated node(s):** `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión`, `Cómo detectar violaciones`, `Restricción de scope DI: root vs module-scoped` (+226 more)
+- **231 isolated node(s):** `Cuándo activar este skill`, `1. Verificar estado`, `2. Push`, `3. Construir título y cuerpo del PR`, `4. Crear PR` (+226 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 342 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
@@ -276,7 +276,7 @@ _Questions this graph is uniquely positioned to answer:_
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `DurationWheelPickerComponent` connect `DurationWheelPickerComponent` to `time-entry.module.ts`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión` to the rest of the system?**
+- **What connects `Cuándo activar este skill`, `1. Verificar estado`, `2. Push` to the rest of the system?**
   _231 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
   _Cohesion score 0.05886075949367089 - nodes in this community are weakly interconnected._

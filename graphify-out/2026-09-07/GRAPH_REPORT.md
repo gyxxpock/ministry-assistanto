@@ -1,22 +1,22 @@
 # Graph Report - ministry-assistanto  (2026-09-07)
 
 ## Corpus Check
-- 92 files · ~30,972 words
+- 92 files · ~31,439 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 630 nodes · 892 edges · 61 communities (44 shown, 15 thin omitted)
+- 633 nodes · 895 edges · 55 communities (40 shown, 13 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `634d898a`
+- Built from commit: `e795d161`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - CourseVisit
-- TimeEntryVM
+- time-entry.module.ts
 - options
 - TimeEntryListComponent
 - dependencies
@@ -54,7 +54,7 @@
 - UIAgent
 - AGENTS — Ministry Assistanto
 - DataAgent
-- BackupReminderService
+- settings.component.ts
 - UXAgent
 - Flujo completo
 - Skill: issues
@@ -66,14 +66,8 @@
 - architect
 - ministry-assistanto
 - NgModule
-- settings.component.ts
+- TimeEntryFormComponent
 - Component
-- time-entry.module.ts
-- OptionPillGroupComponent
-- time-entry-list.component.ts
-- layout.ts
-- TimeEntryFacade
-- SettingsComponent
 
 ## God Nodes (most connected - your core abstractions)
 1. `CourseVisit` - 32 edges
@@ -96,8 +90,8 @@
   src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html → .github/copilot-instructions.md
 - `i18n Runtime Implementation PR` --semantically_similar_to--> `i18n PR Changes Summary`  [INFERRED] [semantically similar]
   .github/PULL_REQUEST_TEMPLATE_PR_BODY.md → .github/pr-comments/i18n-summary.md
-- `PR Checklist` --references--> `CLEAN Architecture Pattern`  [EXTRACTED]
-  .github/PULL_REQUEST_TEMPLATE.md → .github/copilot-instructions.md
+- `TimeEntryFormComponent` --references--> `TimeEntryTypeVM`  [EXTRACTED]
+  src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts → src/app/time-entry/presentation/models/time-entry.vm.ts
 
 ## Import Cycles
 - None detected.
@@ -106,15 +100,15 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (61 total, 15 thin omitted)
+## Communities (55 total, 13 thin omitted)
 
 ### Community 0 - "CourseVisit"
 Cohesion: 0.06
 Nodes (21): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+13 more)
 
-### Community 1 - "TimeEntryVM"
-Cohesion: 0.07
-Nodes (17): TimeEntryType, today, TimeEntryDayComponent, Component, Input, Output, TimeEntryEditDialogComponent, Component (+9 more)
+### Community 1 - "time-entry.module.ts"
+Cohesion: 0.06
+Nodes (29): NgModule, Pipe, I18nDatePipe, FileUtilService, Injectable, TimeEntryType, TimeEntryFacade, Inject (+21 more)
 
 ### Community 2 - "options"
 Cohesion: 0.18
@@ -143,10 +137,6 @@ Nodes (14): CLEAN Architecture Pattern, Data Layer, Domain Layer, Facade Layer, 
 ### Community 9 - "app-module.ts"
 Cohesion: 0.19
 Nodes (7): App, AppModule, NgModule, AppRoutingModule, routes, NgModule, Component
-
-### Community 10 - "TimeEntryCalendarComponent"
-Cohesion: 0.18
-Nodes (4): CalendarDay, TimeEntryCalendarComponent, Component, toDateKey()
 
 ### Community 11 - "Dispatcher — Auto-Dispatch de Agentes"
 Cohesion: 0.20
@@ -205,12 +195,12 @@ Cohesion: 0.20
 Nodes (9): Archivos de spec existentes, Convenciones, Data — tests de integración con Dexie real (fake-indexeddb), Domain — tests puros, sin Angular TestBed, Estrategia por capa, Facade — mockear ITimeEntryRepository, Presentation — TestBed con Facade mockeado, Señales de alerta (+1 more)
 
 ### Community 33 - "SignalsAgent"
-Cohesion: 0.22
-Nodes (8): Cuándo adoptar Signals, Estado actual del proyecto, Orden recomendado de migración, Patrones para este proyecto, Restricciones, Señales de alerta, Signals vs RxJS — regla de decisión, SignalsAgent
+Cohesion: 0.20
+Nodes (9): Cuándo adoptar Signals, Estado actual del proyecto, Orden recomendado de migración, Patrones para este proyecto, Patrón: servicio de preferencias con Signals + localStorage, Restricciones, Señales de alerta, Signals vs RxJS — regla de decisión (+1 more)
 
 ### Community 34 - "ArchitectureGuardian"
 Cohesion: 0.29
-Nodes (6): ArchitectureGuardian, Checklist de revisión, Cómo detectar violaciones, Las 4 capas de este proyecto, Reglas de intervención, Violaciones conocidas (pendientes de corregir)
+Nodes (7): ArchitectureGuardian, Checklist de revisión, Cómo detectar violaciones, Las 4 capas de este proyecto, Reglas de intervención, Restricción de scope DI: root vs module-scoped, Violaciones conocidas (pendientes de corregir)
 
 ### Community 35 - "DomainAgent"
 Cohesion: 0.29
@@ -221,7 +211,7 @@ Cohesion: 0.29
 Nodes (7): Alcance, Camino hacia Signals, Estado actual y deuda técnica, FacadeAgent, Responsabilidades, Restricciones absolutas, Señales de alerta
 
 ### Community 37 - "UIAgent"
-Cohesion: 0.18
+Cohesion: 0.17
 Nodes (11): 1. `| date:` no responde al idioma en runtime, 2. Flex items con texto largo requieren `min-width: 0`, 3. Paneles flotantes condicionales deben ser `position: absolute` + restringidos al viewport, Alcance, Camino hacia Signals, Convenciones de este proyecto, Responsabilidades, Restricciones absolutas (+3 more)
 
 ### Community 38 - "AGENTS — Ministry Assistanto"
@@ -229,12 +219,12 @@ Cohesion: 0.33
 Nodes (6): AGENTS — Ministry Assistanto, Auto-dispatch (modo por defecto), Modo de activación, Override manual (cuando quieres forzar un agente específico), Reglas del sistema, Índice de agentes
 
 ### Community 39 - "DataAgent"
-Cohesion: 0.33
+Cohesion: 0.29
 Nodes (6): Alcance, DataAgent, Patrones Dexie de este proyecto, Responsabilidades, Restricciones absolutas, Señales de alerta
 
-### Community 41 - "BackupReminderService"
-Cohesion: 0.15
-Nodes (7): BackupReminderFrequency, BackupReminderService, DAYS, Injectable, BackupReminderBannerComponent, Component, Output
+### Community 41 - "settings.component.ts"
+Cohesion: 0.06
+Nodes (21): Component, Input, Output, BackupReminderFrequency, BackupReminderService, DAYS, Injectable, MODE_CYCLE (+13 more)
 
 ### Community 42 - "UXAgent"
 Cohesion: 0.20
@@ -268,41 +258,29 @@ Nodes (5): extract-i18n, test, builder, architect, builder
 Cohesion: 0.40
 Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
 
-### Community 53 - "settings.component.ts"
-Cohesion: 0.23
-Nodes (5): MODE_CYCLE, ThemeMode, ThemeService, Injectable, PillOption
-
-### Community 55 - "time-entry.module.ts"
-Cohesion: 0.22
-Nodes (7): NgModule, Pipe, I18nDatePipe, MaterialModule, NgModule, routes, TimeEntryModule
-
-### Community 56 - "OptionPillGroupComponent"
-Cohesion: 0.22
-Nodes (7): Input, Output, MonthPaginatorComponent, Component, OptionPillGroupComponent, Component, Output
-
-### Community 59 - "TimeEntryFacade"
-Cohesion: 0.40
-Nodes (3): TimeEntryFacade, Inject, Injectable
+### Community 53 - "TimeEntryFormComponent"
+Cohesion: 0.24
+Nodes (4): TimeEntryFormComponent, Component, Input, Output
 
 ## Knowledge Gaps
-- **229 isolated node(s):** `Alcance`, `Responsabilidades`, `Restricciones absolutas`, `Convenciones de este proyecto`, `Camino hacia Signals` (+224 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 339 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **231 isolated node(s):** `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión`, `Cómo detectar violaciones`, `Restricción de scope DI: root vs module-scoped` (+226 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 342 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `CourseVisit`, `time-entry-list.component.ts`, `time-entry.module.ts`?**
-  _High betweenness centrality (0.020) - this node is a cross-community bridge._
+- **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `CourseVisit`, `time-entry.module.ts`?**
+  _High betweenness centrality (0.019) - this node is a cross-community bridge._
 - **Why does `DexieTimeEntryRepository` connect `CourseVisit` to `time-entry.module.ts`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `DurationWheelPickerComponent` connect `DurationWheelPickerComponent` to `time-entry.module.ts`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `Alcance`, `Responsabilidades`, `Restricciones absolutas` to the rest of the system?**
-  _229 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión` to the rest of the system?**
+  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
-  _Cohesion score 0.06172839506172839 - nodes in this community are weakly interconnected._
-- **Should `TimeEntryVM` be split into smaller, more focused modules?**
-  _Cohesion score 0.0726950354609929 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05886075949367089 - nodes in this community are weakly interconnected._
+- **Should `time-entry.module.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.05754527162977867 - nodes in this community are weakly interconnected._
 - **Should `TimeEntryListComponent` be split into smaller, more focused modules?**
   _Cohesion score 0.13157894736842105 - nodes in this community are weakly interconnected._
