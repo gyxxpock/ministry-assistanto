@@ -40,8 +40,42 @@ git log origin/main..HEAD --oneline
 Formato sugerido: `<tipo>(<scope>): <descripción> (#<issue>)`
 Ejemplo: `feat(ux): sticky header + tiles compactos en iPhone SE (#20)`
 
-**Cuerpo:** Sección `## Summary` con bullets de qué cambió, sección `## Test plan`
-con checklist de qué verificar manualmente, y referencia al issue con `Closes #N`.
+**Cuerpo:** Seguir la estructura de `.github/PULL_REQUEST_TEMPLATE.md` — rellenar
+cada sección con la información del diff real. No usar una estructura simplificada.
+
+Secciones a completar (omitir solo las que genuinamente no aplican):
+
+```markdown
+# Summary
+<1-2 frases: qué cambió y por qué>
+
+## Type of change
+- [x] feat / fix / refactor / docs / chore  ← marcar el que corresponde
+
+## Related issues
+- Closes #N  ← si hay issue asociado
+
+## Implementation notes
+- Qué capas tocó (domain / data / facade / presentation)
+- Decisiones de diseño relevantes (Clean Architecture, patrones usados)
+- Archivos clave modificados
+
+## How to test
+- npm run build
+- npm run i18n:check  ← si se tocaron traducciones
+- Pasos de QA manual para cambios de UI (golden path + casos edge)
+
+## Release notes
+- `<tipo>(<scope>): <descripción en una línea>`
+
+## Checklist
+- [x] Build pasa (`npm run build`)
+- [x] i18n: claves añadidas/actualizadas y `npm run i18n:check` pasa  ← si aplica
+- [x] Commits pequeños y enfocados con mensajes claros
+```
+
+Rellenar con información real de los commits — no dejar placeholders ni secciones vacías
+que no aporten valor.
 
 ### 4. Crear PR
 
