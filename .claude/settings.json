@@ -29,5 +29,15 @@
         ]
       }
     ]
+  },
+  "permissions": {
+    "allow": [
+      "Bash(graphify query *)",
+      "Bash(graphify explain *)",
+      "Bash(graphify path *)",
+      "Bash(.claude/scripts/issues.sh list)",
+      "Bash(.claude/scripts/issues.sh view *)",
+      "Bash(.claude/scripts/pr.sh status)"
+    ]
   }
 }

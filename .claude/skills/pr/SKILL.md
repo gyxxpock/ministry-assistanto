@@ -1,23 +1,23 @@
 # Skill: pr
 
-Push de la rama actual y creación de Pull Request hacia `main`.
+Push the current branch and create a Pull Request toward `main`.
 Script: `.claude/scripts/pr.sh`
 
-Invoca con `/pr` cuando el usuario aprueba un cambio y quiere enviarlo a producción.
+Invoke with `/pr` when the user approves a change and wants to send it to production.
 
 ---
 
-## Cuándo activar este skill
+## When to activate this skill
 
-- El usuario dice "haz el PR", "envía a main", "push y PR", "crea el pull request".
-- Después de cerrar un issue y el usuario confirma que el cambio está listo.
-- **No crear PRs sin aprobación explícita del usuario.**
+- The user says "make the PR", "send to main", "push and PR", "create the pull request".
+- After closing an issue and the user confirms the change is ready.
+- **Do not create PRs without explicit user approval.**
 
 ---
 
-## Flujo completo
+## Full flow
 
-### 1. Verificar estado
+### 1. Verify state
 
 ```bash
 git status
@@ -25,8 +25,8 @@ git log origin/main..HEAD --oneline
 .claude/scripts/pr.sh commits
 ```
 
-- Si hay cambios sin commitear → crear commit primero (o alertar al usuario).
-- Si no hay commits nuevos respecto a `main` → no hay nada que enviar; informar.
+- If there are uncommitted changes → create commit first (or alert the user).
+- If there are no new commits relative to `main` → nothing to send; inform the user.
 
 ### 2. Push
 
@@ -34,81 +34,81 @@ git log origin/main..HEAD --oneline
 .claude/scripts/pr.sh push
 ```
 
-### 3. Construir título y cuerpo del PR
+### 3. Build PR title and body
 
-**Título:** Una línea imperativa, ≤70 chars. Basarse en los commits de la rama.
-Formato sugerido: `<tipo>(<scope>): <descripción> (#<issue>)`
-Ejemplo: `feat(ux): sticky header + tiles compactos en iPhone SE (#20)`
+**Title:** One imperative line, ≤70 chars. Based on the branch commits.
+Suggested format: `<type>(<scope>): <description> (#<issue>)`
+Example: `feat(ux): sticky header + compact tiles on iPhone SE (#20)`
 
-**Cuerpo:** Seguir la estructura de `.github/PULL_REQUEST_TEMPLATE.md` — rellenar
-cada sección con la información del diff real. No usar una estructura simplificada.
+**Body:** Follow the structure of `.github/PULL_REQUEST_TEMPLATE.md` — fill in
+each section with information from the real diff. Do not use a simplified structure.
 
-Secciones a completar (omitir solo las que genuinamente no aplican):
+Sections to complete (omit only those that genuinely do not apply):
 
 ```markdown
 # Summary
-<1-2 frases: qué cambió y por qué>
+<1-2 sentences: what changed and why>
 
 ## Type of change
-- [x] feat / fix / refactor / docs / chore  ← marcar el que corresponde
+- [x] feat / fix / refactor / docs / chore  ← mark the applicable one
 
 ## Related issues
-- Closes #N  ← si hay issue asociado
+- Closes #N  ← if there is an associated issue
 
 ## Implementation notes
-- Qué capas tocó (domain / data / facade / presentation)
-- Decisiones de diseño relevantes (Clean Architecture, patrones usados)
-- Archivos clave modificados
+- Which layers were touched (domain / data / facade / presentation)
+- Relevant design decisions (Clean Architecture, patterns used)
+- Key files modified
 
 ## How to test
 - npm run build
-- npm run i18n:check  ← si se tocaron traducciones
-- Pasos de QA manual para cambios de UI (golden path + casos edge)
+- npm run i18n:check  ← if translations were touched
+- Manual QA steps for UI changes (golden path + edge cases)
 
 ## Release notes
-- `<tipo>(<scope>): <descripción en una línea>`
+- `<type>(<scope>): <one-line description>`
 
 ## Checklist
-- [x] Build pasa (`npm run build`)
-- [x] i18n: claves añadidas/actualizadas y `npm run i18n:check` pasa  ← si aplica
-- [x] Commits pequeños y enfocados con mensajes claros
+- [x] Build passes (`npm run build`)
+- [x] i18n: keys added/updated and `npm run i18n:check` passes  ← if applicable
+- [x] Small, focused commits with clear messages
 ```
 
-Rellenar con información real de los commits — no dejar placeholders ni secciones vacías
-que no aporten valor.
+Fill in with real information from the commits — do not leave placeholders or empty sections
+that add no value.
 
-### 4. Crear PR
+### 4. Create PR
 
 ```bash
-.claude/scripts/pr.sh create "<título>" "<cuerpo>"
+.claude/scripts/pr.sh create "<title>" "<body>"
 ```
 
-Para PR en borrador (trabajo en progreso):
+For a draft PR (work in progress):
 ```bash
-.claude/scripts/pr.sh draft "<título>" "<cuerpo>"
+.claude/scripts/pr.sh draft "<title>" "<body>"
 ```
 
-### 5. Mostrar URL
+### 5. Show URL
 
-El script imprime la URL del PR. Presentarla al usuario.
+The script prints the PR URL. Present it to the user.
 
 ---
 
-## Verificaciones previas
+## Pre-flight checks
 
-- [ ] Build limpio (`npm run build`) antes de hacer push.
-- [ ] Issue relacionado cerrado (o en estado correcto).
-- [ ] Sin archivos sensibles en el diff (`.env`, credenciales, tokens).
-- [ ] `public/assets/changelog.json` actualizado con los cambios de esta entrega
-      (tipos: `feature` para funcionalidad nueva, `fix` para bugs corregidos,
-      `ux` para mejoras de performance/visuales menores agrupadas).
+- [ ] Clean build (`npm run build`) before pushing.
+- [ ] Related issue closed (or in correct state).
+- [ ] No sensitive files in the diff (`.env`, credentials, tokens).
+- [ ] `public/assets/changelog.json` updated with the changes in this delivery
+      (types: `feature` for new functionality, `fix` for fixed bugs,
+      `ux` for minor performance/visual improvements grouped together).
 
 ---
 
-## Reglas
+## Rules
 
-- Siempre hacer push **antes** de crear el PR.
-- La base siempre es `main`.
-- Incluir `Closes #N` en el cuerpo si hay un issue relacionado.
-- No hacer push a `main` directamente — solo PRs desde ramas de trabajo.
-- Si el PR ya existe para la rama, usar `pr.sh status` para ver su URL en lugar de crear uno nuevo.
+- Always push **before** creating the PR.
+- Base is always `main`.
+- Include `Closes #N` in the body if there is a related issue.
+- Do not push to `main` directly — only PRs from working branches.
+- If a PR already exists for the branch, use `pr.sh status` to see its URL instead of creating a new one.

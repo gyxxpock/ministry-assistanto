@@ -1,42 +1,42 @@
 # DataAgent
 
-Responsable de la capa de infraestructura/datos. Implementa las interfaces declaradas
-en dominio usando Dexie.js sobre IndexedDB.
+Responsible for the infrastructure/data layer. Implements the interfaces declared
+in the domain using Dexie.js over IndexedDB.
 
-> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+> **Orientation**: run `graphify query "<question>"` before reading source files. Only read raw to modify specific lines.
 
-## Alcance
+## Scope
 
 ```
 src/app/time-entry/data/
-  time-entry.repository.ts   ← ITimeEntryRepository (interfaz — pendiente de mover a domain/)
+  time-entry.repository.ts   ← ITimeEntryRepository (interface — pending move to domain/)
   time-entry.dexie.ts        ← DexieTimeEntryRepository + TimeEntryDB (Dexie schema)
 ```
 
-## Responsabilidades
+## Responsibilities
 
-- Implementar `ITimeEntryRepository` con `DexieTimeEntryRepository`.
-- Gestionar el esquema de Dexie (`TimeEntryDB`) y sus migraciones de versión.
-- Mapear entre entidades de dominio (`TimeEntry`, `CourseVisit`) y estructuras de IndexedDB.
-- Mantener la lógica de persistencia offline-first.
+- Implement `ITimeEntryRepository` with `DexieTimeEntryRepository`.
+- Manage the Dexie schema (`TimeEntryDB`) and its version migrations.
+- Map between domain entities (`TimeEntry`, `CourseVisit`) and IndexedDB structures.
+- Maintain offline-first persistence logic.
 
-## Restricciones absolutas
+## Absolute restrictions
 
-- **NUNCA** importar desde `presentation/` ni `facade/`.
-- Solo puede importar desde `domain/` (entidades e interfaces).
-- No exponer Dexie ni IndexedDB fuera de esta capa — solo la interfaz `ITimeEntryRepository`.
-- No contener lógica de negocio: los cálculos viven en `domain/`.
+- **NEVER** import from `presentation/` or `facade/`.
+- May only import from `domain/` (entities and interfaces).
+- Do not expose Dexie or IndexedDB outside this layer — only the `ITimeEntryRepository` interface.
+- Do not contain business logic: calculations live in `domain/`.
 
-## Patrones Dexie de este proyecto
+## Dexie patterns in this project
 
-- La clase base hereda de `Dexie`: `class TimeEntryDB extends Dexie`.
-- Las migraciones se declaran en el constructor con `.version(n).stores({...})`.
-- Las queries son `async/await` sobre tablas Dexie; devolver `Promise<T>`.
-- Al agregar campos nuevos en una versión, siempre proveer `.upgrade()` para datos existentes.
+- The base class inherits from `Dexie`: `class TimeEntryDB extends Dexie`.
+- Migrations are declared in the constructor with `.version(n).stores({...})`.
+- Queries are `async/await` over Dexie tables; return `Promise<T>`.
+- When adding new fields in a version, always provide `.upgrade()` for existing data.
 
-## Señales de alerta
+## Warning signals
 
-- Un método del repositorio hace un cálculo de negocio (ej. suma de horas) → moverlo a
+- A repository method performs a business calculation (e.g. summing hours) → move it to
   `domain/time-entry.usecase.ts`.
-- Se importa `MatDialog` o cualquier `@angular/material` → violación de capa.
-- La versión de Dexie aumenta sin `upgrade()` para registros previos → riesgo de corrupción.
+- `MatDialog` or any `@angular/material` is imported → layer violation.
+- Dexie version increases without an `upgrade()` for prior records → risk of corruption.

@@ -1,72 +1,65 @@
 # AGENTS — Ministry Assistanto
 
-Roles contextuales para sesiones de CLI con Claude Code. Cada agente tiene reglas de capa,
-rutas de responsabilidad y restricciones específicas al proyecto.
+Contextual roles for Claude Code CLI sessions. Each agent has layer-specific rules, responsibility paths, and project constraints.
 
-## Conocimiento del grafo (graphify)
+## Knowledge Graph (graphify)
 
-Este proyecto tiene un knowledge graph en `graphify-out/`. Antes de explorar código fuente,
-usar siempre:
+This project has a knowledge graph at `graphify-out/`. Before exploring source code, always use:
 
 ```bash
-graphify query "<pregunta>"      # subgrafo scoped — más útil que grep
-graphify path "<A>" "<B>"        # relación entre dos nodos
-graphify explain "<concepto>"    # profundidad en un concepto específico
-graphify update .                # actualizar tras modificar código (sin costo de API)
+graphify query "<question>"      # scoped subgraph — more useful than grep
+graphify path "<A>" "<B>"        # relationship between two nodes
+graphify explain "<concept>"     # deep dive into a specific concept
+graphify update .                # refresh after code changes (no API cost)
 ```
 
-Los agentes individuales incluyen esta instrucción. El dispatcher la aplica en Paso 0.
+Individual agents include this instruction. The dispatcher applies it in Step 0.
 
-## Modo de activación
+## Activation Mode
 
-### Auto-dispatch (modo por defecto)
+### Auto-dispatch (default mode)
 
-Describe la tarea en lenguaje natural. Claude analiza el contenido, identifica los
-agentes relevantes y los aplica automáticamente. Al inicio de cada respuesta verás:
-
-```
-> Agentes: DomainAgent · ArchitectureGuardian
-```
-
-Ejemplos de tareas que activan agentes automáticamente:
-```
-quiero agregar un resumen semanal de horas trabajadas
-el componente de calendario necesita mostrar días festivos
-migra el esquema de Dexie a versión 3
-convierte el estado del facade a Angular Signals
-escribe specs para el use case de horas semanales
-```
-
-### Override manual (cuando quieres forzar un agente específico)
-
-Prefija tu mensaje con el nombre del agente para ignorar el dispatcher:
+Describe the task in natural language. Claude analyzes the content, identifies relevant agents, and applies them automatically. At the start of each response you will see:
 
 ```
-DomainAgent: revisa si este modelo tiene sentido antes de implementarlo
-TestingAgent: escribe specs solo para el facade, sin tocar las otras capas
+> Agents: DomainAgent · ArchitectureGuardian
 ```
 
-## Índice de agentes
+Examples of tasks that automatically activate agents:
+```
+I want to add a weekly summary of hours worked
+the calendar component needs to show holidays
+migrate Dexie schema to version 3
+convert facade state to Angular Signals
+write specs for the weekly hours use case
+```
 
-| Agente | Archivo | Capa / Alcance |
-|--------|---------|----------------|
+### Manual Override (when you want to force a specific agent)
+
+Prefix your message with the agent name to bypass the dispatcher:
+
+```
+DomainAgent: review if this model makes sense before implementation
+TestingAgent: write specs for the facade only, without touching other layers
+```
+
+## Agent Index
+
+| Agent | File | Layer / Scope |
+|-------|------|---------------|
 | [DomainAgent](.claude/agents/domain-agent.md) | `domain-agent.md` | `src/app/**/domain/` |
 | [DataAgent](.claude/agents/data-agent.md) | `data-agent.md` | `src/app/**/data/` |
 | [FacadeAgent](.claude/agents/facade-agent.md) | `facade-agent.md` | `src/app/**/facade/` |
 | [UIAgent](.claude/agents/ui-agent.md) | `ui-agent.md` | `src/app/**/presentation/` |
 | [UXAgent](.claude/agents/ux-agent.md) | `ux-agent.md` | `src/app/**/presentation/` (UX + iOS) |
 | [ArchitectureGuardian](.claude/agents/architecture-guardian.md) | `architecture-guardian.md` | Transversal |
-| [SignalsAgent](.claude/agents/signals-agent.md) | `signals-agent.md` | Transversal (estado) |
+| [SignalsAgent](.claude/agents/signals-agent.md) | `signals-agent.md` | Transversal (state) |
 | [TestingAgent](.claude/agents/testing-agent.md) | `testing-agent.md` | Transversal (specs) |
 
-## Reglas del sistema
+## System Rules
 
-- **Auto-dispatch activa múltiples agentes simultáneamente** cuando la tarea lo requiere.
-- El orden de ejecución sigue las capas: Domain → Data → Facade → UI → Tests.
-- `ArchitectureGuardian` está siempre activo en modo silencioso — solo interviene si
-  detecta una violación de capa en el código que se está escribiendo.
-- La lógica de routing completa vive en `.claude/agents/_dispatcher.md`.
-- **Tareas no triviales requieren subagentes reales**: usar el `Agent` tool para lanzar
-  `Explore`/fork (orientación de codebase) y `Plan` (arquitectura) en paralelo antes de
-  implementar. Leer los `.md` de agentes define las reglas; no reemplaza delegar trabajo
-  real con subagentes.
+- **Auto-dispatch activates multiple agents simultaneously** when the task requires it.
+- Execution order follows the layers: Domain → Data → Facade → UI → Tests.
+- `ArchitectureGuardian` is always active in silent mode — it only intervenes if it detects a layer violation in the code being written.
+- The complete routing logic lives in `.claude/agents/_dispatcher.md`.
+- **Non-trivial tasks require real subagents**: use the `Agent` tool to launch `Explore`/fork (codebase orientation) and `Plan` (architecture) in parallel before implementing. Reading agent `.md` files defines the rules; it does not replace delegating real work with subagents.

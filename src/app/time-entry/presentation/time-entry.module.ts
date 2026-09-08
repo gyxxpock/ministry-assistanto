@@ -11,6 +11,7 @@ import { TimeEntryCalendarComponent } from './components/time-entry-calendar/tim
 import { Layout } from './components/layout/layout';
 import { SettingsComponent } from './components/settings/settings.component';
 import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
+import { OptionPillGroupComponent } from './components/shared/option-pill-group/option-pill-group.component';
 import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
 import { UpdateBannerComponent } from './components/update-banner/update-banner.component';
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
@@ -77,6 +78,7 @@ const routes: Routes = [
     SettingsComponent,
     BackupReminderBannerComponent,
     MonthPaginatorComponent,
+    OptionPillGroupComponent,
     UpdateBannerComponent,
     VersionHistoryComponent,
   ],

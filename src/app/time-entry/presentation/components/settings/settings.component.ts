@@ -49,11 +49,11 @@ export class SettingsComponent {
     return new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(date);
   });
 
-  setTheme(value: string): void {
-    this.themeService.setMode(value as ThemeMode);
+  setTheme(value: unknown): void {
+    this.themeService.setMode(String(value) as ThemeMode);
   }
 
-  setFrequency(value: string): void {
-    this.backupService.setFrequency(value as BackupReminderFrequency);
+  setFrequency(value: unknown): void {
+    this.backupService.setFrequency(String(value) as BackupReminderFrequency);
   }
 }
