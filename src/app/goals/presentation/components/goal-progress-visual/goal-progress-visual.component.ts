@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
 import { TranslateModule } from '@ngx-translate/core';
-import { GoalConfig, GoalProgress } from '../../domain/models';
+import { GoalConfig, GoalProgress } from '../../../domain/models';
 import { GoalProgressVM } from '../../models/goal-progress.vm';
 import { GoalStatusBadgeComponent } from '../goal-status-badge/goal-status-badge.component';
 
