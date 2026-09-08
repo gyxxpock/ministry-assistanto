@@ -36,10 +36,7 @@ export class UpdateNotificationService {
       filter((e): e is VersionReadyEvent => e.type === 'VERSION_READY'),
       take(1),
       takeUntilDestroyed(),
-    ).subscribe(() => {
-      this._available.set(true);
-      this.fetchChangelog();
-    });
+    ).subscribe(() => this.fetchChangelog());
   }
 
   applyUpdate(): void {
@@ -54,8 +51,14 @@ export class UpdateNotificationService {
     this.http
       .get<ChangelogEntry[]>(`/assets/changelog.json?v=${Date.now()}`)
       .pipe(take(1))
-      .subscribe(entries => {
-        if (entries?.[0]) this._changes.set(entries[0].changes);
+      .subscribe({
+        next: (entries) => {
+          if (entries?.[0]) this._changes.set(entries[0].changes);
+          this._available.set(true);
+        },
+        error: () => {
+          this._available.set(true);
+        },
       });
   }
 }

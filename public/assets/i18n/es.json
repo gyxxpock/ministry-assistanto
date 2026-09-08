@@ -50,6 +50,11 @@
         "doBackup": "Hacer respaldo",
         "dismiss": "Descartar"
       }
+    },
+    "about": {
+      "title": "Acerca de",
+      "current": "actual",
+      "loading": "Cargando historial..."
     }
   },
   "update": {
@@ -59,7 +64,8 @@
     "uxChanges": "Mejoras en la experiencia de usuario",
     "changeTypes": {
       "feature": "Nuevo",
-      "fix": "Corrección"
+      "fix": "Corrección",
+      "ux": "Experiencia"
     }
   },
   "timeEntry": {

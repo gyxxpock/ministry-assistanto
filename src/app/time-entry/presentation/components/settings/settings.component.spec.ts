@@ -4,6 +4,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { SettingsComponent } from './settings.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
+import { ChangelogService } from '../../../../core/services/changelog.service';
 
 @Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
@@ -49,6 +50,7 @@ describe('SettingsComponent', () => {
         { provide: ThemeService, useValue: mockTheme },
         { provide: BackupReminderService, useValue: mockBackup },
         { provide: TranslateService, useValue: mockTranslate },
+        { provide: ChangelogService, useValue: { entries: signal([]) } },
       ],
     }).compileComponents();
 

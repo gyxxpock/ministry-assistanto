@@ -59,4 +59,18 @@
 
     </div>
   </section>
+
+  <!-- Acerca de -->
+  <section class="settings-section">
+    <h3 class="section-title">{{ 'settings.about.title' | translate }}</h3>
+    @if (changelogService.entries().length > 0) {
+      <ma-version-history [entries]="changelogService.entries()" />
+    } @else {
+      <div class="settings-card">
+        <div class="settings-row settings-row--last">
+          <span class="row-value">{{ 'settings.about.loading' | translate }}</span>
+        </div>
+      </div>
+    }
+  </section>
 </div>

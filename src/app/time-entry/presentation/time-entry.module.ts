@@ -14,6 +14,7 @@ import { OptionPillGroupComponent } from './components/shared/option-pill-group/
 import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
 import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
 import { UpdateBannerComponent } from './components/update-banner/update-banner.component';
+import { VersionHistoryComponent } from './components/version-history/version-history.component';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
@@ -35,6 +36,7 @@ import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
 import { FileUtilService } from '../data/utils/file-util.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 const routes: Routes = [
   {
@@ -78,6 +80,7 @@ const routes: Routes = [
     BackupReminderBannerComponent,
     MonthPaginatorComponent,
     UpdateBannerComponent,
+    VersionHistoryComponent,
   ],
   imports: [
     MatChipsModule,
@@ -92,6 +95,7 @@ const routes: Routes = [
     MatButtonModule,
     MatToolbar,
     MatTooltipModule,
+    MatExpansionModule,
     CommonModule,
     FormsModule,
     TranslateModule,
