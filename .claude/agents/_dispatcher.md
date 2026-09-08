@@ -1,70 +1,69 @@
-# Dispatcher — Auto-Dispatch de Agentes
+# Dispatcher — Agent Auto-Dispatch
 
-Este archivo define la lógica de routing que Claude ejecuta automáticamente antes de
-responder cualquier tarea. No es invocado por el usuario; es leído por Claude al inicio
-de cada respuesta.
+This file defines the routing logic that Claude executes automatically before
+responding to any task. It is not invoked by the user; it is read by Claude at the
+start of each response.
 
 ---
 
-## Paso 0 — Orientar con graphify
+## Step 0 — Orient with graphify
 
-Si `graphify-out/graph.json` existe, ejecutar **antes** de analizar la tarea:
+If `graphify-out/graph.json` exists, run **before** analyzing the task:
 
 ```bash
-graphify query "<pregunta sobre la tarea>"
+graphify query "<question about the task>"
 ```
 
-Esto devuelve un subgrafo scoped, más útil y pequeño que leer archivos crudos. Solo
-leer fuente directamente para modificar líneas específicas o cuando graphify no
-surface suficiente contexto.
+This returns a scoped subgraph, more useful and smaller than reading raw files. Only
+read source directly to modify specific lines or when graphify does not surface enough context.
 
-**Subagentes**: todo prompt que involucre exploración de código debe incluir:
+**Subagents**: every prompt involving code exploration must include:
 > `graphify-out/graph.json` exists. Run `graphify query "<question>"` before reading
 > raw source files. Only read raw after graphify has oriented you.
 
 ---
 
-## Paso 1 — Analizar la tarea
+## Step 1 — Analyze the task
 
-Lee el mensaje del usuario e identifica:
-- ¿Qué capas del proyecto están involucradas? (Domain, Data, Facade, Presentation)
-- ¿Es una tarea de una sola capa o cruza múltiples capas?
-- ¿Hay palabras clave que apunten a agentes específicos?
+Read the user's message and identify:
+- Which project layers are involved? (Domain, Data, Facade, Presentation)
+- Is this a single-layer task or does it cross multiple layers?
+- Are there keywords pointing to specific agents?
 
 ---
 
-## Paso 2 — Aplicar la matriz de routing
+## Step 2 — Apply the routing matrix
 
-Activa **todos** los agentes cuyas señales estén presentes. Si hay duda, activa más
-agentes, no menos. ArchitectureGuardian está siempre activo en modo silencioso.
+Activate **all** agents whose signals are present. When in doubt, activate more
+agents, not fewer. ArchitectureGuardian is always active in silent mode.
 
-| Señales detectadas en la tarea | Agentes a activar |
+| Signals detected in the task | Agents to activate |
 |-------------------------------|-------------------|
-| "entidad", "modelo", "use case", "regla de negocio", "ITimeEntryRepository", "TimeEntry", "CourseVisit" | **DomainAgent** |
-| "Dexie", "IndexedDB", "repositorio", "persistencia", "migración", "schema", "DexieTimeEntryRepository" | **DataAgent** |
-| "facade", "estado", "orquestación", "exponer al componente", "importar", "exportar", "BehaviorSubject", "loadMonth" | **FacadeAgent** |
-| "componente", "template", "SCSS", "estilo", "vista", "pantalla", "UI", "Material", "Angular Material", "ViewModel", "TimeEntryVM" | **UIAgent** |
-| "UX", "experiencia de usuario", "interacción", "visible", "scroll", "confirmación", "alerta", "animación", "iOS", "liquid glass", "accesibilidad", "táctil", "mobile", "toast", "feedback visual" | **UXAgent** (actívalo junto a UIAgent) |
-| "signal", "computed", "effect", "reactivo", "migrar RxJS", "signals", "estado reactivo" | **SignalsAgent** |
-| "test", "spec", "prueba", "cobertura", "jasmine", "karma", "*.spec.ts" | **TestingAgent** |
-| Cualquier tarea de implementación (nueva funcionalidad, nuevo componente, nuevo servicio, fix de bug con lógica) | **TestingAgent** (siempre activo junto con los agentes de capa) |
-| "revisar capa", "violación", "Clean Architecture", "importa desde", "¿esta clase pertenece?" | **ArchitectureGuardian** (exclusivo) |
+| "entity", "model", "use case", "business rule", "ITimeEntryRepository", "TimeEntry", "CourseVisit" | **DomainAgent** |
+| "Dexie", "IndexedDB", "repository", "persistence", "migration", "schema", "DexieTimeEntryRepository" | **DataAgent** |
+| "facade", "state", "orchestration", "expose to component", "import", "export", "BehaviorSubject", "loadMonth" | **FacadeAgent** |
+| "component", "template", "SCSS", "style", "view", "screen", "UI", "Material", "Angular Material", "ViewModel", "TimeEntryVM" | **UIAgent** |
+| "UX", "user experience", "interaction", "visible", "scroll", "confirmation", "alert", "animation", "iOS", "liquid glass", "accessibility", "touch", "mobile", "toast", "visual feedback" | **UXAgent** (activate alongside UIAgent) |
+| "signal", "computed", "effect", "reactive", "migrate RxJS", "signals", "reactive state" | **SignalsAgent** |
+| "test", "spec", "coverage", "jasmine", "karma", "*.spec.ts" | **TestingAgent** |
+| Any implementation task (new feature, new component, new service, bug fix with logic) | **TestingAgent** (always active alongside layer agents) |
+| "review layer", "violation", "Clean Architecture", "imports from", "does this class belong?" | **ArchitectureGuardian** (exclusive) |
 
-### Regla de feature completa
-Si la tarea describe una **nueva funcionalidad** que involucra lógica de negocio + datos +
-UI (palabras como "quiero", "necesito agregar", "nueva función", "nuevo módulo"), activa:
+### Full-feature rule
+If the task describes **new functionality** involving business logic + data +
+UI (words like "I want", "I need to add", "new feature", "new module"), activate:
 → DomainAgent + DataAgent + FacadeAgent + UIAgent + ArchitectureGuardian + TestingAgent
 
-### ArchitectureGuardian — modo silencioso permanente
-Está activo en todas las tareas. Solo interviene (interrumpe la respuesta) si detecta
-una violación de capa en el código que estás a punto de escribir o revisar. No genera
-output propio cuando no hay violaciones.
+### ArchitectureGuardian — permanent silent mode
+Active on all tasks. Only intervenes (interrupts the response) if it detects
+a layer violation in code you are about to write or review. Does not produce
+its own output when there are no violations.
 
 ---
 
-## Paso 3 — Leer los archivos de agentes activos
+## Step 3 — Read the active agents' files
 
-Para cada agente identificado, lee su archivo antes de generar la respuesta:
+For each identified agent, read its file before generating the response:
 
 ```
 DomainAgent       → .claude/agents/domain-agent.md
@@ -79,44 +78,44 @@ TestingAgent      → .claude/agents/testing-agent.md
 
 ---
 
-## Paso 4 — Anunciar y responder
+## Step 4 — Announce and respond
 
-**Para tareas no triviales**: lanzar subagentes (`Agent` tool) para exploración y
-planificación antes de responder con código. El anuncio de agentes activos va primero;
-los subagentes se lanzan en paralelo justo después.
+**For non-trivial tasks**: launch subagents (`Agent` tool) for exploration and
+planning before responding with code. The agent announcement goes first;
+subagents are launched in parallel immediately after.
 
-**Post-Plan — delegar implementación con forks, no escribir código directamente**:
-tras recibir el output del Plan agent, el main agent NO toca un editor. Lanza forks
-paralelos (uno por archivo significativo), briefeando cada fork con la parte del plan
-que le corresponde y las reglas del agente de capa relevante. El main agent revisa
-los outputs, corre tests y aprueba. Esta regla aplica aunque el plan parezca simple
-si produjo diffs para ≥2 archivos o incluye specs.
+**Post-Plan — delegate implementation with forks, do not write code directly**:
+after receiving the Plan agent output, the main agent does NOT touch an editor. Launch
+parallel forks (one per significant file), briefing each fork with the relevant part of
+the plan and the rules of the applicable layer agent. The main agent reviews
+the outputs, runs tests, and approves. This rule applies even if the plan seems simple
+if it produced diffs for ≥2 files or includes specs.
 
-Al inicio de la respuesta, incluye una línea de anuncio breve:
+At the start of the response, include a brief announcement line:
 
 ```
-> Agentes: DomainAgent · FacadeAgent · ArchitectureGuardian
+> Agents: DomainAgent · FacadeAgent · ArchitectureGuardian
 ```
 
-Si solo está activo ArchitectureGuardian en modo silencioso (sin agentes de capa), omite
-el anuncio. Luego responde aplicando las reglas combinadas de todos los agentes activos.
+If only ArchitectureGuardian is active in silent mode (no layer agents), omit
+the announcement. Then respond applying the combined rules of all active agents.
 
 ---
 
-## Paso 5 — Orden de ejecución para tareas multi-capa
+## Step 5 — Execution order for multi-layer tasks
 
-Cuando varios agentes están activos, ejecutar en orden de dependencia de capas:
+When several agents are active, execute in layer dependency order:
 
-1. **DomainAgent** — modelar primero (entidades, interfaces, use cases)
-2. **DataAgent** — implementar persistencia sobre lo modelado
-3. **FacadeAgent** — orquestar usando lo que Domain y Data definen
-4. **UIAgent** — construir la UI que consume el Facade
-5. **TestingAgent** — escribir specs de todas las capas tocadas
-6. **SignalsAgent** — aplicar si hay estado nuevo que modelar con Signals
+1. **DomainAgent** — model first (entities, interfaces, use cases)
+2. **DataAgent** — implement persistence on top of what was modeled
+3. **FacadeAgent** — orchestrate using what Domain and Data define
+4. **UIAgent** — build the UI that consumes the Facade
+5. **TestingAgent** — write specs for all touched layers
+6. **SignalsAgent** — apply if there is new state to model with Signals
 
 ---
 
-## Override manual
+## Manual override
 
-Si el mensaje del usuario empieza con un nombre de agente seguido de dos puntos
-(ej. `DomainAgent: ...`), ignorar este dispatcher y activar únicamente ese agente.
+If the user's message starts with an agent name followed by a colon
+(e.g. `DomainAgent: ...`), ignore this dispatcher and activate only that agent.

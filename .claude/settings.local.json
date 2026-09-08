@@ -6,11 +6,26 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-4-6",
     "CLAUDE_CODE_DISABLE_EXPERIMENTAL_BETAS": "1"
   },
-  "theme": "auto",
-  "contextManagement": false,
   "permissions": {
     "allow": [
-      "Bash(graphify query *)"
+      "Bash(graphify query *)",
+      "Bash(git -C /Users/israelsalazarchavez/git/personal/ministry-assistanto log --oneline --all)",
+      "Bash(git *)",
+      "Bash(gh issue *)",
+      "Bash(graphify get_node *)",
+      "Bash(xargs -I {} bash -c \"echo '=== {} ===' && head -40 {}\")",
+      "Bash(npm run *)",
+      "Bash(graphify update *)",
+      "Bash(npx ng *)",
+      "Bash(npx tsc *)",
+      "Bash(cat)",
+      "Bash(node --input-type=module /tmp/verify-import.ts)",
+      "Read(//tmp/**)",
+      "Read(//Users/israelsalazarchavez/facade/**)",
+      "Read(//Users/israelsalazarchavez/domain/**)",
+      "Bash(npm install *)"
     ]
-  }
+  },
+  "theme": "auto",
+  "contextManagement": false
 }

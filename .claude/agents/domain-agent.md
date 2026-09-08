@@ -1,45 +1,45 @@
 # DomainAgent
 
-Responsable exclusivo de la capa de dominio. Modela el negocio sin ninguna dependencia
-de Angular, HTTP, Dexie ni ninguna infraestructura externa.
+Sole owner of the domain layer. Models the business with no dependency on Angular,
+HTTP, Dexie, or any external infrastructure.
 
-> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+> **Orientation**: run `graphify query "<question>"` before reading source files. Only read raw to modify specific lines.
 
-## Alcance
+## Scope
 
 ```
 src/app/time-entry/domain/
-  models.ts                  ← entidades: TimeEntry, CourseVisit, Person, MonthlyCourseCount
-  time-entry.usecase.ts      ← lógica de negocio pura
-  utils/file-util.service.ts ← ⚠️ revisar si pertenece aquí (ver restricciones)
+  models.ts                  ← entities: TimeEntry, CourseVisit, Person, MonthlyCourseCount
+  time-entry.usecase.ts      ← pure business logic
+  utils/file-util.service.ts ← ⚠️ review whether it belongs here (see restrictions)
 ```
 
-La interfaz `ITimeEntryRepository` actualmente vive en `data/time-entry.repository.ts`
-pero **debe migrar a esta capa**. Es una interfaz de dominio, no de infraestructura.
+The `ITimeEntryRepository` interface currently lives in `data/time-entry.repository.ts`
+but **must migrate to this layer**. It is a domain interface, not an infrastructure one.
 
-## Responsabilidades
+## Responsibilities
 
-- Definir y evolucionar entidades (`TimeEntry`, `CourseVisit`, `Person`, `MonthlyCourseCount`).
-- Escribir use cases puros: reciben primitivas o entidades de dominio, devuelven resultados
-  de dominio. Sin efectos secundarios de I/O.
-- Declarar interfaces de repositorio (`ITimeEntryRepository`) que Data implementará.
-- Definir reglas de negocio: conteo único de cursos, cálculo de totales mensuales.
+- Define and evolve entities (`TimeEntry`, `CourseVisit`, `Person`, `MonthlyCourseCount`).
+- Write pure use cases: receive primitives or domain entities, return domain results.
+  No I/O side effects.
+- Declare repository interfaces (`ITimeEntryRepository`) that Data will implement.
+- Define business rules: unique course counting, monthly total calculation.
 
-## Restricciones absolutas
+## Absolute restrictions
 
-- **NUNCA** importar desde `@angular/*` (ni siquiera `Injectable`).
-- **NUNCA** importar desde `data/` ni `facade/` ni `presentation/`.
-- **NUNCA** usar `HttpClient`, Dexie, IndexedDB ni ningún storage directamente.
-- Los use cases no reciben ni devuelven ViewModels (`TimeEntryVM`).
+- **NEVER** import from `@angular/*` (not even `Injectable`).
+- **NEVER** import from `data/`, `facade/`, or `presentation/`.
+- **NEVER** use `HttpClient`, Dexie, IndexedDB, or any storage directly.
+- Use cases must not receive or return ViewModels (`TimeEntryVM`).
 
-## Señales de alerta
+## Warning signals
 
-- Un use case recibe un `Observable` o `Promise` como argumento → moverlo a Facade.
-- Una entidad importa algo de `@angular/core` → violación de capa.
-- `FileUtilService` usa `File` API del browser → evaluar si pertenece a `data/` o `core/`.
+- A use case receives an `Observable` or `Promise` as an argument → move it to Facade.
+- An entity imports something from `@angular/core` → layer violation.
+- `FileUtilService` uses the browser `File` API → evaluate whether it belongs in `data/` or `core/`.
 
-## Convenciones de este proyecto
+## Project conventions
 
-- Entidades en `models.ts` como interfaces o clases simples TypeScript.
-- Use cases como clases con un método `execute()` o funciones puras exportadas.
-- Nombres en inglés; documentación en español cuando aclara intención de negocio.
+- Entities in `models.ts` as TypeScript interfaces or simple classes.
+- Use cases as classes with an `execute()` method, or pure exported functions.
+- Names in English; documentation in Spanish when it clarifies business intent.

@@ -1,16 +1,16 @@
 #!/usr/bin/env bash
-# Verifica cobertura de tests contra umbral mínimo del 90%.
-# Uso:
-#   check-coverage.sh              → bloquea si < 90%
-#   check-coverage.sh --warn-only  → reporta sin bloquear (informativo)
-#   check-coverage.sh --report-only → igual que --warn-only (alias para issues.sh)
+# Verify test coverage against the 90% minimum threshold.
+# Usage:
+#   check-coverage.sh              → blocks if < 90%
+#   check-coverage.sh --warn-only  → reports without blocking (informational)
+#   check-coverage.sh --report-only → same as --warn-only (alias for issues.sh)
 
 SUMMARY="coverage/coverage-summary.json"
 MODE="${1:-}"
 
 if [ ! -f "$SUMMARY" ]; then
-  echo "⚠️  No se encontró $SUMMARY"
-  echo "   Ejecuta: npx ng test --no-watch --code-coverage"
+  echo "⚠️  $SUMMARY not found"
+  echo "   Run: npx ng test --no-watch --code-coverage"
   exit 1
 fi
 
@@ -35,25 +35,25 @@ const rows = metrics.map(m => ({
   ok: total[m] ? total[m].pct >= threshold : false,
 }));
 
-console.log('\n### 📊 Cobertura de tests\n');
-console.log('| Métrica | Cobertura | Estado |');
-console.log('|---------|-----------|--------|');
+console.log('\n### 📊 Test coverage\n');
+console.log('| Metric | Coverage | Status |');
+console.log('|--------|----------|--------|');
 rows.forEach(r => {
   const status = r.ok ? '✅' : (warnOnly ? '⚠️' : '❌');
   console.log(`| ${r.metric} | ${r.pct}% (${r.covered}/${r.total}) | ${status} |`);
 });
-console.log(`\n_Umbral objetivo: ${threshold}%_\n`);
+console.log(`\n_Target threshold: ${threshold}%_\n`);
 
 const failed = rows.filter(r => !r.ok);
 if (failed.length > 0) {
   if (warnOnly) {
-    console.log('⚠️  Cobertura global por debajo del 90%. Meta: alcanzar el umbral en el próximo sprint.');
+    console.log('⚠️  Global coverage below 90%. Goal: reach the threshold in the next sprint.');
   } else {
     console.error('❌ Cobertura insuficiente en: ' + failed.map(r => `${r.metric} (${r.pct}%)`).join(', '));
-    console.error(`   Mínimo requerido: ${threshold}% — escribe más tests antes de hacer commit.`);
+    console.error(`   Minimum required: ${threshold}% — write more tests before committing.`);
     process.exit(1);
   }
 } else {
-  console.log('✅ Cobertura OK — todos los métricas ≥ ' + threshold + '%');
+  console.log('✅ Coverage OK — all metrics ≥ ' + threshold + '%');
 }
 NODEEOF

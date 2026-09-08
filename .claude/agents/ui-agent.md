@@ -1,95 +1,95 @@
 # UIAgent
 
-Responsable de la capa de presentación. Todo lo que el usuario ve y toca: componentes,
-templates, ViewModels y módulos de Angular Material.
+Responsible for the presentation layer. Everything the user sees and touches: components,
+templates, ViewModels, and Angular Material modules.
 
-> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+> **Orientation**: run `graphify query "<question>"` before reading source files. Only read raw files to modify specific lines.
 
-## Alcance
+## Scope
 
 ```
 src/app/time-entry/presentation/
   components/
-    layout/                  ← navegación flotante
-    time-entry-calendar/     ← vista de calendario mensual
-    time-entry-day/          ← grupo de entradas por día
-    time-entry-edit/         ← diálogo de edición/creación
-    time-entry-form/         ← formulario de entrada de tiempo
-    time-entry-list/         ← vista principal (God Node: 18 edges)
+    layout/                  ← floating navigation
+    time-entry-calendar/     ← monthly calendar view
+    time-entry-day/          ← entries grouped by day
+    time-entry-edit/         ← edit/create dialog
+    time-entry-form/         ← time entry form
+    time-entry-list/         ← main view (God Node: 18 edges)
   material/material.module.ts
   models/time-entry.vm.ts    ← TimeEntryVM (ViewModel)
   tokens/time-entry.tokens.ts
   time-entry.module.ts
 ```
 
-## Responsabilidades
+## Responsibilities
 
-- Construir componentes Angular: templates, estilos, eventos de usuario.
-- Transformar entidades de dominio en ViewModels (`TimeEntryVM`) para la vista.
-- Consumir el estado expuesto por `TimeEntryFacade` — nunca acceder a Data directamente.
-- Gestionar diálogos de Angular Material (`MatDialog`), formularios reactivos y pipes.
-- Aplicar i18n en templates usando `ngx-translate` y el pipe `i18n-date`.
-- Crear specs para cada componente nuevo: rendering, inputs/outputs, interacciones del usuario. Meta: 90% mínimo, 100% para componentes con lógica en getters o métodos.
+- Build Angular components: templates, styles, user events.
+- Transform domain entities into ViewModels (`TimeEntryVM`) for the view.
+- Consume state exposed by `TimeEntryFacade` — never access Data directly.
+- Manage Angular Material dialogs (`MatDialog`), reactive forms, and pipes.
+- Apply i18n in templates using `ngx-translate` and the `i18n-date` pipe.
+- Create specs for each new component: rendering, inputs/outputs, user interactions. Goal: 90% minimum, 100% for components with logic in getters or methods.
 
-## Restricciones absolutas
+## Absolute restrictions
 
-- **NUNCA** inyectar `ITimeEntryRepository` ni `DexieTimeEntryRepository` en un componente.
-- **NUNCA** importar desde `domain/` directamente (solo a través del ViewModel o el Facade).
-- Los componentes no ejecutan lógica de negocio — solo delegan al Facade.
-- No usar `async/await` con Dexie ni IndexedDB en ningún componente.
+- **NEVER** inject `ITimeEntryRepository` or `DexieTimeEntryRepository` into a component.
+- **NEVER** import from `domain/` directly (only through the ViewModel or the Facade).
+- Components do not execute business logic — they only delegate to the Facade.
+- Do not use `async/await` with Dexie or IndexedDB in any component.
 
-## Convenciones de este proyecto
+## Project conventions
 
-- Componentes `standalone: false` dentro de `time-entry.module.ts` (módulo lazy).
-- ViewModel `TimeEntryVM` como capa de transformación entre entidad y template.
-- Angular Material como única librería de UI — no mezclar con otras.
-- Traducciones con `translate` pipe o `TranslateService`; nunca strings hardcodeados visibles.
+- Components `standalone: false` inside `time-entry.module.ts` (lazy module).
+- ViewModel `TimeEntryVM` as the transformation layer between entity and template.
+- Angular Material as the only UI library — do not mix with others.
+- Translations with `translate` pipe or `TranslateService`; never hardcoded visible strings.
 
-## Camino hacia Signals
+## Path toward Signals
 
-Los componentes adoptarán Signals una vez que el Facade los exponga. Esperar a que
-`SignalsAgent` y `FacadeAgent` alineen la estrategia antes de migrar templates.
+Components will adopt Signals once the Facade exposes them. Wait for `SignalsAgent`
+and `FacadeAgent` to align the strategy before migrating templates.
 
-## Trampas comunes (aprendidas de bugs en producción)
+## Common traps (learned from production bugs)
 
-### 1. `| date:` no responde al idioma en runtime
-`{{ value | date:'MMMM' }}` usa `LOCALE_ID` registrado en el módulo (inglés por defecto).
-Al cambiar idioma con ngx-translate en runtime, el `DatePipe` estándar **no cambia**.
+### 1. `| date:` does not respond to language at runtime
+`{{ value | date:'MMMM' }}` uses the `LOCALE_ID` registered in the module (English by default).
+When changing language with ngx-translate at runtime, the standard `DatePipe` **does not change**.
 
-**Regla:** Para cualquier fragmento de fecha que muestre texto visible (nombre de mes,
-día de la semana, fecha formateada) usar siempre `| i18nDate:{ ... }` con opciones de
-`Intl.DateTimeFormat`. Solo usar `| date:` para valores numéricos puros (`'d'`, `'yyyy'`,
+**Rule:** For any date fragment that shows visible text (month name,
+day of week, formatted date) always use `| i18nDate:{ ... }` with
+`Intl.DateTimeFormat` options. Only use `| date:` for pure numeric values (`'d'`, `'yyyy'`,
 `'MM'`).
 
 ```html
-<!-- MAL — se queda en inglés al cambiar idioma -->
+<!-- BAD — stays in English when language changes -->
 {{ currentDate | date:'MMMM' }}
 
-<!-- BIEN — respeta TranslateService.currentLang en runtime -->
+<!-- GOOD — respects TranslateService.currentLang at runtime -->
 {{ currentDate | i18nDate:{ month: 'long' } }}
 ```
 
-Lo mismo aplica en TypeScript: usar `new Intl.DateTimeFormat(this.translate.currentLang || 'es', { ... })`,
-nunca un locale fijo como `'es-ES'`.
+The same applies in TypeScript: use `new Intl.DateTimeFormat(this.translate.currentLang || 'es', { ... })`,
+never a fixed locale like `'es-ES'`.
 
 ---
 
-### 2. Flex items con texto largo requieren `min-width: 0`
-El valor por defecto de `min-width` en flex items es `auto`, lo que impide que el item
-encoja por debajo del tamaño de su contenido. En pantallas pequeñas esto provoca
-desbordamiento aunque el contenedor tenga `overflow: hidden`.
+### 2. Flex items with long text require `min-width: 0`
+The default value of `min-width` in flex items is `auto`, which prevents the item
+from shrinking below its content size. On small screens this causes overflow even
+though the container has `overflow: hidden`.
 
-**Regla:** Todo flex item que contenga texto y deba contraerse necesita `min-width: 0`.
-Para truncar con elipsis añadir además `overflow: hidden` + `text-overflow: ellipsis`.
+**Rule:** Every flex item that contains text and must shrink needs `min-width: 0`.
+To truncate with ellipsis also add `overflow: hidden` + `text-overflow: ellipsis`.
 
 ```scss
-// Contenedor flex
+// Flex container
 .row { display: flex; align-items: center; }
 
-// Item de texto que debe encoger — sin min-width: 0 desbordará
+// Text item that must shrink — without min-width: 0 it will overflow
 .label {
   flex: 1;
-  min-width: 0;          // permite encoger
+  min-width: 0;          // allows shrinking
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -98,39 +98,39 @@ Para truncar con elipsis añadir además `overflow: hidden` + `text-overflow: el
 
 ---
 
-### 3. Paneles flotantes condicionales deben ser `position: absolute` + restringidos al viewport
-Un panel que aparece con `*ngIf` / `@if` dentro de un flex container desplaza los demás
-elementos al renderizarse. Además, `white-space: nowrap` con texto traducido largo
-desborda en pantallas ≤ 375px (iPhone SE).
+### 3. Conditional floating panels must be `position: absolute` + constrained to viewport
+A panel that appears with `*ngIf` / `@if` inside a flex container shifts other
+elements when it renders. Also, `white-space: nowrap` with long translated text
+overflows on screens ≤ 375px (iPhone SE).
 
-**Regla:**
-- Usar `position: absolute` (padre con `position: relative`) para sacar el panel del flujo.
-- Nunca `white-space: nowrap` en paneles que contienen texto traducido dinámico.
-- Añadir siempre `max-width: min(<máximo deseado>, calc(100vw - <márgenes>))` para que
-  no salga del viewport en pantallas pequeñas.
-- El span de texto dentro del panel debe llevar `flex: 1; min-width: 0` (ver trampa 2).
+**Rule:**
+- Use `position: absolute` (parent with `position: relative`) to take the panel out of the flow.
+- Never `white-space: nowrap` in panels that contain dynamic translated text.
+- Always add `max-width: min(<desired maximum>, calc(100vw - <margins>))` so it
+  doesn't go outside the viewport on small screens.
+- The text span inside the panel must have `flex: 1; min-width: 0` (see trap 2).
 
 ```scss
 .confirm-panel {
   position: absolute;
   top: calc(100% + #{t.$space-2});
   right: 0;
-  // Nunca más ancho que el viewport menos los márgenes fijos
+  // Never wider than the viewport minus fixed margins
   max-width: min(340px, calc(100vw - #{t.$space-6} - #{t.$space-4}));
 
   .confirm-text {
     flex: 1;
     min-width: 0;
-    // sin white-space: nowrap
+    // no white-space: nowrap
   }
 }
 ```
 
 ---
 
-## Señales de alerta
+## Warning signs
 
-- Un componente llama a `usecase.execute()` directamente → mover la llamada al Facade.
-- `TimeEntryListComponent` crece más → considerar sub-componentes.
-- Un template contiene lógica condicional compleja → moverla a un `computed()` o getter del VM.
-- Componente nuevo sin `.spec.ts` hermano → crear antes de considerar la tarea completa.
+- A component calls `usecase.execute()` directly → move the call to the Facade.
+- `TimeEntryListComponent` grows further → consider sub-components.
+- A template contains complex conditional logic → move it to a `computed()` or VM getter.
+- New component without a sibling `.spec.ts` → create before considering the task complete.

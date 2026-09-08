@@ -1,150 +1,150 @@
 # Skill: issues
 
-Gestión de GitHub Issues para Ministry Assistanto.
+GitHub Issues management for Ministry Assistanto.
 Script: `.claude/scripts/issues.sh`
 
-Invoca con `/issues` o cuando el contexto lo requiera (inicio de sesión, reporte de bug, solicitud de feature).
+Invoke with `/issues` or when the context requires it (session start, bug report, feature request).
 
 ---
 
-## Cuándo activar este skill
+## When to activate this skill
 
-- **Inicio de sesión** — Siempre. Antes de cualquier tarea, listar issues y preguntar al usuario cuál trabajar.
-- **Reporte de bug o feedback** — El usuario describe un problema → crear issue y preguntar si trabajarlo ahora.
-- **Solicitud de feature** — El usuario pide funcionalidad nueva → crear issue con historia de usuario.
-- **Al terminar una implementación** — Documentar en el issue lo realizado y esperar confirmación del usuario antes de cerrar.
+- **Session start** — Always. Before any task, list issues and ask the user which one to work on.
+- **Bug report or feedback** — The user describes a problem → create issue and ask whether to work on it now.
+- **Feature request** — The user asks for new functionality → create issue with user story.
+- **After completing an implementation** — Document what was done in the issue and wait for explicit user confirmation before closing.
 
 ---
 
-## Flujo de sesión
+## Session flow
 
-### 1. Inicio — listar y elegir
+### 1. Start — list and choose
 
 ```bash
 .claude/scripts/issues.sh list
 ```
 
-Presentar la lista al usuario. Proponer el de mayor prioridad (orden: `bug` > `ux` > `feature` > `tech-debt`). Esperar confirmación.
+Present the list to the user. Propose the highest-priority one (order: `bug` > `ux` > `feature` > `tech-debt`). Wait for confirmation.
 
-### 2. Arrancar un issue
+### 2. Start an issue
 
 ```bash
 .claude/scripts/issues.sh start <number>
 .claude/scripts/issues.sh view <number>
 ```
 
-Leer el cuerpo completo del issue para entender los criterios de aceptación antes de tocar código.
+Read the full issue body to understand the acceptance criteria before touching any code.
 
-### 3. Implementar e iterar
+### 3. Implement and iterate
 
-Seguir el flujo normal de agentes (dispatcher → Explore/Plan → forks → build). La
-implementación puede requerir múltiples iteraciones: re-revisiones, correcciones de
-tests, ajustes. Todo el re-trabajo es parte del ciclo normal — no saltarse ningún paso.
+Follow the normal agent flow (dispatcher → Explore/Plan → forks → build). The
+implementation may require multiple iterations: re-reviews, test fixes, adjustments.
+All rework is part of the normal cycle — skip no step.
 
-### 4. Verificar criterios de aceptación
+### 4. Verify acceptance criteria
 
-Antes de considerar el issue listo, revisar uno a uno los criterios del cuerpo del issue:
-- Tests pasando y cobertura ≥90%
-- Cada criterio de aceptación marcado como cumplido
-- Re-revisión con agentes si hubo cambios tras la primera implementación
+Before considering the issue ready, check each acceptance criterion in the issue body one by one:
+- Tests passing and coverage ≥90%
+- Every acceptance criterion marked as met
+- Re-review with agents if there were changes after the first implementation
 
-### 5. Documentar en el issue
+### 5. Document in the issue
 
-**Siempre antes de cerrar**, añadir un comentario en el issue con todo lo realizado en
-la sesión, incluyendo re-trabajo:
+**Always before closing**, add a comment to the issue summarizing everything done in
+the session, including rework:
 
 ```bash
-gh issue comment <number> --body "<resumen completo>"
+gh issue comment <number> --body "<full summary>"
 ```
 
-El resumen debe incluir:
-- Qué se implementó (archivos tocados, decisiones de diseño)
-- Qué re-trabajo hubo y por qué (bugs encontrados en re-revisión, ajustes de tests)
-- Issues derivados creados, si aplica
-- Resultado final de tests y cobertura
+The summary must include:
+- What was implemented (files touched, design decisions)
+- What rework occurred and why (bugs found in re-review, test adjustments)
+- Derived issues created, if any
+- Final test and coverage result
 
-### 6. Confirmar con el usuario y cerrar
+### 6. Confirm with the user and close
 
-**Nunca cerrar sin confirmación explícita del usuario.** Presentar el resumen de lo
-realizado y preguntar: "¿Cerramos el issue #N?"
+**Never close without explicit user confirmation.** Present the summary of what was
+done and ask: "Shall we close issue #N?"
 
-Solo cuando el usuario confirme:
+Only when the user confirms:
 
 ```bash
 npx ng test --no-watch --code-coverage
-.claude/scripts/check-coverage.sh  # verifica que ≥90%
-.claude/scripts/issues.sh close <number> "<resumen de lo implementado>"
+.claude/scripts/check-coverage.sh  # verifies >=90%
+.claude/scripts/issues.sh close <number> "<summary of what was implemented>"
 ```
 
-El script `issues.sh close` incluye automáticamente la tabla de cobertura en el
-comentario de cierre si `coverage/coverage-summary.json` existe.
+The `issues.sh close` script automatically includes the coverage table in the closing
+comment if `coverage/coverage-summary.json` exists.
 
 ---
 
-## Crear un issue nuevo
+## Creating a new issue
 
-Cuando el usuario reporta un bug o solicita un feature:
+When the user reports a bug or requests a feature:
 
 ```bash
 .claude/scripts/issues.sh create \
-  "<título conciso>" \
+  "<concise title>" \
   "<labels: bug|feature|ux|ios|enhancement|tech-debt>" \
-  "<cuerpo con contexto, criterios de aceptación y archivos relevantes>"
+  "<body with context, acceptance criteria and relevant files>"
 ```
 
-### Formato del cuerpo (bug)
+### Body format (bug)
 
 ```
-## Descripción
-<qué ocurre vs qué debería ocurrir>
+## Description
+<what happens vs what should happen>
 
-## Pasos para reproducir
+## Steps to reproduce
 1. ...
 
-## Contexto técnico
-- Archivo: ...
-- Dispositivo/condición: ...
+## Technical context
+- File: ...
+- Device/condition: ...
 
-## Criterios de aceptación
+## Acceptance criteria
 - [ ] ...
 ```
 
-### Formato del cuerpo (feature)
+### Body format (feature)
 
 ```
-## Historia de usuario
-Como <rol>, quiero <qué>, para <por qué>.
+## User story
+As a <role>, I want <what>, so that <why>.
 
-## Criterios de aceptación
+## Acceptance criteria
 - [ ] ...
 
-## Archivos involucrados
+## Files involved
 - ...
 
-## Notas de diseño (UXAgent)
+## Design notes (UXAgent)
 ...
 ```
 
 ---
 
-## Etiquetas disponibles
+## Available labels
 
-| Label | Uso |
+| Label | Use |
 |-------|-----|
-| `bug` | Algo no funciona |
-| `feature` | Nueva funcionalidad |
-| `ux` | Experiencia de usuario / diseño |
-| `ios` | Comportamiento específico iOS |
-| `enhancement` | Mejora a funcionalidad existente |
-| `tech-debt` | Refactor / deuda técnica |
+| `bug` | Something is not working |
+| `feature` | New functionality |
+| `ux` | User experience / design |
+| `ios` | iOS-specific behavior |
+| `enhancement` | Improvement to existing functionality |
+| `tech-debt` | Refactor / technical debt |
 
 ---
 
-## Reglas
+## Rules
 
-- **Nunca cerrar un issue sin confirmación explícita del usuario** — aunque la implementación parezca completa.
-- **Nunca cerrar sin documentar en el issue** — todo el trabajo de la sesión (incluyendo re-trabajo, bugs encontrados en re-revisión, issues derivados) debe quedar en un comentario antes del cierre.
-- Nunca cerrar sin haber verificado el build y cobertura ≥90%.
-- Si el issue tiene múltiples criterios de aceptación, verificar cada uno antes de proponer el cierre.
-- Si durante la implementación aparece trabajo adicional no previsto, crear un issue nuevo — no expandir el alcance del actual.
-- El script usa `gh` que ya está autenticado; no necesita token adicional.
+- **Never close an issue without explicit user confirmation** — even if the implementation looks complete.
+- **Never close without documenting in the issue** — all session work (including rework, bugs found in re-review, derived issues) must be in a comment before closing.
+- Never close without verifying the build and coverage >=90%.
+- If the issue has multiple acceptance criteria, verify each one before proposing closure.
+- If additional unplanned work arises during implementation, create a new issue — do not expand the current issue's scope.
+- The script uses `gh` which is already authenticated; no additional token is needed.

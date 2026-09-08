@@ -27,7 +27,7 @@ export class GoalProgressVisualComponent {
   readonly totalMonths = 12;
 
   readonly vm = computed(() => {
-    const progress = this.goalProgress();
+    const progress = this.goalProgress;
     if (!progress) return null;
 
     const vm: GoalProgressVM = {
@@ -40,7 +40,7 @@ export class GoalProgressVisualComponent {
       monthsElapsed: progress.monthsElapsed,
     };
 
-    const config = this.goalConfig();
+    const config = this.goalConfig;
     if (config?.type === 'auxiliary') {
       vm.monthlyTarget = config.monthlyTarget;
     }
@@ -49,14 +49,14 @@ export class GoalProgressVisualComponent {
   });
 
   get percentComplete(): number | undefined {
-    const progress = this.goalProgress();
+    const progress = this.goalProgress;
     if (!progress) return undefined;
     const percent = (progress.accumulatedHours / progress.targetHours) * 100;
     return Math.min(Math.max(Math.round(percent), 0), 100);
   }
 
   get circleColor(): string {
-    const progress = this.goalProgress();
+    const progress = this.goalProgress;
     if (!progress) return '#9CA3AF';
     switch (progress.status) {
       case 'on-track':

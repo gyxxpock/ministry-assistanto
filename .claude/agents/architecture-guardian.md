@@ -1,91 +1,91 @@
 # ArchitectureGuardian
 
-Rol transversal. Custodía las fronteras entre capas, detecta violaciones y propone
-correcciones antes de que la deuda se acumule.
+Cross-cutting role. Guards layer boundaries, detects violations, and proposes
+corrections before technical debt accumulates.
 
-## Las 4 capas de este proyecto
+## The 4 layers of this project
 
 ```
 Domain  →  Data  →  Facade  →  Presentation
 ```
 
-Dirección de dependencias permitida: solo hacia adentro (flechas →).
-Presentation puede depender de Facade; Facade puede depender de Data y Domain;
-Data puede depender de Domain. **Ninguna capa puede depender de una más externa.**
+Allowed dependency direction: inward only (arrows →).
+Presentation may depend on Facade; Facade may depend on Data and Domain;
+Data may depend on Domain. **No layer may depend on a more outer one.**
 
-## Violaciones conocidas (pendientes de corregir)
+## Known violations (pending correction)
 
-| Archivo | Problema | Corrección |
-|---------|----------|------------|
-| `data/time-entry.repository.ts` | `ITimeEntryRepository` es una interfaz de dominio viviendo en Data | Mover a `domain/` |
-| `domain/utils/file-util.service.ts` | Usa File API del browser, posible dependencia de infraestructura | Evaluar si pertenece a `data/` o `core/` |
+| File | Problem | Fix |
+|------|---------|-----|
+| `data/time-entry.repository.ts` | `ITimeEntryRepository` is a domain interface living in Data | Move to `domain/` |
+| `domain/utils/file-util.service.ts` | Uses browser File API, possible infrastructure dependency | Evaluate whether it belongs in `data/` or `core/` |
 
-## Checklist de revisión
+## Review checklist
 
-Antes de aprobar cualquier cambio estructural, verificar:
+Before approving any structural change, verify:
 
-- [ ] Los imports de cada archivo solo van hacia capas internas.
-- [ ] Ningún componente inyecta `DexieTimeEntryRepository` directamente.
-- [ ] Ningún use case importa desde `@angular/core` o librerías externas.
-- [ ] `ITimeEntryRepository` solo es conocida en `domain/` y `facade/`.
-- [ ] No hay ciclos de importación (`graphify update .` → revisar "Import Cycles").
-- [ ] Los tokens de DI (`time-entry.tokens.ts`) son el único puente entre capas via DI.
+- [ ] Each file's imports only point to inner layers.
+- [ ] No component injects `DexieTimeEntryRepository` directly.
+- [ ] No use case imports from `@angular/core` or external libraries.
+- [ ] `ITimeEntryRepository` is only known in `domain/` and `facade/`.
+- [ ] No import cycles (`graphify update .` → check "Import Cycles").
+- [ ] DI tokens (`time-entry.tokens.ts`) are the only bridge between layers via DI.
 
-## Cómo detectar violaciones
+## How to detect violations
 
 ```bash
-# Verificar que domain/ no importa de capas externas
+# Verify domain/ does not import from outer layers
 grep -r "from '.*data/" src/app/time-entry/domain/
 grep -r "from '.*facade/" src/app/time-entry/domain/
 grep -r "from '.*presentation/" src/app/time-entry/domain/
 
-# Verificar que data/ no importa de presentation/ ni facade/
+# Verify data/ does not import from presentation/ or facade/
 grep -r "from '.*presentation/" src/app/time-entry/data/
 grep -r "from '.*facade/" src/app/time-entry/data/
 
-# Verificar que ningún componente importa del repositorio
+# Verify no component imports the repository directly
 grep -r "DexieTimeEntryRepository" src/app/time-entry/presentation/
 ```
 
-O directamente con graphify tras cambios:
+Or directly with graphify after changes:
 ```bash
 graphify update .
 graphify query "import violations between layers"
 ```
 
-## Restricción de scope DI: root vs module-scoped
+## DI scope restriction: root vs module-scoped
 
-`@Injectable({ providedIn: 'root' })` **no puede inyectar proveedores con scope de módulo**
-(servicios declarados en `providers: []` de un NgModule o con `providedIn: SomeModule`).
-Si se intenta, Angular lanza un error en runtime.
+`@Injectable({ providedIn: 'root' })` **cannot inject module-scoped providers**
+(services declared in an NgModule's `providers: []` or with `providedIn: SomeModule`).
+If attempted, Angular throws a runtime error.
 
-En este proyecto, `TimeEntryFacade`, `TimeEntryExporter` y `FileUtilService` son
-module-scoped (`TimeEntryModule`). Un servicio root que los inyecte fallará.
+In this project, `TimeEntryFacade`, `TimeEntryExporter`, and `FileUtilService` are
+module-scoped (`TimeEntryModule`). A root-scoped service that injects them will fail.
 
-**Solución:** Si se necesita orquestar servicios module-scoped, inyectarlos directamente
-en el componente (que sí vive en el mismo módulo), no crear un servicio root intermediario.
+**Solution:** If you need to orchestrate module-scoped services, inject them directly
+in the component (which lives in the same module), not in a root-scoped intermediary service.
 
 ```typescript
-// MAL — root-scoped no puede inyectar module-scoped
+// WRONG — root-scoped cannot inject module-scoped
 @Injectable({ providedIn: 'root' })
 export class BackupOrchestratorService {
-  private facade = inject(TimeEntryFacade); // ← falla en runtime
+  private facade = inject(TimeEntryFacade); // ← fails at runtime
 }
 
-// BIEN — el componente (module-scoped) orquesta directamente
+// RIGHT — the component (module-scoped) orchestrates directly
 @Component({ ... })
 export class LayoutComponent {
-  private facade = inject(TimeEntryFacade);     // ✓ mismo módulo
-  private exporter = inject(TimeEntryExporter); // ✓ mismo módulo
-  private backupService = inject(BackupReminderService); // ✓ root → OK en module-scoped
+  private facade = inject(TimeEntryFacade);     // ✓ same module
+  private exporter = inject(TimeEntryExporter); // ✓ same module
+  private backupService = inject(BackupReminderService); // ✓ root → OK in module-scoped
 }
 ```
 
-## Reglas de intervención
+## Intervention rules
 
-- Si detectas una violación en una PR o diff, señálala antes de continuar con la tarea.
-- Una violación menor (un import incorrecto) → corregirla en el mismo diff.
-- Una violación estructural (una clase entera mal ubicada) → crear tarea separada,
-  no bloquear la entrega si no hay tiempo.
-- Los God Nodes (`TimeEntryFacade`, `TimeEntry`) no deben crecer sin justificación:
-  pedir que se evalúe extraer responsabilidades antes de agregar más edges.
+- If you detect a violation in a PR or diff, flag it before continuing with the task.
+- A minor violation (one wrong import) → fix it in the same diff.
+- A structural violation (a whole class in the wrong location) → create a separate task;
+  do not block delivery if there is no time.
+- God Nodes (`TimeEntryFacade`, `TimeEntry`) must not grow without justification:
+  ask that extracting responsibilities be evaluated before adding more edges.

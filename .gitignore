@@ -45,3 +45,6 @@ Thumbs.db
 GEMINI.md
 # Graphify Outputs y Cache
 graphify-out/cache/
+
+# Feature specs (UX proposals, images, private planning docs)
+feature/
