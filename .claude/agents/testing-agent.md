@@ -118,3 +118,9 @@ providers: [{ provide: TimeEntryFacade, useValue: mockFacade }]
 - Archivos `.ts` nuevos sin `.spec.ts` hermano → bloquear el PR
 - `it` blocks vacíos o con `expect(true).toBe(true)` → no cuenta como cobertura
 - Tests que pasan aunque el comportamiento sea incorrecto (mocks que nunca fallan) → revisar aserciones
+
+### Flujo de enforcement
+
+1. **Pre-commit hook** (`.git/hooks/pre-commit`): bloquea el commit si hay archivos `.ts` modificados y la cobertura cae bajo 90%. Corre `ng test --no-watch --code-coverage --browsers=ChromeHeadless`.
+2. **Reporte en issue**: al cerrar un issue, `issues.sh close` incluye automáticamente la tabla de cobertura en el comentario de cierre (lee `coverage/coverage-summary.json`).
+3. **Generar reporte manualmente**: `npx ng test --no-watch --code-coverage` genera `coverage/coverage-summary.json` y `coverage/html/index.html`.

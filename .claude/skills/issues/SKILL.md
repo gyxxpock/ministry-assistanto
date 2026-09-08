@@ -41,6 +41,15 @@ Seguir el flujo normal de agentes (dispatcher → Explore/Plan → implementar �
 
 ### 4. Cerrar
 
+**Antes de cerrar:** verifica que `coverage/coverage-summary.json` existe y está actualizado (los tests deben haberse corrido después del último cambio). Si no existe, ejecutar primero:
+
+```bash
+npx ng test --no-watch --code-coverage
+.claude/scripts/check-coverage.sh  # verifica que ≥90% antes de cerrar
+```
+
+El script `issues.sh close` incluye automáticamente la tabla de cobertura en el comentario de cierre si el archivo existe.
+
 ```bash
 .claude/scripts/issues.sh close <number> "<resumen de lo implementado>"
 ```

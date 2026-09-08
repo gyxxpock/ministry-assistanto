@@ -192,9 +192,9 @@
     "semantic_hash": "a8bdf656d7051ff4ec50b9225f1ad97b"
   },
   "src/app/time-entry/presentation/components/layout/layout.ts": {
-    "mtime": 1788827371.6605408,
-    "seen": 1788827541.065751,
-    "ast_hash": "d1249b16d89a9e602004c647115e4c27",
+    "mtime": 1788832250.730665,
+    "seen": 1788832309.236246,
+    "ast_hash": "dd12d013486c9aab6028c911aafbf78a",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts": {
@@ -252,9 +252,9 @@
     "semantic_hash": "f9795ec60904325330a1b455ac5798b4"
   },
   "src/app/time-entry/presentation/time-entry.module.ts": {
-    "mtime": 1788829142.4297044,
-    "seen": 1788829176.210198,
-    "ast_hash": "e9587aae2e46a567413cf00baf98be77",
+    "mtime": 1788832267.537331,
+    "seen": 1788832309.2362611,
+    "ast_hash": "64d5ebf0b7fccddd892158fc708cec60",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/tokens/time-entry.tokens.ts": {
@@ -336,9 +336,9 @@
     "semantic_hash": "92b5943b800a66a310a32614ee6e4e97"
   },
   "src/app/time-entry/presentation/components/layout/layout.html": {
-    "mtime": 1788827378.2888727,
-    "seen": 1788827541.065797,
-    "ast_hash": "8eb09572b6f569c05b61a97e06bd1522",
+    "mtime": 1788832255.217197,
+    "seen": 1788832309.236295,
+    "ast_hash": "7d5e952983be909b9094beff0e2be241",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.html": {
@@ -705,6 +705,18 @@
     "mtime": 1788831912.9508386,
     "seen": 1788832035.2128708,
     "ast_hash": "ad68075f59b101ac4943c78e1fd9198e",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/update-banner/update-banner.component.ts": {
+    "mtime": 1788832216.810726,
+    "seen": 1788832309.236258,
+    "ast_hash": "2a4fd5372205bece5b6042ca9781c2a2",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/presentation/components/update-banner/update-banner.component.html": {
+    "mtime": 1788832223.385941,
+    "seen": 1788832309.2363021,
+    "ast_hash": "97d22904dff614cbbb4e693abb8bf1a1",
     "semantic_hash": ""
   }
 }
