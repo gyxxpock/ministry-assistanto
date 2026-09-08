@@ -1,7 +1,9 @@
-import { Component, computed, OnInit, signal } from '@angular/core';
+import { Component, computed, inject, OnInit, signal } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
+import { toDateKey } from '../../utils/date.utils';
 
 interface CalendarDay {
   date: Date;
@@ -18,28 +20,29 @@ interface CalendarDay {
 })
 
 export class TimeEntryCalendarComponent implements OnInit {
+  private readonly translate = inject(TranslateService);
   currentDate = signal(new Date());
   today = new Date();
-  weekDays = ['Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado', 'Domingo'];
+
+  get weekDays(): string[] {
+    const locale = this.translate.currentLang || 'es';
+    return Array.from({ length: 7 }, (_, i) => {
+      const date = new Date(2024, 0, i + 1);
+      const name = new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
+      return name.charAt(0).toUpperCase() + name.slice(1);
+    });
+  }
 
   private entriesByDate = computed(() => {
     const map = new Map<string, { totalMinutes: number }>();
     for (const entry of this.facade.entries()) {
-      const dateKey = this.toKey(entry.date);
+      const dateKey = toDateKey(entry.date);
       const dayData = map.get(dateKey) ?? { totalMinutes: 0 };
       dayData.totalMinutes += entry.durationMinutes;
       map.set(dateKey, dayData);
     }
     return map;
   });
-
-  // 1. Crea una función para normalizar la fecha a string YYYY-MM-DD
-  private toKey(date: Date | string): string {
-    const d = new Date(date);
-    return d.getFullYear() + '-' +
-      String(d.getMonth() + 1).padStart(2, '0') + '-' +
-      String(d.getDate()).padStart(2, '0');
-  }
 
   calendarGrid = computed<CalendarDay[]>(() => {
     const current = this.currentDate();
@@ -124,7 +127,7 @@ export class TimeEntryCalendarComponent implements OnInit {
   }
 
   private createCaendarDay(date: Date, isCurrentMonth: boolean, entriesMap: Map<string, { totalMinutes: number; }>): CalendarDay {
-    const dateStr = this.toKey(date);
+    const dateStr = toDateKey(date);
     const dayData = entriesMap.get(dateStr);
     return {
       date,
@@ -145,8 +148,8 @@ export class TimeEntryCalendarComponent implements OnInit {
       return;
     }
 
-    const dateKey    = this.toKey(day.date);
-    const dayEntries = this.facade.entries().filter(e => this.toKey(e.date) === dateKey);
+    const dateKey    = toDateKey(day.date);
+    const dayEntries = this.facade.entries().filter(e => toDateKey(e.date) === dateKey);
     if (dayEntries.length === 0) return;
 
     this.dialog.open(TimeEntryEditDialogComponent, {

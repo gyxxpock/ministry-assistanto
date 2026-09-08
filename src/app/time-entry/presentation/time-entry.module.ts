@@ -9,6 +9,10 @@ import { TimeEntryFormComponent } from './components/time-entry-form/time-entry-
 import { TimeEntryDayComponent } from './components/time-entry-day/time-entry-day.component';
 import { TimeEntryCalendarComponent } from './components/time-entry-calendar/time-entry-calendar';
 import { Layout } from './components/layout/layout';
+import { SettingsComponent } from './components/settings/settings.component';
+import { OptionPillGroupComponent } from './components/shared/option-pill-group/option-pill-group.component';
+import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
+import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
@@ -40,14 +44,18 @@ const routes: Routes = [
         path: 'list', 
         component: TimeEntryListComponent // URL: time-entry/list
       },
-      { 
-        path: 'calendar', 
-        component: TimeEntryCalendarComponent // URL: time-entry/detail
+      {
+        path: 'calendar',
+        component: TimeEntryCalendarComponent
       },
-      { 
-        path: '', 
-        redirectTo: 'list', 
-        pathMatch: 'full' 
+      {
+        path: 'settings',
+        component: SettingsComponent
+      },
+      {
+        path: '',
+        redirectTo: 'list',
+        pathMatch: 'full'
       }
     ]
   }
@@ -63,7 +71,11 @@ const routes: Routes = [
     TimeEntryEditDialogComponent,
     I18nDatePipe,
     TimeEntryCalendarComponent,
-    Layout
+    Layout,
+    SettingsComponent,
+    OptionPillGroupComponent,
+    BackupReminderBannerComponent,
+    MonthPaginatorComponent,
   ],
   imports: [
     MatChipsModule,

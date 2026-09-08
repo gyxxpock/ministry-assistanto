@@ -1,0 +1,22 @@
+<div class="banner-container" role="alert">
+  <mat-icon class="banner-icon">backup</mat-icon>
+
+  <div class="banner-content">
+    <span class="banner-title">{{ 'settings.backup.reminder.title' | translate }}</span>
+    <span class="banner-message">{{ 'settings.backup.reminder.message' | translate }}</span>
+  </div>
+
+  <div class="banner-actions">
+    <button class="btn-backup" (click)="onDoBackup()" type="button">
+      <mat-icon>download</mat-icon>
+      <span>{{ 'settings.backup.reminder.doBackup' | translate }}</span>
+    </button>
+    <button
+      class="btn-dismiss"
+      (click)="onDismiss()"
+      type="button"
+      [attr.aria-label]="'settings.backup.reminder.dismiss' | translate">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+</div>

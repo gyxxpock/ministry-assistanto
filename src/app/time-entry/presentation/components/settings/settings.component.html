@@ -1,0 +1,62 @@
+<div class="settings-page">
+  <header class="settings-header">
+    <h2 class="page-title">{{ 'settings.title' | translate }}</h2>
+  </header>
+
+  <!-- Apariencia -->
+  <section class="settings-section">
+    <h3 class="section-title">{{ 'settings.appearance.title' | translate }}</h3>
+    <div class="settings-card">
+      <div class="settings-row settings-row--last">
+        <ma-option-pill-group
+          [options]="themeOptions"
+          [value]="themeService.mode()"
+          (valueChange)="setTheme($event)">
+        </ma-option-pill-group>
+      </div>
+    </div>
+  </section>
+
+  <!-- Respaldo de datos -->
+  <section class="settings-section">
+    <h3 class="section-title">{{ 'settings.backup.title' | translate }}</h3>
+    <div class="settings-card">
+
+      <div class="settings-row settings-row--control">
+        <span class="row-label">{{ 'settings.backup.frequency' | translate }}</span>
+        <ma-option-pill-group
+          [options]="frequencyOptions"
+          [value]="backupService.frequency()"
+          (valueChange)="setFrequency($event)">
+        </ma-option-pill-group>
+      </div>
+
+      <div class="settings-row">
+        <mat-icon class="row-icon">history</mat-icon>
+        <div class="row-info">
+          <span class="row-label">{{ 'settings.backup.lastBackup' | translate }}</span>
+          <span class="row-value">
+            {{ lastBackupFormatted() ?? ('settings.backup.never' | translate) }}
+          </span>
+        </div>
+      </div>
+
+      <div class="settings-row settings-row--last">
+        <mat-icon class="row-icon">schedule</mat-icon>
+        <div class="row-info">
+          <span class="row-label">{{ 'settings.backup.nextReminder' | translate }}</span>
+          <span class="row-value" [class.overdue]="backupService.isReminderDue()">
+            @if (backupService.frequency() === 'disabled') {
+              {{ 'settings.backup.noReminder' | translate }}
+            } @else if (backupService.isReminderDue()) {
+              {{ 'settings.backup.overdue' | translate }}
+            } @else {
+              {{ nextReminderFormatted() ?? ('settings.backup.never' | translate) }}
+            }
+          </span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+</div>

@@ -133,23 +133,27 @@
     }
   }
 
-  // Botón de tema — ligeramente más pequeño que los nav buttons
-  .theme-toggle-btn {
-    min-width: 64px;
-    opacity: 0.7;
-
-    &:hover { opacity: 1; }
-  }
 }
 
-// 3. SINCRONIZACIÓN CON SCROLL
+// 3. BANNER DE RECORDATORIO (sobre el nav flotante)
+.backup-banner-wrapper {
+  position: fixed;
+  bottom: calc(#{t.$space-8} + 80px + #{t.$space-2} + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - #{t.$space-4} * 2);
+  max-width: 480px;
+  z-index: 999; // bajo el nav (z-nav = 1000)
+}
+
+// 4. SINCRONIZACIÓN CON SCROLL
 .nav-is-hidden .page-header {
   transform: scale(0.95) translateY(-30px);
   opacity: 0;
   filter: blur(t.$blur-sm);
 }
 
-// 4. SCROLLBAR MINIMALISTA
+// 5. SCROLLBAR MINIMALISTA
 // ::ng-deep necesario: los estilos de scrollbar no pueden apuntarse desde el
 // host del componente sin perforar el encapsulamiento.
 /* stylelint-disable selector-pseudo-element-no-unknown */
