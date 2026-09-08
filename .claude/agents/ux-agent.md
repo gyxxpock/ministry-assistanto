@@ -89,3 +89,28 @@ UXAgent actúa como revisor de decisiones de UIAgent. Cuando ambos están activo
   → desplazará los elementos adyacentes al mostrarse; convertir a overlay absoluto.
 - Panel con texto traducido dinámico y `white-space: nowrap` → desbordará en pantallas
   pequeñas (iPhone SE 375 px); eliminar `nowrap` y añadir `max-width` relativo al viewport.
+
+## Convención de changelog (`public/assets/changelog.json`)
+
+Todo PR que entregue cambios visibles al usuario debe añadir un entry al changelog.
+Esto permite que la app muestre un resumen de cambios en la notificación de actualización PWA.
+
+### Tipos de cambio
+
+| `type` | Cuándo usarlo | Se muestra como |
+|---|---|---|
+| `"feature"` | Funcionalidad nueva visible al usuario | Ítem explícito con label "Nuevo" |
+| `"fix"` | Bug corregido visible al usuario | Ítem explícito con label "Corrección" |
+| `"ux"` | Performance, ajustes visuales, mejoras de layout | Agrupado como "Mejoras en la experiencia de usuario" |
+
+### Formato
+
+```json
+{ "type": "feature", "text": "Descripción orientada al usuario, no al developer" }
+```
+
+- El texto debe ser comprensible por el usuario final, no por el developer.
+- Usar español siempre (el campo `text` no pasa por el sistema i18n — es content, no key).
+- Múltiples items `ux` se colapsan en uno solo en la UI.
+- Versión: usar fecha ISO del deploy (`YYYY-MM-DD`).
+- El entry más reciente va primero en el array.

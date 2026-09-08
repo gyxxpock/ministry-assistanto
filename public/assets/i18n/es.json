@@ -52,6 +52,16 @@
       }
     }
   },
+  "update": {
+    "title": "Nueva versión disponible",
+    "applyNow": "Actualizar ahora",
+    "later": "Más tarde",
+    "uxChanges": "Mejoras en la experiencia de usuario",
+    "changeTypes": {
+      "feature": "Nuevo",
+      "fix": "Corrección"
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {
