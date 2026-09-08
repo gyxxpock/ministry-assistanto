@@ -21,8 +21,8 @@ describe('DexieTimeEntryRepository', () => {
   });
 
   it('can add and list entries by month', async () => {
-    const e1: TimeEntry = { id: 'e1', date: '2025-11-05', durationMinutes: 120, type: 'preaching' };
-    const e2: TimeEntry = { id: 'e2', date: '2025-11-10', durationMinutes: 60, type: 'study' };
+    const e1: TimeEntry = { id: 'e1', date: new Date('2025-11-05'), durationMinutes: 120, type: 'preaching' };
+    const e2: TimeEntry = { id: 'e2', date: new Date('2025-11-10'), durationMinutes: 60, type: 'study' };
 
     await repo.addEntry(e1);
     await repo.addEntry(e2);
@@ -32,8 +32,8 @@ describe('DexieTimeEntryRepository', () => {
   });
 
   it('can add and list visits by month and remove them', async () => {
-    const v1: CourseVisit = { id: 'v1', date: '2025-11-05', durationMinutes: 30, personId: 'p1' };
-    const v2: CourseVisit = { id: 'v2', date: '2025-12-01', durationMinutes: 45, personId: 'p2' };
+    const v1: CourseVisit = { id: 'v1', date: new Date(2025, 10, 5), durationMinutes: 30, personId: 'p1' };
+    const v2: CourseVisit = { id: 'v2', date: new Date(2025, 11, 1), durationMinutes: 45, personId: 'p2' };
 
     await repo.addVisit(v1);
     await repo.addVisit(v2);
@@ -47,14 +47,14 @@ describe('DexieTimeEntryRepository', () => {
   });
 
   it('updates entries and visits', async () => {
-    const e: TimeEntry = { id: 'e3', date: '2025-11-11', durationMinutes: 45, type: 'other' };
+    const e: TimeEntry = { id: 'e3', date: new Date('2025-11-11'), durationMinutes: 45, type: 'other' };
     await repo.addEntry(e);
     e.durationMinutes = 90;
     await repo.updateEntry(e);
     const list = await repo.listEntriesByMonth(2025, 11);
     expect(list.find(x => x.id === 'e3')!.durationMinutes).toBe(90);
 
-    const v: CourseVisit = { id: 'v3', date: '2025-11-12', durationMinutes: 15, personId: 'px' };
+    const v: CourseVisit = { id: 'v3', date: new Date('2025-11-12'), durationMinutes: 15, personId: 'px' };
     await repo.addVisit(v);
     v.durationMinutes = 30;
     await repo.updateVisit(v);

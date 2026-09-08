@@ -1,7 +1,13 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
+import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { TimeEntryDayComponent } from './time-entry-day.component';
 import { TimeEntryVM } from '../../models/time-entry.vm';
+
+@Pipe({ name: 'i18nDate', standalone: true })
+class I18nDateStub implements PipeTransform {
+  transform(): string { return ''; }
+}
 
 function makeEntry(overrides: Partial<TimeEntryVM> = {}): TimeEntryVM {
   return {
@@ -21,6 +27,7 @@ describe('TimeEntryDayComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [TimeEntryDayComponent],
+      imports: [I18nDateStub, TranslateModule.forRoot()],
       schemas: [NO_ERRORS_SCHEMA],
     }).compileComponents();
 

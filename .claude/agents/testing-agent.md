@@ -87,3 +87,40 @@ providers: [{ provide: TimeEntryFacade, useValue: mockFacade }]
 - Un spec de `data/` mockea Dexie en vez de usar `fake-indexeddb` → falsos positivos.
 - Un spec de `presentation/` inyecta `DexieTimeEntryRepository` directamente → violación
   de capa en el test mismo.
+
+## Mandato de cobertura
+
+**Regla:** Toda implementación que agregue o modifique lógica debe incluir su spec file en el mismo commit/PR.
+
+- **Mínimo aceptable:** 90% de cobertura de líneas en los archivos tocados
+- **Objetivo:** 100% cuando el archivo contiene lógica pura (funciones, computed, business rules)
+- **Sin excepción:** No se considera un issue cerrado si los archivos nuevos no tienen spec
+
+### Qué testear por tipo de archivo
+
+| Tipo | Qué cubrir | Prioridad |
+|------|-----------|-----------|
+| Servicios con lógica (`isReminderDue`, computed) | Todos los casos de borde, fechas, flags | HIGH |
+| Funciones puras (`date.utils.ts`) | Todos los inputs válidos e inválidos | HIGH |
+| Componentes con getters/filtros | Cada getter con datos de prueba | HIGH |
+| Servicios de infraestructura (SwUpdate, HTTP) | Happy path + error path | MEDIUM |
+| Componentes presentacionales simples | Rendering correcto, outputs emitidos | LOW |
+
+### Convención de mocks para este proyecto
+
+- `localStorage`: mockear con `spyOn(window.localStorage, 'getItem')` / `setItem`
+- `SwUpdate`: `jasmine.createSpyObj('SwUpdate', [], { versionUpdates: EMPTY })` — usar `EMPTY` de rxjs para el Observable vacío
+- `HttpClient`: `HttpClientTestingModule` del paquete `@angular/common/http/testing`
+- Servicios Angular core (`TranslateService`): spy object con los métodos usados
+
+### Señales de alerta en PRs
+
+- Archivos `.ts` nuevos sin `.spec.ts` hermano → bloquear el PR
+- `it` blocks vacíos o con `expect(true).toBe(true)` → no cuenta como cobertura
+- Tests que pasan aunque el comportamiento sea incorrecto (mocks que nunca fallan) → revisar aserciones
+
+### Flujo de enforcement
+
+1. **Pre-commit hook** (`.git/hooks/pre-commit`): bloquea el commit si hay archivos `.ts` modificados y la cobertura cae bajo 90%. Corre `ng test --no-watch --code-coverage --browsers=ChromeHeadless`.
+2. **Reporte en issue**: al cerrar un issue, `issues.sh close` incluye automáticamente la tabla de cobertura en el comentario de cierre (lee `coverage/coverage-summary.json`).
+3. **Generar reporte manualmente**: `npx ng test --no-watch --code-coverage` genera `coverage/coverage-summary.json` y `coverage/html/index.html`.

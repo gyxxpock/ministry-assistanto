@@ -13,6 +13,7 @@ import { SettingsComponent } from './components/settings/settings.component';
 import { OptionPillGroupComponent } from './components/shared/option-pill-group/option-pill-group.component';
 import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
 import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
+import { UpdateBannerComponent } from './components/update-banner/update-banner.component';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
@@ -76,6 +77,7 @@ const routes: Routes = [
     OptionPillGroupComponent,
     BackupReminderBannerComponent,
     MonthPaginatorComponent,
+    UpdateBannerComponent,
   ],
   imports: [
     MatChipsModule,

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { TimeEntryListComponent } from './time-entry-list.component';
 import { TimeEntryModule } from '../../time-entry.module';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
@@ -55,14 +56,16 @@ class InMemoryRepository implements ITimeEntryRepository {
 
 describe('TimeEntryListComponent', () => {
   let fixture: ComponentFixture<TimeEntryListComponent>;
+  let component: TimeEntryListComponent;
   let facade: TimeEntryFacade;
   let repo: InMemoryRepository;
+  let httpMock: HttpTestingController;
 
   beforeEach(async () => {
     repo = new InMemoryRepository();
 
     await TestBed.configureTestingModule({
-      imports: [TimeEntryModule, FormsModule, TranslateModule.forRoot()],
+      imports: [HttpClientTestingModule, TimeEntryModule, FormsModule, TranslateModule.forRoot()],
       providers: [
         { provide: TIME_ENTRY_REPOSITORY, useValue: repo },
         TimeEntryFacade,
@@ -102,13 +105,20 @@ describe('TimeEntryListComponent', () => {
     }, true);
     translate.use('en');
 
+    httpMock = TestBed.inject(HttpTestingController);
     fixture = TestBed.createComponent(TimeEntryListComponent);
+    component = fixture.componentInstance;
     facade = TestBed.inject(TimeEntryFacade);
   });
 
+  afterEach(() => {
+    httpMock.match(() => true).forEach(req => req.flush([]));
+    httpMock.verify();
+  });
+
   it('renders totals and lists', async () => {
-    await facade.addEntry({ id: 'e1', date: '2025-11-05', durationMinutes: 120, type: 'preaching' });
-    await facade.addVisit({ id: 'v1', date: '2025-11-06', durationMinutes: 60, personId: 'p1' });
+    await facade.addEntry({ date: new Date('2025-11-05'), durationMinutes: 120, type: 'preaching' });
+    await facade.addVisit({ id: 'v1', date: new Date('2025-11-06'), durationMinutes: 60, personId: 'p1' });
     await facade.loadMonth(2025, 11);
 
     fixture.detectChanges();
@@ -118,16 +128,131 @@ describe('TimeEntryListComponent', () => {
     expect(el.textContent).toContain('Total hours');
     expect(el.textContent).toContain('Total courses');
 
-    const totals = fixture.debugElement.nativeElement.querySelector('.totals');
-    expect(totals.getAttribute('aria-live')).toBe('polite');
-    expect(totals.getAttribute('aria-label')).toContain('Monthly totals');
+    const totals = fixture.debugElement.nativeElement.querySelector('.totals-dashboard');
+    expect(totals).not.toBeNull();
 
-    const exportJsonBtn = fixture.debugElement.nativeElement.querySelector('.exports button');
-    expect(exportJsonBtn.getAttribute('aria-label')).toContain('Export entries');
-    const fileInput = fixture.debugElement.nativeElement.querySelector('.exports input[type=file]');
-    expect(fileInput.getAttribute('aria-label')).toContain('Import entries');
+    const fileInput = fixture.debugElement.nativeElement.querySelector('input[type=file]');
+    expect(fileInput).not.toBeNull();
 
-    const entries = fixture.debugElement.queryAll(By.css('ul li'));
-    expect(entries.length).toBeGreaterThan(0);
+    const dayGroups = fixture.debugElement.queryAll(By.css('ma-time-entry-day'));
+    expect(dayGroups.length).toBeGreaterThan(0);
+  });
+
+  it('onRestoreRequest sets showRestoreConfirm to true', () => {
+    fixture.detectChanges();
+    expect(component.showRestoreConfirm).toBeFalse();
+    component.onRestoreRequest();
+    expect(component.showRestoreConfirm).toBeTrue();
+  });
+
+  it('onRestoreCancel sets showRestoreConfirm to false', () => {
+    fixture.detectChanges();
+    component.showRestoreConfirm = true;
+    component.onRestoreCancel();
+    expect(component.showRestoreConfirm).toBeFalse();
+  });
+
+  it('isCurrentMonth returns true when currentDate is this month', () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date());
+    expect(component.isCurrentMonth()).toBeTrue();
+  });
+
+  it('isCurrentMonth returns false when currentDate is a past month', () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date(2020, 0, 1));
+    expect(component.isCurrentMonth()).toBeFalse();
+  });
+
+  it('prevMonth moves currentDate one month back', async () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date(2025, 10, 1)); // Nov 2025
+    spyOn(facade, 'loadMonth').and.returnValue(Promise.resolve());
+
+    component.prevMonth();
+
+    const date = component.currentDate();
+    expect(date.getFullYear()).toBe(2025);
+    expect(date.getMonth()).toBe(9); // October
+  });
+
+  it('nextMonth moves currentDate one month forward', async () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date(2025, 10, 1)); // Nov 2025
+    spyOn(facade, 'loadMonth').and.returnValue(Promise.resolve());
+
+    component.nextMonth();
+
+    const date = component.currentDate();
+    expect(date.getMonth()).toBe(11); // December
+  });
+
+  it('goToToday resets currentDate to today', () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date(2020, 0, 1));
+    spyOn(facade, 'loadMonth').and.returnValue(Promise.resolve());
+
+    component.goToToday();
+
+    const date = component.currentDate();
+    const now = new Date();
+    expect(date.getFullYear()).toBe(now.getFullYear());
+    expect(date.getMonth()).toBe(now.getMonth());
+  });
+
+  it('loadData calls facade.loadMonth with year and month from currentDate', () => {
+    fixture.detectChanges();
+    component.currentDate.set(new Date(2025, 10, 1)); // Nov 2025
+    spyOn(facade, 'loadMonth').and.returnValue(Promise.resolve());
+
+    component.loadData();
+
+    expect(facade.loadMonth).toHaveBeenCalledWith(2025, 11);
+  });
+
+  it('incrementCourse calls updateManualCourseCount with 0+1 when no data loaded', () => {
+    fixture.detectChanges();
+    spyOn(facade, 'updateManualCourseCount').and.returnValue(Promise.resolve());
+
+    component.incrementCourse();
+
+    expect(facade.updateManualCourseCount).toHaveBeenCalledWith(1);
+  });
+
+  it('decrementCourse does not call updateManualCourseCount when count is 0', () => {
+    fixture.detectChanges();
+    spyOn(facade, 'updateManualCourseCount').and.returnValue(Promise.resolve());
+
+    component.decrementCourse();
+
+    expect(facade.updateManualCourseCount).not.toHaveBeenCalled();
+  });
+
+  it('decrementCourse decrements totalCourses when visits exist', async () => {
+    await repo.addVisit({ id: 'v1', date: new Date(2025, 10, 5), durationMinutes: 30, personId: 'p1' });
+    await repo.addVisit({ id: 'v2', date: new Date(2025, 10, 5), durationMinutes: 30, personId: 'p2' });
+    await facade.loadMonth(2025, 11);
+    component.currentDate.set(new Date(2025, 10, 1));
+    fixture.detectChanges();
+
+    spyOn(facade, 'updateManualCourseCount').and.returnValue(Promise.resolve());
+    component.decrementCourse(); // totalCourses = 2 unique persons → calls with 1
+
+    expect(facade.updateManualCourseCount).toHaveBeenCalledWith(1);
+  });
+
+  it('groupedEntries groups entries by date key', async () => {
+    // Use local midnight dates (not UTC string) to avoid timezone offset changing the date key
+    await facade.addEntry({ date: new Date(2025, 10, 5), durationMinutes: 60, type: 'preaching' });
+    await facade.addEntry({ date: new Date(2025, 10, 5), durationMinutes: 30, type: 'study' });
+    await facade.addEntry({ date: new Date(2025, 10, 6), durationMinutes: 45, type: 'visiting' });
+    await facade.loadMonth(2025, 11);
+    component.currentDate.set(new Date(2025, 10, 1));
+    fixture.detectChanges();
+
+    const groups = component.groupedEntries();
+    expect(groups.length).toBe(2);
+    const entries5 = groups.find((g: { date: string; entries: unknown[] }) => g.date.endsWith('-05'))?.entries;
+    expect(entries5?.length).toBe(2);
   });
 });

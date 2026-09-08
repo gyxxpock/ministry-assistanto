@@ -1,0 +1,46 @@
+<div class="banner-container" role="alert">
+
+  <div class="banner-header">
+    <mat-icon class="banner-icon">system_update</mat-icon>
+    <span class="banner-title">{{ 'update.title' | translate }}</span>
+    <button class="btn-dismiss"
+            (click)="dismiss.emit()"
+            [attr.aria-label]="'update.later' | translate">
+      <mat-icon>close</mat-icon>
+    </button>
+  </div>
+
+  @if (changes.length > 0) {
+    <ul class="change-list">
+      @for (entry of features; track entry.text) {
+        <li class="change-item">
+          <span class="change-badge badge-feature">{{ 'update.changeTypes.feature' | translate }}</span>
+          <span class="change-text">{{ entry.text }}</span>
+        </li>
+      }
+      @for (entry of fixes; track entry.text) {
+        <li class="change-item">
+          <span class="change-badge badge-fix">{{ 'update.changeTypes.fix' | translate }}</span>
+          <span class="change-text">{{ entry.text }}</span>
+        </li>
+      }
+      @if (hasUX) {
+        <li class="change-item change-item--ux">
+          <mat-icon class="ux-icon">auto_fix_high</mat-icon>
+          <span class="change-text">{{ 'update.uxChanges' | translate }}</span>
+        </li>
+      }
+    </ul>
+  }
+
+  <div class="banner-actions">
+    <button class="btn-apply" (click)="applyUpdate.emit()">
+      <mat-icon>system_update</mat-icon>
+      <span>{{ 'update.applyNow' | translate }}</span>
+    </button>
+    <button class="btn-later" (click)="dismiss.emit()">
+      {{ 'update.later' | translate }}
+    </button>
+  </div>
+
+</div>

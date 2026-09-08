@@ -2,6 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { TimeEntryCalendarComponent } from './time-entry-calendar';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
@@ -13,12 +14,11 @@ const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart
 
 const makeEntry = (id: string, dateStr: string, durationMinutes = 60): TimeEntryVM => ({
   id,
-  date: dateStr,
+  date: new Date(dateStr + 'T12:00:00'),
   type: 'preaching',
   durationMinutes,
+  typeLabel: 'Predicación',
   notes: '',
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
 });
 
 describe('TimeEntryCalendarComponent', () => {
@@ -39,6 +39,7 @@ describe('TimeEntryCalendarComponent', () => {
 
     await TestBed.configureTestingModule({
       declarations: [TimeEntryCalendarComponent],
+      imports: [TranslateModule.forRoot()],
       providers: [
         { provide: TimeEntryFacade, useValue: mockFacade },
         { provide: MatDialog,       useValue: dialogSpy },
@@ -91,5 +92,54 @@ describe('TimeEntryCalendarComponent', () => {
     otherMonthCell?.click();
 
     expect(dialogSpy.open).not.toHaveBeenCalled();
+  });
+
+  it('prevMonth() navigates to the previous month and reloads', () => {
+    const initial = component.currentDate();
+    component.prevMonth();
+    const prev = component.currentDate();
+    expect(prev.getMonth()).toBe(
+      initial.getMonth() === 0 ? 11 : initial.getMonth() - 1
+    );
+    expect(mockFacade.loadMonth).toHaveBeenCalled();
+  });
+
+  it('nextMonth() navigates to the next month and reloads', () => {
+    const initial = component.currentDate();
+    component.nextMonth();
+    const next = component.currentDate();
+    expect(next.getMonth()).toBe(
+      initial.getMonth() === 11 ? 0 : initial.getMonth() + 1
+    );
+    expect(mockFacade.loadMonth).toHaveBeenCalled();
+  });
+
+  it('goToToday() resets to the current month', () => {
+    component.prevMonth();
+    component.goToToday();
+    const today = new Date();
+    expect(component.currentDate().getMonth()).toBe(today.getMonth());
+    expect(component.currentDate().getFullYear()).toBe(today.getFullYear());
+  });
+
+  it('isCurrentMonth returns false after navigating away', () => {
+    component.prevMonth();
+    fixture.detectChanges();
+    expect(component.isCurrentMonth()).toBe(false);
+  });
+
+  it('formatHours returns empty string for 0 minutes', () => {
+    expect(component.formatHours(0)).toBe('');
+  });
+
+  it('formatHours formats minutes into h/m string', () => {
+    expect(component.formatHours(90)).toBe('1h 30m');
+    expect(component.formatHours(60)).toBe('1h 00m');
+    expect(component.formatHours(5)).toBe('0h 05m');
+  });
+
+  it('weekDays returns 7 day names', () => {
+    expect(component.weekDays.length).toBe(7);
+    component.weekDays.forEach(d => expect(typeof d).toBe('string'));
   });
 });

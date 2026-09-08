@@ -15,8 +15,8 @@ describe('Dexie export/import', () => {
   });
 
   it('exports and imports data', async () => {
-    await repo.addEntry({ id: 'e1', date: '2025-11-05', durationMinutes: 60, type: 'preaching' });
-    await repo.addVisit({ id: 'v1', date: '2025-11-06', durationMinutes: 30, personName: 'Ana' });
+    await repo.addEntry({ id: 'e1', date: new Date('2025-11-05'), durationMinutes: 60, type: 'preaching' });
+    await repo.addVisit({ id: 'v1', date: new Date('2025-11-06'), durationMinutes: 30, personName: 'Ana' });
 
     const exported = await repo.exportAll();
     expect(exported.entries.length).toBe(1);
