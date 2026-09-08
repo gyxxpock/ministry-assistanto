@@ -1,3 +1,16 @@
 :host {
   display: contents;
 }
+
+.month-display {
+  min-width: 0;
+  overflow: hidden;
+
+  .month-text {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-transform: capitalize;
+  }
+}
