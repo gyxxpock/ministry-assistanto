@@ -1,0 +1,18 @@
+<button mat-icon-button class="nav-btn" (click)="prev.emit()">
+  <mat-icon>chevron_left</mat-icon>
+</button>
+
+<div class="month-display">
+  <span class="month-text">{{ currentDate | date:'MMMM' }}</span>
+  <span class="year-text">{{ currentDate | date:'yyyy' }}</span>
+</div>
+
+<button mat-icon-button class="nav-btn" (click)="next.emit()">
+  <mat-icon>chevron_right</mat-icon>
+</button>
+
+<div class="v-divider"></div>
+
+<button mat-button class="today-pill-btn" (click)="today.emit()" [disabled]="isCurrentMonth">
+  {{ 'common.buttons.today' | translate }}
+</button>
