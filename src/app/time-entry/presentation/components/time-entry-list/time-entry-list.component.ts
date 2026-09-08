@@ -5,6 +5,7 @@ import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit
 import { TimeEntryVM } from '../../models/time-entry.vm';
 import { FileUtilService } from '../../../data/utils/file-util.service';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
+import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 
 @Component({
   selector: 'ma-time-entry-list',
@@ -18,9 +19,9 @@ export class TimeEntryListComponent implements OnInit {
   showRestoreConfirm = false;
   today = new Date();
 
-  // Dentro de tu clase:
   private fileUtil = inject(FileUtilService);
   private exporter = inject(TimeEntryExporter);
+  private backupService = inject(BackupReminderService);
 
   async shareReport() {
     if (navigator.share) {
@@ -51,6 +52,7 @@ export class TimeEntryListComponent implements OnInit {
 
       const fileName = `backup_${new Date().toISOString().split('T')[0]}.json`;
       this.fileUtil.downloadFile(jsonContent, fileName, 'application/json');
+      this.backupService.recordBackup();
     } finally {
       this.isExporting.set(false);
     }

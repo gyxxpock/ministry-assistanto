@@ -27,6 +27,11 @@ export class ThemeService {
     localStorage.setItem(STORAGE_KEY, next);
   }
 
+  setMode(mode: ThemeMode): void {
+    this._mode.set(mode);
+    localStorage.setItem(STORAGE_KEY, mode);
+  }
+
   private _apply(mode: ThemeMode): void {
     const html = document.documentElement;
     if (mode === 'system') {
