@@ -450,9 +450,9 @@
     "semantic_hash": ""
   },
   ".claude/agents/architecture-guardian.md": {
-    "mtime": 1788830893.2935805,
-    "seen": 1788830910.3705091,
-    "ast_hash": "56b9cf896cd0b4941f650a8cf1fe8eed",
+    "mtime": 1788542914.3578753,
+    "seen": 1788545920.707034,
+    "ast_hash": "1dd605f8364116a99b7e86998a73f780",
     "semantic_hash": ""
   },
   ".claude/agents/data-agent.md": {
@@ -474,9 +474,9 @@
     "semantic_hash": ""
   },
   ".claude/agents/signals-agent.md": {
-    "mtime": 1788830888.004293,
-    "seen": 1788830910.370513,
-    "ast_hash": "d3f9e7d6fad009f9439228f4ab0d0f18",
+    "mtime": 1788542926.753424,
+    "seen": 1788545920.707037,
+    "ast_hash": "51447d0a2193911d9f664949b0d6bbe8",
     "semantic_hash": ""
   },
   ".claude/agents/testing-agent.md": {
@@ -552,9 +552,9 @@
     "semantic_hash": ""
   },
   ".claude/agents/ux-agent.md": {
-    "mtime": 1788830900.7754085,
-    "seen": 1788830910.3705149,
-    "ast_hash": "8a821e666333417121023058bba9cd48",
+    "mtime": 1788582862.817617,
+    "seen": 1788584783.7068238,
+    "ast_hash": "a9ada31c8d5557a67727f67cfa9f32d2",
     "semantic_hash": ""
   },
   ".claude/scripts/issues.sh": {

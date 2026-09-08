@@ -1,6 +1,6 @@
 {
   "0": "CourseVisit",
-  "1": "time-entry.module.ts",
+  "1": "TimeEntryVM",
   "2": "options",
   "3": "TimeEntryListComponent",
   "4": "dependencies",
@@ -40,7 +40,7 @@
   "38": "AGENTS — Ministry Assistanto",
   "39": "DataAgent",
   "40": "AGENTS.md",
-  "41": "settings.component.ts",
+  "41": "BackupReminderService",
   "42": "UXAgent",
   "43": "Flujo completo",
   "44": "Skill: issues",
@@ -52,6 +52,12 @@
   "50": "architect",
   "51": "ministry-assistanto",
   "52": "NgModule",
-  "53": "TimeEntryFormComponent",
-  "54": "Component"
+  "53": "settings.component.ts",
+  "54": "Component",
+  "55": "time-entry.module.ts",
+  "56": "OptionPillGroupComponent",
+  "57": "time-entry-list.component.ts",
+  "58": "layout.ts",
+  "59": "TimeEntryFacade",
+  "60": "SettingsComponent"
 }
