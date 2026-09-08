@@ -5,7 +5,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { Layout } from './layout';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
-import { FileUtilService } from '../../../data/utils/file-util.service';
+import { FileUtilService } from '../../../../core/services/file-util.service';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 import { UpdateNotificationService } from '../../../../core/services/update-notification.service';
 
