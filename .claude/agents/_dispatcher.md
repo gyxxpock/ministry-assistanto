@@ -29,12 +29,13 @@ agentes, no menos. ArchitectureGuardian está siempre activo en modo silencioso.
 | "UX", "experiencia de usuario", "interacción", "visible", "scroll", "confirmación", "alerta", "animación", "iOS", "liquid glass", "accesibilidad", "táctil", "mobile", "toast", "feedback visual" | **UXAgent** (actívalo junto a UIAgent) |
 | "signal", "computed", "effect", "reactivo", "migrar RxJS", "signals", "estado reactivo" | **SignalsAgent** |
 | "test", "spec", "prueba", "cobertura", "jasmine", "karma", "*.spec.ts" | **TestingAgent** |
+| Cualquier tarea de implementación (nueva funcionalidad, nuevo componente, nuevo servicio, fix de bug con lógica) | **TestingAgent** (siempre activo junto con los agentes de capa) |
 | "revisar capa", "violación", "Clean Architecture", "importa desde", "¿esta clase pertenece?" | **ArchitectureGuardian** (exclusivo) |
 
 ### Regla de feature completa
 Si la tarea describe una **nueva funcionalidad** que involucra lógica de negocio + datos +
 UI (palabras como "quiero", "necesito agregar", "nueva función", "nuevo módulo"), activa:
-→ DomainAgent + DataAgent + FacadeAgent + UIAgent + ArchitectureGuardian
+→ DomainAgent + DataAgent + FacadeAgent + UIAgent + ArchitectureGuardian + TestingAgent
 
 ### ArchitectureGuardian — modo silencioso permanente
 Está activo en todas las tareas. Solo interviene (interrumpe la respuesta) si detecta

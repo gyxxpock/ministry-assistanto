@@ -107,8 +107,8 @@ describe('TimeEntryListComponent', () => {
   });
 
   it('renders totals and lists', async () => {
-    await facade.addEntry({ id: 'e1', date: '2025-11-05', durationMinutes: 120, type: 'preaching' });
-    await facade.addVisit({ id: 'v1', date: '2025-11-06', durationMinutes: 60, personId: 'p1' });
+    await facade.addEntry({ date: new Date('2025-11-05'), durationMinutes: 120, type: 'preaching' });
+    await facade.addVisit({ id: 'v1', date: new Date('2025-11-06'), durationMinutes: 60, personId: 'p1' });
     await facade.loadMonth(2025, 11);
 
     fixture.detectChanges();

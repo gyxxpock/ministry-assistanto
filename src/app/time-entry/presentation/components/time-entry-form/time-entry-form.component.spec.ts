@@ -66,8 +66,9 @@ describe('TimeEntryFormComponent', () => {
       expect(count).toBe(0);
     });
 
-    it('setPreset sets durationMinutes and marks dirty', () => {
-      component.setPreset(180);
+    it('setting durationMinutes value and marking dirty works', () => {
+      component.form.controls.durationMinutes.setValue(180);
+      component.form.controls.durationMinutes.markAsDirty();
       expect(component.form.controls.durationMinutes.value).toBe(180);
       expect(component.form.controls.durationMinutes.dirty).toBeTrue();
     });

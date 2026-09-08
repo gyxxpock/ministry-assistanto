@@ -9,7 +9,7 @@
   "7": "development",
   "8": "CLEAN Architecture Pattern",
   "9": "app-module.ts",
-  "10": "TimeEntryCalendarComponent",
+  "10": "ITimeEntryRepository",
   "11": "Dispatcher — Auto-Dispatch de Agentes",
   "12": "check-pr.js",
   "13": "ISyncService",
@@ -52,6 +52,6 @@
   "50": "architect",
   "51": "ministry-assistanto",
   "52": "NgModule",
-  "53": "TimeEntryFormComponent",
+  "53": "TimeEntryVM",
   "54": "Component"
 }
