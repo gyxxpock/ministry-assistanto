@@ -11,11 +11,6 @@ const routes: Routes = [
     path: 'time-entry',
     loadChildren: () =>
       import('./time-entry/presentation/time-entry.module').then(m => m.TimeEntryModule)
-  },
-  {
-    path: 'goals',
-    loadChildren: () =>
-      import('./goals/presentation/goals.module').then(m => m.GoalsModule)
   }
 ];
 

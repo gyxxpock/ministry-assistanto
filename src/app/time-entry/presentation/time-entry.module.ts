@@ -44,8 +44,8 @@ const routes: Routes = [
     path: '', // Este es el path base 'time-entry/'
     component: Layout, // Se carga siempre que estemos en time-entry
     children: [
-      { 
-        path: 'list', 
+      {
+        path: 'list',
         component: TimeEntryListComponent // URL: time-entry/list
       },
       {
@@ -55,6 +55,11 @@ const routes: Routes = [
       {
         path: 'settings',
         component: SettingsComponent
+      },
+      {
+        path: 'goals',
+        loadChildren: () =>
+          import('../../goals/presentation/goals.module').then(m => m.GoalsModule)
       },
       {
         path: '',
