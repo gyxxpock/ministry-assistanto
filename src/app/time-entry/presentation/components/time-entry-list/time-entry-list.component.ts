@@ -6,6 +6,7 @@ import { TimeEntryVM } from '../../models/time-entry.vm';
 import { FileUtilService } from '../../../data/utils/file-util.service';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
+import { toDateKey } from '../../utils/date.utils';
 
 @Component({
   selector: 'ma-time-entry-list',
@@ -97,13 +98,6 @@ export class TimeEntryListComponent implements OnInit {
     }
   }
 
-  private toKey(date: Date | string): string {
-    const d = new Date(date);
-    return d.getFullYear() + '-' +
-      String(d.getMonth() + 1).padStart(2, '0') + '-' +
-      String(d.getDate()).padStart(2, '0');
-  }
-
   /**
    * Groups entries by day for the view.
    */
@@ -112,10 +106,10 @@ export class TimeEntryListComponent implements OnInit {
     const map = new Map<string, TimeEntryVM[]>();
 
     for (const entry of entries) {
-      if (!map.has(this.toKey(entry.date))) {
-        map.set(this.toKey(entry.date), []);
+      if (!map.has(toDateKey(entry.date))) {
+        map.set(toDateKey(entry.date), []);
       }
-      map.get(this.toKey(entry.date))!.push(entry);
+      map.get(toDateKey(entry.date))!.push(entry);
     }
 
     return Array.from(map.entries()).map(([date, entries]) => ({

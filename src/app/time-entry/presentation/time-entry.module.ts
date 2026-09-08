@@ -11,6 +11,7 @@ import { TimeEntryCalendarComponent } from './components/time-entry-calendar/tim
 import { Layout } from './components/layout/layout';
 import { SettingsComponent } from './components/settings/settings.component';
 import { OptionPillGroupComponent } from './components/shared/option-pill-group/option-pill-group.component';
+import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
 import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
 
 import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
@@ -74,6 +75,7 @@ const routes: Routes = [
     SettingsComponent,
     OptionPillGroupComponent,
     BackupReminderBannerComponent,
+    MonthPaginatorComponent,
   ],
   imports: [
     MatChipsModule,
