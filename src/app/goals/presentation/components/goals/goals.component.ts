@@ -6,8 +6,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { TranslateModule } from '@ngx-translate/core';
-import { GoalsFacade } from '../../facade/goals.facade';
-import { Goal } from '../../domain/models';
+import { GoalsFacade } from '../../../facade/goals.facade';
+import { Goal } from '../../../domain/models';
 import { GoalProgressVisualComponent } from '../goal-progress-visual/goal-progress-visual.component';
 import { GoalConfigComponent } from '../goal-config/goal-config.component';
 
