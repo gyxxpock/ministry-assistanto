@@ -512,11 +512,15 @@
   -webkit-backdrop-filter: blur(t.$blur-md);
   color: var(--mat-sys-error);
   animation: slideUp t.$dur-normal t.$ease-spring;
-  white-space: nowrap;
+  // Constrain to viewport: right edge = viewport.right - space-6 (grupo fixed)
+  // left edge no puede salir del margen izquierdo (space-4)
+  max-width: min(340px, calc(100vw - #{t.$space-6} - #{t.$space-4}));
 
   .restore-confirm-text {
     font-size: 12px;
     font-weight: 500;
+    flex: 1;
+    min-width: 0;
   }
 }
 
