@@ -1,5 +1,12 @@
 [
   {
+    "version": "2026-09-08",
+    "changes": [
+      { "type": "feature", "text": "Notificación de actualización disponible con resumen de cambios" },
+      { "type": "feature", "text": "Cobertura de tests al 90%+ con enforcement automático en commits" }
+    ]
+  },
+  {
     "version": "2026-09-07",
     "changes": [
       { "type": "feature", "text": "Sección de configuración con selector de tema y recordatorios de respaldo configurables" },
