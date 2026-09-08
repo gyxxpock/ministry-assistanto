@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1788895920.341702,
-    "seen": 1788895934.134804,
-    "ast_hash": "8b71ce0a527a29583aeaf5a71e066e2b",
+    "mtime": 1788896166.638629,
+    "seen": 1788896168.860838,
+    "ast_hash": "e19fbcf22831bbaeba0018d47fc885a7",
     "semantic_hash": ""
   },
   ".github/scripts/verify-pr.js": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "src/app/app-routing-module.ts": {
-    "mtime": 1788895904.543603,
-    "seen": 1788895934.1348228,
-    "ast_hash": "ebe943b28403b760d86315cbf01e3f47",
+    "mtime": 1788896166.6391857,
+    "seen": 1788896168.860855,
+    "ast_hash": "0d530aadee12fdfb6f64a1c37aaf6da2",
     "semantic_hash": ""
   },
   "src/app/app.spec.ts": {
@@ -1035,12 +1035,6 @@
     "mtime": 1788888683.129723,
     "seen": 1788888707.464407,
     "ast_hash": "413fc12a109324422f6d2ec3d05d2b0d",
-    "semantic_hash": ""
-  },
-  "src/app/shared/presentation/components/app-shell/app-shell.component.ts": {
-    "mtime": 1788895900.1334167,
-    "seen": 1788895934.134861,
-    "ast_hash": "50107b59a5ad0dd57befc1130bf9f3f6",
     "semantic_hash": ""
   }
 }
