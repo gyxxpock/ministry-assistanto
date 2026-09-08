@@ -1,6 +1,6 @@
 <div class="calendar-container glass-morph">
   <div class="calendar-header">
-    <h2 class="page-title">Calendario</h2>
+    <h2 class="page-title">{{ 'timeEntry.pages.calendar.title' | translate }}</h2>
 
     <div class="month-paginator">
       <button mat-icon-button (click)="prevMonth()"><mat-icon>chevron_left</mat-icon></button>
@@ -9,7 +9,7 @@
       
       <!-- Botón Hoy estilo iOS (Píldora pequeña) -->
       <button class="btn-today-ios" (click)="goToToday()" [disabled]="isCurrentMonth()">
-        Hoy
+        {{ 'common.buttons.today' | translate }}
       </button>
     </div>
   </div>

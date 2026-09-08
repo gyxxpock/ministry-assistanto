@@ -43,6 +43,7 @@
         "monthly": "Mensual",
         "disabled": "Desactivado"
       },
+      "tomorrow": "Mañana",
       "reminder": {
         "title": "Recordatorio de respaldo",
         "message": "Es momento de realizar un respaldo.",
@@ -63,6 +64,7 @@
         "title": "Config"
       }
     },
+    "noNotes": "Sin notas",
     "monthlySummary": "Resumen mensual",
     "totalHours": "Horas totales:",
     "totalCourses": "Cursos totales:",
@@ -93,7 +95,11 @@
       "exportJsonAria": "Exportar entradas como archivo JSON",
       "exportCsvAria": "Exportar entradas como archivo CSV",
       "importAria": "Importar entradas desde archivo JSON",
-      "totalsRegionLabel": "Totales mensuales"
+      "totalsRegionLabel": "Totales mensuales",
+      "shareReportTooltip": "Enviar reporte",
+      "createBackupTooltip": "Crear copia de seguridad (JSON)",
+      "restoreFromFileTooltip": "Restaurar desde archivo",
+      "newEntryTooltip": "Nuevo registro"
     }
   }
 }

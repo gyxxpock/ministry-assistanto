@@ -43,6 +43,7 @@
         "monthly": "Monthly",
         "disabled": "Disabled"
       },
+      "tomorrow": "Tomorrow",
       "reminder": {
         "title": "Backup reminder",
         "message": "It's time to back up your data.",
@@ -63,6 +64,7 @@
         "title": "Config"
       }
     },
+    "noNotes": "No notes",
     "monthlySummary": "Monthly Summary",
     "totalHours": "Total hours:",
     "totalCourses": "Total courses:",
@@ -93,7 +95,11 @@
       "exportJsonAria": "Export entries as JSON file",
       "exportCsvAria": "Export entries as CSV file",
       "importAria": "Import entries from JSON file",
-      "totalsRegionLabel": "Monthly totals"
+      "totalsRegionLabel": "Monthly totals",
+      "shareReportTooltip": "Share report",
+      "createBackupTooltip": "Create backup (JSON)",
+      "restoreFromFileTooltip": "Restore from file",
+      "newEntryTooltip": "New entry"
     }
   }
 }
