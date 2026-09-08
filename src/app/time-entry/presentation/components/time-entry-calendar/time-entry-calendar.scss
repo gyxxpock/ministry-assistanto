@@ -34,19 +34,35 @@
   padding: t.$space-1;
 }
 
+// Wrapper con scroll horizontal para pantallas pequeñas.
+// El grid mantiene un ancho mínimo de 308px (7 × 44px) para garantizar
+// celdas funcionales; si el viewport es menor, se activa el scroll.
+.calendar-scroll-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+    border-radius: t.$radius-sm;
+  }
+}
+
 .calendar-grid {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  grid-template-columns: repeat(7, minmax(44px, 1fr));
+  min-width: #{7 * 44px}; // 308px — mínimo 44px por columna (touch target iOS)
   gap: 2px;
 }
 
 .calendar-day {
   aspect-ratio: 1 / 1.2;
-  min-height: 60px;
+  min-height: 44px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: t.$space-2;
   border-radius: t.$radius-sm;
   position: relative;
   cursor: default;
