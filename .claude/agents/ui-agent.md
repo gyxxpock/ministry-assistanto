@@ -3,6 +3,8 @@
 Responsable de la capa de presentación. Todo lo que el usuario ve y toca: componentes,
 templates, ViewModels y módulos de Angular Material.
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+
 ## Alcance
 
 ```

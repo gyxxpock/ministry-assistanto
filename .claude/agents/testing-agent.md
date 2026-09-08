@@ -26,6 +26,8 @@ core/
   i18n/translate.spec.ts
 ```
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` para entender qué archivos cubrir antes de leer specs o fuente existente.
+
 ## Estrategia por capa
 
 ### Domain — tests puros, sin Angular TestBed
@@ -112,6 +114,32 @@ providers: [{ provide: TimeEntryFacade, useValue: mockFacade }]
 - `SwUpdate`: `jasmine.createSpyObj('SwUpdate', [], { versionUpdates: EMPTY })` — usar `EMPTY` de rxjs para el Observable vacío
 - `HttpClient`: `HttpClientTestingModule` del paquete `@angular/common/http/testing`
 - Servicios Angular core (`TranslateService`): spy object con los métodos usados
+- `navigator.serviceWorker`: `spyOnProperty(navigator, 'serviceWorker').and.returnValue({...} as unknown as ServiceWorkerContainer)`
+
+### Servicios con trabajo async en el constructor
+
+Cuando el constructor inicia trabajo asíncrono (`Promise`, `navigator.serviceWorker.ready`, `setTimeout`, etc.), el servicio **DEBE** inyectarse dentro de `fakeAsync`, no en `beforeEach`:
+
+```typescript
+// ❌ MAL — la Promise resuelve fuera del fakeAsync zone
+beforeEach(() => {
+  service = TestBed.inject(MyService); // Promise corre aquí, fuera del zone
+});
+it('...', fakeAsync(() => {
+  flushMicrotasks(); // no drena nada — ya resolvió antes
+}));
+
+// ✓ BIEN
+beforeEach(() => {
+  TestBed.configureTestingModule({...}); // solo configurar, no inyectar
+});
+it('...', fakeAsync(() => {
+  const service = TestBed.inject(MyService); // constructor corre dentro del zone
+  flushMicrotasks(); // drena la Promise correctamente
+}));
+```
+
+**Señal de alerta**: constructor llama `.then()` o `Promise.resolve()` → inyectar dentro de `fakeAsync`, no en `beforeEach`.
 
 ### Señales de alerta en PRs
 

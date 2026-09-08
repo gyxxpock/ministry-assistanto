@@ -3,6 +3,8 @@
 Responsable de la capa de infraestructura/datos. Implementa las interfaces declaradas
 en dominio usando Dexie.js sobre IndexedDB.
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+
 ## Alcance
 
 ```

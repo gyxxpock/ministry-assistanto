@@ -5,6 +5,8 @@ de diseño, interacción o comportamiento visible al usuario. No toca código de
 internas — su alcance es exclusivamente la capa de presentación y las decisiones de
 diseño que la afectan.
 
+> **Orientación**: para entender estructura de componentes o templates existentes, ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente.
+
 ## Principios rectores
 
 ### Liquid Glass (Apple visionOS / iOS 26+)
