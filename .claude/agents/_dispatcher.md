@@ -6,6 +6,24 @@ de cada respuesta.
 
 ---
 
+## Paso 0 — Orientar con graphify
+
+Si `graphify-out/graph.json` existe, ejecutar **antes** de analizar la tarea:
+
+```bash
+graphify query "<pregunta sobre la tarea>"
+```
+
+Esto devuelve un subgrafo scoped, más útil y pequeño que leer archivos crudos. Solo
+leer fuente directamente para modificar líneas específicas o cuando graphify no
+surface suficiente contexto.
+
+**Subagentes**: todo prompt que involucre exploración de código debe incluir:
+> `graphify-out/graph.json` exists. Run `graphify query "<question>"` before reading
+> raw source files. Only read raw after graphify has oriented you.
+
+---
+
 ## Paso 1 — Analizar la tarea
 
 Lee el mensaje del usuario e identifica:
@@ -66,6 +84,13 @@ TestingAgent      → .claude/agents/testing-agent.md
 **Para tareas no triviales**: lanzar subagentes (`Agent` tool) para exploración y
 planificación antes de responder con código. El anuncio de agentes activos va primero;
 los subagentes se lanzan en paralelo justo después.
+
+**Post-Plan — delegar implementación con forks, no escribir código directamente**:
+tras recibir el output del Plan agent, el main agent NO toca un editor. Lanza forks
+paralelos (uno por archivo significativo), briefeando cada fork con la parte del plan
+que le corresponde y las reglas del agente de capa relevante. El main agent revisa
+los outputs, corre tests y aprueba. Esta regla aplica aunque el plan parezca simple
+si produjo diffs para ≥2 archivos o incluye specs.
 
 Al inicio de la respuesta, incluye una línea de anuncio breve:
 

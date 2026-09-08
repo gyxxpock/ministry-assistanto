@@ -34,7 +34,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
 import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
-import { FileUtilService } from '../data/utils/file-util.service';
+import { FileUtilService } from '../../core/services/file-util.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
 

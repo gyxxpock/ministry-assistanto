@@ -3,7 +3,7 @@ import { BackupReminderService } from '../../../../core/services/backup-reminder
 import { UpdateNotificationService } from '../../../../core/services/update-notification.service';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
-import { FileUtilService } from '../../../data/utils/file-util.service';
+import { FileUtilService } from '../../../../core/services/file-util.service';
 
 @Component({
   selector: 'app-layout',

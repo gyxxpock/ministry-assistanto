@@ -2,7 +2,7 @@ import { computed, Injectable, inject, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { HttpClient } from '@angular/common/http';
-import { filter, take } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 export interface ChangeEntry {
   type: 'feature' | 'fix' | 'ux';
@@ -23,6 +23,7 @@ export class UpdateNotificationService {
   private readonly _available = signal(false);
   private readonly _changes = signal<ChangeEntry[]>([]);
   private readonly _dismissed = signal(false);
+  private _triggered = false;
 
   readonly isUpdateAvailable = computed(() => this._available() && !this._dismissed());
   readonly changes = this._changes.asReadonly();
@@ -30,13 +31,16 @@ export class UpdateNotificationService {
   constructor() {
     if (!this.swUpdate.isEnabled) return;
 
-    // versionUpdates is an async event stream — correct RxJS use per signals-agent table.
-    // Result is written to a Signal, following the loadMonth pattern.
     this.swUpdate.versionUpdates.pipe(
       filter((e): e is VersionReadyEvent => e.type === 'VERSION_READY'),
-      take(1),
       takeUntilDestroyed(),
-    ).subscribe(() => this.fetchChangelog());
+    ).subscribe(() => this._triggerUpdate());
+
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.ready.then(registration => {
+        if (registration.waiting) this._triggerUpdate();
+      });
+    }
   }
 
   applyUpdate(): void {
@@ -45,12 +49,19 @@ export class UpdateNotificationService {
 
   dismiss(): void {
     this._dismissed.set(true);
+    this._triggered = false;
+  }
+
+  private _triggerUpdate(): void {
+    if (this._triggered) return;
+    this._triggered = true;
+    this._dismissed.set(false);
+    this.fetchChangelog();
   }
 
   private fetchChangelog(): void {
     this.http
       .get<ChangelogEntry[]>(`assets/changelog.json?v=${Date.now()}`)
-      .pipe(take(1))
       .subscribe({
         next: (entries) => {
           if (entries?.[0]) this._changes.set(entries[0].changes);
