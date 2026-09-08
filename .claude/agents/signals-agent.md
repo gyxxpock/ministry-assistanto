@@ -4,6 +4,8 @@ Rol transversal. Guía la adopción de Angular Signals como sistema de estado re
 coordinando la migración desde el estado actual del Facade hacia un modelo basado en
 `signal()`, `computed()` y `effect()`.
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+
 ## Estado actual del proyecto
 
 Angular Signals **está en uso activo** en la capa de Presentation y en servicios core.

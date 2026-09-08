@@ -3,6 +3,8 @@
 Responsable exclusivo de la capa de dominio. Modela el negocio sin ninguna dependencia
 de Angular, HTTP, Dexie ni ninguna infraestructura externa.
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+
 ## Alcance
 
 ```

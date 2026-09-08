@@ -3,6 +3,20 @@
 Roles contextuales para sesiones de CLI con Claude Code. Cada agente tiene reglas de capa,
 rutas de responsabilidad y restricciones específicas al proyecto.
 
+## Conocimiento del grafo (graphify)
+
+Este proyecto tiene un knowledge graph en `graphify-out/`. Antes de explorar código fuente,
+usar siempre:
+
+```bash
+graphify query "<pregunta>"      # subgrafo scoped — más útil que grep
+graphify path "<A>" "<B>"        # relación entre dos nodos
+graphify explain "<concepto>"    # profundidad en un concepto específico
+graphify update .                # actualizar tras modificar código (sin costo de API)
+```
+
+Los agentes individuales incluyen esta instrucción. El dispatcher la aplica en Paso 0.
+
 ## Modo de activación
 
 ### Auto-dispatch (modo por defecto)

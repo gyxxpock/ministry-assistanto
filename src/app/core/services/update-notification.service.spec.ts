@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { Subject } from 'rxjs';
@@ -25,6 +25,10 @@ describe('UpdateNotificationService', () => {
       versionUpdates: versionUpdates$.asObservable(),
       activateUpdate: jasmine.createSpy('activateUpdate').and.returnValue(new Promise(() => {})),
     };
+
+    spyOnProperty(navigator, 'serviceWorker').and.returnValue({
+      ready: Promise.resolve({ waiting: null } as unknown as ServiceWorkerRegistration),
+    } as unknown as ServiceWorkerContainer);
 
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
@@ -92,6 +96,16 @@ describe('UpdateNotificationService', () => {
       service.dismiss();
       expect(service.isUpdateAvailable()).toBe(false);
     });
+
+    it('re-shows the banner when a new VERSION_READY fires after dismiss()', () => {
+      versionUpdates$.next(makeVersionReady());
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
+      service.dismiss();
+
+      versionUpdates$.next(makeVersionReady());
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
+      expect(service.isUpdateAvailable()).toBe(true);
+    });
   });
 
   describe('applyUpdate()', () => {
@@ -115,6 +129,10 @@ describe('UpdateNotificationService when SwUpdate is disabled', () => {
       activateUpdate: jasmine.createSpy('activateUpdate').and.returnValue(new Promise(() => {})),
     };
 
+    spyOnProperty(navigator, 'serviceWorker').and.returnValue({
+      ready: Promise.resolve({ waiting: null } as unknown as ServiceWorkerRegistration),
+    } as unknown as ServiceWorkerContainer);
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
       providers: [
@@ -129,5 +147,62 @@ describe('UpdateNotificationService when SwUpdate is disabled', () => {
   it('does not react to version events', () => {
     versionUpdates$.next(makeVersionReady());
     expect(service.isUpdateAvailable()).toBe(false);
+  });
+});
+
+describe('UpdateNotificationService when SW is already waiting on startup', () => {
+  let httpMock: HttpTestingController;
+  let versionUpdates$: Subject<any>;
+
+  function configureModule(waiting: ServiceWorker | null): void {
+    versionUpdates$ = new Subject();
+    const mockSwUpdate = {
+      isEnabled: true,
+      versionUpdates: versionUpdates$.asObservable(),
+      activateUpdate: jasmine.createSpy('activateUpdate').and.returnValue(new Promise(() => {})),
+    };
+    spyOnProperty(navigator, 'serviceWorker').and.returnValue({
+      ready: Promise.resolve({ waiting } as unknown as ServiceWorkerRegistration),
+    } as unknown as ServiceWorkerContainer);
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        UpdateNotificationService,
+        { provide: SwUpdate, useValue: mockSwUpdate },
+      ],
+    });
+    httpMock = TestBed.inject(HttpTestingController);
+  }
+
+  afterEach(() => httpMock?.verify());
+
+  describe('when registration.waiting is truthy', () => {
+    beforeEach(() => configureModule({} as ServiceWorker));
+
+    it('shows the banner after startup', fakeAsync(() => {
+      const service = TestBed.inject(UpdateNotificationService);
+      flushMicrotasks();
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
+      expect(service.isUpdateAvailable()).toBe(true);
+    }));
+
+    it('calls fetchChangelog only once when VERSION_READY also fires', fakeAsync(() => {
+      const service = TestBed.inject(UpdateNotificationService);
+      versionUpdates$.next(makeVersionReady());
+      flushMicrotasks();
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
+      expect(service.isUpdateAvailable()).toBe(true);
+    }));
+  });
+
+  describe('when registration.waiting is null', () => {
+    beforeEach(() => configureModule(null));
+
+    it('does not show the banner on startup', fakeAsync(() => {
+      const service = TestBed.inject(UpdateNotificationService);
+      flushMicrotasks();
+      httpMock.expectNone(r => r.url.includes('assets/changelog.json'));
+      expect(service.isUpdateAvailable()).toBe(false);
+    }));
   });
 });

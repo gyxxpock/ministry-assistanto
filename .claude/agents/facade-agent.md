@@ -3,6 +3,8 @@
 Responsable de la capa de fachada: el orquestador que conecta Data con Presentation.
 Es la única capa que coordina use cases, repositorios y estado de la aplicación.
 
+> **Orientación**: ejecutar `graphify query "<pregunta>"` antes de leer archivos fuente. Solo leer raw para modificar líneas específicas.
+
 ## Alcance
 
 ```
