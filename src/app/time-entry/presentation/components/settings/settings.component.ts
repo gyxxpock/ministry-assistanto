@@ -1,4 +1,5 @@
 import { Component, computed, inject } from '@angular/core';
+import { TranslateService } from '@ngx-translate/core';
 import { ThemeMode, ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderFrequency, BackupReminderService } from '../../../../core/services/backup-reminder.service';
 import { PillOption } from '../shared/option-pill-group/option-pill-group.component';
@@ -12,6 +13,7 @@ import { PillOption } from '../shared/option-pill-group/option-pill-group.compon
 export class SettingsComponent {
   readonly themeService: ThemeService = inject(ThemeService);
   readonly backupService: BackupReminderService = inject(BackupReminderService);
+  private readonly translate = inject(TranslateService);
 
   readonly themeOptions: PillOption[] = [
     { value: 'light', label: 'theme.light', icon: 'light_mode' },
@@ -29,7 +31,8 @@ export class SettingsComponent {
   readonly lastBackupFormatted = computed(() => {
     const date = this.backupService.lastBackupDate();
     if (!date) return null;
-    return new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(new Date(date));
+    const locale = this.translate.currentLang || 'es';
+    return new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(new Date(date));
   });
 
   readonly nextReminderFormatted = computed(() => {
@@ -39,8 +42,9 @@ export class SettingsComponent {
     const next = new Date(date); next.setHours(0, 0, 0, 0);
     const diffDays = Math.round((next.getTime() - now.getTime()) / 86_400_000);
     if (diffDays <= 0) return null;
-    if (diffDays === 1) return 'Mañana';
-    return new Intl.DateTimeFormat('es-ES', { dateStyle: 'long' }).format(date);
+    if (diffDays === 1) return this.translate.instant('settings.backup.tomorrow');
+    const locale = this.translate.currentLang || 'es';
+    return new Intl.DateTimeFormat(locale, { dateStyle: 'long' }).format(date);
   });
 
   setTheme(value: string): void {
