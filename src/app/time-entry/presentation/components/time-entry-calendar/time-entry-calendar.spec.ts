@@ -13,12 +13,11 @@ const todayKey = `${today.getFullYear()}-${String(today.getMonth() + 1).padStart
 
 const makeEntry = (id: string, dateStr: string, durationMinutes = 60): TimeEntryVM => ({
   id,
-  date: dateStr,
+  date: new Date(dateStr + 'T12:00:00'),
   type: 'preaching',
   durationMinutes,
+  typeLabel: 'Predicación',
   notes: '',
-  createdAt: new Date().toISOString(),
-  updatedAt: new Date().toISOString(),
 });
 
 describe('TimeEntryCalendarComponent', () => {

@@ -1,16 +1,16 @@
 # Graph Report - ministry-assistanto  (2026-09-07)
 
 ## Corpus Check
-- 92 files · ~31,439 words
+- 95 files · ~34,179 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 633 nodes · 895 edges · 55 communities (40 shown, 13 thin omitted)
+- 636 nodes · 898 edges · 55 communities (40 shown, 13 thin omitted)
 - Extraction: 97% EXTRACTED · 3% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `e795d161`
+- Built from commit: `9f8c7cda`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -25,7 +25,7 @@
 - development
 - CLEAN Architecture Pattern
 - app-module.ts
-- TimeEntryCalendarComponent
+- ITimeEntryRepository
 - Dispatcher — Auto-Dispatch de Agentes
 - check-pr.js
 - ISyncService
@@ -66,7 +66,7 @@
 - architect
 - ministry-assistanto
 - NgModule
-- TimeEntryFormComponent
+- TimeEntryVM
 - Component
 
 ## God Nodes (most connected - your core abstractions)
@@ -90,8 +90,8 @@
   src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html → .github/copilot-instructions.md
 - `i18n Runtime Implementation PR` --semantically_similar_to--> `i18n PR Changes Summary`  [INFERRED] [semantically similar]
   .github/PULL_REQUEST_TEMPLATE_PR_BODY.md → .github/pr-comments/i18n-summary.md
-- `TimeEntryFormComponent` --references--> `TimeEntryTypeVM`  [EXTRACTED]
-  src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts → src/app/time-entry/presentation/models/time-entry.vm.ts
+- `DexieTimeEntryRepository` --implements--> `ITimeEntryRepository`  [EXTRACTED]
+  src/app/time-entry/data/time-entry.dexie.ts → src/app/time-entry/domain/i-time-entry.repository.ts
 
 ## Import Cycles
 - None detected.
@@ -103,12 +103,12 @@
 ## Communities (55 total, 13 thin omitted)
 
 ### Community 0 - "CourseVisit"
-Cohesion: 0.06
-Nodes (21): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+13 more)
+Cohesion: 0.07
+Nodes (19): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, CourseVisit, MonthlyCourseCount, Person, TimeEntry (+11 more)
 
 ### Community 1 - "time-entry.module.ts"
 Cohesion: 0.06
-Nodes (29): NgModule, Pipe, I18nDatePipe, FileUtilService, Injectable, TimeEntryType, TimeEntryFacade, Inject (+21 more)
+Nodes (22): NgModule, Pipe, I18nDatePipe, FileUtilService, Injectable, TimeEntryFacade, Injectable, Layout (+14 more)
 
 ### Community 2 - "options"
 Cohesion: 0.18
@@ -227,8 +227,8 @@ Cohesion: 0.06
 Nodes (21): Component, Input, Output, BackupReminderFrequency, BackupReminderService, DAYS, Injectable, MODE_CYCLE (+13 more)
 
 ### Community 42 - "UXAgent"
-Cohesion: 0.20
-Nodes (9): Checklist de revisión UX (aplicar antes de aprobar cambios de UI), Integración con UIAgent, Interacción iOS-first, Jerarquía visual y legibilidad, Liquid Glass (Apple visionOS / iOS 26+), Principios rectores, Responsabilidades, Señales de alerta (+1 more)
+Cohesion: 0.15
+Nodes (12): Checklist de revisión UX (aplicar antes de aprobar cambios de UI), Convención de changelog (`public/assets/changelog.json`), Formato, Integración con UIAgent, Interacción iOS-first, Jerarquía visual y legibilidad, Liquid Glass (Apple visionOS / iOS 26+), Principios rectores (+4 more)
 
 ### Community 43 - "Flujo completo"
 Cohesion: 0.18
@@ -258,29 +258,29 @@ Nodes (5): extract-i18n, test, builder, architect, builder
 Cohesion: 0.40
 Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
 
-### Community 53 - "TimeEntryFormComponent"
-Cohesion: 0.24
-Nodes (4): TimeEntryFormComponent, Component, Input, Output
+### Community 53 - "TimeEntryVM"
+Cohesion: 0.13
+Nodes (13): TimeEntryType, TimeEntryDayComponent, Component, Input, Output, TimeEntryFormComponent, Component, Input (+5 more)
 
 ## Knowledge Gaps
-- **231 isolated node(s):** `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión`, `Cómo detectar violaciones`, `Restricción de scope DI: root vs module-scoped` (+226 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 342 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **233 isolated node(s):** `Liquid Glass (Apple visionOS / iOS 26+)`, `Interacción iOS-first`, `Jerarquía visual y legibilidad`, `Responsabilidades`, `Checklist de revisión UX (aplicar antes de aprobar cambios de UI)` (+228 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 344 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **13 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `CourseVisit`, `time-entry.module.ts`?**
+- **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `time-entry.module.ts`?**
   _High betweenness centrality (0.019) - this node is a cross-community bridge._
-- **Why does `DexieTimeEntryRepository` connect `CourseVisit` to `time-entry.module.ts`?**
+- **Why does `DexieTimeEntryRepository` connect `CourseVisit` to `time-entry.module.ts`, `ITimeEntryRepository`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
 - **Why does `DurationWheelPickerComponent` connect `DurationWheelPickerComponent` to `time-entry.module.ts`?**
   _High betweenness centrality (0.018) - this node is a cross-community bridge._
-- **What connects `Las 4 capas de este proyecto`, `Violaciones conocidas (pendientes de corregir)`, `Checklist de revisión` to the rest of the system?**
-  _231 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **What connects `Liquid Glass (Apple visionOS / iOS 26+)`, `Interacción iOS-first`, `Jerarquía visual y legibilidad` to the rest of the system?**
+  _233 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
-  _Cohesion score 0.05886075949367089 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.0701484895033282 - nodes in this community are weakly interconnected._
 - **Should `time-entry.module.ts` be split into smaller, more focused modules?**
-  _Cohesion score 0.05754527162977867 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.059227921734531994 - nodes in this community are weakly interconnected._
 - **Should `TimeEntryListComponent` be split into smaller, more focused modules?**
   _Cohesion score 0.13157894736842105 - nodes in this community are weakly interconnected._

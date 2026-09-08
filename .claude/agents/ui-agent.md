@@ -27,6 +27,7 @@ src/app/time-entry/presentation/
 - Consumir el estado expuesto por `TimeEntryFacade` — nunca acceder a Data directamente.
 - Gestionar diálogos de Angular Material (`MatDialog`), formularios reactivos y pipes.
 - Aplicar i18n en templates usando `ngx-translate` y el pipe `i18n-date`.
+- Crear specs para cada componente nuevo: rendering, inputs/outputs, interacciones del usuario. Meta: 90% mínimo, 100% para componentes con lógica en getters o métodos.
 
 ## Restricciones absolutas
 
@@ -130,3 +131,4 @@ desborda en pantallas ≤ 375px (iPhone SE).
 - Un componente llama a `usecase.execute()` directamente → mover la llamada al Facade.
 - `TimeEntryListComponent` crece más → considerar sub-componentes.
 - Un template contiene lógica condicional compleja → moverla a un `computed()` o getter del VM.
+- Componente nuevo sin `.spec.ts` hermano → crear antes de considerar la tarea completa.
