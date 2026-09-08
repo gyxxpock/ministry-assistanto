@@ -14,26 +14,28 @@
     </div>
   </div>
 
-  <div class="calendar-grid">
-    <!-- Headers con iniciales para ahorrar espacio en móvil -->
-    @for (day of weekDays; track day) {
-      <div class="weekday-header">{{ day | slice:0:1 }}</div>
-    }
+  <div class="calendar-scroll-wrapper">
+    <div class="calendar-grid">
+      <!-- Headers con iniciales para ahorrar espacio en móvil -->
+      @for (day of weekDays; track day) {
+        <div class="weekday-header">{{ day | slice:0:1 }}</div>
+      }
 
-    @for (day of calendarGrid(); track day.date) {
-      <div class="calendar-day"
-           [class.other-month]="!day.isCurrentMonth"
-           [class.today]="day.isToday"
-           [class.has-entries]="day.totalMinutes > 0"
-           (click)="onDayClick(day)">
-        
-        <span class="day-number">{{ day.date | date:'d' }}</span>
+      @for (day of calendarGrid(); track day.date) {
+        <div class="calendar-day"
+             [class.other-month]="!day.isCurrentMonth"
+             [class.today]="day.isToday"
+             [class.has-entries]="day.totalMinutes > 0"
+             (click)="onDayClick(day)">
 
-        @if (day.totalMinutes > 0) {
-          <div class="dot-indicator"></div>
-          <span class="hours-label">{{ formatHours(day.totalMinutes) }}</span>
-        }
-      </div>
-    }
+          <span class="day-number">{{ day.date | date:'d' }}</span>
+
+          @if (day.totalMinutes > 0) {
+            <div class="dot-indicator"></div>
+            <span class="hours-label">{{ formatHours(day.totalMinutes) }}</span>
+          }
+        </div>
+      }
+    </div>
   </div>
 </div>
