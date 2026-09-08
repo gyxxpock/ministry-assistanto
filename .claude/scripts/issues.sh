@@ -66,7 +66,22 @@ case "$cmd" in
   close)
     number="${1:?'Usage: issues.sh close <number> <comment>'}"
     comment="${2:-Implementado y verificado con build exitoso.}"
-    gh issue comment "$number" --repo "$REPO" --body "✅ **Completado** — $comment"
+
+    # Incluir reporte de cobertura si existe el summary
+    COVERAGE_REPORT=""
+    if [ -f "coverage/coverage-summary.json" ]; then
+      COVERAGE_REPORT=$(.claude/scripts/check-coverage.sh --report-only 2>/dev/null || true)
+    fi
+
+    FULL_BODY="✅ **Completado** — $comment"
+    if [ -n "$COVERAGE_REPORT" ]; then
+      FULL_BODY="$FULL_BODY
+
+---
+$COVERAGE_REPORT"
+    fi
+
+    gh issue comment "$number" --repo "$REPO" --body "$FULL_BODY"
     gh issue close "$number" --repo "$REPO"
     echo "Issue #$number cerrado"
     ;;
