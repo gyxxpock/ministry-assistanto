@@ -1,0 +1,92 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+:host {
+  display: block;
+  padding: t.$space-4 t.$space-3 calc(80px + #{t.$space-8} + #{t.$space-6} + env(safe-area-inset-bottom, 0px));
+}
+
+.settings-header {
+  padding: t.$space-6 t.$space-1 t.$space-4;
+}
+
+.page-title {
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: var(--mat-sys-on-surface);
+  margin: 0;
+}
+
+.settings-section {
+  margin-bottom: t.$space-6;
+}
+
+.section-title {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--mat-sys-on-surface-variant);
+  padding: 0 t.$space-2;
+  margin-bottom: t.$space-2;
+  opacity: 0.7;
+}
+
+.settings-card {
+  @include m.glass-surface(t.$blur-lg, t.$radius-2xl, 'medium');
+  overflow: hidden;
+  padding: t.$space-3;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-row {
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  padding: t.$space-3 0;
+  border-bottom: 0.5px solid var(--glass-border-light);
+
+  &--last { border-bottom: none; }
+
+  &--control {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: t.$space-2;
+  }
+}
+
+.row-icon {
+  color: var(--mat-sys-primary);
+  opacity: 0.8;
+  flex-shrink: 0;
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+}
+
+.row-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.row-label {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--mat-sys-on-surface);
+}
+
+.row-value {
+  font-size: 0.75rem;
+  color: var(--mat-sys-on-surface-variant);
+  opacity: 0.75;
+
+  &.overdue {
+    color: var(--mat-sys-error);
+    opacity: 1;
+    font-weight: 600;
+  }
+}

@@ -24,6 +24,33 @@
     "dark": "Oscuro",
     "system": "Sistema"
   },
+  "settings": {
+    "title": "Configuración",
+    "appearance": {
+      "title": "Apariencia"
+    },
+    "backup": {
+      "title": "Respaldo de datos",
+      "frequency": "Frecuencia de recordatorio",
+      "lastBackup": "Último respaldo",
+      "nextReminder": "Próximo recordatorio",
+      "never": "Nunca realizado",
+      "noReminder": "Sin recordatorio",
+      "overdue": "Pendiente",
+      "frequencies": {
+        "daily": "Diario",
+        "weekly": "Semanal",
+        "monthly": "Mensual",
+        "disabled": "Desactivado"
+      },
+      "reminder": {
+        "title": "Recordatorio de respaldo",
+        "message": "Es momento de realizar un respaldo.",
+        "doBackup": "Hacer respaldo",
+        "dismiss": "Descartar"
+      }
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {
@@ -31,6 +58,9 @@
       },
       "calendar": {
         "title": "Calendario"
+      },
+      "settings": {
+        "title": "Config"
       }
     },
     "monthlySummary": "Resumen mensual",

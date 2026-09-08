@@ -24,6 +24,33 @@
     "dark": "Dark",
     "system": "System"
   },
+  "settings": {
+    "title": "Settings",
+    "appearance": {
+      "title": "Appearance"
+    },
+    "backup": {
+      "title": "Data backup",
+      "frequency": "Reminder frequency",
+      "lastBackup": "Last backup",
+      "nextReminder": "Next reminder",
+      "never": "Never done",
+      "noReminder": "No reminder",
+      "overdue": "Pending",
+      "frequencies": {
+        "daily": "Daily",
+        "weekly": "Weekly",
+        "monthly": "Monthly",
+        "disabled": "Disabled"
+      },
+      "reminder": {
+        "title": "Backup reminder",
+        "message": "It's time to back up your data.",
+        "doBackup": "Back up",
+        "dismiss": "Dismiss"
+      }
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {
@@ -31,6 +58,9 @@
       },
       "calendar": {
         "title": "Calendar"
+      },
+      "settings": {
+        "title": "Config"
       }
     },
     "monthlySummary": "Monthly Summary",

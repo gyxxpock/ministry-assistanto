@@ -1,0 +1,97 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+:host {
+  display: block;
+}
+
+.banner-container {
+  @include m.glass-surface(t.$blur-xl, t.$radius-2xl, 'medium');
+  display: flex;
+  align-items: center;
+  gap: t.$space-3;
+  padding: t.$space-3 t.$space-4;
+  border-left: 3px solid var(--mat-sys-primary);
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes slideUp {
+  from { opacity: 0; transform: translateY(16px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0)    scale(1); }
+}
+
+.banner-icon {
+  color: var(--mat-sys-primary);
+  flex-shrink: 0;
+  font-size: 24px;
+  width: 24px;
+  height: 24px;
+}
+
+.banner-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.banner-title {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--mat-sys-on-surface);
+}
+
+.banner-message {
+  font-size: 0.72rem;
+  color: var(--mat-sys-on-surface-variant);
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.banner-actions {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  flex-shrink: 0;
+}
+
+.btn-backup {
+  display: flex;
+  align-items: center;
+  gap: t.$space-1;
+  padding: t.$space-1 t.$space-3;
+  border-radius: t.$radius-pill;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-primary) 30%, transparent);
+  background: var(--glass-tint-primary);
+  color: var(--mat-sys-primary);
+  font-size: 0.75rem;
+  font-weight: 700;
+  cursor: pointer;
+  white-space: nowrap;
+  @include m.transition-fast(background transform);
+
+  mat-icon { font-size: 16px; width: 16px; height: 16px; }
+  &:hover  { background: color-mix(in srgb, var(--mat-sys-primary) 18%, transparent); }
+  &:active { transform: scale(0.95); }
+}
+
+.btn-dismiss {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: t.$radius-sm;
+  border: none;
+  background: transparent;
+  color: var(--mat-sys-on-surface-variant);
+  opacity: 0.6;
+  cursor: pointer;
+  @include m.transition-fast(opacity background);
+
+  mat-icon { font-size: 18px; width: 18px; height: 18px; }
+  &:hover  { opacity: 1; background: var(--glass-bg-light); }
+}
