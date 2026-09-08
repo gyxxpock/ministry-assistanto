@@ -32,8 +32,8 @@ describe('DexieTimeEntryRepository', () => {
   });
 
   it('can add and list visits by month and remove them', async () => {
-    const v1: CourseVisit = { id: 'v1', date: new Date('2025-11-05'), durationMinutes: 30, personId: 'p1' };
-    const v2: CourseVisit = { id: 'v2', date: new Date('2025-12-01'), durationMinutes: 45, personId: 'p2' };
+    const v1: CourseVisit = { id: 'v1', date: new Date(2025, 10, 5), durationMinutes: 30, personId: 'p1' };
+    const v2: CourseVisit = { id: 'v2', date: new Date(2025, 11, 1), durationMinutes: 45, personId: 'p2' };
 
     await repo.addVisit(v1);
     await repo.addVisit(v2);

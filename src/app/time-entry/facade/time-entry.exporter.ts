@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { TimeEntry, CourseVisit } from '../domain/models';
+import { toDateKey } from '../domain/time-entry.usecase';
 
 export function toCSV(entries: TimeEntry[], visits: CourseVisit[]): string {
   const rows: string[] = [];
@@ -10,7 +11,7 @@ export function toCSV(entries: TimeEntry[], visits: CourseVisit[]): string {
     rows.push([
       'entry',
       e.id,
-      e.date,
+      toDateKey(e.date),
       String(e.durationMinutes),
       e.type,
       JSON.stringify(e.notes || '')
@@ -21,7 +22,7 @@ export function toCSV(entries: TimeEntry[], visits: CourseVisit[]): string {
     rows.push([
       'visit',
       v.id,
-      v.date,
+      toDateKey(v.date),
       String(v.durationMinutes),
       v.personId ?? v.personName ?? '',
       JSON.stringify(v.notes || '')

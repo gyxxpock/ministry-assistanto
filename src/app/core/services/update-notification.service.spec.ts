@@ -93,20 +93,33 @@ describe('UpdateNotificationService', () => {
     });
   });
 
-  describe('when SwUpdate is disabled', () => {
-    it('does not react to version events', () => {
-      mockSwUpdate.isEnabled = false;
-      TestBed.resetTestingModule();
-      TestBed.configureTestingModule({
-        imports: [HttpClientTestingModule],
-        providers: [
-          UpdateNotificationService,
-          { provide: SwUpdate, useValue: mockSwUpdate },
-        ],
-      });
-      const disabledService = TestBed.inject(UpdateNotificationService);
-      versionUpdates$.next(makeVersionReady());
-      expect(disabledService.isUpdateAvailable()).toBe(false);
+});
+
+describe('UpdateNotificationService when SwUpdate is disabled', () => {
+  let service: UpdateNotificationService;
+  let versionUpdates$: Subject<any>;
+
+  beforeEach(() => {
+    versionUpdates$ = new Subject();
+    const mockSwUpdate = {
+      isEnabled: false,
+      versionUpdates: versionUpdates$.asObservable(),
+      activateUpdate: jasmine.createSpy('activateUpdate').and.returnValue(new Promise(() => {})),
+    };
+
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+      providers: [
+        UpdateNotificationService,
+        { provide: SwUpdate, useValue: mockSwUpdate },
+      ],
     });
+
+    service = TestBed.inject(UpdateNotificationService);
+  });
+
+  it('does not react to version events', () => {
+    versionUpdates$.next(makeVersionReady());
+    expect(service.isUpdateAvailable()).toBe(false);
   });
 });

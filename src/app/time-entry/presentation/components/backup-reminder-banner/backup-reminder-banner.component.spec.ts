@@ -3,7 +3,7 @@ import { NO_ERRORS_SCHEMA, Pipe, PipeTransform, signal } from '@angular/core';
 import { BackupReminderBannerComponent } from './backup-reminder-banner.component';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 
-@Pipe({ name: 'translate' })
+@Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
   transform(value: string): string { return value; }
 }
@@ -20,7 +20,8 @@ describe('BackupReminderBannerComponent', () => {
     });
 
     await TestBed.configureTestingModule({
-      declarations: [BackupReminderBannerComponent, TranslateStub],
+      declarations: [BackupReminderBannerComponent],
+      imports: [TranslateStub],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [{ provide: BackupReminderService, useValue: mockBackupService }],
     }).compileComponents();

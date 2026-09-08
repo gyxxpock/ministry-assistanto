@@ -7,10 +7,10 @@ function normalizeName(name?: string): string | undefined {
 
 /** Normaliza cualquier fecha a string YYYY-MM-DD ignorando timezone. */
 export function toDateKey(date: Date | string): string {
-  const d = new Date(date);
-  return d.getFullYear() + '-' +
-    String(d.getMonth() + 1).padStart(2, '0') + '-' +
-    String(d.getDate()).padStart(2, '0');
+  if (typeof date === 'string') return date.slice(0, 10);
+  return date.getFullYear() + '-' +
+    String(date.getMonth() + 1).padStart(2, '0') + '-' +
+    String(date.getDate()).padStart(2, '0');
 }
 
 /**
@@ -90,7 +90,7 @@ export function computeMonthlyTotals(
   const totalVisits = personKeys.size;
   const totalHours = Math.round((totalMinutes / 60) * 100) / 100; // round to 2 decimals
 
-  return { totalMinutes, totalHours, totalCourses: manualCourseCount };
+  return { totalMinutes, totalHours, totalCourses: totalVisits };
 }
 
 export default computeMonthlyTotals;

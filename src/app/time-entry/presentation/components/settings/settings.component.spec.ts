@@ -5,7 +5,7 @@ import { SettingsComponent } from './settings.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 
-@Pipe({ name: 'translate' })
+@Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
   transform(value: string): string { return value; }
 }
@@ -37,7 +37,8 @@ describe('SettingsComponent', () => {
     mockTranslate.instant.and.callFake((key: string) => key);
 
     await TestBed.configureTestingModule({
-      declarations: [SettingsComponent, TranslateStub],
+      declarations: [SettingsComponent],
+      imports: [TranslateStub],
       schemas: [NO_ERRORS_SCHEMA],
       providers: [
         { provide: ThemeService, useValue: mockTheme },

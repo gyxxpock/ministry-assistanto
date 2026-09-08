@@ -42,9 +42,9 @@
     "semantic_hash": "5a70b3d3763f6628c8083d7b033b98b8"
   },
   "angular.json": {
-    "mtime": 1788831912.9511418,
-    "seen": 1788832035.212769,
-    "ast_hash": "5a1a7462617f7b3e674c9397ab680bfb",
+    "mtime": 1788837921.810803,
+    "seen": 1788838163.1520672,
+    "ast_hash": "1195e0b2ab4082cdf36f78d9fec73da2",
     "semantic_hash": ""
   },
   "package.json": {
@@ -480,9 +480,9 @@
     "semantic_hash": ""
   },
   ".claude/agents/testing-agent.md": {
-    "mtime": 1788832865.0859962,
-    "seen": 1788833608.1681468,
-    "ast_hash": "6769ec29234dac515ffa1475d220fa87",
+    "mtime": 1788838018.920541,
+    "seen": 1788838163.1521332,
+    "ast_hash": "3323d8a1cd55113fa048f0cbd68a7974",
     "semantic_hash": ""
   },
   ".claude/agents/ui-agent.md": {
@@ -558,15 +558,15 @@
     "semantic_hash": ""
   },
   ".claude/scripts/issues.sh": {
-    "mtime": 1788586814.3007076,
-    "seen": 1788587045.210475,
-    "ast_hash": "36747b8d8378100a21ae1d3c0b3c54a1",
+    "mtime": 1788838010.2570052,
+    "seen": 1788838163.152054,
+    "ast_hash": "6b5bf0bb204c2bc141f663887f1d07c3",
     "semantic_hash": ""
   },
   ".claude/skills/issues/SKILL.md": {
-    "mtime": 1788586839.2243502,
-    "seen": 1788587045.210546,
-    "ast_hash": "18dcbf57f05764f814a8fb12dc5797c0",
+    "mtime": 1788838026.8928554,
+    "seen": 1788838163.152143,
+    "ast_hash": "8d90b0fdc5ac96393316d897a278e1fb",
     "semantic_hash": ""
   },
   ".claude/scripts/pr.sh": {
@@ -765,6 +765,18 @@
     "mtime": 1788833047.665432,
     "seen": 1788833608.168136,
     "ast_hash": "348a9fd94509c129d18a5d248215b3d4",
+    "semantic_hash": ""
+  },
+  ".claude/scripts/check-coverage.sh": {
+    "mtime": 1788837932.7074752,
+    "seen": 1788838163.15205,
+    "ast_hash": "cd4213b05941f9da729c3117f6bfac68",
+    "semantic_hash": ""
+  },
+  "karma.conf.js": {
+    "mtime": 1788837918.4496741,
+    "seen": 1788838163.1520672,
+    "ast_hash": "d10f63ad88c821dd7e3424d48df5a07b",
     "semantic_hash": ""
   }
 }
