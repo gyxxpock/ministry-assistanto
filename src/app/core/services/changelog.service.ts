@@ -17,7 +17,7 @@ export class ChangelogService {
 
   constructor() {
     this.http
-      .get<ChangelogEntry[]>('/assets/changelog.json')
+      .get<ChangelogEntry[]>('assets/changelog.json')
       .pipe(take(1))
       .subscribe({
         next: (data) => this._entries.set(data ?? []),

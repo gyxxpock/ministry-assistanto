@@ -19,11 +19,11 @@ describe('ChangelogService', () => {
 
   it('entries starts as empty array before fetch resolves', () => {
     expect(service.entries()).toEqual([]);
-    httpMock.expectOne('/assets/changelog.json').flush([]);
+    httpMock.expectOne('assets/changelog.json').flush([]);
   });
 
   it('populates entries on successful fetch', () => {
-    httpMock.expectOne('/assets/changelog.json').flush([
+    httpMock.expectOne('assets/changelog.json').flush([
       { version: '2026-09-08', changes: [{ type: 'feature', text: 'Nueva función' }] },
       { version: '2026-09-07', changes: [{ type: 'fix', text: 'Bug corregido' }] },
     ]);
@@ -32,17 +32,17 @@ describe('ChangelogService', () => {
   });
 
   it('exposes entries as readonly signal', () => {
-    httpMock.expectOne('/assets/changelog.json').flush([]);
+    httpMock.expectOne('assets/changelog.json').flush([]);
     expect(typeof service.entries).toBe('function');
   });
 
   it('leaves entries empty on fetch error', () => {
-    httpMock.expectOne('/assets/changelog.json').error(new ErrorEvent('network error'));
+    httpMock.expectOne('assets/changelog.json').error(new ErrorEvent('network error'));
     expect(service.entries()).toEqual([]);
   });
 
   it('leaves entries empty when server returns null', () => {
-    httpMock.expectOne('/assets/changelog.json').flush(null);
+    httpMock.expectOne('assets/changelog.json').flush(null);
     expect(service.entries()).toEqual([]);
   });
 });

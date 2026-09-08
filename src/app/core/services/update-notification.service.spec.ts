@@ -57,26 +57,26 @@ describe('UpdateNotificationService', () => {
 
     it('sets isUpdateAvailable to true after fetching changelog', () => {
       expect(service.isUpdateAvailable()).toBe(false); // banner hidden while fetch is pending
-      httpMock.expectOne(r => r.url.includes('/assets/changelog.json')).flush([]);
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
       expect(service.isUpdateAvailable()).toBe(true);
     });
 
     it('shows banner even when changelog fetch fails', () => {
-      httpMock.expectOne(r => r.url.includes('/assets/changelog.json'))
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json'))
         .error(new ErrorEvent('network error'));
       expect(service.isUpdateAvailable()).toBe(true);
       expect(service.changes()).toEqual([]);
     });
 
     it('populates changes from the latest changelog entry', () => {
-      httpMock.expectOne(r => r.url.includes('/assets/changelog.json')).flush([
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([
         { version: '2026-09-07', changes: [{ type: 'feature', text: 'Nueva función' }] },
       ]);
       expect(service.changes()).toEqual([{ type: 'feature', text: 'Nueva función' }]);
     });
 
     it('uses the first entry in the changelog array (newest)', () => {
-      httpMock.expectOne(r => r.url.includes('/assets/changelog.json')).flush([
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([
         { version: '2026-09-07', changes: [{ type: 'fix', text: 'Fix reciente' }] },
         { version: '2026-08-01', changes: [{ type: 'feature', text: 'Feature antigua' }] },
       ]);
@@ -87,7 +87,7 @@ describe('UpdateNotificationService', () => {
   describe('dismiss()', () => {
     it('hides the banner even after update is available', () => {
       versionUpdates$.next(makeVersionReady());
-      httpMock.expectOne(r => r.url.includes('/assets/changelog.json')).flush([]);
+      httpMock.expectOne(r => r.url.includes('assets/changelog.json')).flush([]);
 
       service.dismiss();
       expect(service.isUpdateAvailable()).toBe(false);

@@ -49,7 +49,7 @@ export class UpdateNotificationService {
 
   private fetchChangelog(): void {
     this.http
-      .get<ChangelogEntry[]>(`/assets/changelog.json?v=${Date.now()}`)
+      .get<ChangelogEntry[]>(`assets/changelog.json?v=${Date.now()}`)
       .pipe(take(1))
       .subscribe({
         next: (entries) => {
