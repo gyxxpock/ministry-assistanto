@@ -3,8 +3,8 @@
 </button>
 
 <div class="month-display">
-  <span class="month-text">{{ currentDate | date:'MMMM' }}</span>
-  <span class="year-text">{{ currentDate | date:'yyyy' }}</span>
+  <span class="month-text">{{ currentDate | i18nDate:{ month: 'long' } }}</span>
+  <span class="year-text">{{ currentDate | i18nDate:{ year: 'numeric' } }}</span>
 </div>
 
 <button mat-icon-button class="nav-btn" (click)="next.emit()">
