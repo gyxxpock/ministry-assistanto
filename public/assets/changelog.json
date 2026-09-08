@@ -1,0 +1,11 @@
+[
+  {
+    "version": "2026-09-07",
+    "changes": [
+      { "type": "feature", "text": "Sección de configuración con selector de tema y recordatorios de respaldo configurables" },
+      { "type": "fix",     "text": "Los meses del calendario ahora respetan el idioma seleccionado" },
+      { "type": "fix",     "text": "El panel de restauración ya no desplaza los botones al aparecer" },
+      { "type": "ux",      "text": "Mejoras en la experiencia en pantallas pequeñas" }
+    ]
+  }
+]
