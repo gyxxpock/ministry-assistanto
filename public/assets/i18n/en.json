@@ -68,6 +68,13 @@
       "ux": "UX"
     }
   },
+  "goals": {
+    "pages": {
+      "list": {
+        "title": "Goals"
+      }
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {

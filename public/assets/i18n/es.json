@@ -68,6 +68,13 @@
       "ux": "Experiencia"
     }
   },
+  "goals": {
+    "pages": {
+      "list": {
+        "title": "Objetivos"
+      }
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {

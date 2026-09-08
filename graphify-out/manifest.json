@@ -6,9 +6,9 @@
     "semantic_hash": ""
   },
   ".claude/settings.local.json": {
-    "mtime": 1788896166.638629,
-    "seen": 1788896168.860838,
-    "ast_hash": "e19fbcf22831bbaeba0018d47fc885a7",
+    "mtime": 1788896208.32175,
+    "seen": 1788896220.596886,
+    "ast_hash": "41405f414abea130e4c98b79073d2107",
     "semantic_hash": ""
   },
   ".github/scripts/verify-pr.js": {
@@ -90,9 +90,9 @@
     "semantic_hash": ""
   },
   "src/app/app-routing-module.ts": {
-    "mtime": 1788896166.6391857,
-    "seen": 1788896168.860855,
-    "ast_hash": "0d530aadee12fdfb6f64a1c37aaf6da2",
+    "mtime": 1788896183.3388638,
+    "seen": 1788896220.5969028,
+    "ast_hash": "092b425587895f46fafe6c844c679b8c",
     "semantic_hash": ""
   },
   "src/app/app.spec.ts": {
@@ -252,9 +252,9 @@
     "semantic_hash": "f9795ec60904325330a1b455ac5798b4"
   },
   "src/app/time-entry/presentation/time-entry.module.ts": {
-    "mtime": 1788895801.042056,
-    "seen": 1788895934.1348999,
-    "ast_hash": "1d333d11b0d5f899403a150a58649145",
+    "mtime": 1788896179.1615915,
+    "seen": 1788896220.597003,
+    "ast_hash": "6061127335c1e4f9ed19213461224900",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/tokens/time-entry.tokens.ts": {
@@ -336,9 +336,9 @@
     "semantic_hash": "92b5943b800a66a310a32614ee6e4e97"
   },
   "src/app/time-entry/presentation/components/layout/layout.html": {
-    "mtime": 1788895801.0405843,
-    "seen": 1788895934.134939,
-    "ast_hash": "7d5e952983be909b9094beff0e2be241",
+    "mtime": 1788896193.8590121,
+    "seen": 1788896220.5970418,
+    "ast_hash": "2afacec728b85664647b2ae7964149e5",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.html": {

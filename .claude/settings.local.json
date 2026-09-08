@@ -24,7 +24,9 @@
       "Read(//Users/israelsalazarchavez/facade/**)",
       "Read(//Users/israelsalazarchavez/domain/**)",
       "Bash(npm install *)",
-      "Bash(ng build *)"
+      "Bash(ng build *)",
+      "Bash(pkill -f \"ng serve\")",
+      "Bash(ng serve *)"
     ]
   },
   "theme": "auto",

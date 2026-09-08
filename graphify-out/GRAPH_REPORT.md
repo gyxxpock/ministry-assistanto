@@ -1,30 +1,30 @@
 # Graph Report - ministry-assistanto  (2026-09-08)
 
 ## Corpus Check
-- 144 files · ~48,434 words
+- 144 files · ~48,449 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 850 nodes · 1423 edges · 67 communities (48 shown, 15 thin omitted)
+- 850 nodes · 1425 edges · 68 communities (49 shown, 15 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `2fc73ac2`
+- Built from commit: `1f9ecfcf`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - CourseVisit
-- goals.facade.ts
+- production
 - options
 - package.json
 - dependencies
 - devDependencies
 - DurationWheelPickerComponent
-- goals/domain/models.ts
+- goals.module.ts
 - CLEAN Architecture Pattern
-- NgModule
+- development
 - TimeEntryListComponent
 - Dispatcher — Agent Auto-Dispatch
 - check-pr.js
@@ -61,7 +61,7 @@
 - Session flow
 - issues.sh
 - prettier
-- ministry-assistanto
+- schematics
 - pr.sh
 - BackupReminderService
 - TimeEntryFormComponent
@@ -69,14 +69,15 @@
 - Optional
 - @angular/core
 - update-notification.service.ts
-- GoalProgressVisualComponent
+- angular.json
+- @angular/router
+- architect
 - ngsw-config.json
+- ministry-assistanto
+- NgModule
 - Component
 - TimeEntryCalendarComponent
 - check-coverage.sh
-- goals.module.ts
-- GoalConfig
-- goal.usecase.ts
 - DurationWheelPickerStub
 
 ## God Nodes (most connected - your core abstractions)
@@ -86,8 +87,8 @@
 4. `TimeEntryFacade` - 27 edges
 5. `@ngx-translate/core` - 26 edges
 6. `DexieTimeEntryRepository` - 22 edges
-7. `TimeEntryListComponent` - 20 edges
-8. `ITimeEntryRepository` - 20 edges
+7. `ITimeEntryRepository` - 20 edges
+8. `TimeEntryListComponent` - 20 edges
 9. `TimeEntryVM` - 17 edges
 10. `DurationWheelPickerComponent` - 17 edges
 
@@ -110,19 +111,19 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (67 total, 15 thin omitted)
+## Communities (68 total, 15 thin omitted)
 
 ### Community 0 - "CourseVisit"
 Cohesion: 0.05
-Nodes (21): DexieTimeEntryRepository, TimeEntryDB, Injectable, Optional, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+13 more)
+Nodes (22): DexieTimeEntryRepository, TimeEntryDB, Injectable, Optional, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+14 more)
 
-### Community 1 - "goals.facade.ts"
-Cohesion: 0.20
-Nodes (4): IGoalRepository, GoalsFacade, Injectable, GOAL_REPOSITORY_TOKEN
+### Community 1 - "production"
+Cohesion: 0.22
+Nodes (9): build, builder, configurations, defaultConfiguration, production, budgets, buildTarget, outputHashing (+1 more)
 
 ### Community 2 - "options"
-Cohesion: 0.07
-Nodes (35): build, extract-i18n, serve, test, builder, configurations, defaultConfiguration, options (+27 more)
+Cohesion: 0.24
+Nodes (12): options, assets, browser, codeCoverage, index, inlineStyleLanguage, polyfills, stylePreprocessorOptions (+4 more)
 
 ### Community 3 - "package.json"
 Cohesion: 0.09
@@ -137,16 +138,20 @@ Cohesion: 0.15
 Nodes (13): devDependencies, @angular/build, @angular/cli, angular-cli-ghpages, @angular/compiler-cli, jasmine-core, karma, karma-chrome-launcher (+5 more)
 
 ### Community 6 - "DurationWheelPickerComponent"
-Cohesion: 0.21
-Nodes (3): DurationWheelPickerComponent, Component, ViewChild
+Cohesion: 0.16
+Nodes (5): @angular/forms, rxjs, DurationWheelPickerComponent, Component, ViewChild
 
-### Community 7 - "goals/domain/models.ts"
-Cohesion: 0.19
-Nodes (11): @angular/common, GoalProgress, GoalStatus, GoalType, REGULAR_GOAL_MARGIN, REGULAR_GOAL_TARGET, ServiceYear, GoalStatusBadgeComponent (+3 more)
+### Community 7 - "goals.module.ts"
+Cohesion: 0.05
+Nodes (46): Optional, @angular/common, DexieGoalRepository, Injectable, ActiveGoalRecord, GoalsDB, buildServiceYearFromYear(), computeAuxiliaryGoalProgress() (+38 more)
 
 ### Community 8 - "CLEAN Architecture Pattern"
 Cohesion: 0.16
 Nodes (14): CLEAN Architecture Pattern, Data Layer, Domain Layer, Facade Layer, Internationalization Convention, ngx-translate i18n Library, Presentation Layer, i18n PR Changes Summary (+6 more)
+
+### Community 9 - "development"
+Cohesion: 0.22
+Nodes (9): serve, development, buildTarget, extractLicenses, optimization, sourceMap, builder, configurations (+1 more)
 
 ### Community 11 - "Dispatcher — Agent Auto-Dispatch"
 Cohesion: 0.18
@@ -252,9 +257,9 @@ Nodes (14): 1. Start — list and choose, 2. Start an issue, 3. Implement and it
 Cohesion: 0.50
 Nodes (4): prettier, overrides, printWidth, singleQuote
 
-### Community 47 - "ministry-assistanto"
-Cohesion: 0.10
-Nodes (19): cli, analytics, prefix, projectType, root, schematics, sourceRoot, newProjectRoot (+11 more)
+### Community 47 - "schematics"
+Cohesion: 0.25
+Nodes (8): schematics, standalone, style, standalone, standalone, @schematics/angular:component, @schematics/angular:directive, @schematics/angular:pipe
 
 ### Community 49 - "BackupReminderService"
 Cohesion: 0.05
@@ -265,64 +270,64 @@ Cohesion: 0.24
 Nodes (4): TimeEntryFormComponent, Component, Input, Output
 
 ### Community 51 - "app-module.ts"
-Cohesion: 0.16
-Nodes (10): NgModule, @angular/platform-browser, @angular/router, @ngx-translate/http-loader, App, AppModule, NgModule, AppRoutingModule (+2 more)
+Cohesion: 0.23
+Nodes (7): @angular/platform-browser, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
 
 ### Community 53 - "@angular/core"
 Cohesion: 0.05
-Nodes (39): @angular/core, @ngx-translate/core, I18nDatePipe, Pipe, FileUtilService, Injectable, SharedModule, NgModule (+31 more)
+Nodes (38): @angular/core, @ngx-translate/core, I18nDatePipe, Pipe, FileUtilService, Injectable, SharedModule, NgModule (+30 more)
 
 ### Community 54 - "update-notification.service.ts"
 Cohesion: 0.08
 Nodes (15): @angular/service-worker, ChangelogEntry, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, Layout, Component (+7 more)
 
-### Community 55 - "GoalProgressVisualComponent"
+### Community 55 - "angular.json"
 Cohesion: 0.29
-Nodes (3): GoalProgressVisualComponent, Component, Input
+Nodes (6): cli, analytics, newProjectRoot, projects, $schema, version
+
+### Community 56 - "@angular/router"
+Cohesion: 0.40
+Nodes (3): @angular/router, App, Component
+
+### Community 57 - "architect"
+Cohesion: 0.40
+Nodes (5): extract-i18n, test, builder, architect, builder
 
 ### Community 58 - "ngsw-config.json"
 Cohesion: 0.50
 Nodes (3): assetGroups, index, $schema
 
+### Community 59 - "ministry-assistanto"
+Cohesion: 0.40
+Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
+
 ### Community 64 - "TimeEntryCalendarComponent"
 Cohesion: 0.19
 Nodes (3): TimeEntryCalendarComponent, Component, toDateKey()
-
-### Community 67 - "goals.module.ts"
-Cohesion: 0.14
-Nodes (12): @angular/forms, rxjs, AuxiliaryGoalConfig, Goal, DialogData, MonthOption, ConfirmClearDialog, GoalsComponent (+4 more)
-
-### Community 68 - "GoalConfig"
-Cohesion: 0.20
-Nodes (6): Optional, DexieGoalRepository, Injectable, ActiveGoalRecord, GoalsDB, GoalConfig
-
-### Community 72 - "goal.usecase.ts"
-Cohesion: 0.30
-Nodes (12): buildServiceYearFromYear(), computeAuxiliaryGoalProgress(), computeGoalProgress(), computeMonthlyTarget(), computeRegularGoalProgress(), computeStatus(), getServiceYear(), isActiveMonth() (+4 more)
 
 ### Community 74 - "DurationWheelPickerStub"
 Cohesion: 0.22
 Nodes (3): DurationWheelPickerStub, MatSelectStub, Component
 
 ## Knowledge Gaps
-- **269 isolated node(s):** `routes`, `Person`, `DialogData`, `MonthOption`, `SyncEvent` (+264 more)
+- **269 isolated node(s):** `routes`, `routes`, `Person`, `SyncEvent`, `CalendarDay` (+264 more)
   These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 459 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
 - **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@angular/core` connect `@angular/core` to `CourseVisit`, `goals.facade.ts`, `package.json`, `GoalConfig`, `goals.module.ts`, `goals/domain/models.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`?**
-  _High betweenness centrality (0.152) - this node is a cross-community bridge._
-- **Why does `@ngx-translate/core` connect `@angular/core` to `goals.module.ts`, `package.json`, `goals/domain/models.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`?**
-  _High betweenness centrality (0.041) - this node is a cross-community bridge._
-- **Why does `dependencies` connect `dependencies` to `package.json`?**
+- **Why does `@angular/core` connect `@angular/core` to `CourseVisit`, `package.json`, `DurationWheelPickerComponent`, `goals.module.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`, `@angular/router`?**
+  _High betweenness centrality (0.133) - this node is a cross-community bridge._
+- **Why does `@ngx-translate/core` connect `@angular/core` to `CourseVisit`, `package.json`, `goals.module.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`, `@angular/router`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `TimeEntryFacade` connect `@angular/core` to `CourseVisit`, `TimeEntryListComponent`, `TimeEntryCalendarComponent`?**
   _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **What connects `routes`, `Person`, `DialogData` to the rest of the system?**
+- **What connects `routes`, `routes`, `Person` to the rest of the system?**
   _269 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
-  _Cohesion score 0.05462962962962963 - nodes in this community are weakly interconnected._
-- **Should `options` be split into smaller, more focused modules?**
-  _Cohesion score 0.07058823529411765 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05362517099863201 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
+- **Should `dependencies` be split into smaller, more focused modules?**
+  _Cohesion score 0.125 - nodes in this community are weakly interconnected._
