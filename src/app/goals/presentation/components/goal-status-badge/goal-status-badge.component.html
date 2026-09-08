@@ -1,0 +1,6 @@
+<div [ngClass]="statusClass">
+  <mat-icon [attr.aria-label]="statusLabel | translate">
+    {{ statusIcon }}
+  </mat-icon>
+  <span class="status-text">{{ statusLabel | translate }}</span>
+</div>

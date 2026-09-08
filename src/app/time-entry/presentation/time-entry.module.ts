@@ -10,7 +10,6 @@ import { TimeEntryDayComponent } from './components/time-entry-day/time-entry-da
 import { TimeEntryCalendarComponent } from './components/time-entry-calendar/time-entry-calendar';
 import { Layout } from './components/layout/layout';
 import { SettingsComponent } from './components/settings/settings.component';
-import { OptionPillGroupComponent } from './components/shared/option-pill-group/option-pill-group.component';
 import { MonthPaginatorComponent } from './components/shared/month-paginator/month-paginator.component';
 import { BackupReminderBannerComponent } from './components/backup-reminder-banner/backup-reminder-banner.component';
 import { UpdateBannerComponent } from './components/update-banner/update-banner.component';
@@ -32,11 +31,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatSelectModule } from '@angular/material/select';
 import { MatChipsModule } from '@angular/material/chips';
-import { I18nDatePipe } from '../../core/i18n/pipes/i18n-date.pipe';
 import { MatToolbar } from '@angular/material/toolbar';
 import { FileUtilService } from '../../core/services/file-util.service';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
+import { SharedModule } from '../../shared/presentation/shared.module';
 
 const routes: Routes = [
   {
@@ -72,11 +72,9 @@ const routes: Routes = [
     DurationWheelPickerComponent,
     TimeEntryDayComponent,
     TimeEntryEditDialogComponent,
-    I18nDatePipe,
     TimeEntryCalendarComponent,
     Layout,
     SettingsComponent,
-    OptionPillGroupComponent,
     BackupReminderBannerComponent,
     MonthPaginatorComponent,
     UpdateBannerComponent,
@@ -96,11 +94,13 @@ const routes: Routes = [
     MatToolbar,
     MatTooltipModule,
     MatExpansionModule,
+    MatIconModule,
     CommonModule,
     FormsModule,
     TranslateModule,
     MaterialModule,
     ReactiveFormsModule,
+    SharedModule,
     RouterModule.forChild(routes)
   ],
   providers: [
