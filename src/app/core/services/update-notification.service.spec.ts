@@ -56,8 +56,16 @@ describe('UpdateNotificationService', () => {
     });
 
     it('sets isUpdateAvailable to true after fetching changelog', () => {
+      expect(service.isUpdateAvailable()).toBe(false); // banner hidden while fetch is pending
       httpMock.expectOne(r => r.url.includes('/assets/changelog.json')).flush([]);
       expect(service.isUpdateAvailable()).toBe(true);
+    });
+
+    it('shows banner even when changelog fetch fails', () => {
+      httpMock.expectOne(r => r.url.includes('/assets/changelog.json'))
+        .error(new ErrorEvent('network error'));
+      expect(service.isUpdateAvailable()).toBe(true);
+      expect(service.changes()).toEqual([]);
     });
 
     it('populates changes from the latest changelog entry', () => {
