@@ -60,6 +60,10 @@ diseño que la afectan.
 - [ ] ¿Los footers fijos respetan `safe-area-inset-bottom`?
 - [ ] ¿El tamaño de targets táctiles es ≥44 px en alto?
 - [ ] ¿Los colores de estado (error, confirmación) usan tints sobre el material glass?
+- [ ] ¿Los paneles condicionales (confirmaciones, alertas inline) usan `position: absolute`
+      para no desplazar el layout circundante cuando aparecen?
+- [ ] ¿Los paneles con texto traducido tienen `max-width` relativo al viewport
+      (`min(Xpx, calc(100vw - márgenes))`) y no usan `white-space: nowrap`?
 
 ## Integración con UIAgent
 
@@ -81,3 +85,7 @@ UXAgent actúa como revisor de decisiones de UIAgent. Cuando ambos están activo
   `color-mix`.
 - Footer sin `padding-bottom: env(safe-area-inset-bottom)` en un dispositivo iOS →
   agregar soporte de safe area.
+- Panel condicional (`*ngIf` / `@if`) dentro de un flex container sin `position: absolute`
+  → desplazará los elementos adyacentes al mostrarse; convertir a overlay absoluto.
+- Panel con texto traducido dinámico y `white-space: nowrap` → desbordará en pantallas
+  pequeñas (iPhone SE 375 px); eliminar `nowrap` y añadir `max-width` relativo al viewport.
