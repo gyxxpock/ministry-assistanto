@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA, Pipe, PipeTransform, signal } from '@angular/core';
+import { NO_ERRORS_SCHEMA, Pipe, PipeTransform, WritableSignal, signal } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { SettingsComponent } from './settings.component';
 import { ThemeService } from '../../../../core/services/theme.service';
@@ -16,8 +16,13 @@ describe('SettingsComponent', () => {
   let mockTheme: jasmine.SpyObj<ThemeService>;
   let mockBackup: jasmine.SpyObj<BackupReminderService>;
   let mockTranslate: jasmine.SpyObj<TranslateService>;
+  let lastBackupDateSignal: WritableSignal<string | null>;
+  let nextReminderDateSignal: WritableSignal<Date | null>;
 
   beforeEach(async () => {
+    lastBackupDateSignal = signal<string | null>(null);
+    nextReminderDateSignal = signal<Date | null>(null);
+
     mockTheme = jasmine.createSpyObj('ThemeService', ['setMode'], {
       mode: signal<'light' | 'dark' | 'system'>('system'),
     });
@@ -27,8 +32,8 @@ describe('SettingsComponent', () => {
       {
         frequency: signal<'daily' | 'weekly' | 'monthly' | 'disabled'>('weekly'),
         isReminderDue: signal(false),
-        lastBackupDate: signal<string | null>(null),
-        nextReminderDate: signal<Date | null>(null),
+        lastBackupDate: lastBackupDateSignal,
+        nextReminderDate: nextReminderDateSignal,
       }
     );
     mockTranslate = jasmine.createSpyObj('TranslateService', ['instant', 'get'], {
@@ -74,11 +79,50 @@ describe('SettingsComponent', () => {
     expect(mockBackup.setFrequency).toHaveBeenCalledWith('monthly');
   });
 
-  it('lastBackupFormatted returns null when no last backup date', () => {
-    expect(component.lastBackupFormatted()).toBeNull();
+  describe('lastBackupFormatted', () => {
+    it('returns null when no last backup date', () => {
+      expect(component.lastBackupFormatted()).toBeNull();
+    });
+
+    it('returns a formatted date string when last backup date is set', () => {
+      lastBackupDateSignal.set('2025-06-15');
+      fixture.detectChanges();
+      const result = component.lastBackupFormatted();
+      expect(result).toBeTruthy();
+      expect(typeof result).toBe('string');
+    });
   });
 
-  it('nextReminderFormatted returns null when nextReminderDate is null', () => {
-    expect(component.nextReminderFormatted()).toBeNull();
+  describe('nextReminderFormatted', () => {
+    it('returns null when nextReminderDate is null', () => {
+      expect(component.nextReminderFormatted()).toBeNull();
+    });
+
+    it('returns null for a past date', () => {
+      const past = new Date();
+      past.setDate(past.getDate() - 2);
+      nextReminderDateSignal.set(past);
+      fixture.detectChanges();
+      expect(component.nextReminderFormatted()).toBeNull();
+    });
+
+    it('returns "tomorrow" translation key when reminder is tomorrow', () => {
+      const tomorrow = new Date();
+      tomorrow.setDate(tomorrow.getDate() + 1);
+      tomorrow.setHours(12, 0, 0, 0);
+      nextReminderDateSignal.set(tomorrow);
+      fixture.detectChanges();
+      expect(component.nextReminderFormatted()).toBe('settings.backup.tomorrow');
+    });
+
+    it('returns a formatted date string for a future date beyond tomorrow', () => {
+      const future = new Date();
+      future.setDate(future.getDate() + 5);
+      nextReminderDateSignal.set(future);
+      fixture.detectChanges();
+      const result = component.nextReminderFormatted();
+      expect(result).toBeTruthy();
+      expect(typeof result).toBe('string');
+    });
   });
 });
