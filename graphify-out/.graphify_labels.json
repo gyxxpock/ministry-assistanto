@@ -1,6 +1,6 @@
 {
   "0": "CourseVisit",
-  "1": "time-entry.module.ts",
+  "1": "OptionPillGroupComponent",
   "2": "options",
   "3": "package.json",
   "4": "dependencies",
@@ -45,14 +45,13 @@
   "43": "Flujo completo",
   "44": "Skill: issues",
   "45": "issues.sh",
-  "46": "layout.ts",
+  "46": "Injectable",
   "47": "schematics",
   "48": "pr.sh",
   "49": "InMemoryRepository",
-  "50": "MonthPaginatorComponent",
-  "51": "OptionPillGroupComponent",
-  "52": "update-notification.service.spec.ts",
-  "53": "TimeEntryVM",
+  "50": "update-notification.service.spec.ts",
+  "51": "Pipe",
+  "53": "time-entry.module.ts",
   "54": "Component",
   "55": "development",
   "56": "scripts",
@@ -62,8 +61,9 @@
   "60": "NgModule",
   "61": "production",
   "62": "angular.json",
-  "63": "ministry-assistanto",
+  "63": "architect",
   "64": "TimeEntryCalendarComponent",
   "65": "check-coverage.sh",
-  "66": "karma.conf.js"
+  "66": "karma.conf.js",
+  "68": "ministry-assistanto"
 }
