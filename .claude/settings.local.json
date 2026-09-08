@@ -23,7 +23,8 @@
       "Read(//tmp/**)",
       "Read(//Users/israelsalazarchavez/facade/**)",
       "Read(//Users/israelsalazarchavez/domain/**)",
-      "Bash(npm install *)"
+      "Bash(npm install *)",
+      "Bash(ng build *)"
     ]
   },
   "theme": "auto",
