@@ -5,7 +5,8 @@
       { "type": "feature", "text": "Notificación de actualización disponible con resumen de cambios" },
       { "type": "feature", "text": "Cobertura de tests al 90%+ con enforcement automático en commits" },
       { "type": "fix",     "text": "El banner de actualización ahora muestra correctamente los cambios de la nueva versión" },
-      { "type": "feature", "text": "Historial de versiones visible en Configuración > Acerca de" }
+      { "type": "feature", "text": "Historial de versiones visible en Configuración > Acerca de" },
+      { "type": "fix",     "text": "Ruta de changelog.json corregida para despliegues con base-href" }
     ]
   },
   {
