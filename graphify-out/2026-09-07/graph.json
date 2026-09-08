@@ -5754,7 +5754,7 @@
       "node_kind": "heading",
       "norm_label": "4. crear pr",
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L80"
+      "source_location": "L46"
     },
     {
       "id": "claude_skills_pr_skill_5_mostrar_url",
@@ -5766,7 +5766,7 @@
       "node_kind": "heading",
       "norm_label": "5. mostrar url",
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L91"
+      "source_location": "L57"
     },
     {
       "id": "claude_skills_pr_skill_cu\u00e1ndo_activar_este_skill",
@@ -5802,7 +5802,7 @@
       "node_kind": "heading",
       "norm_label": "reglas",
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L105"
+      "source_location": "L71"
     },
     {
       "id": "claude_skills_pr_skill_skill_pr",
@@ -5826,7 +5826,7 @@
       "node_kind": "heading",
       "norm_label": "verificaciones previas",
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L97"
+      "source_location": "L63"
     },
     {
       "id": "claude_skills_issues_skill",
@@ -14309,7 +14309,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L80",
+      "source_location": "L46",
       "weight": 1.0
     },
     {
@@ -14320,7 +14320,7 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L91",
+      "source_location": "L57",
       "weight": 1.0
     },
     {
@@ -14332,17 +14332,6 @@
       "confidence_score": 1.0,
       "source_file": ".claude/skills/pr/SKILL.md",
       "source_location": "L10",
-      "weight": 1.0
-    },
-    {
-      "source": "claude_skills_pr_skill_skill_pr",
-      "target": "claude_skills_pr_skill_reglas",
-      "relation": "contains",
-      "_origin": "ast",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L105",
       "weight": 1.0
     },
     {
@@ -14364,7 +14353,18 @@
       "confidence": "EXTRACTED",
       "confidence_score": 1.0,
       "source_file": ".claude/skills/pr/SKILL.md",
-      "source_location": "L97",
+      "source_location": "L63",
+      "weight": 1.0
+    },
+    {
+      "source": "claude_skills_pr_skill_skill_pr",
+      "target": "claude_skills_pr_skill_reglas",
+      "relation": "contains",
+      "_origin": "ast",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": ".claude/skills/pr/SKILL.md",
+      "source_location": "L71",
       "weight": 1.0
     },
     {
@@ -17796,5 +17796,5 @@
       "source_file": "src/app/time-entry/presentation/components/layout/layout.html"
     }
   ],
-  "built_at_commit": "01a0fd087fa8b848729686dcff66c03354fdc3a7"
+  "built_at_commit": "e795d161bbbc35643f41634eefae483bc035616e"
 }

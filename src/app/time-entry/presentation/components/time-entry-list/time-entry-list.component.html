@@ -5,13 +5,13 @@
     <div class="utility-pill">
       <!-- Compartir Reporte -->
       <button mat-icon-button class="glass-icon-btn" (click)="shareReport()"
-        matTooltip="Enviar Reporte (WhatsApp/iOS Share)" matTooltipPosition="above">
+        [matTooltip]="'timeEntry.accessibility.shareReportTooltip' | translate" matTooltipPosition="above">
         <mat-icon>ios_share</mat-icon>
       </button>
 
       <!-- Backup (Exportar) -->
       <button mat-icon-button class="glass-icon-btn" (click)="handleExport()"
-        matTooltip="Crear copia de seguridad (JSON)" matTooltipPosition="above">
+        [matTooltip]="'timeEntry.accessibility.createBackupTooltip' | translate" matTooltipPosition="above">
         <mat-icon>cloud_upload</mat-icon> <!-- Ícono más descriptivo para Backup -->
       </button>
 
@@ -21,7 +21,7 @@
       <button *ngIf="!showRestoreConfirm"
         mat-icon-button class="glass-icon-btn"
         (click)="onRestoreRequest()"
-        matTooltip="Restaurar desde archivo"
+        [matTooltip]="'timeEntry.accessibility.restoreFromFileTooltip' | translate"
         matTooltipPosition="above">
         <mat-icon>settings_backup_restore</mat-icon>
       </button>
@@ -42,7 +42,7 @@
 
     <!-- 2. CÍRCULO (Add) -->
     <div class="primary-action-wrapper">
-      <button mat-fab class="glass-fab-circle" (click)="addEntry()" matTooltip="Nuevo Registro"
+      <button mat-fab class="glass-fab-circle" (click)="addEntry()" [matTooltip]="'timeEntry.accessibility.newEntryTooltip' | translate"
         matTooltipPosition="left">
         <mat-icon>add</mat-icon>
       </button>
@@ -54,24 +54,13 @@
 
     <div class="month-selector-container">
       <div class="glass-paginator">
-        <button mat-icon-button (click)="prevMonth()" class="nav-btn">
-          <mat-icon>chevron_left</mat-icon>
-        </button>
-
-        <div class="month-display">
-          <span class="month-text">{{ currentDate() | date:'MMMM' }}</span>
-          <span class="year-text">{{ currentDate() | date:'yyyy' }}</span>
-        </div>
-
-        <button mat-icon-button (click)="nextMonth()" class="nav-btn">
-          <mat-icon>chevron_right</mat-icon>
-        </button>
-
-        <div class="v-divider"></div>
-
-        <button mat-button (click)="goToToday()" [disabled]="isCurrentMonth()" class="today-pill-btn">
-          {{ 'common.buttons.today' | translate }}
-        </button>
+        <ma-month-paginator
+          [currentDate]="currentDate()"
+          [isCurrentMonth]="isCurrentMonth()"
+          (prev)="prevMonth()"
+          (next)="nextMonth()"
+          (today)="goToToday()">
+        </ma-month-paginator>
       </div>
     </div>
 

@@ -1,5 +1,8 @@
-import { Component, inject, signal } from '@angular/core';
-import { ThemeService, ThemeMode } from '../../../../core/services/theme.service';
+import { Component, computed, inject, signal } from '@angular/core';
+import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
+import { TimeEntryFacade } from '../../../facade/time-entry.facade';
+import TimeEntryExporter from '../../../facade/time-entry.exporter';
+import { FileUtilService } from '../../../data/utils/file-util.service';
 
 @Component({
   selector: 'app-layout',
@@ -8,32 +11,23 @@ import { ThemeService, ThemeMode } from '../../../../core/services/theme.service
   styleUrl: './layout.scss',
 })
 export class Layout {
-  readonly themeService = inject(ThemeService);
+  private readonly backupService = inject(BackupReminderService);
+  private readonly facade = inject(TimeEntryFacade);
+  private readonly exporter = inject(TimeEntryExporter);
+  private readonly fileUtil = inject(FileUtilService);
 
   navVisible = signal(true);
   headerOpacity = signal(1);
+  readonly showBanner = computed(() => this.backupService.isReminderDue());
   private lastScrollTop = 0;
 
-  get themeIcon(): string {
-    const icons: Record<ThemeMode, string> = {
-      light: 'light_mode',
-      dark: 'dark_mode',
-      system: 'brightness_auto',
-    };
-    return icons[this.themeService.mode()];
-  }
-
-  // Método que captura el evento de scroll definido en el HTML
   onScroll(event: Event): void {
     const element = event.target as HTMLElement;
     const currentScroll = element.scrollTop;
 
-    // El título se desvanece gradualmente en los primeros 100px de scroll
     const newOpacity = 1 - (currentScroll / 100);
     this.headerOpacity.set(newOpacity < 0 ? 0 : newOpacity);
 
-    // Lógica: Si baja más de 50px y hace scroll hacia abajo, oculta.
-    // Si hace scroll hacia arriba, muestra.
     if (currentScroll > this.lastScrollTop && currentScroll > 50) {
       this.navVisible.set(false);
     } else {
@@ -41,5 +35,17 @@ export class Layout {
     }
 
     this.lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  }
+
+  async handleBannerBackup(): Promise<void> {
+    try {
+      const { entries, visits } = await this.facade.exportAll();
+      const json = this.exporter.generateJSON(entries, visits);
+      const fileName = `backup_${new Date().toISOString().split('T')[0]}.json`;
+      this.fileUtil.downloadFile(json, fileName, 'application/json');
+      this.backupService.recordBackup();
+    } catch {
+      // export error is handled silently; user can retry from the list view
+    }
   }
 }

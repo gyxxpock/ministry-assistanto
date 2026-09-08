@@ -24,6 +24,34 @@
     "dark": "Oscuro",
     "system": "Sistema"
   },
+  "settings": {
+    "title": "Configuración",
+    "appearance": {
+      "title": "Apariencia"
+    },
+    "backup": {
+      "title": "Respaldo de datos",
+      "frequency": "Frecuencia de recordatorio",
+      "lastBackup": "Último respaldo",
+      "nextReminder": "Próximo recordatorio",
+      "never": "Nunca realizado",
+      "noReminder": "Sin recordatorio",
+      "overdue": "Pendiente",
+      "frequencies": {
+        "daily": "Diario",
+        "weekly": "Semanal",
+        "monthly": "Mensual",
+        "disabled": "Desactivado"
+      },
+      "tomorrow": "Mañana",
+      "reminder": {
+        "title": "Recordatorio de respaldo",
+        "message": "Es momento de realizar un respaldo.",
+        "doBackup": "Hacer respaldo",
+        "dismiss": "Descartar"
+      }
+    }
+  },
   "timeEntry": {
     "pages": {
       "list": {
@@ -31,8 +59,12 @@
       },
       "calendar": {
         "title": "Calendario"
+      },
+      "settings": {
+        "title": "Config"
       }
     },
+    "noNotes": "Sin notas",
     "monthlySummary": "Resumen mensual",
     "totalHours": "Horas totales:",
     "totalCourses": "Cursos totales:",
@@ -63,7 +95,11 @@
       "exportJsonAria": "Exportar entradas como archivo JSON",
       "exportCsvAria": "Exportar entradas como archivo CSV",
       "importAria": "Importar entradas desde archivo JSON",
-      "totalsRegionLabel": "Totales mensuales"
+      "totalsRegionLabel": "Totales mensuales",
+      "shareReportTooltip": "Enviar reporte",
+      "createBackupTooltip": "Crear copia de seguridad (JSON)",
+      "restoreFromFileTooltip": "Restaurar desde archivo",
+      "newEntryTooltip": "Nuevo registro"
     }
   }
 }

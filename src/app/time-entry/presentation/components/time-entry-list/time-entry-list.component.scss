@@ -497,6 +497,10 @@
 
 // 11. PANEL DE CONFIRMACIÓN DE RESTAURAR
 .restore-confirm-inline {
+  position: absolute;
+  top: calc(100% + #{t.$space-2});
+  right: 0;
+  z-index: t.$z-nav + 1;
   display: flex;
   align-items: center;
   gap: t.$space-2;
@@ -504,17 +508,19 @@
   border-radius: t.$radius-lg;
   background: color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
   border: 1px solid color-mix(in srgb, var(--mat-sys-error) 25%, transparent);
-  backdrop-filter: blur(t.$blur-sm);
+  backdrop-filter: blur(t.$blur-md);
+  -webkit-backdrop-filter: blur(t.$blur-md);
   color: var(--mat-sys-error);
   animation: slideUp t.$dur-normal t.$ease-spring;
-  flex-wrap: wrap;
-  max-width: 320px;
+  // Constrain to viewport: right edge = viewport.right - space-6 (grupo fixed)
+  // left edge no puede salir del margen izquierdo (space-4)
+  max-width: min(340px, calc(100vw - #{t.$space-6} - #{t.$space-4}));
 
   .restore-confirm-text {
     font-size: 12px;
     font-weight: 500;
     flex: 1;
-    min-width: 120px;
+    min-width: 0;
   }
 }
 

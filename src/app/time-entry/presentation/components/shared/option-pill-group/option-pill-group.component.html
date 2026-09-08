@@ -1,0 +1,15 @@
+<div class="pill-group" role="group">
+  @for (opt of options; track opt.value) {
+    <button
+      class="pill-option"
+      [class.active]="opt.value === value"
+      (click)="select(opt.value)"
+      type="button"
+      [attr.aria-pressed]="opt.value === value">
+      @if (opt.icon) {
+        <mat-icon>{{ opt.icon }}</mat-icon>
+      }
+      <span>{{ opt.label | translate }}</span>
+    </button>
+  }
+</div>

@@ -1,0 +1,57 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.pill-group {
+  @include m.glass-pill(t.$blur-md, 'light');
+  display: flex;
+  align-items: stretch;
+  padding: t.$space-1;
+  gap: t.$space-1;
+  width: 100%;
+}
+
+.pill-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: t.$space-2 t.$space-1;
+  border-radius: calc(#{t.$radius-pill} - 6px);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  @include m.transition-fast(background color transform border-color box-shadow);
+
+  mat-icon {
+    font-size: 18px;
+    width: 18px;
+    height: 18px;
+  }
+
+  &.active {
+    background: var(--glass-tint-primary);
+    color: var(--mat-sys-primary);
+    border-color: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+    box-shadow: 0 2px 8px color-mix(in srgb, var(--mat-sys-primary) 15%, transparent);
+
+    mat-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 18;
+    }
+  }
+
+  &:hover:not(.active) {
+    background: var(--glass-bg-light);
+    color: var(--mat-sys-on-surface);
+  }
+
+  &:active {
+    transform: scale(0.95);
+    transition-duration: t.$dur-fast;
+  }
+}
