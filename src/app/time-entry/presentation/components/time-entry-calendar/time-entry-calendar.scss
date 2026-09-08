@@ -61,7 +61,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: t.$space-2;
   border-radius: t.$radius-sm;
   position: relative;
   cursor: default;
@@ -114,15 +115,8 @@
   font-weight: 600;
   color: var(--mat-sys-primary);
   margin-top: 2px;
-  min-height: 1em; // reserva espacio para que el día siempre quede en la misma posición
 
   @media (max-width: 400px) { font-size: 8px; }
-}
-
-// Celdas sin entradas: indicadores invisibles pero ocupan espacio (evita que el número del día se mueva)
-.calendar-day:not(.has-entries) {
-  .dot-indicator,
-  .hours-label { visibility: hidden; }
 }
 
 .weekday-header {

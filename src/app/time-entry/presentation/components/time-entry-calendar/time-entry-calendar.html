@@ -29,8 +29,11 @@
              (click)="onDayClick(day)">
 
           <span class="day-number">{{ day.date | date:'d' }}</span>
-          <div class="dot-indicator"></div>
-          <span class="hours-label">{{ day.totalMinutes > 0 ? formatHours(day.totalMinutes) : '' }}</span>
+
+          @if (day.totalMinutes > 0) {
+            <div class="dot-indicator"></div>
+            <span class="hours-label">{{ formatHours(day.totalMinutes) }}</span>
+          }
         </div>
       }
     </div>
