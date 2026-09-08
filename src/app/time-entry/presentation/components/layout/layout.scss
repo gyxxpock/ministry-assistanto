@@ -135,15 +135,30 @@
 
 }
 
-// 3. BANNER DE RECORDATORIO (sobre el nav flotante)
+// 3. BANNERS FLOTANTES (sobre el nav flotante)
+
+// Base: justo encima del nav
+$banner-bottom: calc(#{t.$space-8} + 80px + #{t.$space-2} + env(safe-area-inset-bottom, 0px));
+
 .backup-banner-wrapper {
   position: fixed;
-  bottom: calc(#{t.$space-8} + 80px + #{t.$space-2} + env(safe-area-inset-bottom, 0px));
+  bottom: $banner-bottom;
   left: 50%;
   transform: translateX(-50%);
   width: calc(100% - #{t.$space-4} * 2);
   max-width: 480px;
   z-index: 999; // bajo el nav (z-nav = 1000)
+}
+
+// Update banner: misma posición, z-index superior al de backup
+.update-banner-wrapper {
+  position: fixed;
+  bottom: $banner-bottom;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - #{t.$space-4} * 2);
+  max-width: min(480px, calc(100vw - #{t.$space-4} * 2));
+  z-index: 1000; // mismo nivel que nav; superpone al backup banner
 }
 
 // 4. SINCRONIZACIÓN CON SCROLL

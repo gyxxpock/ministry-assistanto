@@ -33,6 +33,7 @@
     "@angular/material": "^20.2.14",
     "@angular/platform-browser": "^20.2.0",
     "@angular/router": "^20.2.0",
+    "@angular/service-worker": "^20.3.15",
     "@ngx-translate/core": "^17.0.0",
     "@ngx-translate/http-loader": "^17.0.0",
     "dexie": "^4.2.1",
