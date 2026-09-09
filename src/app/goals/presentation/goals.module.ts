@@ -30,6 +30,8 @@ import { MatInputModule } from '@angular/material/input';
 import { GoalsFacade } from '../facade/goals.facade';
 import { DexieGoalRepository } from '../data/dexie-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
+import { DexieTimeEntryRepository } from '../../time-entry/data/time-entry.dexie';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
 
 const routes: Routes = [
   {
@@ -74,6 +76,10 @@ const routes: Routes = [
     {
       provide: GOAL_REPOSITORY_TOKEN,
       useClass: DexieGoalRepository,
+    },
+    {
+      provide: TIME_ENTRY_REPOSITORY,
+      useClass: DexieTimeEntryRepository,
     },
   ],
 })

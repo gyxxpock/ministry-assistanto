@@ -78,7 +78,7 @@ export class GoalConfigComponent {
       ),
       monthlyTarget: new FormControl<15 | 30>(15, Validators.required),
       permanent: new FormControl<boolean>(true, Validators.required),
-      startMonth: new FormControl<number | null>(null),
+      startMonth: new FormControl<number | null>(null, Validators.required),
       endMonth: new FormControl<number | null>(null),
     },
     {
@@ -103,6 +103,12 @@ export class GoalConfigComponent {
       type: config.type,
       serviceYear: config.serviceYear,
     });
+
+    if (config.type === 'regular') {
+      this.configForm.patchValue({
+        startMonth: (config as RegularGoalConfig).startMonth ?? null,
+      });
+    }
 
     if (config.type === 'auxiliary') {
       this.configForm.patchValue({
@@ -136,6 +142,11 @@ export class GoalConfigComponent {
       ]);
       serviceYearControl?.updateValueAndValidity({ emitEvent: false });
 
+      // Regular: startMonth is required
+      const startMonthControl = this.configForm.get('startMonth');
+      startMonthControl?.setValidators(Validators.required);
+      startMonthControl?.updateValueAndValidity({ emitEvent: false });
+
       // Clear auxiliary fields
       this.configForm.patchValue({
         monthlyTarget: 15,
@@ -151,6 +162,12 @@ export class GoalConfigComponent {
         Validators.min(2026),
       ]);
       serviceYearControl?.updateValueAndValidity({ emitEvent: false });
+
+      // Auxiliary: permanent toggle manages month validators, clear startMonth
+      const startMonthControl = this.configForm.get('startMonth');
+      startMonthControl?.clearValidators();
+      startMonthControl?.patchValue(null, { emitEvent: false });
+      startMonthControl?.updateValueAndValidity({ emitEvent: false });
     }
 
     this.configForm.updateValueAndValidity({ emitEvent: false });
@@ -243,6 +260,7 @@ export class GoalConfigComponent {
       const config: RegularGoalConfig = {
         type: 'regular',
         serviceYear: formValue.serviceYear,
+        startMonth: formValue.startMonth ?? undefined,
       };
       return config;
     } else {

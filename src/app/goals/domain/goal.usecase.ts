@@ -27,6 +27,13 @@ function monthsElapsedInServiceYear(sy: ServiceYear, currentDate: Date): number 
   return Math.min(Math.max(elapsed, 0), 12);
 }
 
+/** Días transcurridos desde el inicio del año de servicio, inclusive. */
+function daysElapsedInServiceYear(sy: ServiceYear, currentDate: Date): number {
+  const syStart = new Date(sy.startYear, sy.startMonth - 1, 1);
+  const ms = currentDate.getTime() - syStart.getTime();
+  return Math.floor(ms / (1000 * 60 * 60 * 24)) + 1;
+}
+
 /** Convierte un índice 1-12 del año de servicio (1=sep) al mes calendario 1-12. */
 function serviceYearCalendarMonth(startMonth: number, index: number): number {
   return ((startMonth - 1 + index - 1) % 12) + 1;
@@ -75,6 +82,16 @@ export function getServiceYear(date: Date): ServiceYear {
   };
 }
 
+/** Retorna el mes calendario actual (1-12). */
+function currentCalendarMonth(date: Date): number {
+  return date.getMonth() + 1;
+}
+
+/** Calcula la meta mensual para un objetivo regular: 600 / 12. */
+function computeRegularMonthlyTarget(): number {
+  return round2(REGULAR_GOAL_TARGET / 12);
+}
+
 /** Retorna la meta mensual para un objetivo auxiliar. */
 export function computeMonthlyTarget(config: AuxiliaryGoalConfig): number {
   return config.monthlyTarget;
@@ -84,16 +101,25 @@ export function computeRegularGoalProgress(
   config: RegularGoalConfig,
   accumulated: number,
   currentDate: Date,
+  monthlyAccumulated: number = 0,
 ): GoalProgress {
   const sy = buildServiceYearFromYear(config.serviceYear);
-  const elapsed = monthsElapsedInServiceYear(sy, currentDate);
-  const projection = elapsed === 0 ? 0 : (accumulated / elapsed) * 12;
+  const daysElapsed = daysElapsedInServiceYear(sy, currentDate);
+  const projection = daysElapsed === 0 ? 0 : (accumulated / daysElapsed) * 365;
+  const monthsElapsed = Math.floor(daysElapsed / 30.44);
+
+  const monthlyTarget = computeRegularMonthlyTarget();
+  const monthlyProgress = monthlyTarget === 0 ? 0 : round2((monthlyAccumulated / monthlyTarget) * 100);
+
   return {
     accumulatedHours: accumulated,
     projectedHours: round2(projection),
     targetHours: REGULAR_GOAL_TARGET,
     status: computeStatus(projection, REGULAR_GOAL_TARGET),
-    monthsElapsed: elapsed,
+    monthsElapsed,
+    monthlyAccumulated,
+    monthlyTarget,
+    monthlyProgress,
   };
 }
 
@@ -101,9 +127,11 @@ export function computeAuxiliaryGoalProgress(
   config: AuxiliaryGoalConfig,
   accumulated: number,
   currentDate: Date,
+  monthlyAccumulated: number = 0,
 ): GoalProgress {
   const sy = buildServiceYearFromYear(config.serviceYear);
   const totalElapsed = monthsElapsedInServiceYear(sy, currentDate);
+  const currentMonth = currentCalendarMonth(currentDate);
 
   let totalActiveMonths = 0;
   let activeMonthsElapsed = 0;
@@ -126,6 +154,10 @@ export function computeAuxiliaryGoalProgress(
   const projection =
     activeMonthsElapsed === 0 ? 0 : (accumulated / activeMonthsElapsed) * totalActiveMonths;
 
+  // Monthly metrics: only if current month is active
+  const monthlyTarget = isActiveMonth(currentMonth, config) ? config.monthlyTarget : 0;
+  const monthlyProgress = monthlyTarget === 0 ? 0 : round2((monthlyAccumulated / monthlyTarget) * 100);
+
   return {
     accumulatedHours: accumulated,
     projectedHours: round2(projection),
@@ -133,6 +165,9 @@ export function computeAuxiliaryGoalProgress(
     status: computeStatus(projection, target),
     monthsElapsed: totalElapsed,
     activeMonthsElapsed,
+    monthlyAccumulated,
+    monthlyTarget,
+    monthlyProgress,
   };
 }
 
@@ -141,9 +176,10 @@ export function computeGoalProgress(
   config: GoalConfig,
   hours: number,
   date: Date,
+  monthlyAccumulated: number = 0,
 ): GoalProgress {
   if (config.type === 'regular') {
-    return computeRegularGoalProgress(config, hours, date);
+    return computeRegularGoalProgress(config, hours, date, monthlyAccumulated);
   }
-  return computeAuxiliaryGoalProgress(config, hours, date);
+  return computeAuxiliaryGoalProgress(config, hours, date, monthlyAccumulated);
 }

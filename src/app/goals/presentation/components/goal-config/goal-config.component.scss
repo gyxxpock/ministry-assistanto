@@ -8,7 +8,9 @@ $spacing-12: 3rem;
 // Material dialog content width
 mat-dialog-content {
   padding: $spacing-6;
+  padding-bottom: $spacing-6 !important;
   max-width: 600px;
+  background: var(--mat-sys-surface-container);
 }
 
 // Full-width form fields
@@ -125,8 +127,7 @@ mat-dialog-content {
 
 // Dialog actions styling
 mat-dialog-actions {
-  padding: $spacing-6;
-  padding-top: 0;
+  padding: 0 $spacing-6 calc(#{$spacing-6} + env(safe-area-inset-bottom, 0px));
   gap: $spacing-4;
 
   button {

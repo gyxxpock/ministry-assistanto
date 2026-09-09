@@ -59,6 +59,35 @@
 
       <mat-divider></mat-divider>
 
+      <!-- Monthly Progress Section -->
+      <div class="monthly-section">
+        <div class="section-title">{{ 'goals.metrics.monthly-progress' | translate }}</div>
+
+        <div class="monthly-progress-bar">
+          <div class="bar-background">
+            <div
+              class="bar-fill"
+              [style.width.%]="vm()?.monthlyProgress | number: '1.0-0'"
+              [ngClass]="vm()?.monthlyProgress! >= 100 ? 'bar-complete' : 'bar-in-progress'"
+            ></div>
+          </div>
+          <div class="bar-percentage">{{ vm()?.monthlyProgress | number: '1.0-0' }}%</div>
+        </div>
+
+        <div class="monthly-metrics">
+          <div class="metric-row">
+            <span class="metric-label">{{ 'goals.metrics.monthly-accumulated' | translate }}</span>
+            <span class="metric-value">{{ vm()?.monthlyAccumulated | number: '1.2-2' }} h</span>
+          </div>
+          <div class="metric-row">
+            <span class="metric-label">{{ 'goals.metrics.monthly-target' | translate }}</span>
+            <span class="metric-value">{{ vm()?.monthlyTarget | number: '1.2-2' }} h</span>
+          </div>
+        </div>
+      </div>
+
+      <mat-divider></mat-divider>
+
       <div class="metric-row projected">
         <span class="metric-label">{{ 'goals.metrics.projected' | translate }}</span>
         <span class="metric-value">{{ goalProgress.projectedHours | number: '1.2-2' }} h</span>

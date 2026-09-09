@@ -91,19 +91,3 @@
     min-height: 44px;
   }
 }
-
-@media (prefers-color-scheme: dark) {
-  .goals-container {
-    background: var(--background-primary, #1F2937);
-  }
-
-  .empty-state {
-    h2 {
-      color: var(--text-primary, #F3F4F6);
-    }
-
-    p {
-      color: var(--text-secondary, #D1D5DB);
-    }
-  }
-}

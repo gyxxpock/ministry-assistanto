@@ -45,6 +45,12 @@ export class DexieTimeEntryRepository implements ITimeEntryRepository {
     return this.db.entries.where('date').between(start, end, true, true).toArray();
   }
 
+  async listEntriesByDateRange(startDate: Date, endDate: Date): Promise<TimeEntry[]> {
+    const end = new Date(endDate);
+    end.setHours(23, 59, 59, 999);
+    return this.db.entries.where('date').between(startDate, end, true, true).toArray();
+  }
+
   async listVisitsByMonth(year: number, month: number): Promise<CourseVisit[]> {
     const start = new Date(year, month - 1, 1);
     const end = new Date(year, month, 0, 23, 59, 59, 999);
