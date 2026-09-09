@@ -43,6 +43,8 @@ Thumbs.db
 
 # AI generated files
 GEMINI.md
+# Claude Code local settings (contains secrets/tokens — never commit)
+.claude/settings.local.json
 # Graphify Outputs y Cache
 graphify-out/cache/
 
