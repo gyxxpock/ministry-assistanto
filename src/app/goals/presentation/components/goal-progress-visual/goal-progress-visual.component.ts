@@ -38,12 +38,10 @@ export class GoalProgressVisualComponent {
       hoursDifference: progress.accumulatedHours - this.computeTargetToDate(progress),
       statusLabel: progress.status,
       monthsElapsed: progress.monthsElapsed,
+      monthlyAccumulated: progress.monthlyAccumulated,
+      monthlyTarget: progress.monthlyTarget,
+      monthlyProgress: progress.monthlyProgress,
     };
-
-    const config = this.goalConfig;
-    if (config?.type === 'auxiliary') {
-      vm.monthlyTarget = config.monthlyTarget;
-    }
 
     return vm;
   });

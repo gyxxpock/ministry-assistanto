@@ -17,6 +17,24 @@
       "export": "Export",
       "add": "Add",
       "today": "Today"
+    },
+    "required": "This field is required",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "delete": "Delete",
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
     }
   },
   "theme": {
@@ -69,11 +87,62 @@
     }
   },
   "goals": {
+    "title": "Goals",
     "pages": {
       "list": {
         "title": "Goals"
       }
-    }
+    },
+    "actions": {
+      "configure": "Configure goal",
+      "clear": "Clear goal"
+    },
+    "empty-state": {
+      "title": "No active goal",
+      "description": "Set a goal to track your ministry progress.",
+      "cta": "Configure goal"
+    },
+    "config": {
+      "title": "Goal configuration",
+      "type": "Goal type",
+      "service-year": "Service year",
+      "regular-info": "Regular pioneers serve the entire service year (September – August).",
+      "start-month-hint": "Month you began your regular pioneer service",
+      "monthly-target": "Monthly target (hours)",
+      "period": "Period",
+      "permanent": "Permanent",
+      "date-range": "Date range",
+      "start-month": "Start month",
+      "end-month": "End month",
+      "auxiliary-permanent-info": "Auxiliary pioneers serve the entire service year.",
+      "errors": {
+        "month-range-required": "Both start and end month are required."
+      }
+    },
+    "confirm": {
+      "clear-title": "Clear goal",
+      "clear-message": "Are you sure you want to clear the active goal? This action cannot be undone."
+    },
+    "types": {
+      "regular": "Regular",
+      "auxiliary": "Auxiliary pioneer"
+    },
+    "status": {
+      "on-track": "On track",
+      "behind-in-margin": "Slightly behind",
+      "out-of-margin": "Behind"
+    },
+    "metrics": {
+      "accumulated": "Accumulated",
+      "target-to-date": "Target to date",
+      "difference": "Difference",
+      "months-elapsed": "Months elapsed",
+      "projected": "Projected",
+      "monthly-progress": "This month",
+      "monthly-accumulated": "Accumulated",
+      "monthly-target": "Monthly target"
+    },
+    "no-active-goal": "No active goal configured."
   },
   "timeEntry": {
     "pages": {

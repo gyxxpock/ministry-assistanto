@@ -14,6 +14,7 @@ export type GoalType = 'regular' | 'auxiliary';
 export interface RegularGoalConfig {
   type: 'regular';
   serviceYear: number;
+  startMonth?: number; // calendar month 1-12; the month the pioneer started
 }
 
 export interface AuxiliaryGoalConfig {
@@ -42,4 +43,9 @@ export interface GoalProgress {
   status: GoalStatus;
   monthsElapsed: number;
   activeMonthsElapsed?: number; // auxiliary goals only
+  // Monthly metrics — for current calendar month visibility
+  monthlyAccumulated: number;
+  monthlyTarget: number;
+  monthlyProgress: number; // percentage 0-100
+  monthlyPlanned?: number; // for future Planning feature override
 }

@@ -8,5 +8,7 @@ export interface GoalProgressVM {
   hoursDifference: number;
   statusLabel: GoalStatus;
   monthsElapsed: number;
-  monthlyTarget?: number;
+  monthlyTarget: number;
+  monthlyAccumulated: number;
+  monthlyProgress: number;
 }

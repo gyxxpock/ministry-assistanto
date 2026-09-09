@@ -6,6 +6,7 @@ import { TimeEntry, CourseVisit, MonthlyCourseCount } from './models';
  */
 export interface ITimeEntryRepository {
   listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]>;
+  listEntriesByDateRange(startDate: Date, endDate: Date): Promise<TimeEntry[]>;
   listVisitsByMonth(year: number, month: number): Promise<CourseVisit[]>;
   addEntry(entry: TimeEntry): Promise<void>;
   updateEntry(entry: TimeEntry): Promise<void>;
