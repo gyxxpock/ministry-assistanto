@@ -1,3 +1,10 @@
+---
+name: testing-agent
+description: Use this agent for specs and coverage (Karma + Jasmine) across all layers — should accompany every implementation task. Handles the per-layer testing strategy, mocks, and the 90%/100% coverage mandate.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # TestingAgent
 
 Transversal role. Defines the testing strategy per layer and writes specs that are coherent

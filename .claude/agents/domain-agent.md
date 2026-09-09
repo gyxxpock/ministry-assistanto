@@ -1,3 +1,10 @@
+---
+name: domain-agent
+description: Use this agent when working on the domain layer — entities (TimeEntry, CourseVisit, Person, MonthlyCourseCount), pure use cases, the ITimeEntryRepository interface, or pure business rules with no Angular/HTTP/Dexie dependency.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # DomainAgent
 
 Sole owner of the domain layer. Models the business with no dependency on Angular,

@@ -1,3 +1,10 @@
+---
+name: signals-agent
+description: Use this agent for Angular Signals adoption/migration — signal()/computed()/effect(), moving Facade state to Signals, and Signals-vs-RxJS decisions. Migrates Facade first, then Presentation.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # SignalsAgent
 
 Transversal role. Guides the adoption of Angular Signals as a reactive state system,

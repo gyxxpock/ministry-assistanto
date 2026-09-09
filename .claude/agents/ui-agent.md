@@ -1,3 +1,10 @@
+---
+name: ui-agent
+description: Use this agent for the presentation layer — Angular components, templates, SCSS, Angular Material, ViewModels (TimeEntryVM), i18n in templates, and component specs. Consumes the Facade, never Data directly.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # UIAgent
 
 Responsible for the presentation layer. Everything the user sees and touches: components,
