@@ -1,14 +1,8 @@
 {
   ".claude/settings.json": {
-    "mtime": 1788883881.3857548,
-    "seen": 1788887888.243259,
-    "ast_hash": "24e314ad0e25c0fc0e037c14c5bd77d7",
-    "semantic_hash": ""
-  },
-  ".claude/settings.local.json": {
-    "mtime": 1788975730.038792,
-    "seen": 1788976421.286596,
-    "ast_hash": "3a11290ae2540f8041dd64b0405400df",
+    "mtime": 1788989202.1031044,
+    "seen": 1788990700.9185998,
+    "ast_hash": "a4ffb2eb721466e64467dec2f3b18a65",
     "semantic_hash": ""
   },
   ".github/scripts/verify-pr.js": {
