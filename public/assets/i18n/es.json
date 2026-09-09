@@ -17,6 +17,24 @@
       "export": "Exportar",
       "add": "Agregar",
       "today": "Hoy"
+    },
+    "required": "Este campo es requerido",
+    "cancel": "Cancelar",
+    "confirm": "Confirmar",
+    "delete": "Eliminar",
+    "months": {
+      "january": "Enero",
+      "february": "Febrero",
+      "march": "Marzo",
+      "april": "Abril",
+      "may": "Mayo",
+      "june": "Junio",
+      "july": "Julio",
+      "august": "Agosto",
+      "september": "Septiembre",
+      "october": "Octubre",
+      "november": "Noviembre",
+      "december": "Diciembre"
     }
   },
   "theme": {
@@ -67,6 +85,64 @@
       "fix": "Corrección",
       "ux": "Experiencia"
     }
+  },
+  "goals": {
+    "title": "Objetivos",
+    "pages": {
+      "list": {
+        "title": "Objetivos"
+      }
+    },
+    "actions": {
+      "configure": "Configurar objetivo",
+      "clear": "Limpiar objetivo"
+    },
+    "empty-state": {
+      "title": "Sin objetivo activo",
+      "description": "Define un objetivo para dar seguimiento a tu progreso en el ministerio.",
+      "cta": "Configurar objetivo"
+    },
+    "config": {
+      "title": "Configuración del objetivo",
+      "type": "Tipo de objetivo",
+      "service-year": "Año de servicio",
+      "regular-info": "Los precursores regulares sirven todo el año de servicio (septiembre – agosto).",
+      "start-month-hint": "Mes en que iniciaste tu servicio como precursor regular",
+      "monthly-target": "Meta mensual (horas)",
+      "period": "Período",
+      "permanent": "Permanente",
+      "date-range": "Rango de fechas",
+      "start-month": "Mes de inicio",
+      "end-month": "Mes de fin",
+      "auxiliary-permanent-info": "Los precursores auxiliares sirven todo el año de servicio.",
+      "errors": {
+        "month-range-required": "El mes de inicio y el mes de fin son requeridos."
+      }
+    },
+    "confirm": {
+      "clear-title": "Limpiar objetivo",
+      "clear-message": "¿Estás seguro de que deseas limpiar el objetivo activo? Esta acción no se puede deshacer."
+    },
+    "types": {
+      "regular": "Regular",
+      "auxiliary": "Precursor auxiliar"
+    },
+    "status": {
+      "on-track": "En camino",
+      "behind-in-margin": "Ligeramente atrasado",
+      "out-of-margin": "Atrasado"
+    },
+    "metrics": {
+      "accumulated": "Acumulado",
+      "target-to-date": "Meta a la fecha",
+      "difference": "Diferencia",
+      "months-elapsed": "Meses transcurridos",
+      "projected": "Proyectado",
+      "monthly-progress": "Este mes",
+      "monthly-accumulated": "Acumulado",
+      "monthly-target": "Meta mensual"
+    },
+    "no-active-goal": "No hay objetivo activo configurado."
   },
   "timeEntry": {
     "pages": {

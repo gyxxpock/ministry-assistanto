@@ -83,6 +83,11 @@ $font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text'
 
   // Orbs del fondo animado
   --orb-opacity: 0.55;
+
+  // Text colors — light mode
+  --text-primary: #1a1a1a;
+  --text-secondary: #666666;
+  --text-tertiary: #999999;
 }
 
 // Dark mode — override de CSS vars (prefers-color-scheme)
@@ -98,6 +103,11 @@ $font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text'
     --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
     --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
     --orb-opacity: 0.30;
+
+    // Text colors — dark mode (system preference)
+    --text-primary: #ffffff;
+    --text-secondary: #e0e0e0;
+    --text-tertiary: #a0a0a0;
   }
 }
 
@@ -113,4 +123,9 @@ $font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text'
   --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
   --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
   --orb-opacity: 0.30;
+
+  // Text colors — dark mode (manual toggle)
+  --text-primary: #ffffff;
+  --text-secondary: #e0e0e0;
+  --text-tertiary: #a0a0a0;
 }

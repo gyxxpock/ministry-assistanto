@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
-# .claude/scripts/pr.sh — Push rama actual + crear PR hacia main
-# Requiere: git, gh (autenticado), SSH key en agent (UseKeychain yes en ~/.ssh/config)
+# .claude/scripts/pr.sh — Push current branch + create PR toward main
+# Requires: git, gh (authenticated), SSH key in agent (UseKeychain yes in ~/.ssh/config)
 #
-# Uso:
-#   pr.sh push                         — empuja la rama actual a origin
-#   pr.sh create "<title>" "<body>"    — crea PR hacia main con título y cuerpo dados
-#   pr.sh draft  "<title>" "<body>"    — igual pero como draft
-#   pr.sh status                       — muestra PR abierto de la rama actual (si existe)
-#   pr.sh commits                      — commits en esta rama que no están en main
+# Usage:
+#   pr.sh push                         — push the current branch to origin
+#   pr.sh create "<title>" "<body>"    — create PR toward main with given title and body
+#   pr.sh draft  "<title>" "<body>"    — same but as a draft
+#   pr.sh status                       — show open PR for the current branch (if any)
+#   pr.sh commits                      — commits in this branch not present in main
 
 set -euo pipefail
 
@@ -19,15 +19,15 @@ case "${1:-}" in
   push)
     echo "Pushing $BRANCH → origin..."
     git push origin "$BRANCH"
-    echo "✓ Push completado"
+    echo "✓ Push completed"
     ;;
 
   create|draft)
     TITLE="${2:-}"
     BODY="${3:-}"
     if [[ -z "$TITLE" ]]; then
-      echo "Error: título requerido" >&2
-      echo "Uso: pr.sh create \"<título>\" \"<cuerpo>\"" >&2
+      echo "Error: title is required" >&2
+      echo "Usage: pr.sh create \"<title>\" \"<body>\"" >&2
       exit 1
     fi
     FLAGS=""
@@ -38,21 +38,21 @@ case "${1:-}" in
       --title "$TITLE" \
       --body "$BODY" \
       $FLAGS)
-    echo "✓ PR creado: $URL"
+    echo "✓ PR created: $URL"
     ;;
 
   status)
-    gh pr view --head "$BRANCH" 2>/dev/null || echo "(sin PR abierto para $BRANCH)"
+    gh pr view --head "$BRANCH" 2>/dev/null || echo "(no open PR for $BRANCH)"
     ;;
 
   commits)
-    echo "Commits en $BRANCH no presentes en $BASE:"
+    echo "Commits in $BRANCH not present in $BASE:"
     git log "origin/$BASE".."$BRANCH" --oneline 2>/dev/null || \
       git log "$(git merge-base HEAD "origin/$BASE")..HEAD" --oneline
     ;;
 
   *)
-    echo "Uso: pr.sh <push|create|draft|status|commits>" >&2
+    echo "Usage: pr.sh <push|create|draft|status|commits>" >&2
     exit 1
     ;;
 esac

@@ -1,32 +1,32 @@
-# Graph Report - ministry-assistanto  (2026-09-07)
+# Graph Report - ministry-assistanto  (2026-09-08)
 
 ## Corpus Check
-- 110 files · ~40,523 words
+- 144 files · ~48,449 words
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 711 nodes · 1040 edges · 67 communities (47 shown, 17 thin omitted)
+- 850 nodes · 1425 edges · 68 communities (49 shown, 15 thin omitted)
 - Extraction: 98% EXTRACTED · 2% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `7acffc74`
+- Built from commit: `1f9ecfcf`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
 ## Community Hubs (Navigation)
 - CourseVisit
-- OptionPillGroupComponent
+- production
 - options
 - package.json
 - dependencies
 - devDependencies
 - DurationWheelPickerComponent
-- @angular/core
+- goals.module.ts
 - CLEAN Architecture Pattern
-- app-module.ts
+- development
 - TimeEntryListComponent
-- Dispatcher — Auto-Dispatch de Agentes
+- Dispatcher — Agent Auto-Dispatch
 - check-pr.js
 - ISyncService
 - Time Entry List View
@@ -36,6 +36,7 @@
 - Time Entry Form Template
 - .github/scripts/verify-pr.js
 - App Router Outlet
+- scripts
 - graphify reference: extra exports and benchmark
 - graphify reference: query, path, explain
 - graphify reference: add a URL and watch a folder
@@ -46,7 +47,7 @@
 - CLAUDE.md
 - .claude/CLAUDE.md
 - extraction-spec.md
-- TestingAgent
+- Coverage mandate
 - SignalsAgent
 - ArchitectureGuardian
 - DomainAgent
@@ -54,43 +55,42 @@
 - UIAgent
 - AGENTS — Ministry Assistanto
 - DataAgent
-- BackupReminderService
+- GoalConfigComponent
 - UXAgent
-- Flujo completo
-- Skill: issues
+- Full flow
+- Session flow
 - issues.sh
-- Injectable
+- prettier
 - schematics
 - pr.sh
-- InMemoryRepository
-- update-notification.service.spec.ts
-- Pipe
-- time-entry.module.ts
-- Component
-- development
-- scripts
-- App
-- ngsw-config.json
-- prettier
-- NgModule
-- production
+- BackupReminderService
+- TimeEntryFormComponent
+- app-module.ts
+- Optional
+- @angular/core
+- update-notification.service.ts
 - angular.json
+- @angular/router
 - architect
+- ngsw-config.json
+- ministry-assistanto
+- NgModule
+- Component
 - TimeEntryCalendarComponent
 - check-coverage.sh
-- ministry-assistanto
+- DurationWheelPickerStub
 
 ## God Nodes (most connected - your core abstractions)
-1. `TimeEntryFacade` - 25 edges
-2. `CourseVisit` - 24 edges
-3. `DexieTimeEntryRepository` - 22 edges
-4. `TimeEntry` - 22 edges
-5. `TimeEntryListComponent` - 20 edges
-6. `ITimeEntryRepository` - 19 edges
-7. `DurationWheelPickerComponent` - 17 edges
-8. `@angular/core` - 17 edges
-9. `TimeEntryVM` - 16 edges
-10. `TimeEntryEditDialogComponent` - 15 edges
+1. `@angular/core` - 50 edges
+2. `CourseVisit` - 32 edges
+3. `TimeEntry` - 30 edges
+4. `TimeEntryFacade` - 27 edges
+5. `@ngx-translate/core` - 26 edges
+6. `DexieTimeEntryRepository` - 22 edges
+7. `ITimeEntryRepository` - 20 edges
+8. `TimeEntryListComponent` - 20 edges
+9. `TimeEntryVM` - 17 edges
+10. `DurationWheelPickerComponent` - 17 edges
 
 ## Surprising Connections (you probably didn't know these)
 - `MinistryAssistanto App` --conceptually_related_to--> `CLEAN Architecture Pattern`  [INFERRED]
@@ -101,8 +101,8 @@
   src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html → .github/copilot-instructions.md
 - `i18n Runtime Implementation PR` --semantically_similar_to--> `i18n PR Changes Summary`  [INFERRED] [semantically similar]
   .github/PULL_REQUEST_TEMPLATE_PR_BODY.md → .github/pr-comments/i18n-summary.md
-- `PR Checklist` --references--> `CLEAN Architecture Pattern`  [EXTRACTED]
-  .github/PULL_REQUEST_TEMPLATE.md → .github/copilot-instructions.md
+- `Layout` --references--> `BackupReminderService`  [EXTRACTED]
+  src/app/time-entry/presentation/components/layout/layout.ts → src/app/core/services/backup-reminder.service.ts
 
 ## Import Cycles
 - None detected.
@@ -111,15 +111,15 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (67 total, 17 thin omitted)
+## Communities (68 total, 15 thin omitted)
 
 ### Community 0 - "CourseVisit"
-Cohesion: 0.06
-Nodes (20): Optional, DexieTimeEntryRepository, TimeEntryDB, Injectable, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+12 more)
+Cohesion: 0.05
+Nodes (22): DexieTimeEntryRepository, TimeEntryDB, Injectable, Optional, ITimeEntryRepository, CourseVisit, MonthlyCourseCount, Person (+14 more)
 
-### Community 1 - "OptionPillGroupComponent"
+### Community 1 - "production"
 Cohesion: 0.22
-Nodes (7): OptionPillGroupComponent, PillOption, TEST_OPTIONS, TranslateStub, Pipe, Component, Output
+Nodes (9): build, builder, configurations, defaultConfiguration, production, budgets, buildTarget, outputHashing (+1 more)
 
 ### Community 2 - "options"
 Cohesion: 0.24
@@ -138,24 +138,24 @@ Cohesion: 0.15
 Nodes (13): devDependencies, @angular/build, @angular/cli, angular-cli-ghpages, @angular/compiler-cli, jasmine-core, karma, karma-chrome-launcher (+5 more)
 
 ### Community 6 - "DurationWheelPickerComponent"
-Cohesion: 0.17
-Nodes (4): @angular/common, DurationWheelPickerComponent, Component, ViewChild
+Cohesion: 0.16
+Nodes (5): @angular/forms, rxjs, DurationWheelPickerComponent, Component, ViewChild
 
-### Community 7 - "@angular/core"
-Cohesion: 0.07
-Nodes (18): Input, Output, @angular/core, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, FileUtilService (+10 more)
+### Community 7 - "goals.module.ts"
+Cohesion: 0.05
+Nodes (46): Optional, @angular/common, DexieGoalRepository, Injectable, ActiveGoalRecord, GoalsDB, buildServiceYearFromYear(), computeAuxiliaryGoalProgress() (+38 more)
 
 ### Community 8 - "CLEAN Architecture Pattern"
 Cohesion: 0.16
 Nodes (14): CLEAN Architecture Pattern, Data Layer, Domain Layer, Facade Layer, Internationalization Convention, ngx-translate i18n Library, Presentation Layer, i18n PR Changes Summary (+6 more)
 
-### Community 9 - "app-module.ts"
+### Community 9 - "development"
 Cohesion: 0.22
-Nodes (7): @angular/platform-browser, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
+Nodes (9): serve, development, buildTarget, extractLicenses, optimization, sourceMap, builder, configurations (+1 more)
 
-### Community 11 - "Dispatcher — Auto-Dispatch de Agentes"
-Cohesion: 0.20
-Nodes (9): ArchitectureGuardian — modo silencioso permanente, Dispatcher — Auto-Dispatch de Agentes, Override manual, Paso 1 — Analizar la tarea, Paso 2 — Aplicar la matriz de routing, Paso 3 — Leer los archivos de agentes activos, Paso 4 — Anunciar y responder, Paso 5 — Orden de ejecución para tareas multi-capa (+1 more)
+### Community 11 - "Dispatcher — Agent Auto-Dispatch"
+Cohesion: 0.18
+Nodes (10): ArchitectureGuardian — permanent silent mode, Dispatcher — Agent Auto-Dispatch, Full-feature rule, Manual override, Step 0 — Orient with graphify, Step 1 — Analyze the task, Step 2 — Apply the routing matrix, Step 3 — Read the active agents' files (+2 more)
 
 ### Community 12 - "check-pr.js"
 Cohesion: 0.25
@@ -181,6 +181,10 @@ Nodes (4): fetch, fs, main(), path
 Cohesion: 0.67
 Nodes (3): Angular Signals, Time Entry Edit/Create Dialog, Time Entry Form Template
 
+### Community 21 - "scripts"
+Cohesion: 0.22
+Nodes (9): scripts, build, build:gh, deploy, i18n:check, ng, start, test (+1 more)
+
 ### Community 22 - "graphify reference: extra exports and benchmark"
 Cohesion: 0.22
 Nodes (8): graphify reference: extra exports and benchmark, Step 6b - Wiki (only if --wiki flag), Step 7 - Neo4j export (only if --neo4j or --neo4j-push flag), Step 7a - FalkorDB export (only if --falkordb or --falkordb-push flag), Step 7b - SVG export (only if --svg flag), Step 7c - GraphML export (only if --graphml flag), Step 7d - MCP server (only if --mcp flag), Step 8 - Token reduction benchmark (only if total_words > 5000)
@@ -205,120 +209,124 @@ Nodes (3): For --cluster-only, For --update (incremental re-extraction), graphif
 Cohesion: 0.33
 Nodes (5): Arquitecture Rules (Clean Architecture), Contextual Agents (Auto-Dispatch), graphify, Knowledge Graph Integration, Layer Dependency Rules:
 
-### Community 32 - "TestingAgent"
-Cohesion: 0.13
-Nodes (14): Archivos de spec existentes, Convenciones, Convención de mocks para este proyecto, Data — tests de integración con Dexie real (fake-indexeddb), Domain — tests puros, sin Angular TestBed, Estrategia por capa, Facade — mockear ITimeEntryRepository, Flujo de enforcement (+6 more)
+### Community 32 - "Coverage mandate"
+Cohesion: 0.12
+Nodes (15): Conventions, Coverage mandate, Data — integration tests with real Dexie (unique DB name per test), Domain — pure tests, no Angular TestBed, Enforcement flow, Existing spec files, Facade — mock ITimeEntryRepository, Mock conventions for this project (+7 more)
 
 ### Community 33 - "SignalsAgent"
 Cohesion: 0.20
-Nodes (9): Cuándo adoptar Signals, Estado actual del proyecto, Orden recomendado de migración, Patrones para este proyecto, Patrón: servicio de preferencias con Signals + localStorage, Restricciones, Señales de alerta, Signals vs RxJS — regla de decisión (+1 more)
+Nodes (9): Current project state, Pattern: preferences service with Signals + localStorage, Patterns for this project, Recommended migration order, Restrictions, Signals vs RxJS — decision rule, SignalsAgent, Warning signs (+1 more)
 
 ### Community 34 - "ArchitectureGuardian"
 Cohesion: 0.25
-Nodes (7): ArchitectureGuardian, Checklist de revisión, Cómo detectar violaciones, Las 4 capas de este proyecto, Reglas de intervención, Restricción de scope DI: root vs module-scoped, Violaciones conocidas (pendientes de corregir)
+Nodes (7): ArchitectureGuardian, DI scope restriction: root vs module-scoped, How to detect violations, Intervention rules, Known violations (pending correction), Review checklist, The 4 layers of this project
 
 ### Community 35 - "DomainAgent"
 Cohesion: 0.29
-Nodes (6): Alcance, Convenciones de este proyecto, DomainAgent, Responsabilidades, Restricciones absolutas, Señales de alerta
+Nodes (6): Absolute restrictions, DomainAgent, Project conventions, Responsibilities, Scope, Warning signals
 
 ### Community 36 - "FacadeAgent"
 Cohesion: 0.29
-Nodes (7): Alcance, Camino hacia Signals, Estado actual y deuda técnica, FacadeAgent, Responsabilidades, Restricciones absolutas, Señales de alerta
+Nodes (7): Absolute restrictions, Current state and technical debt, FacadeAgent, Path toward Signals, Responsibilities, Scope, Warning signals
 
 ### Community 37 - "UIAgent"
 Cohesion: 0.18
-Nodes (11): 1. `| date:` no responde al idioma en runtime, 2. Flex items con texto largo requieren `min-width: 0`, 3. Paneles flotantes condicionales deben ser `position: absolute` + restringidos al viewport, Alcance, Camino hacia Signals, Convenciones de este proyecto, Responsabilidades, Restricciones absolutas (+3 more)
+Nodes (11): 1. `| date:` does not respond to language at runtime, 2. Flex items with long text require `min-width: 0`, 3. Conditional floating panels must be `position: absolute` + constrained to viewport, Absolute restrictions, Common traps (learned from production bugs), Path toward Signals, Project conventions, Responsibilities (+3 more)
 
 ### Community 38 - "AGENTS — Ministry Assistanto"
-Cohesion: 0.33
-Nodes (6): AGENTS — Ministry Assistanto, Auto-dispatch (modo por defecto), Modo de activación, Override manual (cuando quieres forzar un agente específico), Reglas del sistema, Índice de agentes
+Cohesion: 0.29
+Nodes (7): Activation Mode, Agent Index, AGENTS — Ministry Assistanto, Auto-dispatch (default mode), Knowledge Graph (graphify), Manual Override (when you want to force a specific agent), System Rules
 
 ### Community 39 - "DataAgent"
 Cohesion: 0.29
-Nodes (6): Alcance, DataAgent, Patrones Dexie de este proyecto, Responsabilidades, Restricciones absolutas, Señales de alerta
-
-### Community 41 - "BackupReminderService"
-Cohesion: 0.05
-Nodes (19): Component, Pipe, BackupReminderFrequency, BackupReminderService, DAYS, Injectable, MODE_CYCLE, ThemeMode (+11 more)
+Nodes (6): Absolute restrictions, DataAgent, Dexie patterns in this project, Responsibilities, Scope, Warning signals
 
 ### Community 42 - "UXAgent"
 Cohesion: 0.15
-Nodes (12): Checklist de revisión UX (aplicar antes de aprobar cambios de UI), Convención de changelog (`public/assets/changelog.json`), Formato, Integración con UIAgent, Interacción iOS-first, Jerarquía visual y legibilidad, Liquid Glass (Apple visionOS / iOS 26+), Principios rectores (+4 more)
+Nodes (12): Change types, Changelog convention (`public/assets/changelog.json`), Format, Guiding principles, Integration with UIAgent, iOS-first interaction, Liquid Glass (Apple visionOS / iOS 26+), Responsibilities (+4 more)
 
-### Community 43 - "Flujo completo"
+### Community 43 - "Full flow"
 Cohesion: 0.18
-Nodes (10): 1. Verificar estado, 2. Push, 3. Construir título y cuerpo del PR, 4. Crear PR, 5. Mostrar URL, Cuándo activar este skill, Flujo completo, Reglas (+2 more)
+Nodes (10): 1. Verify state, 2. Push, 3. Build PR title and body, 4. Create PR, 5. Show URL, Full flow, Pre-flight checks, Rules (+2 more)
 
-### Community 44 - "Skill: issues"
-Cohesion: 0.15
-Nodes (12): 1. Inicio — listar y elegir, 2. Arrancar un issue, 3. Implementar, 4. Cerrar, Crear un issue nuevo, Cuándo activar este skill, Etiquetas disponibles, Flujo de sesión (+4 more)
+### Community 44 - "Session flow"
+Cohesion: 0.13
+Nodes (14): 1. Start — list and choose, 2. Start an issue, 3. Implement and iterate, 4. Verify acceptance criteria, 5. Document in the issue, 6. Confirm with the user and close, Available labels, Body format (bug) (+6 more)
+
+### Community 46 - "prettier"
+Cohesion: 0.50
+Nodes (4): prettier, overrides, printWidth, singleQuote
 
 ### Community 47 - "schematics"
 Cohesion: 0.25
 Nodes (8): schematics, standalone, style, standalone, standalone, @schematics/angular:component, @schematics/angular:directive, @schematics/angular:pipe
 
-### Community 53 - "time-entry.module.ts"
-Cohesion: 0.06
-Nodes (31): @angular/forms, @ngx-translate/core, I18nDatePipe, TimeEntryType, TimeEntryFacade, Inject, Injectable, CalendarDay (+23 more)
+### Community 49 - "BackupReminderService"
+Cohesion: 0.05
+Nodes (27): BackupReminderFrequency, BackupReminderService, DAYS, Injectable, ChangelogService, Injectable, MODE_CYCLE, ThemeMode (+19 more)
 
-### Community 55 - "development"
-Cohesion: 0.22
-Nodes (9): serve, development, buildTarget, extractLicenses, optimization, sourceMap, builder, configurations (+1 more)
+### Community 50 - "TimeEntryFormComponent"
+Cohesion: 0.24
+Nodes (4): TimeEntryFormComponent, Component, Input, Output
 
-### Community 56 - "scripts"
-Cohesion: 0.22
-Nodes (9): scripts, build, build:gh, deploy, i18n:check, ng, start, test (+1 more)
+### Community 51 - "app-module.ts"
+Cohesion: 0.23
+Nodes (7): @angular/platform-browser, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
 
-### Community 57 - "App"
+### Community 53 - "@angular/core"
+Cohesion: 0.05
+Nodes (38): @angular/core, @ngx-translate/core, I18nDatePipe, Pipe, FileUtilService, Injectable, SharedModule, NgModule (+30 more)
+
+### Community 54 - "update-notification.service.ts"
+Cohesion: 0.08
+Nodes (15): @angular/service-worker, ChangelogEntry, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, Layout, Component (+7 more)
+
+### Community 55 - "angular.json"
+Cohesion: 0.29
+Nodes (6): cli, analytics, newProjectRoot, projects, $schema, version
+
+### Community 56 - "@angular/router"
 Cohesion: 0.40
 Nodes (3): @angular/router, App, Component
+
+### Community 57 - "architect"
+Cohesion: 0.40
+Nodes (5): extract-i18n, test, builder, architect, builder
 
 ### Community 58 - "ngsw-config.json"
 Cohesion: 0.50
 Nodes (3): assetGroups, index, $schema
 
-### Community 59 - "prettier"
-Cohesion: 0.50
-Nodes (4): prettier, overrides, printWidth, singleQuote
-
-### Community 61 - "production"
-Cohesion: 0.22
-Nodes (9): build, builder, configurations, defaultConfiguration, production, budgets, buildTarget, outputHashing (+1 more)
-
-### Community 62 - "angular.json"
-Cohesion: 0.29
-Nodes (6): cli, analytics, newProjectRoot, projects, $schema, version
-
-### Community 63 - "architect"
+### Community 59 - "ministry-assistanto"
 Cohesion: 0.40
-Nodes (5): extract-i18n, test, builder, architect, builder
+Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
 
 ### Community 64 - "TimeEntryCalendarComponent"
 Cohesion: 0.19
 Nodes (3): TimeEntryCalendarComponent, Component, toDateKey()
 
-### Community 68 - "ministry-assistanto"
-Cohesion: 0.40
-Nodes (5): prefix, projectType, root, sourceRoot, ministry-assistanto
+### Community 74 - "DurationWheelPickerStub"
+Cohesion: 0.22
+Nodes (3): DurationWheelPickerStub, MatSelectStub, Component
 
 ## Knowledge Gaps
-- **261 isolated node(s):** `today`, `Person`, `SyncEvent`, `CalendarDay`, `ChangelogEntry` (+256 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 412 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **269 isolated node(s):** `routes`, `routes`, `Person`, `SyncEvent`, `CalendarDay` (+264 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 459 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **15 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@angular/core` connect `@angular/core` to `CourseVisit`, `OptionPillGroupComponent`, `package.json`, `app-module.ts`, `BackupReminderService`, `time-entry.module.ts`?**
-  _High betweenness centrality (0.055) - this node is a cross-community bridge._
-- **Why does `@ngx-translate/core` connect `time-entry.module.ts` to `CourseVisit`, `package.json`, `@angular/core`, `app-module.ts`, `BackupReminderService`, `App`?**
-  _High betweenness centrality (0.035) - this node is a cross-community bridge._
-- **Why does `TimeEntryListComponent` connect `TimeEntryListComponent` to `CourseVisit`, `time-entry.module.ts`?**
-  _High betweenness centrality (0.024) - this node is a cross-community bridge._
-- **What connects `today`, `Person`, `SyncEvent` to the rest of the system?**
-  _261 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Why does `@angular/core` connect `@angular/core` to `CourseVisit`, `package.json`, `DurationWheelPickerComponent`, `goals.module.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`, `@angular/router`?**
+  _High betweenness centrality (0.133) - this node is a cross-community bridge._
+- **Why does `@ngx-translate/core` connect `@angular/core` to `CourseVisit`, `package.json`, `goals.module.ts`, `BackupReminderService`, `app-module.ts`, `update-notification.service.ts`, `@angular/router`?**
+  _High betweenness centrality (0.037) - this node is a cross-community bridge._
+- **Why does `TimeEntryFacade` connect `@angular/core` to `CourseVisit`, `TimeEntryListComponent`, `TimeEntryCalendarComponent`?**
+  _High betweenness centrality (0.022) - this node is a cross-community bridge._
+- **What connects `routes`, `routes`, `Person` to the rest of the system?**
+  _269 weakly-connected nodes found - possible documentation gaps or missing edges._
 - **Should `CourseVisit` be split into smaller, more focused modules?**
-  _Cohesion score 0.06317907444668008 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.05362517099863201 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
   _Cohesion score 0.09090909090909091 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**

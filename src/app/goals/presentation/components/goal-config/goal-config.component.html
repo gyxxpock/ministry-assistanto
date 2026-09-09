@@ -1,0 +1,168 @@
+<h2 mat-dialog-title>{{ 'goals.config.title' | translate }}</h2>
+
+<mat-dialog-content>
+  <form [formGroup]="configForm">
+    <!-- Goal Type Selection -->
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>{{ 'goals.config.type' | translate }}</mat-label>
+      <mat-select
+        formControlName="type"
+        (selectionChange)="onTypeChange($event.value)"
+      >
+        <mat-option value="regular">
+          {{ 'goals.types.regular' | translate }}
+        </mat-option>
+        <mat-option value="auxiliary">
+          {{ 'goals.types.auxiliary' | translate }}
+        </mat-option>
+      </mat-select>
+      <mat-error *ngIf="configForm.get('type')?.hasError('required')">
+        {{ 'common.required' | translate }}
+      </mat-error>
+    </mat-form-field>
+
+    <!-- Regular Goal Section -->
+    <div *ngIf="!isAuxiliaryMode" class="section-regular">
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'goals.config.service-year' | translate }}</mat-label>
+        <mat-select formControlName="serviceYear">
+          <mat-option
+            *ngFor="let year of availableServiceYears()"
+            [value]="year"
+          >
+            {{ year }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="configForm.get('serviceYear')?.hasError('required')">
+          {{ 'common.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" class="full-width">
+        <mat-label>{{ 'goals.config.start-month' | translate }}</mat-label>
+        <mat-select formControlName="startMonth">
+          <mat-option
+            *ngFor="let m of months"
+            [value]="m.value"
+          >
+            {{ m.label | translate }}
+          </mat-option>
+        </mat-select>
+        <mat-hint>{{ 'goals.config.start-month-hint' | translate }}</mat-hint>
+        <mat-error *ngIf="configForm.get('startMonth')?.hasError('required')">
+          {{ 'common.required' | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <div class="info-box">
+        <mat-icon>info</mat-icon>
+        <span>{{ 'goals.config.regular-info' | translate }}</span>
+      </div>
+    </div>
+
+    <!-- Auxiliary Goal Section -->
+    <div *ngIf="isAuxiliaryMode" class="section-auxiliary">
+      <!-- Monthly Target Selection (Radio Buttons) -->
+      <div class="control-group">
+        <label class="control-label">
+          {{ 'goals.config.monthly-target' | translate }}
+        </label>
+        <mat-radio-group formControlName="monthlyTarget" class="radio-group">
+          <mat-radio-button [value]="15">15h</mat-radio-button>
+          <mat-radio-button [value]="30">30h</mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <!-- Permanent Toggle -->
+      <div class="toggle-group">
+        <span>{{ 'goals.config.period' | translate }}</span>
+        <mat-slide-toggle
+          formControlName="permanent"
+          (change)="onPermanentToggle($event.checked)"
+        >
+          <span class="toggle-label">
+            {{
+              configForm.get('permanent')?.value
+                ? ('goals.config.permanent' | translate)
+                : ('goals.config.date-range' | translate)
+            }}
+          </span>
+        </mat-slide-toggle>
+      </div>
+
+      <!-- Month Range (Conditional) -->
+      <div *ngIf="showMonthRange" class="month-range">
+        <mat-form-field appearance="outline" class="month-field">
+          <mat-label>{{ 'goals.config.start-month' | translate }}</mat-label>
+          <mat-select formControlName="startMonth">
+            <mat-option
+              *ngFor="let m of months"
+              [value]="m.value"
+            >
+              {{ m.label | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="configForm.get('startMonth')?.hasError('required')"
+          >
+            {{ 'common.required' | translate }}
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="month-field">
+          <mat-label>{{ 'goals.config.end-month' | translate }}</mat-label>
+          <mat-select formControlName="endMonth">
+            <mat-option
+              *ngFor="let m of months"
+              [value]="m.value"
+            >
+              {{ m.label | translate }}
+            </mat-option>
+          </mat-select>
+          <mat-error
+            *ngIf="configForm.get('endMonth')?.hasError('required')"
+          >
+            {{ 'common.required' | translate }}
+          </mat-error>
+        </mat-form-field>
+      </div>
+
+      <!-- Info Box for Permanent Goals -->
+      <div
+        *ngIf="configForm.get('permanent')?.value"
+        class="info-box"
+      >
+        <mat-icon>info</mat-icon>
+        <span>{{ 'goals.config.auxiliary-permanent-info' | translate }}</span>
+      </div>
+
+      <!-- Form-level errors (month range validation) -->
+      <div
+        *ngIf="
+          configForm.errors?.['monthRangeRequired'] &&
+          configForm.touched &&
+          showMonthRange
+        "
+        class="form-error"
+      >
+        <mat-error>
+          {{ 'goals.config.errors.month-range-required' | translate }}
+        </mat-error>
+      </div>
+    </div>
+  </form>
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="onCancel()">
+    {{ 'common.cancel' | translate }}
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    [disabled]="configForm.invalid"
+    (click)="onSubmit()"
+  >
+    {{ 'common.confirm' | translate }}
+  </button>
+</mat-dialog-actions>

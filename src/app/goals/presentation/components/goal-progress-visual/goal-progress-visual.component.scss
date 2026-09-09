@@ -1,0 +1,158 @@
+@use 'styles/tokens' as t;
+
+.progress-container {
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-6;
+  padding: t.$space-6;
+  align-items: center;
+}
+
+.progress-circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .circular-progress {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+
+    .progress-arc {
+      transition: stroke-dasharray 300ms ease-out, stroke 300ms ease-out;
+      stroke-linecap: round;
+    }
+  }
+
+  .progress-text {
+    position: absolute;
+    font-size: 2rem;
+    font-weight: 600;
+    text-align: center;
+    color: var(--text-primary, #1F2937);
+  }
+}
+
+.progress-metrics {
+  width: 100%;
+  max-width: 400px;
+  backdrop-filter: blur(12px);
+  background: color-mix(in srgb, rgba(255, 255, 255) 80%, transparent);
+  border: 1px solid color-mix(in srgb, rgba(0, 0, 0) 10%, transparent);
+  border-radius: 12px;
+
+  mat-card-content {
+    padding: t.$space-4;
+  }
+
+  .metric-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: t.$space-3 0;
+    min-height: 32px;
+
+    &.projected {
+      font-weight: 500;
+      padding-top: t.$space-4;
+    }
+  }
+
+  .metric-label {
+    font-size: 0.875rem;
+    color: var(--mat-sys-on-surface-variant);
+    flex: 1;
+    min-width: 0;
+  }
+
+  .metric-value {
+    font-weight: 500;
+    font-size: 1rem;
+    color: var(--text-primary, #1F2937);
+    text-align: right;
+    flex-shrink: 0;
+
+    &.text-positive {
+      color: rgb(34, 197, 94);
+    }
+
+    &.text-negative {
+      color: rgb(239, 68, 68);
+    }
+
+    &.text-behind {
+      color: rgb(249, 115, 22);
+    }
+  }
+
+  mat-divider {
+    margin: t.$space-2 0;
+  }
+
+  .monthly-section {
+    padding: t.$space-3 0;
+  }
+
+  .section-title {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--mat-sys-on-surface-variant);
+    margin-bottom: t.$space-3;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .monthly-progress-bar {
+    display: flex;
+    align-items: center;
+    gap: t.$space-3;
+    margin-bottom: t.$space-4;
+
+    .bar-background {
+      flex: 1;
+      height: 8px;
+      background: color-mix(in srgb, rgba(0, 0, 0) 10%, transparent);
+      border-radius: 4px;
+      overflow: hidden;
+
+      .bar-fill {
+        height: 100%;
+        border-radius: 4px;
+        transition: width 300ms ease-out;
+
+        &.bar-in-progress {
+          background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+        }
+
+        &.bar-complete {
+          background: linear-gradient(90deg, #22C55E, #16A34A);
+        }
+      }
+    }
+
+    .bar-percentage {
+      font-weight: 600;
+      font-size: 0.875rem;
+      color: var(--text-primary, #1F2937);
+      min-width: 35px;
+      text-align: right;
+    }
+  }
+
+  .monthly-metrics {
+    display: flex;
+    flex-direction: column;
+    gap: t.$space-2;
+  }
+}
+
+.no-goal-message {
+  padding: t.$space-8;
+  text-align: center;
+  color: var(--mat-sys-on-surface-variant);
+  font-size: 0.875rem;
+}

@@ -146,13 +146,20 @@ mat-dialog-content {
   padding-top: t.$space-2 !important;
   min-width: min(400px, 90vw);
   max-height: calc(70vh - env(safe-area-inset-bottom, 0px));
+  // fondo opaco M3 para que los controles no floten sobre el glass translúcido
+  background: var(--mat-sys-surface-container);
 }
 
 mat-dialog-actions {
-  padding: t.$space-4 t.$space-6;
+  padding: t.$space-4 t.$space-6 calc(t.$space-4 + env(safe-area-inset-bottom, 0px));
   border-top: 1px solid var(--glass-border-light);
-  background: var(--glass-bg-light);
-  backdrop-filter: blur(t.$blur-sm);
+  // sin backdrop-filter: ya estamos dentro de un surface con blur(40px)
+  background: var(--mat-sys-surface-container-high);
+}
+
+// CDK overlay por encima del nav flotante ($z-nav: 1000)
+.cdk-overlay-container {
+  z-index: t.$z-dialog;
 }
 
 // Superficie del dialog — glass completo

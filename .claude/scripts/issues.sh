@@ -59,15 +59,15 @@ case "$cmd" in
   start)
     number="${1:?'Usage: issues.sh start <number>'}"
     gh issue comment "$number" --repo "$REPO" \
-      --body "🚧 **En progreso** — Claude Code comenzó a trabajar en este issue."
-    echo "Issue #$number marcado como en progreso"
+      --body "🚧 **In progress** — Claude Code started working on this issue."
+    echo "Issue #$number marked as in progress"
     ;;
 
   close)
     number="${1:?'Usage: issues.sh close <number> <comment>'}"
-    comment="${2:-Implementado y verificado con build exitoso.}"
+    comment="${2:-Implemented and verified with successful build.}"
 
-    # Incluir reporte de cobertura si existe el summary
+    # Include coverage report if summary exists
     COVERAGE_REPORT=""
     if [ -f "coverage/coverage-summary.json" ]; then
       COVERAGE_REPORT=$(.claude/scripts/check-coverage.sh --report-only 2>/dev/null || true)
@@ -83,18 +83,18 @@ $COVERAGE_REPORT"
 
     gh issue comment "$number" --repo "$REPO" --body "$FULL_BODY"
     gh issue close "$number" --repo "$REPO"
-    echo "Issue #$number cerrado"
+    echo "Issue #$number closed"
     ;;
 
   help|*)
     echo "Usage: issues.sh <command> [args]"
     echo ""
-    echo "  list                          Listar issues abiertos"
-    echo "  view   <number>               Ver detalle completo"
-    echo "  create <title> <labels> <body>  Crear issue nuevo"
-    echo "  comment <number> <body>       Añadir comentario"
-    echo "  start   <number>              Marcar como en progreso"
-    echo "  close   <number> <comment>    Cerrar con resumen"
+    echo "  list                          List open issues"
+    echo "  view   <number>               Full issue details"
+    echo "  create <title> <labels> <body>  Create a new issue"
+    echo "  comment <number> <body>       Add a comment"
+    echo "  start   <number>              Mark as in progress"
+    echo "  close   <number> <comment>    Close with summary"
     ;;
 
 esac

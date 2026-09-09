@@ -1,0 +1,136 @@
+// Reusable spacing and sizing
+$spacing-2: 0.5rem;
+$spacing-4: 1rem;
+$spacing-6: 1.5rem;
+$spacing-8: 2rem;
+$spacing-12: 3rem;
+
+// Material dialog content width
+mat-dialog-content {
+  padding: $spacing-6;
+  padding-bottom: $spacing-6 !important;
+  max-width: 600px;
+  background: var(--mat-sys-surface-container);
+}
+
+// Full-width form fields
+.full-width {
+  width: 100%;
+  margin-bottom: $spacing-6;
+}
+
+// Section containers
+.section-regular,
+.section-auxiliary {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-6;
+}
+
+// Control group for radio buttons
+.control-group {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-4;
+  margin-bottom: $spacing-4;
+}
+
+.control-label {
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}
+
+.radio-group {
+  display: flex;
+  gap: $spacing-4;
+
+  mat-radio-button {
+    flex: 1;
+  }
+}
+
+// Permanent toggle group
+.toggle-group {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: $spacing-4;
+  border-radius: 4px;
+  background-color: rgba(63, 81, 181, 0.05);
+  gap: $spacing-4;
+
+  span {
+    font-weight: 500;
+  }
+
+  mat-slide-toggle {
+    margin-bottom: 0; // Avoid Material's default margin
+  }
+}
+
+.toggle-label {
+  margin-left: $spacing-2;
+  font-size: 0.875rem;
+}
+
+// Month range selectors
+.month-range {
+  display: flex;
+  gap: $spacing-4;
+  margin-top: $spacing-6;
+  margin-bottom: $spacing-6;
+}
+
+.month-field {
+  flex: 1;
+}
+
+// Info box styling
+.info-box {
+  display: flex;
+  align-items: flex-start;
+  gap: $spacing-4;
+  padding: $spacing-4;
+  border-left: 4px solid #2196f3;
+  background-color: rgba(33, 150, 243, 0.05);
+  border-radius: 2px;
+
+  mat-icon {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: #2196f3;
+  }
+
+  span {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    flex: 1;
+    min-width: 0;
+    overflow-wrap: break-word;
+  }
+}
+
+// Form-level error display
+.form-error {
+  margin-top: $spacing-4;
+  padding: $spacing-4;
+  background-color: #ffebee;
+  border-left: 4px solid #f44336;
+  border-radius: 2px;
+
+  mat-error {
+    display: block;
+    font-size: 0.75rem;
+  }
+}
+
+// Dialog actions styling
+mat-dialog-actions {
+  padding: 0 $spacing-6 calc(#{$spacing-6} + env(safe-area-inset-bottom, 0px));
+  gap: $spacing-4;
+
+  button {
+    min-width: 100px;
+  }
+}
