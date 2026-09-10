@@ -36,9 +36,9 @@
     "semantic_hash": "5a70b3d3763f6628c8083d7b033b98b8"
   },
   "angular.json": {
-    "mtime": 1788890639.3854976,
-    "seen": 1788895934.134811,
-    "ast_hash": "04c93dfaf28db947f3716a8b1877be53",
+    "mtime": 1789046385.8573332,
+    "seen": 1789046699.989294,
+    "ast_hash": "a23ea09307311129a3a1f038691a29e6",
     "semantic_hash": ""
   },
   "package.json": {
@@ -222,9 +222,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts": {
-    "mtime": 1789017232.1002567,
-    "seen": 1789044028.032128,
-    "ast_hash": "cce31185ddbce4a2a40cd64e968054b9",
+    "mtime": 1789046581.39289,
+    "seen": 1789046699.989373,
+    "ast_hash": "c0d69d5f6d27e2588cb05121c95a96cd",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts": {
@@ -714,9 +714,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/settings/settings.component.spec.ts": {
-    "mtime": 1788847146.1631162,
-    "seen": 1788847293.417443,
-    "ast_hash": "a699992f00ab8341fb76534489913292",
+    "mtime": 1789046385.859259,
+    "seen": 1789046699.9893608,
+    "ast_hash": "468d87f418cf1852dff809d9238af215",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/month-paginator/month-paginator.component.spec.ts": {
@@ -750,15 +750,15 @@
     "semantic_hash": ""
   },
   "karma.conf.js": {
-    "mtime": 1788895801.029118,
-    "seen": 1788895934.1348119,
-    "ast_hash": "21ffd56f04bd1f1bbc0148c36936b893",
+    "mtime": 1789046385.8576453,
+    "seen": 1789046699.9892962,
+    "ast_hash": "8b872058a43d4ec22ea40accc9b38a48",
     "semantic_hash": ""
   },
   "src/app/core/i18n/pipes/i18n-date.pipe.spec.ts": {
-    "mtime": 1788843724.3651204,
-    "seen": 1788844344.514303,
-    "ast_hash": "cf3d3738ad9842d26055b4526b217107",
+    "mtime": 1789046385.8579779,
+    "seen": 1789046699.9893079,
+    "ast_hash": "dbc2a8eb1a9dfef34f8b264edeb8b504",
     "semantic_hash": ""
   },
   "src/app/core/services/theme.service.spec.ts": {
@@ -864,9 +864,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/facade/goals.facade.spec.ts": {
-    "mtime": 1789018667.4848876,
-    "seen": 1789044028.0320861,
-    "ast_hash": "50184410d2d661653dff51c001f19719",
+    "mtime": 1789046385.8584254,
+    "seen": 1789046699.989331,
+    "ast_hash": "a3e505049b808e92ddaf287fcaea4e7a",
     "semantic_hash": ""
   },
   "src/app/goals/facade/goals.facade.ts": {
@@ -888,9 +888,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-progress-visual/goal-progress-visual.component.spec.ts": {
-    "mtime": 1789017615.066527,
-    "seen": 1789044028.032091,
-    "ast_hash": "5e109c6bc0ff0bd8790b966a97a3bd5b",
+    "mtime": 1789046385.859023,
+    "seen": 1789046699.989336,
+    "ast_hash": "83d7d5dd4ed0526154ec24579106fbac",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-progress-visual/goal-progress-visual.component.ts": {
@@ -990,9 +990,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-config/goal-config.component.spec.ts": {
-    "mtime": 1789017830.0746102,
-    "seen": 1789044028.032089,
-    "ast_hash": "3d3c05e44cd04ddf305f8a1dbc5c4175",
+    "mtime": 1789046385.8587463,
+    "seen": 1789046699.989334,
+    "ast_hash": "6e44c2a04c4dc7076dde5326cf4f74b1",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/components/goal-status-badge/goal-status-badge.component.spec.ts": {
