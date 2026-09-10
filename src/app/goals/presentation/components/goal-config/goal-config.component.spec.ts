@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { signal } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -7,12 +8,14 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { CommonModule } from '@angular/common';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { GoalConfigComponent } from './goal-config.component';
-import { GoalsFacade } from '../../facade/goals.facade';
+import { GoalsFacade } from '../../../facade/goals.facade';
 import { Goal } from '../../../domain/models';
 
 describe('GoalConfigComponent', () => {
@@ -24,7 +27,13 @@ describe('GoalConfigComponent', () => {
   beforeEach(async () => {
     mockDialogRef = jasmine.createSpyObj('MatDialogRef', ['close']);
     mockFacade = jasmine.createSpyObj('GoalsFacade', [], {
-      currentServiceYear: 2027,
+      currentServiceYear: signal({
+        year: 2027,
+        startMonth: 9,
+        startYear: 2026,
+        endMonth: 8,
+        endYear: 2027,
+      }),
     });
 
     await TestBed.configureTestingModule({
@@ -40,6 +49,8 @@ describe('GoalConfigComponent', () => {
         MatSlideToggleModule,
         MatButtonModule,
         MatInputModule,
+        MatDialogModule,
+        MatIconModule,
       ],
       providers: [
         { provide: MatDialogRef, useValue: mockDialogRef },
@@ -62,7 +73,7 @@ describe('GoalConfigComponent', () => {
   });
 
   it('should update validators when type changes to auxiliary', () => {
-    component.onTypeChange('auxiliary');
+    (component as any).onTypeChange('auxiliary');
 
     expect(component.configForm.get('monthlyTarget')?.validator).toBeTruthy();
   });
@@ -71,6 +82,7 @@ describe('GoalConfigComponent', () => {
     component.configForm.patchValue({
       type: 'regular',
       serviceYear: 2027,
+      startMonth: 9,
     });
 
     expect(component.configForm.valid).toBe(true);
@@ -82,6 +94,10 @@ describe('GoalConfigComponent', () => {
       monthlyTarget: 30,
       permanent: true,
     });
+    // Mirrors the (selectionChange) handler triggered when the user picks
+    // the "auxiliary" radio option — clears the startMonth requirement
+    // inherited from the regular-goal default.
+    (component as any).onTypeChange('auxiliary');
 
     expect(component.configForm.valid).toBe(true);
   });
@@ -93,7 +109,7 @@ describe('GoalConfigComponent', () => {
       permanent: false,
     });
 
-    component.onPermanentToggle(false);
+    (component as any).onPermanentToggle(false);
 
     expect(component.configForm.get('startMonth')?.hasError('required')).toBe(true);
   });
@@ -102,9 +118,10 @@ describe('GoalConfigComponent', () => {
     component.configForm.patchValue({
       type: 'regular',
       serviceYear: 2027,
+      startMonth: 9,
     });
 
-    component.onSubmit();
+    (component as any).onSubmit();
 
     expect(mockDialogRef.close).toHaveBeenCalledWith(
       jasmine.objectContaining({
@@ -120,8 +137,9 @@ describe('GoalConfigComponent', () => {
       monthlyTarget: 30,
       permanent: true,
     });
+    (component as any).onTypeChange('auxiliary');
 
-    component.onSubmit();
+    (component as any).onSubmit();
 
     expect(mockDialogRef.close).toHaveBeenCalledWith(
       jasmine.objectContaining({
@@ -143,7 +161,7 @@ describe('GoalConfigComponent', () => {
       endMonth: 3,
     });
 
-    component.onSubmit();
+    (component as any).onSubmit();
 
     expect(mockDialogRef.close).toHaveBeenCalledWith(
       jasmine.objectContaining({
@@ -157,7 +175,7 @@ describe('GoalConfigComponent', () => {
   });
 
   it('should close dialog without result on cancel', () => {
-    component.onCancel();
+    (component as any).onCancel();
 
     expect(mockDialogRef.close).toHaveBeenCalledWith(undefined);
   });

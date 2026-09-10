@@ -11,8 +11,7 @@ describe('GoalStatusBadgeComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GoalStatusBadgeComponent],
-      imports: [CommonModule, MatIconModule, TranslateModule.forRoot()],
+      imports: [CommonModule, MatIconModule, TranslateModule.forRoot(), GoalStatusBadgeComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GoalStatusBadgeComponent);

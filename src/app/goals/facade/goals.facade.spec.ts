@@ -8,6 +8,58 @@ import {
 import { IGoalRepository } from '../domain/i-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
 import { GoalsFacade } from './goals.facade';
+import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repository';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../../time-entry/domain/models';
+
+/**
+ * In-memory double for ITimeEntryRepository — same pattern as
+ * time-entry-list.component.spec.ts's InMemoryRepository, trimmed to what
+ * GoalsFacade actually consumes (listEntriesByDateRange). `entries` is public
+ * so tests can seed concrete data when they need to assert on computed hours.
+ */
+class InMemoryTimeEntryRepository implements ITimeEntryRepository {
+  entries: TimeEntry[] = [];
+
+  async listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]> {
+    return this.entries.filter(e => {
+      const d = new Date(e.date);
+      return d.getFullYear() === year && d.getMonth() + 1 === month;
+    });
+  }
+  async listEntriesByDateRange(startDate: Date, endDate: Date): Promise<TimeEntry[]> {
+    return this.entries.filter(e => {
+      const d = new Date(e.date);
+      return d >= startDate && d <= endDate;
+    });
+  }
+  async listVisitsByMonth(): Promise<CourseVisit[]> {
+    return [];
+  }
+  async addEntry(entry: TimeEntry): Promise<void> {
+    this.entries.push(entry);
+  }
+  async updateEntry(entry: TimeEntry): Promise<void> {
+    const i = this.entries.findIndex(e => e.id === entry.id);
+    if (i >= 0) this.entries[i] = entry;
+  }
+  async removeEntry(id: string): Promise<void> {
+    this.entries = this.entries.filter(e => e.id !== id);
+  }
+  async addVisit(): Promise<void> {}
+  async updateVisit(): Promise<void> {}
+  async removeVisit(): Promise<void> {}
+  async exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[]; courseCounts: MonthlyCourseCount[] }> {
+    return { entries: this.entries, visits: [], courseCounts: [] };
+  }
+  async importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void> {
+    if (payload.entries) this.entries.push(...payload.entries);
+  }
+  async getCourseCount(): Promise<number> {
+    return 0;
+  }
+  async setCourseCount(): Promise<void> {}
+}
 
 function makeRegularConfig(serviceYear = 2027): RegularGoalConfig {
   return { type: 'regular', serviceYear };
@@ -24,6 +76,7 @@ function makeGoal(config: GoalConfig = makeRegularConfig()): Goal {
 describe('GoalsFacade', () => {
   let facade: GoalsFacade;
   let mockRepo: jasmine.SpyObj<IGoalRepository>;
+  let timeEntryRepo: InMemoryTimeEntryRepository;
 
   beforeEach(() => {
     mockRepo = jasmine.createSpyObj<IGoalRepository>('IGoalRepository', [
@@ -35,10 +88,16 @@ describe('GoalsFacade', () => {
     mockRepo.setActive.and.returnValue(Promise.resolve());
     mockRepo.clearActive.and.returnValue(Promise.resolve());
 
+    // No entries by default → accumulatedHours computed from the repo is 0,
+    // matching the pre-existing expectations below (they set hours manually
+    // via setAccumulatedHours() when they need a non-zero value).
+    timeEntryRepo = new InMemoryTimeEntryRepository();
+
     TestBed.configureTestingModule({
       providers: [
         GoalsFacade,
         { provide: GOAL_REPOSITORY_TOKEN, useValue: mockRepo },
+        { provide: TIME_ENTRY_REPOSITORY, useValue: timeEntryRepo },
       ],
     });
 

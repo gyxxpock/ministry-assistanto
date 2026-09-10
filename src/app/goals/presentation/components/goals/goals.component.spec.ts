@@ -1,9 +1,14 @@
 import { ComponentFixture, TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
-import { signal } from '@angular/core';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { TranslateModule } from '@ngx-translate/core';
+import { signal, WritableSignal } from '@angular/core';
 import { of } from 'rxjs';
 import { GoalsComponent } from './goals.component';
-import { GoalsFacade } from '../../facade/goals.facade';
+import { GoalsFacade } from '../../../facade/goals.facade';
 import { GoalProgressVisualComponent } from '../goal-progress-visual/goal-progress-visual.component';
 import { GoalConfigComponent } from '../goal-config/goal-config.component';
 import { Goal, GoalProgress } from '../../../domain/models';
@@ -14,12 +19,22 @@ describe('GoalsComponent', () => {
   let mockFacade: jasmine.SpyObj<GoalsFacade>;
   let mockDialog: jasmine.SpyObj<MatDialog>;
   let mockDialogRef: jasmine.SpyObj<MatDialogRef<GoalConfigComponent>>;
+  // jasmine.createSpyObj's property setters are no-ops (they don't persist
+  // new values), so tests must mutate these signals via .set() instead of
+  // reassigning `mockFacade.xxx = signal(...)`.
+  let activeGoalSignal: WritableSignal<Goal | null>;
+  let goalProgressSignal: WritableSignal<GoalProgress | null>;
+  let accumulatedHoursSignal: WritableSignal<number>;
 
   beforeEach(async () => {
+    activeGoalSignal = signal<Goal | null>(null);
+    goalProgressSignal = signal<GoalProgress | null>(null);
+    accumulatedHoursSignal = signal(0);
+
     mockFacade = jasmine.createSpyObj('GoalsFacade', ['loadGoal', 'setGoal', 'clearGoal'], {
-      activeGoal: signal(null),
-      goalProgress: signal(null),
-      accumulatedHours: signal(0),
+      activeGoal: activeGoalSignal,
+      goalProgress: goalProgressSignal,
+      accumulatedHours: accumulatedHoursSignal,
     });
 
     mockDialogRef = jasmine.createSpyObj('MatDialogRef', ['afterClosed']);
@@ -29,7 +44,15 @@ describe('GoalsComponent', () => {
     mockDialog.open.and.returnValue(mockDialogRef);
 
     await TestBed.configureTestingModule({
-      declarations: [GoalsComponent, GoalProgressVisualComponent],
+      declarations: [GoalsComponent],
+      imports: [
+        MatToolbarModule,
+        MatButtonModule,
+        MatIconModule,
+        MatTooltipModule,
+        TranslateModule.forRoot(),
+        GoalProgressVisualComponent,
+      ],
       providers: [
         { provide: GoalsFacade, useValue: mockFacade },
         { provide: MatDialog, useValue: mockDialog },
@@ -51,7 +74,7 @@ describe('GoalsComponent', () => {
   }));
 
   it('should display empty state when no active goal', fakeAsync(() => {
-    mockFacade.activeGoal = signal(null);
+    activeGoalSignal.set(null);
     fixture.detectChanges();
     flushMicrotasks();
     const emptyState = fixture.nativeElement.querySelector('.empty-state');
@@ -64,19 +87,22 @@ describe('GoalsComponent', () => {
       config: { type: 'regular', serviceYear: 2027 },
       active: true,
     };
-    mockFacade.activeGoal = signal(mockGoal);
-    mockFacade.goalProgress = signal({
+    activeGoalSignal.set(mockGoal);
+    goalProgressSignal.set({
       accumulatedHours: 100,
       projectedHours: 450,
       targetHours: 600,
       status: 'on-track',
       monthsElapsed: 3,
+      monthlyAccumulated: 10,
+      monthlyTarget: 50,
+      monthlyProgress: 20,
     });
 
     fixture.detectChanges();
     flushMicrotasks();
 
-    const progressContainer = fixture.nativeElement.querySelector('.progress-container');
+    const progressContainer = fixture.nativeElement.querySelector('app-goal-progress-visual');
     expect(progressContainer).toBeTruthy();
   }));
 
@@ -114,12 +140,12 @@ describe('GoalsComponent', () => {
       config: { type: 'regular', serviceYear: 2027 },
       active: true,
     };
-    mockFacade.activeGoal = signal(mockGoal);
+    activeGoalSignal.set(mockGoal);
 
     fixture.detectChanges();
     flushMicrotasks();
 
-    const clearButton = fixture.nativeElement.querySelector('button[color="warn"]');
+    const clearButton = fixture.nativeElement.querySelector('.clear-button');
     expect(clearButton?.textContent).toContain('goals.actions.clear');
   }));
 

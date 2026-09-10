@@ -3,6 +3,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatDividerModule } from '@angular/material/divider';
 import { CommonModule } from '@angular/common';
+import { TranslateModule } from '@ngx-translate/core';
 
 import { GoalProgressVisualComponent } from './goal-progress-visual.component';
 import { GoalStatusBadgeComponent } from '../goal-status-badge/goal-status-badge.component';
@@ -14,8 +15,15 @@ describe('GoalProgressVisualComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [GoalProgressVisualComponent, GoalStatusBadgeComponent],
-      imports: [CommonModule, MatCardModule, MatIconModule, MatDividerModule],
+      imports: [
+        CommonModule,
+        MatCardModule,
+        MatIconModule,
+        MatDividerModule,
+        TranslateModule.forRoot(),
+        GoalProgressVisualComponent,
+        GoalStatusBadgeComponent,
+      ],
     }).compileComponents();
 
     fixture = TestBed.createComponent(GoalProgressVisualComponent);
@@ -33,6 +41,9 @@ describe('GoalProgressVisualComponent', () => {
       targetHours: 600,
       status: 'on-track',
       monthsElapsed: 3,
+      monthlyAccumulated: 15,
+      monthlyTarget: 50,
+      monthlyProgress: 30,
     };
 
     fixture.detectChanges();
@@ -48,6 +59,9 @@ describe('GoalProgressVisualComponent', () => {
       targetHours: 600,
       status: 'on-track',
       monthsElapsed: 3,
+      monthlyAccumulated: 15,
+      monthlyTarget: 50,
+      monthlyProgress: 30,
     };
     component.goalConfig = { type: 'regular', serviceYear: 2027 };
 
@@ -65,6 +79,9 @@ describe('GoalProgressVisualComponent', () => {
       targetHours: 600,
       status: 'on-track',
       monthsElapsed: 9,
+      monthlyAccumulated: 45,
+      monthlyTarget: 50,
+      monthlyProgress: 90,
     };
 
     fixture.detectChanges();

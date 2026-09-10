@@ -21,6 +21,12 @@ class InMemoryRepository implements ITimeEntryRepository {
       return d.getFullYear() === year && d.getMonth() + 1 === month;
     });
   }
+  async listEntriesByDateRange(startDate: Date, endDate: Date): Promise<TimeEntry[]> {
+    return this.entries.filter(e => {
+      const d = new Date(e.date);
+      return d >= startDate && d <= endDate;
+    });
+  }
   async listVisitsByMonth(year: number, month: number): Promise<CourseVisit[]> {
     return this.visits.filter(v => {
       const d = new Date(v.date);
