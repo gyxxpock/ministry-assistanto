@@ -624,9 +624,9 @@
     "semantic_hash": ""
   },
   "public/assets/changelog.json": {
-    "mtime": 1789057711.7150457,
-    "seen": 1789058261.8284109,
-    "ast_hash": "c3bbb6a03c1da3f4b4eedd828ec78628",
+    "mtime": 1789063869.0577781,
+    "seen": 1789063890.185341,
+    "ast_hash": "bdfbee2dccb80a7f4fc29727b62d4977",
     "semantic_hash": ""
   },
   "src/app/core/services/update-notification.service.ts": {
