@@ -10,6 +10,27 @@
   width: 100%;
 }
 
+// Variante "tabs horizontales con scroll" (p.ej. navegación de meses): las
+// pills conservan su ancho natural en vez de repartirse el 100% del ancho,
+// y el contenedor se desplaza horizontalmente cuando no caben todas.
+.pill-group--scroll {
+  overflow-x: auto;
+  justify-content: flex-start;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  .pill-option {
+    flex: 0 0 auto;
+    min-width: 56px;
+    // Variante text-only (sin icon) usada p.ej. en navegación de meses de
+    // Planning: sin esto el alto renderizado queda por debajo de 44px.
+    min-height: 44px;
+  }
+}
+
 .pill-option {
   flex: 1;
   display: flex;

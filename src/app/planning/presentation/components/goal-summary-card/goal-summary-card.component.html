@@ -1,0 +1,66 @@
+<div class="goal-card">
+  @if (goalConfig && goalProgress) {
+    <div class="goal-card__header">
+      <div class="goal-card__title-group">
+        <span class="goal-card__type">{{ 'goals.types.' + goalConfig.type | translate }}</span>
+        @if (periodStart && periodEnd) {
+          <span class="goal-card__period">
+            {{ periodStart | i18nDate:{ month: 'short', year: 'numeric' } }}
+            &ndash;
+            {{ periodEnd | i18nDate:{ month: 'short', year: 'numeric' } }}
+          </span>
+        }
+      </div>
+      <button
+        mat-icon-button
+        routerLink="/time-entry/goals"
+        [attr.aria-label]="'planning.goal-card.cta-configure' | translate"
+        class="goal-card__configure-btn"
+      >
+        <mat-icon>tune</mat-icon>
+      </button>
+    </div>
+
+    <div class="goal-card__body">
+      <div class="goal-card__donut">
+        <svg viewBox="0 0 100 100" class="donut-svg">
+          <circle
+            class="donut-bg"
+            cx="50" cy="50" [attr.r]="donutRadius"
+            fill="none" stroke-width="8"
+            [style.stroke]="circleBackgroundColor"
+          ></circle>
+          <circle
+            class="donut-arc"
+            cx="50" cy="50" [attr.r]="donutRadius"
+            fill="none" stroke-width="8"
+            [style.stroke]="circleColor"
+            [style.stroke-dasharray]="dashArray"
+            [style.stroke-dashoffset]="dashOffset"
+          ></circle>
+        </svg>
+        <span class="goal-card__donut-percent">{{ percentComplete }}%</span>
+      </div>
+
+      <div class="goal-card__metrics">
+        <div class="goal-card__metric-row">
+          <span class="goal-card__metric-label">{{ 'goals.metrics.accumulated' | translate }}</span>
+          <span class="goal-card__metric-value">{{ goalProgress.accumulatedHours | number:'1.0-1' }} h</span>
+        </div>
+        <div class="goal-card__metric-row">
+          <span class="goal-card__metric-label">{{ 'goals.metrics.projected' | translate }}</span>
+          <span class="goal-card__metric-value">{{ goalProgress.projectedHours | number:'1.0-1' }} h</span>
+        </div>
+      </div>
+    </div>
+  } @else {
+    <div class="goal-card__empty">
+      <mat-icon class="goal-card__empty-icon">flag_circle</mat-icon>
+      <h3 class="goal-card__empty-title">{{ 'planning.goal-card.empty-title' | translate }}</h3>
+      <p class="goal-card__empty-description">{{ 'planning.goal-card.empty-description' | translate }}</p>
+      <button mat-raised-button color="primary" routerLink="/time-entry/goals">
+        {{ 'planning.goal-card.cta-configure' | translate }}
+      </button>
+    </div>
+  }
+</div>

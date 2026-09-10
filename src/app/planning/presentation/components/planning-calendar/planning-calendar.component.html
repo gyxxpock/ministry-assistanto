@@ -1,0 +1,46 @@
+<div class="planning-calendar">
+  <div class="planning-calendar__legend">
+    <span class="legend-item">
+      <span class="legend-dot legend-dot--planned"></span>
+      {{ 'planning.calendar.legend-planned' | translate }}
+    </span>
+    <span class="legend-item">
+      <span class="legend-dot legend-dot--actual"></span>
+      {{ 'planning.calendar.legend-actual' | translate }}
+    </span>
+    <span class="legend-item">
+      <span class="legend-dot legend-dot--override"></span>
+      {{ 'planning.calendar.override-marker' | translate }}
+    </span>
+  </div>
+
+  <div class="planning-calendar__scroll">
+    <div class="planning-calendar__grid">
+      @for (day of weekDays; track day) {
+        <div class="weekday-header">{{ day }}</div>
+      }
+
+      @for (day of calendarGrid; track day.dateKey) {
+        <div
+          class="calendar-day"
+          [class.other-month]="!day.isCurrentMonth"
+          [class.today]="day.isToday"
+          [class.selected]="day.isSelected"
+          [class.is-override]="day.isOverride"
+          (click)="onDayClick(day)"
+        >
+          <span class="day-number">{{ day.date.getDate() }}</span>
+
+          <div class="day-indicators">
+            @if (day.plannedHours > 0) {
+              <span class="day-dot day-dot--planned"></span>
+            }
+            @if (day.actualHours > 0) {
+              <span class="day-dot day-dot--actual"></span>
+            }
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+</div>

@@ -1,0 +1,97 @@
+<div class="bar-chart">
+  <div class="bar-chart__header">
+    <h3 class="bar-chart__title">{{ 'planning.bar-chart.title' | translate }}</h3>
+    <div class="bar-chart__legend">
+      <span class="legend-item">
+        <span class="legend-dot legend-dot--planned"></span>
+        {{ 'planning.bar-chart.planned' | translate }}
+      </span>
+      <span class="legend-item">
+        <span class="legend-dot legend-dot--actual"></span>
+        {{ 'planning.bar-chart.actual' | translate }}
+      </span>
+    </div>
+  </div>
+
+  <div class="bar-chart__scroll">
+    <svg
+      class="bar-chart__svg"
+      [attr.viewBox]="'0 0 ' + chartWidth + ' ' + (barAreaHeight + 40)"
+      [style.min-width.px]="chartWidth"
+      preserveAspectRatio="xMinYMin meet"
+    >
+      @for (col of columns; track col.bar.year + '-' + col.bar.month; let i = $index) {
+        <g class="bar-column" [class.is-selected]="col.isSelected">
+          <!-- Zona de click de toda la columna (target táctil ampliado) -->
+          <rect
+            class="bar-column__hit-area"
+            [attr.x]="columnX(i)"
+            y="0"
+            [attr.width]="colWidth"
+            [attr.height]="barAreaHeight + 40"
+            fill="transparent"
+            (click)="onColumnClick(col.bar)"
+          ></rect>
+
+          @if (col.isSelected) {
+            <rect
+              class="bar-column__selected-outline"
+              [attr.x]="columnX(i) + 1"
+              y="1"
+              [attr.width]="colWidth - 2"
+              [attr.height]="barAreaHeight - 2"
+              rx="4"
+              fill="none"
+            ></rect>
+          }
+
+          @if (col.isCurrentMonth) {
+            <!-- Barra apilada: real (abajo) + restante hasta lo planeado (arriba) -->
+            <rect
+              class="bar-actual"
+              [attr.x]="columnX(i) + 6"
+              [attr.y]="barAreaHeight - col.actualHeight"
+              [attr.width]="colWidth - 12"
+              [attr.height]="col.actualHeight"
+            ></rect>
+            <rect
+              class="bar-remaining"
+              [attr.x]="columnX(i) + 6"
+              [attr.y]="barAreaHeight - col.actualHeight - col.remainingHeight"
+              [attr.width]="colWidth - 12"
+              [attr.height]="col.remainingHeight"
+            ></rect>
+            <text
+              class="bar-value-label"
+              [attr.x]="columnX(i) + colWidth / 2"
+              [attr.y]="barAreaHeight - col.actualHeight - col.remainingHeight - 6"
+              text-anchor="middle"
+            >{{ col.bar.plannedHours | number:'1.0-1' }}</text>
+          } @else {
+            <rect
+              class="bar-planned"
+              [attr.x]="columnX(i) + 4"
+              [attr.y]="barAreaHeight - col.plannedHeight"
+              [attr.width]="(colWidth - 10) / 2"
+              [attr.height]="col.plannedHeight"
+            ></rect>
+            <rect
+              class="bar-actual"
+              [attr.x]="columnX(i) + colWidth / 2 + 1"
+              [attr.y]="barAreaHeight - col.actualHeight"
+              [attr.width]="(colWidth - 10) / 2"
+              [attr.height]="col.actualHeight"
+            ></rect>
+          }
+
+          <text
+            class="bar-month-label"
+            [attr.x]="columnX(i) + colWidth / 2"
+            [attr.y]="barAreaHeight + 18"
+            text-anchor="middle"
+          >{{ col.monthDate | i18nDate:{ month: 'short' } }}</text>
+        </g>
+      }
+    </svg>
+  </div>
+</div>

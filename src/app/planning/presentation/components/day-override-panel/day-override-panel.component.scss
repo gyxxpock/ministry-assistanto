@@ -1,0 +1,99 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.day-panel {
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'medium');
+  padding: t.$space-3 t.$space-4;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-3;
+  flex-wrap: wrap;
+}
+
+.day-panel__info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+  min-width: 0;
+}
+
+.day-panel__title {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--text-secondary);
+}
+
+.day-panel__date {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-panel__current {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.day-panel__controls {
+  display: flex;
+  align-items: center;
+  gap: t.$space-1;
+  flex-shrink: 0;
+}
+
+.day-panel__field {
+  width: 90px;
+
+  ::ng-deep .mat-mdc-form-field-infix {
+    min-height: 44px;
+  }
+}
+
+// Feedback de validez inline (input fuera de rango antes de confirmar) —
+// ::ng-deep necesario: los elementos internos de MAT MDC están fuera del
+// encapsulamiento del componente (mismo patrón que time-entry-form.component.scss).
+/* stylelint-disable selector-pseudo-element-no-unknown */
+.day-panel__field--invalid {
+  ::ng-deep .mdc-notched-outline__leading,
+  ::ng-deep .mdc-notched-outline__notch,
+  ::ng-deep .mdc-notched-outline__trailing {
+    border-color: var(--state-error) !important;
+  }
+
+  ::ng-deep input {
+    color: var(--state-error);
+  }
+}
+
+.day-panel__clear-btn {
+  color: var(--state-error);
+
+  // Segundo tap requerido para confirmar — mismo patrón de dos pasos que
+  // week-editor__reset-confirm, adaptado al tamaño de este panel pequeño
+  // (aquí el propio botón cambia de color/icono en vez de un panel aparte).
+  &--confirming {
+    background: var(--state-error-tint);
+    color: var(--state-error);
+  }
+}
+
+button[mat-icon-button] {
+  min-width: 44px;
+  min-height: 44px;
+
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+  }
+}

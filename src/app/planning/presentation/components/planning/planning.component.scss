@@ -1,0 +1,81 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+:host {
+  display: block;
+  padding: t.$space-2 t.$space-3 calc(t.$space-8 + 80px + #{t.$space-4});
+}
+
+.planning-page {
+  max-width: 640px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-4;
+}
+
+.planning-page__title {
+  margin: 0;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  padding: 0 t.$space-1;
+}
+
+.planning-page__week-chip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-2;
+}
+
+.week-chip {
+  @include m.glass-pill(t.$blur-md, 'light');
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+  padding: t.$space-2 t.$space-4;
+  min-width: 0;
+  flex: 1;
+}
+
+.week-chip__label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.week-chip__value {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.week-editor-anchor {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.week-chip__edit-btn {
+  min-width: 44px;
+  min-height: 44px;
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.planning-page__day-panel-wrapper {
+  position: fixed;
+  bottom: calc(#{t.$space-8} + 80px + #{t.$space-2} + env(safe-area-inset-bottom, 0px));
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - #{t.$space-4} * 2);
+  max-width: min(480px, calc(100vw - #{t.$space-4} * 2));
+  z-index: 999;
+}

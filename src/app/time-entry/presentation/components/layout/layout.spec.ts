@@ -110,6 +110,23 @@ describe('Layout', () => {
     });
   });
 
+  describe('Plan navigation button', () => {
+    it('links to /time-entry/plan via routerLink', () => {
+      const planBtn: HTMLElement = fixture.nativeElement.querySelector('[routerLink="/time-entry/plan"]');
+      expect(planBtn).not.toBeNull();
+    });
+
+    it('shows the "event_available" icon', () => {
+      const planBtn: HTMLElement = fixture.nativeElement.querySelector('[routerLink="/time-entry/plan"]');
+      expect(planBtn.querySelector('mat-icon')?.textContent?.trim()).toBe('event_available');
+    });
+
+    it('labels the button with the "planning.pages.plan.title" i18n key', () => {
+      const planBtn: HTMLElement = fixture.nativeElement.querySelector('[routerLink="/time-entry/plan"]');
+      expect(planBtn.querySelector('.label')?.textContent).toContain('planning.pages.plan.title');
+    });
+  });
+
   describe('onScroll()', () => {
     function makeScrollEvent(scrollTop: number): Event {
       const div = document.createElement('div');

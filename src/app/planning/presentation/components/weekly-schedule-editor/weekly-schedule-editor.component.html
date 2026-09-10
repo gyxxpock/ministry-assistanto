@@ -1,0 +1,63 @@
+@if (isOpen) {
+  <div class="week-editor">
+    <div class="week-editor__header">
+      <h3 class="week-editor__title">{{ 'planning.week-editor.title' | translate }}</h3>
+      <div class="week-editor__actions">
+        <button
+          mat-icon-button
+          class="week-editor__reset-btn"
+          (click)="onResetRequest()"
+          [attr.aria-label]="'planning.week-editor.reset' | translate"
+        >
+          <mat-icon>restart_alt</mat-icon>
+        </button>
+        <button
+          mat-icon-button
+          (click)="onClose()"
+          [attr.aria-label]="'common.buttons.close' | translate"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </div>
+
+    <div class="week-editor__columns-wrapper">
+      <div class="week-editor__columns" [class.week-editor__columns--dimmed]="confirmingReset">
+        @for (col of columns; track col.key) {
+          <div class="day-column">
+            <span class="day-column__value">{{ formatHours(col.value) }}{{ 'planning.week-editor.hours-unit' | translate }}</span>
+
+            <div class="day-column__slider-wrapper">
+              <input
+                type="range"
+                class="day-column__slider"
+                min="0"
+                [max]="maxDailyHours"
+                step="0.5"
+                [value]="col.value"
+                [attr.aria-label]="col.labelDate | i18nDate:{ weekday: 'long' }"
+                [attr.aria-valuetext]="formatHours(col.value)"
+                (input)="onRangeChange(col.key, ($any($event.target)).value)"
+              />
+            </div>
+
+            <span class="day-column__label">{{ col.labelDate | i18nDate:{ weekday: 'short' } }}</span>
+          </div>
+        }
+      </div>
+
+      <!-- Confirmación de dos pasos del reset — overlay absoluto para no
+           desplazar el header (trampa #3 del ui-agent). -->
+      @if (confirmingReset) {
+        <div class="week-editor__reset-confirm" #resetConfirmPanel>
+          <mat-icon class="week-editor__reset-confirm-icon">warning</mat-icon>
+          <span class="week-editor__reset-confirm-text">{{ 'planning.week-editor.reset-confirm-message' | translate }}</span>
+          <div class="week-editor__reset-confirm-actions">
+            <button mat-button (click)="onResetCancel()">{{ 'common.buttons.cancel' | translate }}</button>
+            <button mat-flat-button color="warn" (click)="onResetConfirm()">{{ 'common.buttons.confirm' | translate }}</button>
+          </div>
+        </div>
+      }
+    </div>
+  </div>
+}

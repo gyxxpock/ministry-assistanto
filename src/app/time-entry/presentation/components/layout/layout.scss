@@ -135,6 +135,20 @@
 
 }
 
+// Con 5 botones (list/calendar/goals/plan/settings) el ancho fijo de 88px
+// por botón desborda pantallas angostas (iPhone SE 375px y menores).
+// Reducimos ancho/gap/padding solo en ese rango, sin tocar el diseño base.
+@media (max-width: 480px) {
+  .bottom-toolbar {
+    gap: t.$space-1;
+    padding: 0 t.$space-2;
+
+    button {
+      min-width: 60px;
+    }
+  }
+}
+
 // 3. BANNERS FLOTANTES (sobre el nav flotante)
 
 // Base: justo encima del nav

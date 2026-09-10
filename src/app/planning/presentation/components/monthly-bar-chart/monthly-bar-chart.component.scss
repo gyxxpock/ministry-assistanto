@@ -1,0 +1,100 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.bar-chart {
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'light');
+  padding: t.$space-4;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.bar-chart__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-2;
+  flex-wrap: wrap;
+}
+
+.bar-chart__title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.bar-chart__legend {
+  display: flex;
+  gap: t.$space-3;
+  flex-shrink: 0;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--planned { background: var(--accent); }
+  &--actual { background: var(--state-success); }
+}
+
+.bar-chart__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+    border-radius: t.$radius-sm;
+  }
+}
+
+.bar-chart__svg {
+  display: block;
+  height: 160px;
+}
+
+.bar-column__hit-area {
+  cursor: pointer;
+}
+
+.bar-column__selected-outline {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.bar-planned,
+.bar-remaining {
+  fill: var(--accent);
+  @include m.transition-fast(height y);
+}
+
+.bar-actual {
+  fill: var(--state-success);
+  @include m.transition-fast(height y);
+}
+
+.bar-value-label {
+  font-size: 9px;
+  font-weight: 700;
+  fill: var(--text-primary);
+}
+
+.bar-month-label {
+  font-size: 9px;
+  fill: var(--text-secondary);
+}

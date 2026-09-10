@@ -47,6 +47,15 @@
     "appearance": {
       "title": "Apariencia"
     },
+    "calendar": {
+      "title": "Calendario",
+      "weekStart": "Primer día de la semana",
+      "weekStartOptions": {
+        "monday": "Lunes",
+        "sunday": "Domingo",
+        "saturday": "Sábado"
+      }
+    },
     "backup": {
       "title": "Respaldo de datos",
       "frequency": "Frecuencia de recordatorio",
@@ -143,6 +152,46 @@
       "monthly-target": "Meta mensual"
     },
     "no-active-goal": "No hay objetivo activo configurado."
+  },
+  "planning": {
+    "pages": {
+      "plan": {
+        "title": "Plan"
+      }
+    },
+    "goal-card": {
+      "cta-configure": "Configurar objetivo",
+      "empty-title": "Sin objetivo activo",
+      "empty-description": "Define un objetivo para ver tu período de servicio aquí."
+    },
+    "bar-chart": {
+      "title": "Horas por mes",
+      "planned": "Planificado",
+      "actual": "Real"
+    },
+    "week-chip": {
+      "label": "Plan semanal"
+    },
+    "week-editor": {
+      "title": "Editar plan semanal",
+      "reset": "Restablecer",
+      "reset-confirm-message": "¿Restablecer todos los días a cero horas?",
+      "hours-unit": "h"
+    },
+    "calendar": {
+      "legend-planned": "Planificado",
+      "legend-actual": "Real",
+      "override-marker": "Ajustado"
+    },
+    "day-panel": {
+      "title": "Ajustar día",
+      "template-label": "Plan semanal",
+      "override-label": "Ajuste",
+      "confirm": "Guardar",
+      "clear": "Quitar ajuste",
+      "clear-confirm": "Toca otra vez para confirmar que quieres quitar el ajuste",
+      "hours-placeholder": "Horas"
+    }
   },
   "timeEntry": {
     "pages": {
