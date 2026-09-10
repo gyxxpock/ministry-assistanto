@@ -53,7 +53,8 @@
   .vertical-divider {
     width: 1px;
     height: 16px;
-    background: rgba(255, 255, 255, 0.15);
+    // separador: usar token de borde (claro en dark), no de superficie
+    background: var(--border-strong);
     margin: 0 t.$space-1;
   }
 }

@@ -24,26 +24,7 @@ body {
   margin: 0;
 }
 
-// --- Dark mode (system preference) ---
-@media (prefers-color-scheme: dark) {
-  html:not([data-theme='light']) {
-    @include mat.theme((
-      color: (
-        primary:    mat.$azure-palette,
-        tertiary:   mat.$blue-palette,
-        theme-type: dark,
-      ),
-      typography: (-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', Roboto, sans-serif),
-      density: 0,
-    ));
-  }
-
-  html:not([data-theme='light']) body {
-    color-scheme: dark;
-  }
-}
-
-// --- Dark mode (toggle manual) ---
+// --- Dark mode (toggle manual — ThemeService fija siempre data-theme) ---
 html[data-theme='dark'] {
   @include mat.theme((
     color: (

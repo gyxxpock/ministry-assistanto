@@ -33,3 +33,7 @@ graphify update .                # refresh after code changes (no API cost)
 - Delegate real subagents (`Agent` tool) only for non-trivial work; trivial single-file edits don't need it.
 
 See [CLAUDE.md](./CLAUDE.md) for the full orchestration guidance.
+
+## Theming
+
+Theming is centralized (design tokens in `src/styles/` + `ThemeService`). A new component consumes it with **zero config** — use `var(--token)` in SCSS, no `@use` needed for colors. Never hardcode `#hex`/`rgb()` in a `*.component.scss`. See the **Theming (design tokens)** section in [CLAUDE.md](./CLAUDE.md) for the role-token table and the light/dark/system contract.

@@ -1,14 +1,10 @@
-// Reusable spacing and sizing
-$spacing-2: 0.5rem;
-$spacing-4: 1rem;
-$spacing-6: 1.5rem;
-$spacing-8: 2rem;
-$spacing-12: 3rem;
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
 
 // Material dialog content width
 mat-dialog-content {
-  padding: $spacing-6;
-  padding-bottom: $spacing-6 !important;
+  padding: t.$space-6;
+  padding-bottom: t.$space-6 !important;
   max-width: 600px;
   background: var(--mat-sys-surface-container);
 }
@@ -16,7 +12,7 @@ mat-dialog-content {
 // Full-width form fields
 .full-width {
   width: 100%;
-  margin-bottom: $spacing-6;
+  margin-bottom: t.$space-6;
 }
 
 // Section containers
@@ -24,15 +20,15 @@ mat-dialog-content {
 .section-auxiliary {
   display: flex;
   flex-direction: column;
-  gap: $spacing-6;
+  gap: t.$space-6;
 }
 
 // Control group for radio buttons
 .control-group {
   display: flex;
   flex-direction: column;
-  gap: $spacing-4;
-  margin-bottom: $spacing-4;
+  gap: t.$space-4;
+  margin-bottom: t.$space-4;
 }
 
 .control-label {
@@ -43,7 +39,7 @@ mat-dialog-content {
 
 .radio-group {
   display: flex;
-  gap: $spacing-4;
+  gap: t.$space-4;
 
   mat-radio-button {
     flex: 1;
@@ -55,10 +51,10 @@ mat-dialog-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: $spacing-4;
+  padding: t.$space-4;
   border-radius: 4px;
-  background-color: rgba(63, 81, 181, 0.05);
-  gap: $spacing-4;
+  background-color: var(--accent-tint);
+  gap: t.$space-4;
 
   span {
     font-weight: 500;
@@ -70,16 +66,16 @@ mat-dialog-content {
 }
 
 .toggle-label {
-  margin-left: $spacing-2;
+  margin-left: t.$space-2;
   font-size: 0.875rem;
 }
 
 // Month range selectors
 .month-range {
   display: flex;
-  gap: $spacing-4;
-  margin-top: $spacing-6;
-  margin-bottom: $spacing-6;
+  gap: t.$space-4;
+  margin-top: t.$space-6;
+  margin-bottom: t.$space-6;
 }
 
 .month-field {
@@ -90,16 +86,16 @@ mat-dialog-content {
 .info-box {
   display: flex;
   align-items: flex-start;
-  gap: $spacing-4;
-  padding: $spacing-4;
-  border-left: 4px solid #2196f3;
-  background-color: rgba(33, 150, 243, 0.05);
+  gap: t.$space-4;
+  padding: t.$space-4;
+  border-left: 4px solid var(--accent);
+  background-color: var(--accent-tint);
   border-radius: 2px;
 
   mat-icon {
     flex-shrink: 0;
     margin-top: 2px;
-    color: #2196f3;
+    color: var(--accent);
   }
 
   span {
@@ -113,10 +109,10 @@ mat-dialog-content {
 
 // Form-level error display
 .form-error {
-  margin-top: $spacing-4;
-  padding: $spacing-4;
-  background-color: #ffebee;
-  border-left: 4px solid #f44336;
+  margin-top: t.$space-4;
+  padding: t.$space-4;
+  background-color: var(--state-error-tint);
+  border-left: 4px solid var(--state-error);
   border-radius: 2px;
 
   mat-error {
@@ -127,8 +123,8 @@ mat-dialog-content {
 
 // Dialog actions styling
 mat-dialog-actions {
-  padding: 0 $spacing-6 calc(#{$spacing-6} + env(safe-area-inset-bottom, 0px));
-  gap: $spacing-4;
+  padding: 0 t.$space-6 calc(#{t.$space-6} + env(safe-area-inset-bottom, 0px));
+  gap: t.$space-4;
 
   button {
     min-width: 100px;
