@@ -1,3 +1,10 @@
+---
+name: facade-agent
+description: Use this agent for the facade layer — TimeEntryFacade, orchestrating use cases and repositories, coordinating loadMonth/importAll/exportAll, and exposing application state (RxJS/Signals) to Presentation.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # FacadeAgent
 
 Responsible for the facade layer: the orchestrator that connects Data with Presentation.

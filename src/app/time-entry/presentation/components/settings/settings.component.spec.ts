@@ -128,3 +128,79 @@ describe('SettingsComponent', () => {
     });
   });
 });
+
+describe('SettingsComponent - currentLang fallback to "es"', () => {
+  // In-memory double for TranslateService: controls currentLang directly to
+  // exercise the `translate.currentLang || 'es'` fallback branch.
+  function configureWith(currentLang: string | undefined): {
+    component: SettingsComponent;
+    fixture: ComponentFixture<SettingsComponent>;
+    lastBackupDateSignal: WritableSignal<string | null>;
+    nextReminderDateSignal: WritableSignal<Date | null>;
+  } {
+    const lastBackupDateSignal = signal<string | null>(null);
+    const nextReminderDateSignal = signal<Date | null>(null);
+
+    const mockTheme = jasmine.createSpyObj('ThemeService', ['setMode'], {
+      mode: signal<'light' | 'dark' | 'system'>('system'),
+    });
+    const mockBackup = jasmine.createSpyObj(
+      'BackupReminderService',
+      ['setFrequency', 'recordBackup', 'dismiss'],
+      {
+        frequency: signal<'daily' | 'weekly' | 'monthly' | 'disabled'>('weekly'),
+        isReminderDue: signal(false),
+        lastBackupDate: lastBackupDateSignal,
+        nextReminderDate: nextReminderDateSignal,
+      }
+    );
+    const mockTranslate = jasmine.createSpyObj('TranslateService', ['instant', 'get'], {
+      currentLang,
+    });
+    mockTranslate.instant.and.callFake((key: string) => key);
+
+    TestBed.configureTestingModule({
+      declarations: [SettingsComponent],
+      imports: [TranslateStub],
+      schemas: [NO_ERRORS_SCHEMA],
+      providers: [
+        { provide: ThemeService, useValue: mockTheme },
+        { provide: BackupReminderService, useValue: mockBackup },
+        { provide: TranslateService, useValue: mockTranslate },
+        { provide: ChangelogService, useValue: { entries: signal([]) } },
+      ],
+    }).compileComponents();
+
+    const fixture = TestBed.createComponent(SettingsComponent);
+    const component = fixture.componentInstance;
+    fixture.detectChanges();
+
+    return { component, fixture, lastBackupDateSignal, nextReminderDateSignal };
+  }
+
+  afterEach(() => TestBed.resetTestingModule());
+
+  it('lastBackupFormatted falls back to "es" when currentLang is an empty string', () => {
+    const { component, fixture, lastBackupDateSignal } = configureWith('');
+    lastBackupDateSignal.set('2025-06-15');
+    fixture.detectChanges();
+
+    const result = component.lastBackupFormatted();
+
+    expect(result).toBe(
+      new Intl.DateTimeFormat('es', { dateStyle: 'long' }).format(new Date('2025-06-15'))
+    );
+  });
+
+  it('nextReminderFormatted falls back to "es" when currentLang is undefined for a future date beyond tomorrow', () => {
+    const { component, fixture, nextReminderDateSignal } = configureWith(undefined);
+    const future = new Date();
+    future.setDate(future.getDate() + 5);
+    nextReminderDateSignal.set(future);
+    fixture.detectChanges();
+
+    const result = component.nextReminderFormatted();
+
+    expect(result).toBe(new Intl.DateTimeFormat('es', { dateStyle: 'long' }).format(future));
+  });
+});

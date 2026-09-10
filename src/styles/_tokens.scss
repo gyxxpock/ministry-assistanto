@@ -55,77 +55,101 @@ $font-system: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text'
               'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
 
 // =============================================================================
-// CSS Custom Properties — glass colors (runtime-overridable para dark mode)
+// CSS Custom Properties — tokens semánticos canónicos (runtime-overridable)
+// ThemeService fija SIEMPRE data-theme="light"|"dark" en <html> (Opción B):
+// :root/html = light (fallback no-JS), [data-theme='dark'] = dark.
 // =============================================================================
 :root {
-  // Superficies glass — modo claro
-  --glass-bg-light:       rgba(255, 255, 255, 0.14);
-  --glass-bg-medium:      rgba(255, 255, 255, 0.22);
-  --glass-bg-strong:      rgba(255, 255, 255, 0.38);
+  // --- Superficies glass — modo claro (canónico) ---
+  --surface-glass-low:    rgba(255, 255, 255, 0.14);
+  --surface-glass-medium: rgba(255, 255, 255, 0.22);
+  --surface-glass-high:   rgba(255, 255, 255, 0.38);
 
-  // Bordes glass — modo claro
-  --glass-border-light:   rgba(255, 255, 255, 0.28);
-  --glass-border-medium:  rgba(255, 255, 255, 0.45);
+  // Superficies sólidas M3 (para contenido que no puede ser translúcido)
+  --surface-solid:      var(--mat-sys-surface-container);
+  --surface-solid-high: var(--mat-sys-surface-container-high);
+
+  // Bordes glass — modo claro (canónico)
+  --border-subtle: rgba(255, 255, 255, 0.28);
+  --border-strong: rgba(255, 255, 255, 0.45);
 
   // Highlight especular — reflejo superior característico del Liquid Glass
-  --glass-specular:       rgba(255, 255, 255, 0.55);
+  --surface-specular: rgba(255, 255, 255, 0.55);
 
   // Sombras con specular inset (usadas en box-shadow)
-  --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.08),  inset 0 1px 0 var(--glass-specular);
-  --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.13), inset 0 1px 0 var(--glass-specular);
-  --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.20), inset 0 1px 0 var(--glass-specular);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.08),  inset 0 1px 0 var(--surface-specular);
+  --shadow-md: 0 10px 32px rgba(0,0,0,0.13), inset 0 1px 0 var(--surface-specular);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.20), inset 0 1px 0 var(--surface-specular);
 
-  // Tints — color primario/terciario filtrando a la superficie glass
-  --glass-tint-primary:        color-mix(in srgb, var(--mat-sys-primary)  8%, transparent);
-  --glass-tint-tertiary:       color-mix(in srgb, var(--mat-sys-tertiary) 8%, transparent);
-  --glass-tint-error:          color-mix(in srgb, var(--mat-sys-error) 10%, transparent);
-  --glass-tint-error-border:   color-mix(in srgb, var(--mat-sys-error) 25%, transparent);
+  // Texto — se re-derivan solos de on-surface en dark, no hace falta redefinirlos
+  --text-primary:   var(--mat-sys-on-surface);
+  --text-secondary: color-mix(in srgb, var(--mat-sys-on-surface) 70%, transparent);
+  --text-tertiary:  color-mix(in srgb, var(--mat-sys-on-surface) 45%, transparent);
+
+  // Acento — color primario/terciario del tema M3
+  --accent:                 var(--mat-sys-primary);
+  --accent-tint:            color-mix(in srgb, var(--mat-sys-primary)  8%, transparent);
+  --accent-tertiary-tint:   color-mix(in srgb, var(--mat-sys-tertiary) 8%, transparent);
+
+  // Estado — success/warning/error, con tints y borders derivados
+  --state-success: #16a34a;
+  --state-warning: #ea580c;
+  // error no necesita override propio en dark: --mat-sys-error ya lo adapta Material (_material.scss)
+  --state-error:   var(--mat-sys-error);
+
+  --state-success-tint:   color-mix(in srgb, var(--state-success) 15%, transparent);
+  --state-success-border: color-mix(in srgb, var(--state-success) 30%, transparent);
+  --state-warning-tint:   color-mix(in srgb, var(--state-warning) 15%, transparent);
+  --state-warning-border: color-mix(in srgb, var(--state-warning) 30%, transparent);
+  --state-error-tint:     color-mix(in srgb, var(--state-error) 15%, transparent);
+  --state-error-border:   color-mix(in srgb, var(--state-error) 30%, transparent);
 
   // Orbs del fondo animado
   --orb-opacity: 0.55;
 
-  // Text colors — light mode
-  --text-primary: #1a1a1a;
-  --text-secondary: #666666;
-  --text-tertiary: #999999;
+  // ---------------------------------------------------------------------------
+  // Alias legacy — mantener compatibilidad con los usos existentes en componentes
+  // (migración progresiva a los tokens canónicos de arriba)
+  // ---------------------------------------------------------------------------
+  --glass-bg-light:  var(--surface-glass-low);
+  --glass-bg-medium: var(--surface-glass-medium);
+  --glass-bg-strong: var(--surface-glass-high);
+
+  --glass-border-light:  var(--border-subtle);
+  --glass-border-medium: var(--border-strong);
+
+  --glass-specular: var(--surface-specular);
+
+  --glass-shadow-sm: var(--shadow-sm);
+  --glass-shadow-md: var(--shadow-md);
+  --glass-shadow-lg: var(--shadow-lg);
+
+  --glass-tint-primary:      var(--accent-tint);
+  --glass-tint-tertiary:     var(--accent-tertiary-tint);
+  --glass-tint-error:        var(--state-error-tint);
+  --glass-tint-error-border: var(--state-error-border);
 }
 
-// Dark mode — override de CSS vars (prefers-color-scheme)
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    --glass-bg-light:       rgba(0, 0, 0, 0.20);
-    --glass-bg-medium:      rgba(0, 0, 0, 0.30);
-    --glass-bg-strong:      rgba(0, 0, 0, 0.48);
-    --glass-border-light:   rgba(255, 255, 255, 0.06);
-    --glass-border-medium:  rgba(255, 255, 255, 0.12);
-    --glass-specular:       rgba(255, 255, 255, 0.08);
-    --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-specular);
-    --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
-    --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
-    --orb-opacity: 0.30;
+// =============================================================================
+// Dark mode — toggle manual vía data-theme (ThemeService lo fija siempre)
+// Solo sobreescribe las BASES; texto/tints/alias se re-derivan automáticamente.
+// =============================================================================
+[data-theme='dark'] {
+  --surface-glass-low:    rgba(0, 0, 0, 0.20);
+  --surface-glass-medium: rgba(0, 0, 0, 0.30);
+  --surface-glass-high:   rgba(0, 0, 0, 0.48);
 
-    // Text colors — dark mode (system preference)
-    --text-primary: #ffffff;
-    --text-secondary: #e0e0e0;
-    --text-tertiary: #a0a0a0;
-  }
-}
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-strong: rgba(255, 255, 255, 0.12);
 
-// Manual dark (toggle)
-:root[data-theme='dark'] {
-  --glass-bg-light:       rgba(0, 0, 0, 0.20);
-  --glass-bg-medium:      rgba(0, 0, 0, 0.30);
-  --glass-bg-strong:      rgba(0, 0, 0, 0.48);
-  --glass-border-light:   rgba(255, 255, 255, 0.06);
-  --glass-border-medium:  rgba(255, 255, 255, 0.12);
-  --glass-specular:       rgba(255, 255, 255, 0.08);
-  --glass-shadow-sm:  0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--glass-specular);
-  --glass-shadow-md:  0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--glass-specular);
-  --glass-shadow-lg:  0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--glass-specular);
+  --surface-specular: rgba(255, 255, 255, 0.08);
+
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.35), inset 0 1px 0 var(--surface-specular);
+  --shadow-md: 0 10px 32px rgba(0,0,0,0.45), inset 0 1px 0 var(--surface-specular);
+  --shadow-lg: 0 20px 50px rgba(0,0,0,0.60), inset 0 1px 0 var(--surface-specular);
+
+  --state-success: #4ade80;
+  --state-warning: #fb923c;
+
   --orb-opacity: 0.30;
-
-  // Text colors — dark mode (manual toggle)
-  --text-primary: #ffffff;
-  --text-secondary: #e0e0e0;
-  --text-tertiary: #a0a0a0;
 }

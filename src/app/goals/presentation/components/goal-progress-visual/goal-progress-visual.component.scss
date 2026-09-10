@@ -20,7 +20,7 @@
     width: 100%;
     height: 100%;
     transform: rotate(-90deg);
-    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+    filter: drop-shadow(0 2px 8px color-mix(in srgb, black 10%, transparent));
 
     .progress-arc {
       transition: stroke-dasharray 300ms ease-out, stroke 300ms ease-out;
@@ -33,7 +33,7 @@
     font-size: 2rem;
     font-weight: 600;
     text-align: center;
-    color: var(--text-primary, #1F2937);
+    color: var(--text-primary);
   }
 }
 
@@ -41,8 +41,8 @@
   width: 100%;
   max-width: 400px;
   backdrop-filter: blur(12px);
-  background: color-mix(in srgb, rgba(255, 255, 255) 80%, transparent);
-  border: 1px solid color-mix(in srgb, rgba(0, 0, 0) 10%, transparent);
+  background: var(--surface-glass-high);
+  border: 1px solid var(--border-subtle);
   border-radius: 12px;
 
   mat-card-content {
@@ -72,20 +72,20 @@
   .metric-value {
     font-weight: 500;
     font-size: 1rem;
-    color: var(--text-primary, #1F2937);
+    color: var(--text-primary);
     text-align: right;
     flex-shrink: 0;
 
     &.text-positive {
-      color: rgb(34, 197, 94);
+      color: var(--state-success);
     }
 
     &.text-negative {
-      color: rgb(239, 68, 68);
+      color: var(--state-error);
     }
 
     &.text-behind {
-      color: rgb(249, 115, 22);
+      color: var(--state-warning);
     }
   }
 
@@ -115,7 +115,7 @@
     .bar-background {
       flex: 1;
       height: 8px;
-      background: color-mix(in srgb, rgba(0, 0, 0) 10%, transparent);
+      background: color-mix(in srgb, var(--mat-sys-outline-variant) 30%, transparent);
       border-radius: 4px;
       overflow: hidden;
 
@@ -125,11 +125,11 @@
         transition: width 300ms ease-out;
 
         &.bar-in-progress {
-          background: linear-gradient(90deg, #3B82F6, #1D4ED8);
+          background: linear-gradient(90deg, var(--accent), color-mix(in srgb, var(--accent) 80%, black));
         }
 
         &.bar-complete {
-          background: linear-gradient(90deg, #22C55E, #16A34A);
+          background: linear-gradient(90deg, var(--state-success), color-mix(in srgb, var(--state-success) 80%, black));
         }
       }
     }
@@ -137,7 +137,7 @@
     .bar-percentage {
       font-weight: 600;
       font-size: 0.875rem;
-      color: var(--text-primary, #1F2937);
+      color: var(--text-primary);
       min-width: 35px;
       text-align: right;
     }

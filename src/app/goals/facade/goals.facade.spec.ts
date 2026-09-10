@@ -8,6 +8,58 @@ import {
 import { IGoalRepository } from '../domain/i-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
 import { GoalsFacade } from './goals.facade';
+import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repository';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../../time-entry/domain/models';
+
+/**
+ * In-memory double for ITimeEntryRepository — same pattern as
+ * time-entry-list.component.spec.ts's InMemoryRepository, trimmed to what
+ * GoalsFacade actually consumes (listEntriesByDateRange). `entries` is public
+ * so tests can seed concrete data when they need to assert on computed hours.
+ */
+class InMemoryTimeEntryRepository implements ITimeEntryRepository {
+  entries: TimeEntry[] = [];
+
+  async listEntriesByMonth(year: number, month: number): Promise<TimeEntry[]> {
+    return this.entries.filter(e => {
+      const d = new Date(e.date);
+      return d.getFullYear() === year && d.getMonth() + 1 === month;
+    });
+  }
+  async listEntriesByDateRange(startDate: Date, endDate: Date): Promise<TimeEntry[]> {
+    return this.entries.filter(e => {
+      const d = new Date(e.date);
+      return d >= startDate && d <= endDate;
+    });
+  }
+  async listVisitsByMonth(): Promise<CourseVisit[]> {
+    return [];
+  }
+  async addEntry(entry: TimeEntry): Promise<void> {
+    this.entries.push(entry);
+  }
+  async updateEntry(entry: TimeEntry): Promise<void> {
+    const i = this.entries.findIndex(e => e.id === entry.id);
+    if (i >= 0) this.entries[i] = entry;
+  }
+  async removeEntry(id: string): Promise<void> {
+    this.entries = this.entries.filter(e => e.id !== id);
+  }
+  async addVisit(): Promise<void> {}
+  async updateVisit(): Promise<void> {}
+  async removeVisit(): Promise<void> {}
+  async exportAll(): Promise<{ entries: TimeEntry[]; visits: CourseVisit[]; courseCounts: MonthlyCourseCount[] }> {
+    return { entries: this.entries, visits: [], courseCounts: [] };
+  }
+  async importAll(payload: { entries?: TimeEntry[]; visits?: CourseVisit[] }): Promise<void> {
+    if (payload.entries) this.entries.push(...payload.entries);
+  }
+  async getCourseCount(): Promise<number> {
+    return 0;
+  }
+  async setCourseCount(): Promise<void> {}
+}
 
 function makeRegularConfig(serviceYear = 2027): RegularGoalConfig {
   return { type: 'regular', serviceYear };
@@ -21,9 +73,25 @@ function makeGoal(config: GoalConfig = makeRegularConfig()): Goal {
   return { id: 'test-goal', config, active: true };
 }
 
+/**
+ * TimeEntry factory for branch coverage on `_computeAccumulatedHours()`.
+ * Accepts a Date or an ISO string for `date` to exercise both sides of the
+ * `e.date instanceof Date ? e.date : new Date(e.date)` ternary in the
+ * monthly-filter callback.
+ */
+function makeEntry(date: Date | string, durationMinutes: number): TimeEntry {
+  return {
+    id: `e-${Math.random().toString(36).slice(2)}`,
+    date: date as unknown as Date,
+    durationMinutes,
+    type: 'preaching',
+  };
+}
+
 describe('GoalsFacade', () => {
   let facade: GoalsFacade;
   let mockRepo: jasmine.SpyObj<IGoalRepository>;
+  let timeEntryRepo: InMemoryTimeEntryRepository;
 
   beforeEach(() => {
     mockRepo = jasmine.createSpyObj<IGoalRepository>('IGoalRepository', [
@@ -35,10 +103,16 @@ describe('GoalsFacade', () => {
     mockRepo.setActive.and.returnValue(Promise.resolve());
     mockRepo.clearActive.and.returnValue(Promise.resolve());
 
+    // No entries by default → accumulatedHours computed from the repo is 0,
+    // matching the pre-existing expectations below (they set hours manually
+    // via setAccumulatedHours() when they need a non-zero value).
+    timeEntryRepo = new InMemoryTimeEntryRepository();
+
     TestBed.configureTestingModule({
       providers: [
         GoalsFacade,
         { provide: GOAL_REPOSITORY_TOKEN, useValue: mockRepo },
+        { provide: TIME_ENTRY_REPOSITORY, useValue: timeEntryRepo },
       ],
     });
 
@@ -225,6 +299,162 @@ describe('GoalsFacade', () => {
       facade.setGoal(makeGoal(makeAuxConfig(2027, 30)));
       flushMicrotasks();
       expect(facade.goalProgress()!.targetHours).toBe(360);
+    }));
+  });
+
+  describe('refreshProgress()', () => {
+    it('recalculates accumulatedHours from repo entries without reloading the active goal', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      mockRepo.getActive.and.returnValue(Promise.resolve(makeRegularConfig(serviceYear)));
+
+      facade.loadGoal();
+      flushMicrotasks();
+      expect(facade.accumulatedHours()).toBe(0);
+      expect(mockRepo.getActive).toHaveBeenCalledTimes(1);
+
+      // New entry added after the goal was loaded — refreshProgress() must
+      // pick it up by re-querying the time-entry repo, not the goal repo.
+      timeEntryRepo.entries.push(makeEntry(new Date(serviceYear, 0, 10), 60));
+
+      facade.refreshProgress();
+      flushMicrotasks();
+
+      expect(facade.accumulatedHours()).toBe(1);
+      expect(mockRepo.getActive).toHaveBeenCalledTimes(1);
+    }));
+
+    it('is a no-op on accumulatedHours when there is no active goal', fakeAsync(() => {
+      facade.refreshProgress();
+      flushMicrotasks();
+
+      expect(facade.activeGoal()).toBeNull();
+      expect(facade.accumulatedHours()).toBe(0);
+    }));
+  });
+
+  describe('_computeAccumulatedHours — monthly filter & reduce callbacks with non-empty data', () => {
+    it('sums accumulatedHours and monthlyAccumulated across entries with mixed date types (Date vs ISO string)', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      const today = new Date();
+
+      // Same calendar month as "today" — Date instance — must land in monthlyAccumulated.
+      const currentMonthEntry = makeEntry(today, 90);
+
+      // A different calendar month (offset by 6, always distinct mod 12) — ISO string —
+      // still inside the service-year range but excluded from monthlyAccumulated.
+      const otherMonthIdx = (today.getMonth() + 6) % 12;
+      const otherYear = otherMonthIdx >= 8 ? serviceYear - 1 : serviceYear;
+      const otherMonthEntry = makeEntry(new Date(otherYear, otherMonthIdx, 15).toISOString(), 60);
+
+      timeEntryRepo.entries = [currentMonthEntry, otherMonthEntry];
+
+      mockRepo.getActive.and.returnValue(Promise.resolve(makeRegularConfig(serviceYear)));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      // reduce() over both entries: (90 + 60) / 60 = 2.5h
+      expect(facade.accumulatedHours()).toBe(2.5);
+      // filter() keeps only currentMonthEntry, reduce() over it: 90 / 60 = 1.5h
+      expect(facade.goalProgress()!.monthlyAccumulated).toBe(1.5);
+    }));
+  });
+
+  describe('_computeAccumulatedHours — auxiliary date-range branch (L72-73)', () => {
+    function seedJanAndJulEntries(endYear: number): void {
+      // Jan (calendar month 1) and Jul (calendar month 7) — both inside the
+      // full service-year range (Sep startYear → Aug endYear), but only Jul
+      // falls inside a narrow June-August auxiliary window.
+      timeEntryRepo.entries = [
+        makeEntry(new Date(endYear, 0, 15), 60), // Jan, 1h
+        makeEntry(new Date(endYear, 6, 15), 120), // Jul, 2h
+      ];
+    }
+
+    it('true branch: auxiliary + !permanent + startMonth/endMonth defined narrows the range to active months', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      const config: GoalConfig = {
+        type: 'auxiliary',
+        serviceYear,
+        monthlyTarget: 30,
+        permanent: false,
+        startMonth: 6,
+        endMonth: 8,
+      };
+      mockRepo.getActive.and.returnValue(Promise.resolve(config));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      // Only the July entry (inside June-August) is counted: 120min / 60 = 2h.
+      expect(facade.accumulatedHours()).toBe(2);
+    }));
+
+    it('false branch (type !== "auxiliary"): regular goal uses the full service-year range', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      mockRepo.getActive.and.returnValue(Promise.resolve(makeRegularConfig(serviceYear)));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      // Both entries counted: (60 + 120) / 60 = 3h.
+      expect(facade.accumulatedHours()).toBe(3);
+    }));
+
+    it('false branch (permanent === true): permanent auxiliary uses the full service-year range', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      const config: GoalConfig = {
+        type: 'auxiliary',
+        serviceYear,
+        monthlyTarget: 30,
+        permanent: true,
+        startMonth: 6,
+        endMonth: 8,
+      };
+      mockRepo.getActive.and.returnValue(Promise.resolve(config));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      expect(facade.accumulatedHours()).toBe(3);
+    }));
+
+    it('false branch (startMonth === undefined): non-permanent auxiliary without startMonth falls back to the full range', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      const config: GoalConfig = {
+        type: 'auxiliary',
+        serviceYear,
+        monthlyTarget: 30,
+        permanent: false,
+        endMonth: 8,
+      };
+      mockRepo.getActive.and.returnValue(Promise.resolve(config));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      expect(facade.accumulatedHours()).toBe(3);
+    }));
+
+    it('false branch (endMonth === undefined): non-permanent auxiliary without endMonth falls back to the full range', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      const config: GoalConfig = {
+        type: 'auxiliary',
+        serviceYear,
+        monthlyTarget: 30,
+        permanent: false,
+        startMonth: 6,
+      };
+      mockRepo.getActive.and.returnValue(Promise.resolve(config));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      expect(facade.accumulatedHours()).toBe(3);
     }));
   });
 });

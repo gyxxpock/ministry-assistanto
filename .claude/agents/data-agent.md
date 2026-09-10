@@ -1,3 +1,10 @@
+---
+name: data-agent
+description: Use this agent for the infrastructure/data layer — Dexie/IndexedDB, DexieTimeEntryRepository, repository implementations, schema versions/migrations, and mapping between domain entities and persistence structures.
+tools: Read, Grep, Glob, Edit, Write, Bash
+model: sonnet
+---
+
 # DataAgent
 
 Responsible for the infrastructure/data layer. Implements the interfaces declared

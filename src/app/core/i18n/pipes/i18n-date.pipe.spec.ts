@@ -57,4 +57,39 @@ describe('I18nDatePipe', () => {
     const result = pipe.transform(date, { year: 'numeric' });
     expect(result).toContain('2025');
   });
+
+  describe('language resolution (getCurrentLang() || getFallbackLang() || "es")', () => {
+    // In-memory double: controls what the i18n service reports for current/fallback
+    // language without touching TranslateService's real (HTTP-backed) resources.
+    const date = new Date(2025, 0, 15);
+
+    it('uses getCurrentLang() when it is truthy', () => {
+      spyOn(translate, 'getCurrentLang').and.returnValue('en-US');
+      spyOn(translate, 'getFallbackLang').and.returnValue('fr');
+
+      const result = pipe.transform(date);
+
+      expect(result).toBe(
+        new Intl.DateTimeFormat('en-US', { dateStyle: 'medium' }).format(date)
+      );
+    });
+
+    it('falls back to getFallbackLang() when getCurrentLang() is falsy', () => {
+      spyOn(translate, 'getCurrentLang').and.returnValue('');
+      spyOn(translate, 'getFallbackLang').and.returnValue('fr');
+
+      const result = pipe.transform(date);
+
+      expect(result).toBe(new Intl.DateTimeFormat('fr', { dateStyle: 'medium' }).format(date));
+    });
+
+    it('falls back to "es" when both getCurrentLang() and getFallbackLang() are falsy', () => {
+      spyOn(translate, 'getCurrentLang').and.returnValue('');
+      spyOn(translate, 'getFallbackLang').and.returnValue('');
+
+      const result = pipe.transform(date);
+
+      expect(result).toBe(new Intl.DateTimeFormat('es', { dateStyle: 'medium' }).format(date));
+    });
+  });
 });

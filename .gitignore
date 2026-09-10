@@ -19,6 +19,8 @@ yarn-error.log
 *.launch
 .settings/
 *.sublime-workspace
+*.swp
+*.swo
 
 # Visual Studio Code
 .vscode/*
@@ -43,8 +45,12 @@ Thumbs.db
 
 # AI generated files
 GEMINI.md
+# Claude Code local settings (contains secrets/tokens — never commit)
+.claude/settings.local.json
 # Graphify Outputs y Cache
 graphify-out/cache/
+# Snapshots por fecha: git ya es el historial; no versionar copias diarias (~1 MB/día)
+graphify-out/????-??-??/
 
 # Feature specs (UX proposals, images, private planning docs)
 feature/
