@@ -48,15 +48,15 @@
     "semantic_hash": ""
   },
   "public/assets/i18n/en.json": {
-    "mtime": 1788913805.4568467,
-    "seen": 1788913870.130573,
-    "ast_hash": "a438dcb00cf715ccc6b94f2578160d3f",
+    "mtime": 1789060833.7510052,
+    "seen": 1789061085.9776902,
+    "ast_hash": "e49601c160824c89f8df009875c8027b",
     "semantic_hash": ""
   },
   "public/assets/i18n/es.json": {
-    "mtime": 1788913806.496481,
-    "seen": 1788913870.1305752,
-    "ast_hash": "9767643bbf086d325943e45dbca47c9d",
+    "mtime": 1789060842.465159,
+    "seen": 1789061085.977691,
+    "ast_hash": "5b52a6a265d6502932dd86c2d203ab35",
     "semantic_hash": ""
   },
   "scripts/check-i18n.js": {
@@ -180,9 +180,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/layout/layout.spec.ts": {
-    "mtime": 1788878600.9314644,
-    "seen": 1788878896.337991,
-    "ast_hash": "63cebb1475c51849c64957287bcc430b",
+    "mtime": 1789058835.8075104,
+    "seen": 1789059502.1733499,
+    "ast_hash": "76dae1ae350f77eb46e8df229596e746",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/layout/layout.ts": {
@@ -192,15 +192,15 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts": {
-    "mtime": 1788843759.9116888,
-    "seen": 1788844344.514334,
-    "ast_hash": "6c1c7791532ef2dd33ca77813a0c9352",
+    "mtime": 1789052420.38308,
+    "seen": 1789052546.396045,
+    "ast_hash": "ca917752d64d15aa56bef068e23d17b4",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts": {
-    "mtime": 1788829158.054499,
-    "seen": 1788829176.210189,
-    "ast_hash": "380b76f3301446f009360a1c2c8d1a9d",
+    "mtime": 1789052036.9057245,
+    "seen": 1789052073.3441532,
+    "ast_hash": "dc8780eacbb2834a78dc0118da7f5f52",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts": {
@@ -246,9 +246,9 @@
     "semantic_hash": "f9795ec60904325330a1b455ac5798b4"
   },
   "src/app/time-entry/presentation/time-entry.module.ts": {
-    "mtime": 1788896179.1615915,
-    "seen": 1788896220.597003,
-    "ast_hash": "6061127335c1e4f9ed19213461224900",
+    "mtime": 1789058136.5731163,
+    "seen": 1789058261.828514,
+    "ast_hash": "a5816861c57014135397fb1efb38564a",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/tokens/time-entry.tokens.ts": {
@@ -330,9 +330,9 @@
     "semantic_hash": "92b5943b800a66a310a32614ee6e4e97"
   },
   "src/app/time-entry/presentation/components/layout/layout.html": {
-    "mtime": 1788896193.8590121,
-    "seen": 1788896220.5970418,
-    "ast_hash": "2afacec728b85664647b2ae7964149e5",
+    "mtime": 1789057399.5647297,
+    "seen": 1789057700.346004,
+    "ast_hash": "36da6d6bef049128f58910c334793995",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.html": {
@@ -570,15 +570,15 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/settings/settings.component.ts": {
-    "mtime": 1788889335.1463692,
-    "seen": 1788895934.134881,
-    "ast_hash": "253ef3f330fc0a2253dda6ae70ecc6e6",
+    "mtime": 1789052001.9174557,
+    "seen": 1789052073.344148,
+    "ast_hash": "56820d1dc0cbefe8822b20475da67b00",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/option-pill-group/option-pill-group.component.ts": {
-    "mtime": 1788914406.9419296,
-    "seen": 1788914424.4499252,
-    "ast_hash": "d427dfc467fd10c1b54e17609ec3ce77",
+    "mtime": 1789058114.285643,
+    "seen": 1789058261.8284988,
+    "ast_hash": "68e88dec895660b192e2c1e811afb26c",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/backup-reminder-banner/backup-reminder-banner.component.html": {
@@ -588,15 +588,15 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/settings/settings.component.html": {
-    "mtime": 1788889342.6592622,
-    "seen": 1788895934.13494,
-    "ast_hash": "2a301876785fdcbf8362de7e6871795c",
+    "mtime": 1789052018.735724,
+    "seen": 1789052073.344207,
+    "ast_hash": "7e82d0b568c3368f18e3f4d2d9813a7f",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/option-pill-group/option-pill-group.component.html": {
-    "mtime": 1788827301.075856,
-    "seen": 1788827541.0657978,
-    "ast_hash": "cab7a1526c223ab34b20a2c91a4d2679",
+    "mtime": 1789058118.4567409,
+    "seen": 1789058261.828557,
+    "ast_hash": "d73ce150f425c0c4d5dbe650066ade97",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/month-paginator/month-paginator.component.ts": {
@@ -624,9 +624,9 @@
     "semantic_hash": ""
   },
   "public/assets/changelog.json": {
-    "mtime": 1788874465.9247859,
-    "seen": 1788876381.546786,
-    "ast_hash": "7570e93d13e66e679562346d46e56e25",
+    "mtime": 1789057711.7150457,
+    "seen": 1789058261.8284109,
+    "ast_hash": "c3bbb6a03c1da3f4b4eedd828ec78628",
     "semantic_hash": ""
   },
   "src/app/core/services/update-notification.service.ts": {
@@ -714,9 +714,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/settings/settings.component.spec.ts": {
-    "mtime": 1789046385.859259,
-    "seen": 1789046699.9893608,
-    "ast_hash": "468d87f418cf1852dff809d9238af215",
+    "mtime": 1789052324.0175548,
+    "seen": 1789052546.39604,
+    "ast_hash": "6e0a753fad465cd9a74c1f5973fd240a",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/month-paginator/month-paginator.component.spec.ts": {
@@ -726,9 +726,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/shared/option-pill-group/option-pill-group.component.spec.ts": {
-    "mtime": 1788839406.933148,
-    "seen": 1788843204.82899,
-    "ast_hash": "e390310578dbd7154d0813a8d829338f",
+    "mtime": 1789058145.6551297,
+    "seen": 1789058261.828498,
+    "ast_hash": "b0365a5b6a60fdd975e3f5a49e050f37",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/update-banner/update-banner.component.spec.ts": {
@@ -846,9 +846,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/domain/goal.usecase.ts": {
-    "mtime": 1789043985.5190117,
-    "seen": 1789044028.032081,
-    "ast_hash": "730929f835cc07dcf4e19f7eb0bb1c81",
+    "mtime": 1789051933.372496,
+    "seen": 1789051966.5858,
+    "ast_hash": "b110d00e5278997629c7a0e872b94167",
     "semantic_hash": ""
   },
   "src/app/goals/domain/i-goal.repository.ts": {
@@ -1017,6 +1017,246 @@
     "mtime": 1788888683.129723,
     "seen": 1788888707.464407,
     "ast_hash": "413fc12a109324422f6d2ec3d05d2b0d",
+    "semantic_hash": ""
+  },
+  "src/app/core/services/week-start.service.ts": {
+    "mtime": 1789051949.637088,
+    "seen": 1789051966.5857909,
+    "ast_hash": "385cb96d450df787ccd6ebcf79812964",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/i-planning.repository.ts": {
+    "mtime": 1789051949.476738,
+    "seen": 1789051966.585817,
+    "ast_hash": "24227147d78737e3939b75bd4a0e8208",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/models.ts": {
+    "mtime": 1789051947.8115041,
+    "seen": 1789051966.585818,
+    "ast_hash": "7c9eee4242537b2c366aecb2e2aa726a",
+    "semantic_hash": ""
+  },
+  "src/app/shared/domain/week-day.model.ts": {
+    "mtime": 1789051856.4498205,
+    "seen": 1789051966.585818,
+    "ast_hash": "fdab693a7e79e607e4238e426c48b86f",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/planning.usecase.ts": {
+    "mtime": 1789054533.6646802,
+    "seen": 1789054619.3310668,
+    "ast_hash": "90a5d2ec264c298bbade0032f579a234",
+    "semantic_hash": ""
+  },
+  "src/app/core/services/week-start.service.spec.ts": {
+    "mtime": 1789052253.4630663,
+    "seen": 1789052546.395991,
+    "ast_hash": "5626400978d2acca2da830e19380039f",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/planning.usecase.spec.ts": {
+    "mtime": 1789054578.8334959,
+    "seen": 1789054619.3310661,
+    "ast_hash": "58bf7af913fdc6d013c67360dd2425b3",
+    "semantic_hash": ""
+  },
+  "src/app/planning/data/dexie-planning.repository.spec.ts": {
+    "mtime": 1789053116.332592,
+    "seen": 1789053209.09041,
+    "ast_hash": "e6e140a0f47a168c5d51a8ba23688acd",
+    "semantic_hash": ""
+  },
+  "src/app/planning/data/dexie-planning.repository.ts": {
+    "mtime": 1789053098.005651,
+    "seen": 1789053209.090411,
+    "ast_hash": "b7d8580039e51c4821aa800df5f6ed99",
+    "semantic_hash": ""
+  },
+  "src/app/planning/data/planning.dexie.ts": {
+    "mtime": 1789053089.7170208,
+    "seen": 1789053209.0904121,
+    "ast_hash": "9b149de3cdbe7e68f7a256eea01114c1",
+    "semantic_hash": ""
+  },
+  "src/app/planning/facade/planning.facade.ts": {
+    "mtime": 1789054792.8532016,
+    "seen": 1789054854.92943,
+    "ast_hash": "41774bc367f0a1ffa5d59ad30ab44539",
+    "semantic_hash": ""
+  },
+  "src/app/planning/planning.tokens.ts": {
+    "mtime": 1789054739.049039,
+    "seen": 1789054854.9294322,
+    "ast_hash": "e0e2797434c225f3b2f228c4d8937773",
+    "semantic_hash": ""
+  },
+  "src/app/planning/facade/planning.facade.spec.ts": {
+    "mtime": 1789055182.8696234,
+    "seen": 1789055214.264261,
+    "ast_hash": "27e55553baf8272ced0548add2c887d7",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/day-override-panel/day-override-panel.component.ts": {
+    "mtime": 1789060918.56815,
+    "seen": 1789061085.977749,
+    "ast_hash": "2768bb5c54cc607dd21b9d86ec0150f8",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/goal-summary-card/goal-summary-card.component.ts": {
+    "mtime": 1789060784.5635579,
+    "seen": 1789061085.977751,
+    "ast_hash": "4511228562842906d817784c3d1d1d9a",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/monthly-bar-chart/monthly-bar-chart.component.ts": {
+    "mtime": 1789057105.9480722,
+    "seen": 1789057700.3459241,
+    "ast_hash": "dd25bec60d19fa044b0a88c244eccf38",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning-calendar/planning-calendar.component.ts": {
+    "mtime": 1789059790.4963083,
+    "seen": 1789060058.6412969,
+    "ast_hash": "22049566316ec9d2fd0c9812eaf49f6c",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning/planning.component.ts": {
+    "mtime": 1789058204.9841847,
+    "seen": 1789058261.828471,
+    "ast_hash": "217541518b9b780bf3b6d69292673b50",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/weekly-schedule-editor/weekly-schedule-editor.component.ts": {
+    "mtime": 1789060870.6005225,
+    "seen": 1789061085.977758,
+    "ast_hash": "087152b72de4c22e1b48b34f637e741d",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/planning.module.ts": {
+    "mtime": 1789058163.5386047,
+    "seen": 1789058261.828476,
+    "ast_hash": "7dfaf04d352e7cd12d6d4a72ed0eada1",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/utils/date-key.util.ts": {
+    "mtime": 1789057011.0544803,
+    "seen": 1789057700.345927,
+    "ast_hash": "7023143cd6ad79cf3008739dd20ad1b0",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/day-override-panel/day-override-panel.component.html": {
+    "mtime": 1789060937.4056976,
+    "seen": 1789061085.977835,
+    "ast_hash": "f5f27d1290291b664e49ea4cfb4178be",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/goal-summary-card/goal-summary-card.component.html": {
+    "mtime": 1789060791.042102,
+    "seen": 1789061085.9778361,
+    "ast_hash": "fff61b6baa2569b9d8b4a0d629d60c3e",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/monthly-bar-chart/monthly-bar-chart.component.html": {
+    "mtime": 1789057130.1613994,
+    "seen": 1789057700.346,
+    "ast_hash": "dcfa1fa0e9565846bf94dc5ebe4f757d",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning-calendar/planning-calendar.component.html": {
+    "mtime": 1789059621.535591,
+    "seen": 1789060058.6413739,
+    "ast_hash": "1e0bb0efb4b7dabcdd143e530b9a2848",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning/planning.component.html": {
+    "mtime": 1789058212.54096,
+    "seen": 1789058261.8285508,
+    "ast_hash": "e906505bec29e85aca3cebff089b85a0",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/weekly-schedule-editor/weekly-schedule-editor.component.html": {
+    "mtime": 1789060884.1640856,
+    "seen": 1789061085.9778402,
+    "ast_hash": "83fac474535d967230fb0d0f864c642e",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/day-override-panel/day-override-panel.component.spec.ts": {
+    "mtime": 1789061320.5797808,
+    "seen": 1789061368.3511438,
+    "ast_hash": "667f05580315bdb2fbc854c5ec903703",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/goal-summary-card/goal-summary-card.component.spec.ts": {
+    "mtime": 1789061033.0483353,
+    "seen": 1789061085.97775,
+    "ast_hash": "74f9545a1d01ce080dffc40854f98238",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/monthly-bar-chart/monthly-bar-chart.component.spec.ts": {
+    "mtime": 1789058660.1736932,
+    "seen": 1789059502.173322,
+    "ast_hash": "a7350c065acaa9a6d568ef6788c6d26e",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning-calendar/planning-calendar.component.spec.ts": {
+    "mtime": 1789060352.5964887,
+    "seen": 1789060389.7083771,
+    "ast_hash": "ae19217958191824332fc06a30719b5a",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/planning/planning.component.spec.ts": {
+    "mtime": 1789060352.5980964,
+    "seen": 1789060389.7083788,
+    "ast_hash": "bb2b467e3898d1408c6c71ea0e06d67b",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/components/weekly-schedule-editor/weekly-schedule-editor.component.spec.ts": {
+    "mtime": 1789061288.0308678,
+    "seen": 1789061368.3511522,
+    "ast_hash": "2e469afe1bc7405f989806eb32974cb2",
+    "semantic_hash": ""
+  },
+  "src/app/shared/domain/week-day.model.spec.ts": {
+    "mtime": 1789063314.1717784,
+    "seen": 1789063335.507554,
+    "ast_hash": "83342bd20734de1117f6b70a9570bdd8",
+    "semantic_hash": ""
+  },
+  "src/app/planning/data/planning.dexie.spec.ts": {
+    "mtime": 1789063460.9626963,
+    "seen": 1789063501.980462,
+    "ast_hash": "a44dfa793e77e4db601890bde19c20c4",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/i-planning.repository.spec.ts": {
+    "mtime": 1789063427.305112,
+    "seen": 1789063501.9804642,
+    "ast_hash": "c1c9b21afcc87bcb8bbdd5aae485f753",
+    "semantic_hash": ""
+  },
+  "src/app/planning/domain/models.spec.ts": {
+    "mtime": 1789063433.6759422,
+    "seen": 1789063501.980466,
+    "ast_hash": "199d0013fffc8007c166aa6bda913fe4",
+    "semantic_hash": ""
+  },
+  "src/app/planning/planning.tokens.spec.ts": {
+    "mtime": 1789063438.6288805,
+    "seen": 1789063501.98047,
+    "ast_hash": "08dfb8c023cb7a26fb115bb0f63f51cd",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/planning.module.spec.ts": {
+    "mtime": 1789063466.8289826,
+    "seen": 1789063501.980484,
+    "ast_hash": "6e07abf10303719796afb5f984b4f46f",
+    "semantic_hash": ""
+  },
+  "src/app/planning/presentation/utils/date-key.util.spec.ts": {
+    "mtime": 1789063473.2361224,
+    "seen": 1789063501.9804852,
+    "ast_hash": "8790cef11cc6de5ee81fb9e362558ada",
     "semantic_hash": ""
   }
 }
