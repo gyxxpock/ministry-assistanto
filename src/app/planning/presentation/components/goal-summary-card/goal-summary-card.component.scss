@@ -1,0 +1,143 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.goal-card {
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'light');
+  padding: t.$space-4;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.goal-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-2;
+}
+
+.goal-card__title-group {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  gap: 2px;
+}
+
+.goal-card__type {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goal-card__period {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goal-card__configure-btn {
+  flex-shrink: 0;
+  @include m.transition-fast(transform);
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.goal-card__body {
+  display: flex;
+  align-items: center;
+  gap: t.$space-4;
+}
+
+.goal-card__donut {
+  position: relative;
+  width: 88px;
+  height: 88px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .donut-svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+
+    .donut-arc {
+      stroke-linecap: round;
+      transition: stroke-dasharray 300ms ease-out, stroke 300ms ease-out;
+    }
+  }
+}
+
+.goal-card__donut-percent {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.goal-card__metrics {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-2;
+}
+
+.goal-card__metric-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: t.$space-2;
+}
+
+.goal-card__metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.goal-card__metric-value {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  flex-shrink: 0;
+}
+
+.goal-card__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: t.$space-2;
+  padding: t.$space-4 t.$space-2;
+
+  .goal-card__empty-icon {
+    font-size: 40px;
+    width: 40px;
+    height: 40px;
+    color: var(--text-tertiary);
+  }
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    color: var(--text-primary);
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+}

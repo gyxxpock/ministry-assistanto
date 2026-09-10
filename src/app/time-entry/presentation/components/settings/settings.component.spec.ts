@@ -5,6 +5,8 @@ import { SettingsComponent } from './settings.component';
 import { ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 import { ChangelogService } from '../../../../core/services/changelog.service';
+import { WeekStartService } from '../../../../core/services/week-start.service';
+import { WeekDay } from '../../../../shared/domain/week-day.model';
 
 @Pipe({ name: 'translate', standalone: true })
 class TranslateStub implements PipeTransform {
@@ -16,6 +18,7 @@ describe('SettingsComponent', () => {
   let fixture: ComponentFixture<SettingsComponent>;
   let mockTheme: jasmine.SpyObj<ThemeService>;
   let mockBackup: jasmine.SpyObj<BackupReminderService>;
+  let mockWeekStart: jasmine.SpyObj<WeekStartService>;
   let mockTranslate: jasmine.SpyObj<TranslateService>;
   let lastBackupDateSignal: WritableSignal<string | null>;
   let nextReminderDateSignal: WritableSignal<Date | null>;
@@ -37,6 +40,9 @@ describe('SettingsComponent', () => {
         nextReminderDate: nextReminderDateSignal,
       }
     );
+    mockWeekStart = jasmine.createSpyObj('WeekStartService', ['setWeekStart'], {
+      weekStart: signal<WeekDay>('monday'),
+    });
     mockTranslate = jasmine.createSpyObj('TranslateService', ['instant', 'get'], {
       currentLang: 'es',
     });
@@ -49,6 +55,7 @@ describe('SettingsComponent', () => {
       providers: [
         { provide: ThemeService, useValue: mockTheme },
         { provide: BackupReminderService, useValue: mockBackup },
+        { provide: WeekStartService, useValue: mockWeekStart },
         { provide: TranslateService, useValue: mockTranslate },
         { provide: ChangelogService, useValue: { entries: signal([]) } },
       ],
@@ -71,6 +78,14 @@ describe('SettingsComponent', () => {
     expect(component.frequencyOptions.length).toBe(4);
   });
 
+  it('exposes weekStartOptions with the 3 expected values and i18n keys', () => {
+    expect(component.weekStartOptions).toEqual([
+      { value: 'monday',   label: 'settings.calendar.weekStartOptions.monday' },
+      { value: 'sunday',   label: 'settings.calendar.weekStartOptions.sunday' },
+      { value: 'saturday', label: 'settings.calendar.weekStartOptions.saturday' },
+    ]);
+  });
+
   it('setTheme() delegates to themeService.setMode()', () => {
     component.setTheme('dark');
     expect(mockTheme.setMode).toHaveBeenCalledWith('dark');
@@ -79,6 +94,25 @@ describe('SettingsComponent', () => {
   it('setFrequency() delegates to backupService.setFrequency()', () => {
     component.setFrequency('monthly');
     expect(mockBackup.setFrequency).toHaveBeenCalledWith('monthly');
+  });
+
+  it('setWeekStart() delegates to weekStartService.setWeekStart()', () => {
+    component.setWeekStart('sunday');
+    expect(mockWeekStart.setWeekStart).toHaveBeenCalledWith('sunday');
+  });
+
+  it('renders the "Calendario" section with the week-start pill group', () => {
+    const sections: NodeListOf<HTMLElement> = fixture.nativeElement.querySelectorAll('.settings-section');
+    const calendarSection = Array.from(sections).find(section =>
+      section.querySelector('.section-title')?.textContent?.trim() === 'settings.calendar.title'
+    );
+    expect(calendarSection).toBeTruthy();
+
+    const weekStartLabel = calendarSection?.querySelector('.row-label')?.textContent?.trim();
+    expect(weekStartLabel).toBe('settings.calendar.weekStart');
+
+    const pillGroup = calendarSection?.querySelector('ma-option-pill-group');
+    expect(pillGroup).toBeTruthy();
   });
 
   describe('lastBackupFormatted', () => {
@@ -154,6 +188,9 @@ describe('SettingsComponent - currentLang fallback to "es"', () => {
         nextReminderDate: nextReminderDateSignal,
       }
     );
+    const mockWeekStart = jasmine.createSpyObj('WeekStartService', ['setWeekStart'], {
+      weekStart: signal<WeekDay>('monday'),
+    });
     const mockTranslate = jasmine.createSpyObj('TranslateService', ['instant', 'get'], {
       currentLang,
     });
@@ -166,6 +203,7 @@ describe('SettingsComponent - currentLang fallback to "es"', () => {
       providers: [
         { provide: ThemeService, useValue: mockTheme },
         { provide: BackupReminderService, useValue: mockBackup },
+        { provide: WeekStartService, useValue: mockWeekStart },
         { provide: TranslateService, useValue: mockTranslate },
         { provide: ChangelogService, useValue: { entries: signal([]) } },
       ],

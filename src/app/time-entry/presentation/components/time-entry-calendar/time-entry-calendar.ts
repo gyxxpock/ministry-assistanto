@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
 import { toDateKey } from '../../utils/date.utils';
+import { WEEK_DAY_INDEX, WeekStartService } from '../../../../core/services/week-start.service';
 
 interface CalendarDay {
   date: Date;
@@ -21,13 +22,16 @@ interface CalendarDay {
 
 export class TimeEntryCalendarComponent implements OnInit {
   private readonly translate = inject(TranslateService);
+  private readonly weekStartService: WeekStartService = inject(WeekStartService);
   currentDate = signal(new Date());
   today = new Date();
 
   get weekDays(): string[] {
     const locale = this.translate.currentLang || 'es';
+    const startIndex = WEEK_DAY_INDEX[this.weekStartService.weekStart()];
     return Array.from({ length: 7 }, (_, i) => {
-      const date = new Date(2024, 0, i + 1);
+      const dow = (startIndex + i) % 7; // 0=domingo..6=sábado
+      const date = new Date(2024, 0, 7 + dow); // 2024-01-07 fue domingo
       const name = new Intl.DateTimeFormat(locale, { weekday: 'long' }).format(date);
       return name.charAt(0).toUpperCase() + name.slice(1);
     });
@@ -56,7 +60,8 @@ export class TimeEntryCalendarComponent implements OnInit {
     const days: CalendarDay[] = [];
 
     const startDayOfWeek = firstDayOfMonth.getDay();
-    const paddingDays = startDayOfWeek === 0 ? 6 : startDayOfWeek - 1;
+    const weekStartIndex = WEEK_DAY_INDEX[this.weekStartService.weekStart()];
+    const paddingDays = (startDayOfWeek - weekStartIndex + 7) % 7;
 
     for (let i = paddingDays; i > 0; i--) {
       const date = new Date(year, month, 1 - i);

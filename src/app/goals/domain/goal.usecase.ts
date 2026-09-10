@@ -33,7 +33,7 @@ function serviceYearCalendarMonth(startMonth: number, index: number): number {
 }
 
 /** Determina si un mes calendario pertenece al periodo activo de un auxiliar. */
-function isActiveMonth(calendarMonth: number, config: AuxiliaryGoalConfig): boolean {
+export function isActiveMonth(calendarMonth: number, config: AuxiliaryGoalConfig): boolean {
   if (config.permanent) {
     return true;
   }

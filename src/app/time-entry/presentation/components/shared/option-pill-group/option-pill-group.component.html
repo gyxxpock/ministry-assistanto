@@ -1,4 +1,4 @@
-<div class="pill-group" role="group">
+<div class="pill-group" [class.pill-group--scroll]="scrollable" role="group">
   @for (opt of options; track opt.value) {
     <button
       class="pill-option"

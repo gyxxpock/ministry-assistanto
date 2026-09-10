@@ -1,0 +1,78 @@
+<div class="planning-page">
+  <h1 class="planning-page__title">{{ 'planning.pages.plan.title' | translate }}</h1>
+
+  <app-goal-summary-card
+    [goalConfig]="goalsState.activeGoal()?.config ?? null"
+    [goalProgress]="goalsState.goalProgress()"
+    [periodStart]="periodStartDate()"
+    [periodEnd]="periodEndDate()"
+  ></app-goal-summary-card>
+
+  <app-monthly-bar-chart
+    [monthlyBars]="monthlyBars()"
+    [selectedYear]="visibleMonth().getFullYear()"
+    [selectedMonth]="visibleMonth().getMonth() + 1"
+    (monthSelected)="onMonthSelected($event)"
+  ></app-monthly-bar-chart>
+
+  <!-- Navegación primaria de meses: tabs horizontales con scroll, mes activo
+       resaltado. El bar chart de arriba sigue siendo clicable como acceso
+       adicional, pero esta es la interacción de navegación explícita del AC. -->
+  <ma-option-pill-group
+    class="planning-page__month-tabs"
+    [options]="monthPillOptions"
+    [value]="selectedMonthPillValue()"
+    [scrollable]="true"
+    (valueChange)="onMonthPillSelected($event)"
+  ></ma-option-pill-group>
+
+  <div class="planning-page__week-chip-row">
+    <div class="week-chip">
+      <span class="week-chip__label">{{ 'planning.week-chip.label' | translate }}</span>
+      <span class="week-chip__value">{{ weekPlanLabel() }}</span>
+    </div>
+
+    <div class="week-editor-anchor">
+      <button
+        mat-icon-button
+        class="week-chip__edit-btn"
+        (click)="toggleEditor()"
+        [attr.aria-label]="'planning.week-editor.title' | translate"
+      >
+        <mat-icon>tune</mat-icon>
+      </button>
+
+      <app-weekly-schedule-editor
+        [schedule]="scheduleForEditor()"
+        [weekStart]="weekStart()"
+        [isOpen]="isEditorOpen()"
+        (scheduleChange)="onScheduleChange($event)"
+        (resetRequested)="onResetRequested()"
+        (closeRequested)="onEditorCloseRequested()"
+      ></app-weekly-schedule-editor>
+    </div>
+  </div>
+
+  <app-planning-calendar
+    [monthDate]="visibleMonth()"
+    [plannedByDate]="plannedByDate()"
+    [actualByDate]="actualByDate()"
+    [overrideDates]="overrideDates()"
+    [weekStart]="weekStart()"
+    [selectedDate]="selectedDate()"
+    (daySelected)="onDaySelected($event)"
+  ></app-planning-calendar>
+
+  @if (selectedDayInfo(); as dayInfo) {
+    <div class="planning-page__day-panel-wrapper">
+      <app-day-override-panel
+        [selectedDate]="selectedDate()"
+        [templateHours]="dayInfo.templateHours"
+        [overrideHours]="dayInfo.overrideHours"
+        [weekStart]="weekStart()"
+        (confirm)="onDayConfirm($event)"
+        (clear)="onDayClear()"
+      ></app-day-override-panel>
+    </div>
+  }
+</div>

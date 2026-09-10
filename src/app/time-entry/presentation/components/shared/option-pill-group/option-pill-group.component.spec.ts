@@ -1,11 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { OptionPillGroupComponent, PillOption } from './option-pill-group.component';
-
-@Pipe({ name: 'translate', standalone: true })
-class TranslateStub implements PipeTransform {
-  transform(value: string): string { return value; }
-}
 
 const TEST_OPTIONS: PillOption[] = [
   { value: 'a', label: 'Option A' },
@@ -18,9 +13,11 @@ describe('OptionPillGroupComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [OptionPillGroupComponent],
-      imports: [TranslateStub],
-      schemas: [NO_ERRORS_SCHEMA],
+      // OptionPillGroupComponent es standalone (Angular 20+): se coloca en
+      // imports, no en declarations. TranslateModule.forRoot() provee un
+      // TranslateService real (sin loader) para el pipe `translate` que usa
+      // internamente el template del componente.
+      imports: [TranslateModule.forRoot(), OptionPillGroupComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(OptionPillGroupComponent);

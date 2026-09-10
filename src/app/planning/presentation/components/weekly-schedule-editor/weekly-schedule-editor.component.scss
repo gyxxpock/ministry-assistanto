@@ -1,0 +1,152 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+:host {
+  position: relative;
+}
+
+.week-editor {
+  position: absolute;
+  top: calc(100% + #{t.$space-2});
+  right: 0;
+  z-index: t.$z-dialog;
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'medium');
+  padding: t.$space-3 t.$space-3 t.$space-4;
+  // Nunca más ancho que el viewport menos márgenes fijos (trampa #3 del ui-agent)
+  max-width: min(340px, calc(100vw - #{t.$space-6} - #{t.$space-4}));
+  width: max-content;
+}
+
+.week-editor__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: t.$space-2;
+  margin-bottom: t.$space-2;
+}
+
+.week-editor__title {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.week-editor__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
+}
+
+.week-editor__reset-btn {
+  color: var(--state-error);
+
+  &:active {
+    transform: scale(0.96);
+  }
+}
+
+.week-editor__columns-wrapper {
+  position: relative;
+}
+
+.week-editor__columns {
+  display: flex;
+  gap: t.$space-1;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &--dimmed {
+    opacity: 0.3;
+    pointer-events: none;
+  }
+}
+
+// Panel de confirmación de dos pasos del reset destructivo — absoluto sobre
+// las columnas para no desplazar el header (trampa #3 del ui-agent). Nunca
+// más ancho que el contenedor padre, que ya está acotado al viewport.
+.week-editor__reset-confirm {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: t.$space-2;
+  text-align: center;
+  padding: t.$space-2;
+  @include m.glass-surface(t.$blur-md, t.$radius-lg, 'high');
+}
+
+.week-editor__reset-confirm-icon {
+  color: var(--state-error);
+}
+
+.week-editor__reset-confirm-text {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  flex: 1;
+  min-width: 0;
+  // Texto traducido dinámico: nunca nowrap (trampa #3 del ui-agent).
+}
+
+.week-editor__reset-confirm-actions {
+  display: flex;
+  align-items: center;
+  gap: t.$space-2;
+}
+
+.day-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: t.$space-1;
+  min-width: 40px;
+  flex: 1;
+}
+
+.day-column__value {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+}
+
+// Contenedor con altura suficiente para el slider rotado (ancho lógico
+// pre-rotación 120px, alto lógico 44px -> tras rotar -90deg ocupa 44px de
+// ancho x 120px de alto, garantizando target táctil >= 44px en el eje corto).
+.day-column__slider-wrapper {
+  height: 120px;
+  width: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.day-column__slider {
+  width: 120px;
+  height: 44px;
+  transform: rotate(-90deg);
+  margin: 0;
+  cursor: pointer;
+  accent-color: var(--accent);
+
+  &:active {
+    transform: rotate(-90deg) scale(0.96);
+  }
+}
+
+.day-column__label {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  white-space: nowrap;
+}

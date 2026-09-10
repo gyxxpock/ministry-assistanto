@@ -1,0 +1,45 @@
+@if (selectedDate) {
+  <div class="day-panel">
+    <div class="day-panel__info">
+      <span class="day-panel__title">{{ 'planning.day-panel.title' | translate }}</span>
+      <span class="day-panel__date">{{ selectedDate | i18nDate:{ weekday: 'long', day: 'numeric', month: 'long' } }}</span>
+      <span class="day-panel__current">
+        {{ (hasOverride ? 'planning.day-panel.override-label' : 'planning.day-panel.template-label') | translate }}:
+        {{ (hasOverride ? overrideHours : templateHours) | number:'1.0-1' }}{{ 'planning.week-editor.hours-unit' | translate }}
+      </span>
+    </div>
+
+    <div class="day-panel__controls">
+      <mat-form-field
+        appearance="outline"
+        class="day-panel__field"
+        [class.day-panel__field--invalid]="isHoursInputInvalid"
+      >
+        <input
+          matInput
+          type="number"
+          min="0"
+          [max]="maxDailyHours"
+          step="0.5"
+          [(ngModel)]="hoursInput"
+          [placeholder]="'planning.day-panel.hours-placeholder' | translate"
+        />
+      </mat-form-field>
+
+      <button mat-icon-button color="primary" (click)="onConfirm()" [attr.aria-label]="'planning.day-panel.confirm' | translate">
+        <mat-icon>check</mat-icon>
+      </button>
+
+      <button
+        mat-icon-button
+        class="day-panel__clear-btn"
+        [class.day-panel__clear-btn--confirming]="confirmingClear"
+        [disabled]="!hasOverride"
+        (click)="onClear()"
+        [attr.aria-label]="(confirmingClear ? 'planning.day-panel.clear-confirm' : 'planning.day-panel.clear') | translate"
+      >
+        <mat-icon>{{ confirmingClear ? 'delete_forever' : 'close' }}</mat-icon>
+      </button>
+    </div>
+  </div>
+}

@@ -62,6 +62,11 @@ const routes: Routes = [
           import('../../goals/presentation/goals.module').then(m => m.GoalsModule)
       },
       {
+        path: 'plan',
+        loadChildren: () =>
+          import('../../planning/presentation/planning.module').then(m => m.PlanningModule)
+      },
+      {
         path: '',
         redirectTo: 'list',
         pathMatch: 'full'
@@ -83,11 +88,14 @@ const routes: Routes = [
     SettingsComponent,
     BackupReminderBannerComponent,
     MonthPaginatorComponent,
-    OptionPillGroupComponent,
     UpdateBannerComponent,
     VersionHistoryComponent,
   ],
   imports: [
+    // OptionPillGroupComponent es standalone: se importa aquí (no en
+    // declarations) para que SettingsComponent (declarado en este módulo)
+    // pueda usar su selector `ma-option-pill-group`.
+    OptionPillGroupComponent,
     MatChipsModule,
     MatSelectModule,
     MatDatepickerModule,

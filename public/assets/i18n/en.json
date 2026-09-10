@@ -47,6 +47,15 @@
     "appearance": {
       "title": "Appearance"
     },
+    "calendar": {
+      "title": "Calendar",
+      "weekStart": "Week starts on",
+      "weekStartOptions": {
+        "monday": "Monday",
+        "sunday": "Sunday",
+        "saturday": "Saturday"
+      }
+    },
     "backup": {
       "title": "Data backup",
       "frequency": "Reminder frequency",
@@ -143,6 +152,46 @@
       "monthly-target": "Monthly target"
     },
     "no-active-goal": "No active goal configured."
+  },
+  "planning": {
+    "pages": {
+      "plan": {
+        "title": "Plan"
+      }
+    },
+    "goal-card": {
+      "cta-configure": "Configure goal",
+      "empty-title": "No active goal",
+      "empty-description": "Set a goal to see your service period here."
+    },
+    "bar-chart": {
+      "title": "Hours per month",
+      "planned": "Planned",
+      "actual": "Actual"
+    },
+    "week-chip": {
+      "label": "Weekly plan"
+    },
+    "week-editor": {
+      "title": "Edit weekly plan",
+      "reset": "Reset",
+      "reset-confirm-message": "Reset all days to zero hours?",
+      "hours-unit": "h"
+    },
+    "calendar": {
+      "legend-planned": "Planned",
+      "legend-actual": "Actual",
+      "override-marker": "Adjusted"
+    },
+    "day-panel": {
+      "title": "Adjust day",
+      "template-label": "Weekly plan",
+      "override-label": "Override",
+      "confirm": "Save",
+      "clear": "Clear override",
+      "clear-confirm": "Tap again to confirm clearing the override",
+      "hours-placeholder": "Hours"
+    }
   },
   "timeEntry": {
     "pages": {

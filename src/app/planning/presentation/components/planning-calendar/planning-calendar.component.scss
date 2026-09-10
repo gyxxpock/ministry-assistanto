@@ -1,0 +1,147 @@
+@use 'styles/tokens' as t;
+@use 'styles/mixins' as m;
+
+.planning-calendar {
+  @include m.glass-surface(t.$blur-lg, t.$radius-xl, 'light');
+  padding: t.$space-3 t.$space-4;
+  display: flex;
+  flex-direction: column;
+  gap: t.$space-3;
+}
+
+.planning-calendar__legend {
+  display: flex;
+  gap: t.$space-3;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.7rem;
+  color: var(--text-secondary);
+  min-width: 0;
+}
+
+.legend-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+
+  &--planned { background: var(--accent); }
+  &--actual { background: var(--state-success); }
+  &--override { background: var(--state-warning); }
+}
+
+.planning-calendar__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar { height: 3px; }
+  &::-webkit-scrollbar-thumb {
+    background: color-mix(in srgb, var(--mat-sys-primary) 25%, transparent);
+    border-radius: t.$radius-sm;
+  }
+}
+
+.planning-calendar__grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(44px, 1fr));
+  min-width: #{7 * 44px};
+  gap: 2px;
+}
+
+.calendar-day {
+  aspect-ratio: 1 / 1.1;
+  min-height: 44px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: t.$space-2;
+  border-radius: t.$radius-sm;
+  position: relative;
+  cursor: default;
+  border: 1px solid transparent;
+  @include m.transition-fast(background transform box-shadow border-color);
+
+  &:not(.other-month) {
+    cursor: pointer;
+
+    &:hover {
+      background: var(--glass-bg-light);
+    }
+
+    &:active {
+      transform: scale(0.95);
+      background: var(--glass-bg-medium);
+      transition-duration: t.$dur-fast;
+    }
+  }
+
+  &.today .day-number {
+    background: color-mix(in srgb, var(--accent) 22%, transparent);
+    color: var(--accent);
+    font-weight: 700;
+    border-radius: 50%;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &.selected {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent) inset;
+  }
+
+  &.is-override {
+    &::after {
+      content: '';
+      position: absolute;
+      top: 4px;
+      right: 4px;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--state-warning);
+    }
+  }
+
+  &.other-month {
+    opacity: 0.3;
+    cursor: default;
+  }
+}
+
+.day-number {
+  font-size: 13px;
+  color: var(--text-primary);
+}
+
+.day-indicators {
+  display: flex;
+  gap: 3px;
+  margin-top: t.$space-1;
+}
+
+.day-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+
+  &--planned { background: var(--accent); }
+  &--actual { background: var(--state-success); }
+}
+
+.weekday-header {
+  font-size: 11px;
+  color: var(--mat-sys-on-surface-variant);
+  padding-bottom: t.$space-2;
+  text-align: center;
+  opacity: 0.7;
+  font-weight: 600;
+}

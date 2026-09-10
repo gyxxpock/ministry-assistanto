@@ -17,6 +17,21 @@
     </div>
   </section>
 
+  <!-- Calendario -->
+  <section class="settings-section">
+    <h3 class="section-title">{{ 'settings.calendar.title' | translate }}</h3>
+    <div class="settings-card">
+      <div class="settings-row settings-row--control settings-row--last">
+        <span class="row-label">{{ 'settings.calendar.weekStart' | translate }}</span>
+        <ma-option-pill-group
+          [options]="weekStartOptions"
+          [value]="weekStartService.weekStart()"
+          (valueChange)="setWeekStart($event)">
+        </ma-option-pill-group>
+      </div>
+    </div>
+  </section>
+
   <!-- Respaldo de datos -->
   <section class="settings-section">
     <h3 class="section-title">{{ 'settings.backup.title' | translate }}</h3>

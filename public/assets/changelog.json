@@ -1,5 +1,12 @@
 [
   {
+    "version": "2026-09-10",
+    "changes": [
+      { "type": "feature", "text": "Nueva sección Plan: agenda tu horario semanal, ajusta días puntuales, compara horas planificadas frente a reales por mes y visualiza tu avance hacia el objetivo mensual" },
+      { "type": "feature", "text": "Nueva preferencia en Configuración para elegir el día de inicio de tu semana (lunes, sábado o domingo), aplicada en todos los calendarios" }
+    ]
+  },
+  {
     "version": "2026-09-08",
     "changes": [
       { "type": "fix",     "text": "El banner de actualización vuelve a aparecer al recargar la página si hay una actualización pendiente" },
