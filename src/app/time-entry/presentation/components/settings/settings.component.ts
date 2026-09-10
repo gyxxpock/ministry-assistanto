@@ -3,6 +3,8 @@ import { TranslateService } from '@ngx-translate/core';
 import { ThemeMode, ThemeService } from '../../../../core/services/theme.service';
 import { BackupReminderFrequency, BackupReminderService } from '../../../../core/services/backup-reminder.service';
 import { ChangelogService } from '../../../../core/services/changelog.service';
+import { WeekStartService } from '../../../../core/services/week-start.service';
+import { WeekDay } from '../../../../shared/domain/week-day.model';
 import { PillOption } from '../shared/option-pill-group/option-pill-group.component';
 
 @Component({
@@ -15,6 +17,7 @@ export class SettingsComponent {
   readonly themeService: ThemeService = inject(ThemeService);
   readonly backupService: BackupReminderService = inject(BackupReminderService);
   readonly changelogService: ChangelogService = inject(ChangelogService);
+  readonly weekStartService: WeekStartService = inject(WeekStartService);
   private readonly translate = inject(TranslateService);
 
   readonly themeOptions: PillOption[] = [
@@ -28,6 +31,12 @@ export class SettingsComponent {
     { value: 'weekly',   label: 'settings.backup.frequencies.weekly' },
     { value: 'monthly',  label: 'settings.backup.frequencies.monthly' },
     { value: 'disabled', label: 'settings.backup.frequencies.disabled' },
+  ];
+
+  readonly weekStartOptions: PillOption[] = [
+    { value: 'monday',   label: 'settings.calendar.weekStartOptions.monday' },
+    { value: 'sunday',   label: 'settings.calendar.weekStartOptions.sunday' },
+    { value: 'saturday', label: 'settings.calendar.weekStartOptions.saturday' },
   ];
 
   readonly lastBackupFormatted = computed(() => {
@@ -55,5 +64,9 @@ export class SettingsComponent {
 
   setFrequency(value: unknown): void {
     this.backupService.setFrequency(String(value) as BackupReminderFrequency);
+  }
+
+  setWeekStart(value: unknown): void {
+    this.weekStartService.setWeekStart(String(value) as WeekDay);
   }
 }
