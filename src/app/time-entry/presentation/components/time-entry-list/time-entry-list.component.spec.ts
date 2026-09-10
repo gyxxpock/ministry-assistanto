@@ -9,6 +9,11 @@ import { TIME_ENTRY_REPOSITORY } from '../../tokens/time-entry.tokens';
 import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../../../domain/models';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { of } from 'rxjs';
+import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
+import { FileUtilService } from '../../../../core/services/file-util.service';
+import { BackupReminderService } from '../../../../core/services/backup-reminder.service';
 
 class InMemoryRepository implements ITimeEntryRepository {
   private entries: TimeEntry[] = [];
@@ -260,5 +265,225 @@ describe('TimeEntryListComponent', () => {
     expect(groups.length).toBe(2);
     const entries5 = groups.find((g: { date: string; entries: unknown[] }) => g.date.endsWith('-05'))?.entries;
     expect(entries5?.length).toBe(2);
+  });
+
+  describe('getFormattedMonthlyReport', () => {
+    it('formats totals into a report string', async () => {
+      await facade.addEntry({ date: new Date(2025, 10, 5), durationMinutes: 120, type: 'preaching' });
+      await facade.loadMonth(2025, 11);
+      // Set currentDate before the first detectChanges() so ngOnInit's loadData()
+      // (which reads component.currentDate) does not overwrite the year/month we just loaded.
+      component.currentDate.set(new Date(2025, 10, 1));
+      fixture.detectChanges();
+
+      const report = (component as any).getFormattedMonthlyReport();
+
+      expect(report).toContain('INFORME DE ACTIVIDAD');
+      expect(report).toContain('Noviembre de 2025');
+      expect(report).toContain('Tiempo total');
+      expect(report).toContain('Cursos');
+    });
+
+    it('falls back to 0h when there are no totals for the month', async () => {
+      await facade.loadMonth(2025, 11);
+      component.currentDate.set(new Date(2025, 10, 1));
+      fixture.detectChanges();
+
+      const report = (component as any).getFormattedMonthlyReport();
+
+      expect(report).toContain('Tiempo total:* 0h');
+    });
+  });
+
+  describe('shareReport', () => {
+    let originalShare: unknown;
+
+    beforeEach(() => {
+      originalShare = (navigator as any).share;
+    });
+
+    afterEach(() => {
+      if (originalShare === undefined) {
+        delete (navigator as any).share;
+      } else {
+        Object.defineProperty(navigator, 'share', { value: originalShare, configurable: true });
+      }
+    });
+
+    it('calls navigator.share with the formatted report when available', async () => {
+      await facade.addEntry({ date: new Date(2025, 10, 5), durationMinutes: 60, type: 'preaching' });
+      await facade.loadMonth(2025, 11);
+      component.currentDate.set(new Date(2025, 10, 1));
+      fixture.detectChanges();
+
+      const shareSpy = jasmine.createSpy('share').and.returnValue(Promise.resolve());
+      Object.defineProperty(navigator, 'share', { value: shareSpy, configurable: true });
+
+      await component.shareReport();
+
+      expect(shareSpy).toHaveBeenCalledTimes(1);
+      const arg = shareSpy.calls.mostRecent().args[0];
+      expect(arg.text).toContain('INFORME DE ACTIVIDAD');
+    });
+
+    it('does nothing (fallback) when navigator.share is not available', async () => {
+      Object.defineProperty(navigator, 'share', { value: undefined, configurable: true });
+      fixture.detectChanges();
+
+      await expectAsync(component.shareReport()).toBeResolved();
+    });
+  });
+
+  describe('handleExport', () => {
+    it('generates JSON, downloads the file, records backup and resets isExporting', async () => {
+      await facade.addEntry({ date: new Date(2025, 10, 5), durationMinutes: 60, type: 'preaching' });
+      await facade.loadMonth(2025, 11);
+      fixture.detectChanges();
+
+      const fileUtil = TestBed.inject(FileUtilService);
+      const backupService = TestBed.inject(BackupReminderService);
+      const downloadSpy = spyOn(fileUtil, 'downloadFile');
+      const recordSpy = spyOn(backupService, 'recordBackup');
+
+      await component.handleExport();
+
+      expect(downloadSpy).toHaveBeenCalledTimes(1);
+      const [content, fileName, contentType] = downloadSpy.calls.mostRecent().args;
+      expect(fileName).toMatch(/^backup_\d{4}-\d{2}-\d{2}\.json$/);
+      expect(contentType).toBe('application/json');
+      expect(JSON.parse(content).data.entries.length).toBe(1);
+      expect(recordSpy).toHaveBeenCalledTimes(1);
+      expect(component.isExporting()).toBeFalse();
+    });
+  });
+
+  describe('handleImport', () => {
+    it('returns early when no files are selected (undefined or empty)', async () => {
+      fixture.detectChanges();
+      const importSpy = spyOn(facade, 'importAll').and.returnValue(Promise.resolve());
+
+      const inputElNull = { files: null, value: '' } as unknown as HTMLInputElement;
+      await component.handleImport({ target: inputElNull } as unknown as Event);
+
+      const inputElEmpty = { files: [], value: '' } as unknown as HTMLInputElement;
+      await component.handleImport({ target: inputElEmpty } as unknown as Event);
+
+      expect(importSpy).not.toHaveBeenCalled();
+    });
+
+    it('parses payload.data and calls facade.importAll with sanitized dates when a file is selected', async () => {
+      fixture.detectChanges();
+      const fileUtil = TestBed.inject(FileUtilService);
+      const importSpy = spyOn(facade, 'importAll').and.returnValue(Promise.resolve());
+      const rawContent = JSON.stringify({
+        version: '1.0',
+        data: {
+          entries: [{ id: 'e1', date: '2025-11-05', durationMinutes: 30, type: 'preaching' }],
+          visits: [{ id: 'v1', date: '2025-11-06', durationMinutes: 15, personId: 'p1' }],
+        },
+      });
+      spyOn(fileUtil, 'readFile').and.returnValue(Promise.resolve(rawContent));
+
+      const fakeFile = new File(['x'], 'backup.json');
+      const inputEl = { files: [fakeFile], value: 'something' } as unknown as HTMLInputElement;
+
+      await component.handleImport({ target: inputEl } as unknown as Event);
+
+      expect(importSpy).toHaveBeenCalledTimes(1);
+      const arg = importSpy.calls.mostRecent().args[0] as { entries: TimeEntry[]; visits: CourseVisit[] };
+      expect(arg.entries[0].date).toEqual(new Date('2025-11-05'));
+      expect(arg.visits[0].date).toEqual(new Date('2025-11-06'));
+      expect(inputEl.value).toBe('');
+      expect(component.showRestoreConfirm).toBeFalse();
+    });
+
+    it('defaults entries/visits to empty arrays when payload.data lacks them', async () => {
+      fixture.detectChanges();
+      const fileUtil = TestBed.inject(FileUtilService);
+      const importSpy = spyOn(facade, 'importAll').and.returnValue(Promise.resolve());
+      spyOn(fileUtil, 'readFile').and.returnValue(Promise.resolve(JSON.stringify({ data: {} })));
+
+      const fakeFile = new File(['x'], 'backup.json');
+      const inputEl = { files: [fakeFile], value: 'x' } as unknown as HTMLInputElement;
+
+      await component.handleImport({ target: inputEl } as unknown as Event);
+
+      expect(importSpy).toHaveBeenCalledWith({ entries: [], visits: [] });
+    });
+
+    it('does not call facade.importAll when payload has no data field', async () => {
+      fixture.detectChanges();
+      const fileUtil = TestBed.inject(FileUtilService);
+      const importSpy = spyOn(facade, 'importAll').and.returnValue(Promise.resolve());
+      spyOn(fileUtil, 'readFile').and.returnValue(Promise.resolve(JSON.stringify({ version: '1.0' })));
+
+      const fakeFile = new File(['x'], 'backup.json');
+      const inputEl = { files: [fakeFile], value: 'x' } as unknown as HTMLInputElement;
+
+      await component.handleImport({ target: inputEl } as unknown as Event);
+
+      expect(importSpy).not.toHaveBeenCalled();
+      expect(inputEl.value).toBe('');
+      expect(component.showRestoreConfirm).toBeFalse();
+    });
+  });
+
+  describe('dialog interactions', () => {
+    let dialog: MatDialog;
+
+    beforeEach(() => {
+      dialog = TestBed.inject(MatDialog);
+      fixture.detectChanges();
+    });
+
+    it('addEntry opens TimeEntryEditDialogComponent without data', () => {
+      const fakeRef = { afterClosed: () => of(undefined) } as any;
+      const openSpy = spyOn(dialog, 'open').and.returnValue(fakeRef);
+
+      component.addEntry();
+
+      expect(openSpy).toHaveBeenCalledWith(TimeEntryEditDialogComponent, { width: '450px' });
+    });
+
+    it('editEntry opens TimeEntryEditDialogComponent with the entry as data', () => {
+      const fakeRef = { afterClosed: () => of(undefined) } as any;
+      const openSpy = spyOn(dialog, 'open').and.returnValue(fakeRef);
+      const entry = {
+        id: 'e1',
+        date: new Date(2025, 10, 5),
+        durationMinutes: 30,
+        type: 'preaching',
+        typeLabel: 'Predicación',
+      } as any;
+
+      component.editEntry(entry);
+
+      expect(openSpy).toHaveBeenCalledWith(TimeEntryEditDialogComponent, {
+        width: '450px',
+        data: { entry },
+      });
+    });
+  });
+
+  describe('incrementCourse / decrementCourse nullish fallback', () => {
+    it('incrementCourse falls back to 0 when facade.totals() is null', () => {
+      fixture.detectChanges();
+      spyOn(facade, 'totals').and.returnValue(null as any);
+      const updateSpy = spyOn(facade, 'updateManualCourseCount').and.returnValue(Promise.resolve());
+
+      component.incrementCourse();
+
+      expect(updateSpy).toHaveBeenCalledWith(1);
+    });
+
+    it('decrementCourse falls back to 0 when facade.totals() is null and skips the update', () => {
+      fixture.detectChanges();
+      spyOn(facade, 'totals').and.returnValue(null as any);
+      const updateSpy = spyOn(facade, 'updateManualCourseCount').and.returnValue(Promise.resolve());
+
+      component.decrementCourse();
+
+      expect(updateSpy).not.toHaveBeenCalled();
+    });
   });
 });
