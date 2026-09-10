@@ -27,13 +27,6 @@ function monthsElapsedInServiceYear(sy: ServiceYear, currentDate: Date): number 
   return Math.min(Math.max(elapsed, 0), 12);
 }
 
-/** Días transcurridos desde el inicio del año de servicio, inclusive. */
-function daysElapsedInServiceYear(sy: ServiceYear, currentDate: Date): number {
-  const syStart = new Date(sy.startYear, sy.startMonth - 1, 1);
-  const ms = currentDate.getTime() - syStart.getTime();
-  return Math.floor(ms / (1000 * 60 * 60 * 24)) + 1;
-}
-
 /** Convierte un índice 1-12 del año de servicio (1=sep) al mes calendario 1-12. */
 function serviceYearCalendarMonth(startMonth: number, index: number): number {
   return ((startMonth - 1 + index - 1) % 12) + 1;
@@ -104,9 +97,8 @@ export function computeRegularGoalProgress(
   monthlyAccumulated: number = 0,
 ): GoalProgress {
   const sy = buildServiceYearFromYear(config.serviceYear);
-  const daysElapsed = daysElapsedInServiceYear(sy, currentDate);
-  const projection = daysElapsed === 0 ? 0 : (accumulated / daysElapsed) * 365;
-  const monthsElapsed = Math.floor(daysElapsed / 30.44);
+  const monthsElapsed = monthsElapsedInServiceYear(sy, currentDate);
+  const projection = monthsElapsed === 0 ? 0 : (accumulated / monthsElapsed) * 12;
 
   const monthlyTarget = computeRegularMonthlyTarget();
   const monthlyProgress = monthlyTarget === 0 ? 0 : round2((monthlyAccumulated / monthlyTarget) * 100);
