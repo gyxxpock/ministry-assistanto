@@ -8,7 +8,7 @@ import { sumWeeklyHours } from '../domain/planning.usecase';
 import { GOAL_REPOSITORY_TOKEN } from '../../goals/goals.tokens';
 import { IGoalRepository } from '../../goals/domain/i-goal.repository';
 import { AuxiliaryGoalConfig, RegularGoalConfig } from '../../goals/domain/models';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repository';
 import { TimeEntry } from '../../time-entry/domain/models';
 import { WeekStartService } from '../../core/services/week-start.service';

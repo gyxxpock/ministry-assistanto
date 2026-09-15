@@ -1,0 +1,70 @@
+{
+  "generated/ai/planning/context.md": {
+    "doc_type": "ai-context",
+    "module": "planning",
+    "status": "draft",
+    "generated_by": "ai-docs-agent",
+    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "sources": [
+      "src/app/planning/domain/models.ts",
+      "src/app/planning/domain/i-planning.repository.ts",
+      "src/app/planning/domain/planning.usecase.ts",
+      "src/app/planning/facade/planning.facade.ts",
+      "src/app/planning/data/dexie-planning.repository.ts",
+      "src/app/planning/planning.tokens.ts",
+      "src/app/planning/presentation/planning.module.ts",
+      "graphify-out/graph.json",
+      "graphify-out/GRAPH_REPORT.md"
+    ]
+  },
+  "generated/modules/planning/overview.md": {
+    "doc_type": "architecture-generated",
+    "module": "planning",
+    "status": "draft",
+    "generated_by": "documentation-agent",
+    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "sources": [
+      "src/app/planning/**",
+      "graphify-out/GRAPH_REPORT.md",
+      "feature/Plan.md"
+    ]
+  },
+  "generated/architecture/dependency-overview.md": {
+    "doc_type": "architecture-generated",
+    "module": "root",
+    "status": "draft",
+    "generated_by": "architecture-doc-agent",
+    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "sources": [
+      "graphify-out/graph.json",
+      "graphify-out/GRAPH_REPORT.md",
+      ".claude/agents/architecture-guardian.md"
+    ]
+  },
+  "generated/architecture/known-violations.md": {
+    "doc_type": "architecture-generated",
+    "module": "root",
+    "status": "draft",
+    "generated_by": "architecture-doc-agent",
+    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "sources": [
+      ".claude/agents/architecture-guardian.md"
+    ]
+  },
+  "generated/drift/latest.md": {
+    "doc_type": "drift-report",
+    "module": "root",
+    "status": "draft",
+    "generated_by": "documentation-reviewer",
+    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "sources": [
+      "docs/**",
+      ".claude/agents/*.md",
+      "CLAUDE.md",
+      "AGENTS.md",
+      "src/app/**",
+      "graphify-out/graph.json",
+      "graphify-out/GRAPH_REPORT.md"
+    ]
+  }
+}

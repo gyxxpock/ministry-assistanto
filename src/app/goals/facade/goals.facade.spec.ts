@@ -9,7 +9,7 @@ import { IGoalRepository } from '../domain/i-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
 import { GoalsFacade } from './goals.facade';
 import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repository';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../../time-entry/domain/models';
 
 /**

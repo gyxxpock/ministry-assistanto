@@ -13,7 +13,7 @@ import {
   TimeEntryTypeVM,
   TimeEntryVM,
   UpdateTimeEntryVM,
-} from '../../models/time-entry.vm';
+} from '../../../facade/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-form',

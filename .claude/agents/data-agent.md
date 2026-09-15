@@ -16,9 +16,11 @@ in the domain using Dexie.js over IndexedDB.
 
 ```
 src/app/time-entry/data/
-  time-entry.repository.ts   ← ITimeEntryRepository (interface — pending move to domain/)
   time-entry.dexie.ts        ← DexieTimeEntryRepository + TimeEntryDB (Dexie schema)
 ```
+
+`ITimeEntryRepository` now correctly lives in `domain/i-time-entry.repository.ts` (fixed — no longer
+in this layer's scope).
 
 ## Responsibilities
 

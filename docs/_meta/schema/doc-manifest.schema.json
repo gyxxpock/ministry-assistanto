@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ministry-assistanto/docs/_meta/schema/doc-manifest.schema.json",
+  "title": "Doc manifest",
+  "description": "Index of every documentation file's front-matter, keyed by its path relative to docs/. Used by documentation-reviewer for drift checks.",
+  "type": "object",
+  "additionalProperties": {
+    "type": "object",
+    "required": ["doc_type", "module", "status", "generated_by", "sources"],
+    "properties": {
+      "doc_type": {
+        "type": "string",
+        "enum": [
+          "index",
+          "onboarding",
+          "architecture",
+          "architecture-generated",
+          "workflow",
+          "adr",
+          "ai-context",
+          "drift-report"
+        ]
+      },
+      "module": {
+        "type": "string",
+        "description": "Module name (e.g. 'time-entry', 'goals', 'planning', 'shared', 'core') or 'root' for cross-cutting docs."
+      },
+      "status": {
+        "type": "string",
+        "enum": ["draft", "reviewed", "proposed", "accepted", "deprecated", "template"]
+      },
+      "generated_by": {
+        "type": "string",
+        "description": "'human' for hand-written curated docs, or the agent name that generated/last regenerated this file."
+      },
+      "source_commit": {
+        "type": "string",
+        "description": "Commit SHA this generated doc was produced against. Only present on docs/generated/** files."
+      },
+      "sources": {
+        "type": "array",
+        "items": { "type": "string" },
+        "description": "Files this doc was derived from, for drift detection."
+      },
+      "adr_number": {
+        "type": "integer",
+        "description": "Present only on docs/curated/architecture/adr/** files."
+      },
+      "date": { "type": "string", "format": "date" },
+      "supersedes": { "type": ["string", "null"] },
+      "superseded_by": { "type": ["string", "null"] }
+    }
+  }
+}

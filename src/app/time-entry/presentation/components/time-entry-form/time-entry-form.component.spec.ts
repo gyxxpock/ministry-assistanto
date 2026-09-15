@@ -3,7 +3,7 @@ import { NO_ERRORS_SCHEMA, Component, forwardRef } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, ReactiveFormsModule } from '@angular/forms';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimeEntryFormComponent } from './time-entry-form.component';
-import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/time-entry.vm';
+import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../../facade/time-entry.vm';
 
 @Component({
   selector: 'mat-select',

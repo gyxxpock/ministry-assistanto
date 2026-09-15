@@ -18,11 +18,9 @@ HTTP, Dexie, or any external infrastructure.
 src/app/time-entry/domain/
   models.ts                  ← entities: TimeEntry, CourseVisit, Person, MonthlyCourseCount
   time-entry.usecase.ts      ← pure business logic
+  i-time-entry.repository.ts ← ITimeEntryRepository interface
   utils/file-util.service.ts ← ⚠️ review whether it belongs here (see restrictions)
 ```
-
-The `ITimeEntryRepository` interface currently lives in `data/time-entry.repository.ts`
-but **must migrate to this layer**. It is a domain interface, not an infrastructure one.
 
 ## Responsibilities
 

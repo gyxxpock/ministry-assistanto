@@ -9,9 +9,21 @@ Rules:
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
 - `/graphify` triggers the graphify skill (`.claude/skills/graphify/SKILL.md`) — use it for any "input to knowledge graph" request before doing anything else.
 
+## Documentation
+
+Rules:
+- For any "document X" / "update the docs" / architecture-explanation request, use the `docs` skill (`.claude/skills/docs/SKILL.md`) instead of hand-writing markdown.
+- `docs/generated/**` is always safe to delete and regenerate — never hand-edit. `docs/curated/**` needs human review; agents draft with `status: draft` and never self-promote to `reviewed`.
+- Never re-derive what `graphify-out/GRAPH_REPORT.md` already reports — link to it.
+- `public/assets/changelog.json` is read-only from the docs subsystem — owned by the `pr` skill and `ux-agent`.
+- Documentation generation is on-demand (`/docs ...`) only — no automatic post-commit doc rebuild.
+- Run `/docs drift` before a release to catch the 6 drift categories.
+
+See [AGENTS.md](./AGENTS.md) for the role index.
+
 ## Agent Orchestration
 
-The 8 roles in `.claude/agents/` are **native Claude Code subagents** (each has YAML frontmatter with `name`/`description`/`tools`/`model`). They **auto-dispatch by their `description`** — do not read the agent `.md` files into the main thread before a task.
+The 14 roles in `.claude/agents/` are **native Claude Code subagents** (each has YAML frontmatter with `name`/`description`/`tools`/`model`). They **auto-dispatch by their `description`** — do not read the agent `.md` files into the main thread before a task.
 
 - **Delegate only for non-trivial work** (multi-file implementation, codebase exploration, architectural design). For those, launch subagents with the `Agent` tool before writing code — `Explore`/fork for orientation, `Plan` for design, then the relevant layer agent for implementation. Trivial single-file edits need no delegation.
 - **Multi-layer features** follow layer order: **Domain → Data → Facade → UI**; `testing-agent` accompanies every implementation; `architecture-guardian` reviews last.

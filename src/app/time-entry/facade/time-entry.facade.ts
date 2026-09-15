@@ -1,9 +1,9 @@
 import { Injectable, Inject, signal, computed } from '@angular/core';
 import { ITimeEntryRepository } from '../domain/i-time-entry.repository';
-import { TIME_ENTRY_REPOSITORY } from '../presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../time-entry.tokens';
 import { TimeEntry, CourseVisit } from '../domain/models';
 import computeMonthlyTotals, { MonthlyTotals, mergeTimeEntry, toDateKey } from '../domain/time-entry.usecase';
-import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../presentation/models/time-entry.vm';
+import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from './time-entry.vm';
 
 @Injectable()
 export class TimeEntryFacade {

@@ -2,7 +2,7 @@ import { Injectable, computed, inject, signal } from '@angular/core';
 import { IPlanningRepository } from '../domain/i-planning.repository';
 import { PLANNING_REPOSITORY_TOKEN } from '../planning.tokens';
 import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repository';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 import { IGoalRepository } from '../../goals/domain/i-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../../goals/goals.tokens';
 import { Goal, GoalConfig } from '../../goals/domain/models';

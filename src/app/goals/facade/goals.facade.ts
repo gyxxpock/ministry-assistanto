@@ -4,7 +4,7 @@ import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repos
 import { Goal, GoalConfig, GoalProgress } from '../domain/models';
 import { computeGoalProgress, getServiceYear } from '../domain/goal.usecase';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 
 @Injectable()
 export class GoalsFacade {

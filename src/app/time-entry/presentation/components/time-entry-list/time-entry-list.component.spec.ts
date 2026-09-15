@@ -5,7 +5,7 @@ import { TimeEntryModule } from '../../time-entry.module';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { ITimeEntryRepository } from '../../../domain/i-time-entry.repository';
-import { TIME_ENTRY_REPOSITORY } from '../../tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../../time-entry.tokens';
 import { TimeEntry, CourseVisit, MonthlyCourseCount } from '../../../domain/models';
 import { By } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';

@@ -12,7 +12,7 @@ import { TimeEntryFacade } from '../../../../time-entry/facade/time-entry.facade
 import { WeekStartService } from '../../../../core/services/week-start.service';
 import { DayPlan, PlanningProjection, WeeklySchedule } from '../../../domain/models';
 import { Goal, GoalConfig, GoalProgress } from '../../../../goals/domain/models';
-import { TimeEntryVM } from '../../../../time-entry/presentation/models/time-entry.vm';
+import { TimeEntryVM } from '../../../../time-entry/facade/time-entry.vm';
 import { WeekDay } from '../../../../shared/domain/week-day.model';
 import { getServiceYear } from '../../../../goals/domain/goal.usecase';
 import { toDateKey } from '../../utils/date-key.util';
