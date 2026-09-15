@@ -192,9 +192,9 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.spec.ts": {
-    "mtime": 1789052420.38308,
-    "seen": 1789052546.396045,
-    "ast_hash": "ca917752d64d15aa56bef068e23d17b4",
+    "mtime": 1789508495.8830585,
+    "seen": 1789511015.5813172,
+    "ast_hash": "b8df94541acb1a9f2417eb36f64c407e",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-calendar/time-entry-calendar.ts": {
@@ -204,33 +204,33 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.ts": {
-    "mtime": 1788535231.6378987,
-    "seen": 1788536025.448252,
-    "ast_hash": "d2c4ee8b78d0a6185ca61da3a965d5cf",
-    "semantic_hash": "d2c4ee8b78d0a6185ca61da3a965d5cf"
+    "mtime": 1789508474.5038967,
+    "seen": 1789511015.58132,
+    "ast_hash": "1a65f5d2ae6a1545ab30b8a74212ba8c",
+    "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.ts": {
-    "mtime": 1788558129.124502,
-    "seen": 1788558180.2202659,
-    "ast_hash": "be59554227f9a79c95fcaef29df50ce9",
+    "mtime": 1789508476.7677317,
+    "seen": 1789511015.581323,
+    "ast_hash": "b1eb1ac2500642cbee7742a7b79e4784",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.ts": {
-    "mtime": 1788558126.8202226,
-    "seen": 1788558180.220268,
-    "ast_hash": "17f28175f94b0f720391bb3e1ffeacc4",
+    "mtime": 1789508477.4392169,
+    "seen": 1789511015.581324,
+    "ast_hash": "bd891f1b90a691781b931575946b4b50",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.spec.ts": {
-    "mtime": 1789046581.39289,
-    "seen": 1789046699.989373,
-    "ast_hash": "c0d69d5f6d27e2588cb05121c95a96cd",
+    "mtime": 1789508490.3988051,
+    "seen": 1789511015.581325,
+    "ast_hash": "62f48735f5f73c60ed684a8212387a14",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.ts": {
-    "mtime": 1788878600.9319856,
-    "seen": 1788878896.338006,
-    "ast_hash": "97646922924ed21f1b0c2b8aac33e709",
+    "mtime": 1789508475.2431047,
+    "seen": 1789511015.581325,
+    "ast_hash": "f988ff149b590fd4a85a5df42a806843",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/material/material.module.ts": {
@@ -240,9 +240,9 @@
     "semantic_hash": "e051b6132d804e0088cdd97449127899"
   },
   "src/app/time-entry/presentation/time-entry.module.ts": {
-    "mtime": 1789058136.5731163,
-    "seen": 1789058261.828514,
-    "ast_hash": "a5816861c57014135397fb1efb38564a",
+    "mtime": 1789508473.5166748,
+    "seen": 1789511015.581331,
+    "ast_hash": "6bd9824b7fa943232f1ffad46751fa5f",
     "semantic_hash": ""
   },
   "src/main.ts": {
@@ -486,21 +486,21 @@
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-day/time-entry-day.component.spec.ts": {
-    "mtime": 1788839317.6278677,
-    "seen": 1788843204.828993,
-    "ast_hash": "1581f97e25867453e016b2eb3d77de98",
+    "mtime": 1789508494.0698068,
+    "seen": 1789511015.5813189,
+    "ast_hash": "3d050fd1d59341d77308870336771eb4",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-edit/time-entry-edit-dialog.component.spec.ts": {
-    "mtime": 1788838944.1122096,
-    "seen": 1788843204.828995,
-    "ast_hash": "c0686877774729714097c41ebc69c3e1",
+    "mtime": 1789508492.9802368,
+    "seen": 1789511015.58132,
+    "ast_hash": "f0315bb3eb15dfd89a5593bfbc83530d",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.spec.ts": {
-    "mtime": 1788839696.2237248,
-    "seen": 1788843204.8289962,
-    "ast_hash": "553d856a2d2c2fb0e0e6eaa50482257e",
+    "mtime": 1789508492.247103,
+    "seen": 1789511015.581323,
+    "ast_hash": "f81d0dee750160df8e2ac75f3e8c9fa1",
     "semantic_hash": ""
   },
   "src/app/time-entry/presentation/components/duration-wheel-picker/duration-wheel-picker.component.ts": {
@@ -852,9 +852,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/facade/goals.facade.spec.ts": {
-    "mtime": 1789046385.8584254,
-    "seen": 1789046699.989331,
-    "ast_hash": "a3e505049b808e92ddaf287fcaea4e7a",
+    "mtime": 1789508487.5286,
+    "seen": 1789511015.581255,
+    "ast_hash": "2e93097ff89382f3035393c626818f58",
     "semantic_hash": ""
   },
   "src/app/goals/facade/goals.facade.ts": {
@@ -906,9 +906,9 @@
     "semantic_hash": ""
   },
   "src/app/goals/presentation/goals.module.ts": {
-    "mtime": 1788901096.7210615,
-    "seen": 1788901144.743204,
-    "ast_hash": "eb5ce6e27f148e2afa73d19245f51fdf",
+    "mtime": 1789508470.2875867,
+    "seen": 1789511015.581266,
+    "ast_hash": "fc037dbb10116606dc56bfca30069c6f",
     "semantic_hash": ""
   },
   "src/app/goals/presentation/models/goal-progress.vm.ts": {
@@ -1080,9 +1080,9 @@
     "semantic_hash": ""
   },
   "src/app/planning/facade/planning.facade.spec.ts": {
-    "mtime": 1789055182.8696234,
-    "seen": 1789055214.264261,
-    "ast_hash": "27e55553baf8272ced0548add2c887d7",
+    "mtime": 1789508488.9827282,
+    "seen": 1789511015.581277,
+    "ast_hash": "27373fe16b2e3aa47a85b30434535738",
     "semantic_hash": ""
   },
   "src/app/planning/presentation/components/day-override-panel/day-override-panel.component.ts": {
@@ -1122,9 +1122,9 @@
     "semantic_hash": ""
   },
   "src/app/planning/presentation/planning.module.ts": {
-    "mtime": 1789058163.5386047,
-    "seen": 1789058261.828476,
-    "ast_hash": "7dfaf04d352e7cd12d6d4a72ed0eada1",
+    "mtime": 1789508471.6506832,
+    "seen": 1789511015.581291,
+    "ast_hash": "d4a5c92b03569a05c5dc8e1b8028c4be",
     "semantic_hash": ""
   },
   "src/app/planning/presentation/utils/date-key.util.ts": {
@@ -1194,9 +1194,9 @@
     "semantic_hash": ""
   },
   "src/app/planning/presentation/components/planning/planning.component.spec.ts": {
-    "mtime": 1789060352.5980964,
-    "seen": 1789060389.7083788,
-    "ast_hash": "bb2b467e3898d1408c6c71ea0e06d67b",
+    "mtime": 1789508496.437941,
+    "seen": 1789511015.581287,
+    "ast_hash": "37c766f7750cbeb40120c14aa0b30761",
     "semantic_hash": ""
   },
   "src/app/planning/presentation/components/weekly-schedule-editor/weekly-schedule-editor.component.spec.ts": {
@@ -1440,9 +1440,9 @@
     "semantic_hash": ""
   },
   "docs/generated/architecture/known-violations.md": {
-    "mtime": 1789507741.8204463,
-    "seen": 1789508391.60732,
-    "ast_hash": "145f7d9857f7cee7f22b9552aca57865",
+    "mtime": 1789509761.7171147,
+    "seen": 1789511015.581383,
+    "ast_hash": "0e75c02e631e5a7c4b9795646150223a",
     "semantic_hash": ""
   },
   "docs/generated/drift/latest.md": {
@@ -1461,6 +1461,18 @@
     "mtime": 1789505528.811979,
     "seen": 1789508391.6073222,
     "ast_hash": "40c2746e6a2a37c005a2a8ed0f8b48ba",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/facade/time-entry.vm.spec.ts": {
+    "mtime": 1789510976.766814,
+    "seen": 1789511015.5813062,
+    "ast_hash": "8dd58036615db1fab5edfe1f5826d6cf",
+    "semantic_hash": ""
+  },
+  "src/app/time-entry/time-entry.tokens.spec.ts": {
+    "mtime": 1789510977.409383,
+    "seen": 1789511015.581334,
+    "ast_hash": "481b8c6b4deb7865e381f08cf0f21af3",
     "semantic_hash": ""
   }
 }
