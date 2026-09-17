@@ -44,7 +44,7 @@ Never read raw source files to build a doc before grounding in the graph. See `r
 
 ### Step 2 — Check the manifest before regenerating
 
-Read `docs/_meta/doc-manifest.json`. For every doc the subcommand would touch, compare its recorded `source_commit` against `git rev-parse HEAD` for the doc's `sources:` paths (`git log -1 --format=%H -- <path>`). If every source is unchanged since `source_commit`, report "up to date — nothing to regenerate" for that doc and skip it. Never regenerate an unchanged doc just because the subcommand was invoked.
+Read `docs/_meta/doc-manifest.json`. For every doc the subcommand would touch, run `scripts/docs/check-staleness.sh <source_commit> <sources...>` — the doc's own manifest `source_commit` plus its `sources:` list — instead of running `git log`/`git diff` directly. The script's `RESULT: CURRENT`/`RESULT: STALE` line is the answer; only inspect the per-path `CURRENT`/`STALE`/`MISSING` lines if you need to know which specific source changed. If `RESULT: CURRENT`, report "up to date — nothing to regenerate" for that doc and skip it. Never regenerate an unchanged doc just because the subcommand was invoked.
 
 ### Step 3 — Dispatch specialists
 

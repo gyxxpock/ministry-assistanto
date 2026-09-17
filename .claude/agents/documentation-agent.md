@@ -22,17 +22,27 @@ docs/generated/modules/*/overview.md  ← generated module overviews (this agent
 docs/_meta/
   doc-manifest.json            ← path → {source_commit, generated_by, doc_type, module}
   schema/*.json
+mkdocs.yml                     ← repo root, MkDocs site config
+scripts/docs/*.sh              ← staleness/rename check helpers (see Responsibilities)
 ```
 
 ## Responsibilities
 
 - Parse `/docs` subcommands and dispatch the owning specialist(s) — see dispatch table below.
-- Before regenerating anything, check `doc-manifest.json`: if a doc's `source_commit`
-  already matches `HEAD` for its scope, report "up to date" and stop.
+- Before regenerating anything, check `doc-manifest.json`: run
+  `scripts/docs/check-staleness.sh <source_commit> <sources...>` for the doc's scope
+  instead of raw `git log`/`git diff`; if it reports `RESULT: CURRENT`, report "up to
+  date" and stop.
 - After any specialist writes a doc, update its `doc-manifest.json` entry.
 - Author `docs/generated/modules/<module>/overview.md`: structure tree, responsibilities,
   God-Node flags, a link to `feature/<name>/Plan.md` when one exists (never duplicate it).
 - Keep `docs/index.md` pointing at every doc that exists.
+- On `/docs site`: discover qualifying modules (`src/app/*/` with all four of
+  `domain/`, `data/`, `facade/`, `presentation/`), regenerate `mkdocs.yml`'s `nav:`
+  block from `docs/index.md`'s current structure so the two never drift apart, then
+  run `mkdocs build` (or `mkdocs serve` for a live local preview). This touches
+  `mkdocs.yml` directly — that's fine, it lives at the repo root, outside both
+  `curated/**` and `generated/**`, so it doesn't violate the restriction below.
 
 ## Dispatch table
 

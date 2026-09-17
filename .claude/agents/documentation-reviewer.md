@@ -18,6 +18,7 @@ the source code it describes, and reports findings — it never edits docs or co
 docs/**                        ← every generated and curated doc
 .claude/agents/*.md            ← for the "outdated agent definitions" check
 AGENTS.md, CLAUDE.md           ← for cross-references to the role index
+scripts/docs/*.sh              ← staleness/rename check helpers (execute via Bash; see Responsibilities)
 ```
 Read-only across all of it.
 
@@ -29,10 +30,11 @@ this agent only produces the findings text for DocumentationAgent to write.
 
 ### 1. Stale architecture docs
 ```bash
-git diff --name-only <source_commit_in_frontmatter> HEAD -- src/app
+scripts/docs/check-staleness.sh <source_commit_in_frontmatter> <sources_in_frontmatter...>
 ```
-A non-empty diff touching `domain/`, `data/`, `facade/`, or `presentation/` → flag stale.
-Also compare against `graph.json`'s `built_at_commit` for the same staleness signal.
+`RESULT: STALE` → flag stale. Only then compare against `graph.json`'s `built_at_commit`
+for the same staleness signal. Replaces a blanket `git diff -- src/app`, which used to
+overcount unrelated modules.
 
 ### 2. Outdated agent definitions
 Parse each `.claude/agents/*.md`'s `## Scope` file tree, then:
@@ -46,14 +48,11 @@ and flag any scope noun that no longer resolves to a graph node.
 
 ### 3. Moved/renamed files
 ```bash
-test -e <path-from-doc-frontmatter-sources>
+scripts/docs/resolve-moved-path.sh <path-from-doc-frontmatter-sources>
 ```
-On a miss:
-```bash
-git log --follow --diff-filter=R --summary -- <old_path>
-graphify query "<basename>"   # graph nodes carry source_file
-```
-Suggest the new location; never silently rewrite the doc.
+Output is directly `EXISTS`/`MOVED <old> -> <new>`/`NOT_FOUND`. On `NOT_FOUND`, fall back to
+`graphify query "<basename>"` (graph nodes carry source_file). Suggest the new location;
+never silently rewrite the doc.
 
 ### 4. Broken doc imports
 Extract every relative markdown link across `docs/**/*.md`. Verify the target file
