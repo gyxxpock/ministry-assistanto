@@ -33,6 +33,12 @@ for the full policy:
 - [Known violations (generated)](generated/architecture/known-violations.md) —
   transcribed from `architecture-guardian`'s live review.
 
+## Modules
+
+- [Goals](curated/modules/goals.md) — narrative tour of the Goals module.
+- [Planning](curated/modules/planning.md) — narrative tour of the Planning module.
+- [Time entry](curated/modules/time-entry.md) — narrative tour of the Time Entry module.
+
 ## Workflows
 
 - [Feature lifecycle](curated/workflows/feature-lifecycle.md) — how a feature moves
@@ -52,10 +58,21 @@ for the full policy:
 
 ## Generated: API reference
 
-- [`generated/api/`](generated/api/) — reserved for a future Compodoc static site.
-  Compodoc output is **not** merged into this doc tree's navigation; it will be
-  published as its own linked URL path once `compodoc-agent` is explicitly activated
-  (see `.claude/agents/compodoc-agent.md`). Currently empty (dormant).
+- [`generated/api/`](generated/api/) — Compodoc static site output. Regenerated via
+  `npm run docs:compodoc` (see `.claude/agents/compodoc-agent.md`). Reachable directly
+  at that path and folded into the built MkDocs site's nav (see "Local site" below).
+
+## Local site
+
+The human-facing docs (this tree plus the Compodoc API reference) are assembled into
+a static MkDocs site:
+
+- One-time local prerequisite: `pip install -r requirements-docs.txt` (MkDocs +
+  plugins).
+- `npm run docs:compodoc` — regenerates the API reference (`docs/generated/api/`)
+  that gets folded into the site build.
+- `npm run docs:site:build` — builds the static site into `site/` (gitignored).
+- `npm run docs:site:serve` — serves a live local preview.
 
 ## Manifest
 

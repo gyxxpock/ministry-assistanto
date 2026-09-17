@@ -34,7 +34,7 @@
     "module": "root",
     "status": "draft",
     "generated_by": "architecture-doc-agent",
-    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "source_commit": "4b791f7bbe56a56c1106cb87e09fdf91820fd1e7",
     "sources": [
       "graphify-out/graph.json",
       "graphify-out/GRAPH_REPORT.md",
@@ -46,7 +46,7 @@
     "module": "root",
     "status": "draft",
     "generated_by": "architecture-doc-agent",
-    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "source_commit": "4b791f7bbe56a56c1106cb87e09fdf91820fd1e7",
     "sources": [
       ".claude/agents/architecture-guardian.md"
     ]
@@ -56,7 +56,7 @@
     "module": "root",
     "status": "draft",
     "generated_by": "documentation-reviewer",
-    "source_commit": "e461526035a179d92b034f04ec05b2f3ed670980",
+    "source_commit": "4b791f7bbe56a56c1106cb87e09fdf91820fd1e7",
     "sources": [
       "docs/**",
       ".claude/agents/*.md",

@@ -18,7 +18,8 @@
           "workflow",
           "adr",
           "ai-context",
-          "drift-report"
+          "drift-report",
+          "module-narrative"
         ]
       },
       "module": {

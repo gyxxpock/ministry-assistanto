@@ -1,0 +1,42 @@
+site_name: ministry-assistanto
+docs_dir: docs
+site_dir: site
+exclude_docs: |
+  _meta/*
+
+theme:
+  name: material
+
+plugins:
+  - search
+  - mermaid2
+
+markdown_extensions:
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:mermaid2.fence_mermaid_custom
+
+nav:
+  - Home: index.md
+  - Onboarding:
+      - Getting started: curated/onboarding/getting-started.md
+      - Module tour: curated/onboarding/module-tour.md
+  - Modules:
+      - Goals: curated/modules/goals.md
+      - Planning: curated/modules/planning.md
+      - Planning overview (generated): generated/modules/planning/overview.md
+      - Planning AI context (generated): generated/ai/planning/context.md
+      - Time entry: curated/modules/time-entry.md
+  - Architecture:
+      - Overview: curated/architecture/overview.md
+      - ADR 0001 - Record architecture decisions: curated/architecture/adr/0001-record-architecture-decisions.md
+      - Dependency overview (generated): generated/architecture/dependency-overview.md
+      - Known violations (generated): generated/architecture/known-violations.md
+  - Workflows:
+      - Feature lifecycle: curated/workflows/feature-lifecycle.md
+  - AI context:
+      - Invariants: generated/ai/invariants.md
+  - Drift report: generated/drift/latest.md
+  - API reference: generated/api/index.html

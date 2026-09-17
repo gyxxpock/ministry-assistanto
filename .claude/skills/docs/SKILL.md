@@ -12,7 +12,7 @@ Orchestrates the documentation subsystem: `documentation-agent` dispatches `huma
 | Subcommand | Workflow | Primary agent(s) |
 |---|---|---|
 | `/docs` or `/docs --help` | Print this table and stop | — |
-| `/docs feature <module>` | Documenting a feature | documentation-agent → architecture-doc-agent, ai-docs-agent, human-docs-agent |
+| `/docs feature <module\|--all>` | Documenting a feature | documentation-agent → architecture-doc-agent, ai-docs-agent, human-docs-agent |
 | `/docs module <module>` | Generated module overview only | documentation-agent |
 | `/docs architecture` | Documenting architecture | architecture-guardian → architecture-doc-agent, human-docs-agent |
 | `/docs drift [--path <scope>]` | Stale-doc detection | documentation-reviewer → documentation-agent |
@@ -20,6 +20,7 @@ Orchestrates the documentation subsystem: `documentation-agent` dispatches `huma
 | `/docs onboarding` | Onboarding docs | human-docs-agent |
 | `/docs adr "<title>"` | New ADR | human-docs-agent |
 | `/docs release` | Release documentation prep | documentation-agent, architecture-doc-agent, ai-docs-agent |
+| `/docs site` | Full human-facing site (discovery → all subcommands → Compodoc → MkDocs) | documentation-agent → all specialists |
 
 ## What This Skill Is For
 
@@ -34,6 +35,8 @@ Follow these steps in order for every other invocation. Do not skip steps.
 ### Step 0 — Parse subcommand and scope
 
 Identify the subcommand and its argument (a module name, an ADR title, `--all`, or nothing). Module names are the directories under `src/app/*/` that have `domain/`, `data/`, `facade/`, and `presentation/` subfolders (e.g. `goals`, `planning`, `time-entry`). If the user names something that isn't one of these, ask which module they mean rather than guessing.
+
+**Module discovery** (used by `--all` on any subcommand and by `/docs site`): glob `src/app/*/` and keep only directories where `domain/`, `data/`, `facade/`, and `presentation/` all exist as sibling subfolders. Report the discovered list to the user before dispatching anything — this list IS the "which modules are there" answer, not an internal implementation detail. Directories that exist but don't qualify (e.g. `shared/` — no `data/`/`facade/`, or `core/` — flat layout) are still worth naming in the report as *found but not a module*, not silently dropped.
 
 ### Step 1 — Mandatory graphify orientation
 
@@ -71,11 +74,12 @@ Each subcommand's mechanical detail lives in its own reference file, loaded on d
 - `references/onboarding.md` — onboarding docs
 - `references/adr.md` — ADR numbering, status, and supersession
 - `references/release.md` — release documentation prep
+- `references/site.md` — `/docs site`: discovery, full pipeline, Compodoc + MkDocs build ordering
 - `references/graphify-integration.md` — shared Step 1 orientation logic for every subcommand
 
 ## Rules
 
-- Never install MkDocs or Compodoc, or add either as a dependency, without explicit user approval — `compodoc-agent` stays dormant until asked.
+- Never install MkDocs or Compodoc, or add either as a dependency, without explicit user approval — `compodoc-agent` stays dormant until asked. (Approval was given once, for the specific install carried out under the auto-discovery/Compodoc/MkDocs plan — that is not a standing blanket approval for any later, unrelated tooling change.)
 - Never write to `public/assets/changelog.json`. Read it for context only; it's owned by the `pr` skill and `ux-agent`.
 - Never auto-promote a curated doc from `status: draft` to `status: reviewed` — only a human review does that.
 - Never duplicate content `graphify-out/GRAPH_REPORT.md` or `graph.json` already reports — cite and link to it instead of re-deriving a ranking or summary.

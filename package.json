@@ -9,7 +9,10 @@
     "test": "ng test",
     "i18n:check": "node ./scripts/check-i18n.js",
     "build:gh": "ng build --configuration production",
-    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/ministry-assistanto"
+    "deploy": "ng build --configuration production && npx angular-cli-ghpages --dir=dist/ministry-assistanto",
+    "docs:compodoc": "compodoc -p tsconfig.app.json -d docs/generated/api",
+    "docs:site:build": "mkdocs build",
+    "docs:site:serve": "mkdocs serve"
   },
   "prettier": {
     "printWidth": 100,
@@ -45,6 +48,7 @@
     "@angular/build": "^20.2.2",
     "@angular/cli": "^20.2.2",
     "@angular/compiler-cli": "^20.2.0",
+    "@compodoc/compodoc": "^1.1.26",
     "@types/jasmine": "~5.1.0",
     "angular-cli-ghpages": "^3.1.0",
     "jasmine-core": "~5.9.0",

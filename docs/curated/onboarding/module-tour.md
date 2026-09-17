@@ -18,9 +18,9 @@ generate/refresh the AI-context and narrative docs for a specific module on dema
 
 | Module | One-line summary |
 |--------|-------------------|
-| `time-entry` | Core time-tracking feature: log, list, calendar, export/import. Owns the module-level navigation shell (Layout). Docs via `/docs feature time-entry`. |
-| `goals` | Monthly goal tracking, lazy-loaded as a child of `time-entry`. Docs via `/docs feature goals`. |
-| `planning` | Weekly/monthly planning — domain, data, facade, and UI. Docs via `/docs feature planning`. |
+| `time-entry` | Core time-tracking feature: log, list, calendar, export/import. Owns the module-level navigation shell (Layout). Docs via `/docs feature time-entry`. Full page: [`curated/modules/time-entry.md`](../modules/time-entry.md). |
+| `goals` | Monthly goal tracking, lazy-loaded as a child of `time-entry`. Docs via `/docs feature goals`. Full page: [`curated/modules/goals.md`](../modules/goals.md). |
+| `planning` | Weekly/monthly planning — domain, data, facade, and UI. Docs via `/docs feature planning`. Full page: [`curated/modules/planning.md`](../modules/planning.md). |
 | `shared` | Cross-feature reusable pieces (VMs, pipes, utilities) with no ownership of a single feature's state. Docs via `/docs feature shared`. |
 | `core` | App-wide singletons — theming (`ThemeService`), i18n bootstrap, root providers. Docs via `/docs feature core`. |
 

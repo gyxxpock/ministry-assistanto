@@ -39,6 +39,11 @@ yarn-error.log
 testem.log
 /typings
 
+# Docs site build output (regenerate on demand via `npm run docs:site:build`)
+/site
+docs/generated/api/*
+!docs/generated/api/.gitkeep
+
 # System files
 .DS_Store
 Thumbs.db

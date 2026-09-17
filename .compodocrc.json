@@ -1,0 +1,6 @@
+{
+  "name": "ministry-assistanto API Reference",
+  "tsconfig": "tsconfig.app.json",
+  "output": "docs/generated/api",
+  "hideGenerator": true
+}

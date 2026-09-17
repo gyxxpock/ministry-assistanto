@@ -18,6 +18,7 @@ Rules:
 - `public/assets/changelog.json` is read-only from the docs subsystem — owned by the `pr` skill and `ux-agent`.
 - Documentation generation is on-demand (`/docs ...`) only — no automatic post-commit doc rebuild.
 - Run `/docs drift` before a release to catch the 6 drift categories.
+- `/docs site` scans the repo, discovers modules, and builds a full local human-facing site via Compodoc + MkDocs (one-time local prerequisite: `pip install -r requirements-docs.txt`).
 
 See [AGENTS.md](./AGENTS.md) for the role index.
 

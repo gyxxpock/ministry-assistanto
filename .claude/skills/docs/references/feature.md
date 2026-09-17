@@ -11,6 +11,10 @@ Produces the full doc set for one module: generated overview, generated AI conte
 5. `documentation-agent` updates `docs/_meta/doc-manifest.json` for every file touched.
 6. `documentation-reviewer` self-checks the touched files only.
 
+## `--all`
+
+Invoked as `/docs feature --all` instead of naming one module: run the module-discovery rule from `SKILL.md`'s Step 0, report the discovered list to the user, then run the single-module steps above once per discovered module — skipping any module whose manifest entries are already current (Step 2). Independent modules' Steps 2-3 can run in parallel; Steps 5-6 (manifest update, reviewer self-check) still run once per module, not batched, so a partial failure on one module doesn't hide a stale manifest entry for another.
+
 ## What this workflow does NOT do
 
 - It does not write `docs/curated/architecture/**` — that's `/docs architecture`.

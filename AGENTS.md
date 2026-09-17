@@ -25,11 +25,11 @@ graphify update .                # refresh after code changes (no API cost)
 | `testing-agent` | Transversal — specs & coverage (Karma/Jasmine) | yes |
 | `ux-agent` | `src/app/**/presentation/` — UX + iOS review | no (reviewer) |
 | `architecture-guardian` | Transversal — Clean Architecture review | no (reviewer) |
-| `documentation-agent` | Transversal — docs orchestration (docs/index.md, _meta/) | yes |
+| `documentation-agent` | Transversal — docs orchestration (docs/index.md, _meta/, mkdocs.yml) | yes |
 | `human-docs-agent` | `docs/curated/**` — onboarding, ADRs, architecture narrative | yes |
 | `ai-docs-agent` | `docs/generated/ai/**` — AI context, invariants, retrieval index | yes |
 | `architecture-doc-agent` | `docs/generated/architecture/**` — transcribes ArchitectureGuardian + graphify | yes |
-| `compodoc-agent` | `docs/generated/api/**` — dormant until Compodoc is explicitly installed | yes |
+| `compodoc-agent` | `docs/generated/api/**` — Compodoc API reference generation | yes |
 | `documentation-reviewer` | Transversal — docs drift & freshness review | no (reviewer) |
 
 ## Orchestration

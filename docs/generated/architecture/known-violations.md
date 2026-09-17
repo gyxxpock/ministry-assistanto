@@ -1,7 +1,7 @@
 ---
 doc_type: architecture-generated
 module: root
-source_commit: e461526035a179d92b034f04ec05b2f3ed670980
+source_commit: 4b791f7bbe56a56c1106cb87e09fdf91820fd1e7
 generated_by: architecture-doc-agent
 status: draft
 sources:
@@ -17,8 +17,15 @@ sources:
 | File | Problem | Fix |
 |------|---------|-----|
 
-_No open violations in this pass — all previously tracked findings were verified
-fixed by `architecture-guardian`'s live review._
+_No open violations in this pass._ A fresh, independent `architecture-guardian` review
+(run against `time-entry`, `goals`, `planning`, `shared`, and `core`) reproduced the
+same clean result as the prior pass: zero layer-direction violations. No Domain→outer
+imports, no Domain importing `@angular/*`/`dexie`/`rxjs`/`@ngx-translate`, no
+Data→Facade/Presentation imports, no Facade→Presentation imports, no concrete
+`Dexie*Repository` injected outside NgModule providers (composition roots), and no
+import cycles (consistent with `graphify-out/GRAPH_REPORT.md`: "None detected").
+Repository interfaces are referenced outside domain/facade only in one spec file (test
+DI setup — not a violation).
 
 ## Resolved since last review
 
@@ -28,42 +35,74 @@ table above:
 - **DI token relocated out of Presentation** — `TIME_ENTRY_REPOSITORY` previously lived
   at `presentation/tokens/time-entry.tokens.ts` and was imported by the Facade (a
   Facade→Presentation outward dependency). It now lives at
-  `src/app/time-entry/time-entry.tokens.ts` (feature root), importing only from Domain
-  (`./domain/i-time-entry.repository`, line 2). The old `presentation/tokens/` directory
-  was deleted. The Facade imports it from `../time-entry.tokens`
-  (`time-entry.facade.ts:3`) — the correct inward direction — matching the sibling
-  convention (`goals.tokens.ts`, `planning.tokens.ts`). All cross-feature consumers
-  (`goals.facade.ts`, `planning.facade.ts`, `goals.module.ts`, `planning.module.ts`,
-  `time-entry.module.ts`, plus 3 specs) now reference the correct inner path, with zero
-  stale references anywhere in `src/`.
+  `src/app/time-entry/time-entry.tokens.ts:4`, importing only `@angular/core`
+  (`InjectionToken`, line 1) and the domain interface
+  (`./domain/i-time-entry.repository`, line 2) — the correct inward direction, matching
+  the sibling convention (`goals.tokens.ts`, `planning.tokens.ts`). The old
+  `presentation/tokens/` directory was deleted, with no stale re-exports left in `src/`.
 - **Facade VM types moved out of Presentation** — the Facade previously imported
   `CreateTimeEntryVM`, `TimeEntryVM`, `UpdateTimeEntryVM` from
   `presentation/models/time-entry.vm.ts` (a Facade→Presentation dependency). These types
-  now live at `src/app/time-entry/facade/time-entry.vm.ts` (Facade layer), importing
-  only from Domain (`../domain/models`, line 1). The old `presentation/models/`
-  directory was deleted. The Facade imports it locally (`./time-entry.vm`,
-  `time-entry.facade.ts:6`) — no reverse dependency on Presentation. All 8
-  Presentation-layer import sites now correctly depend inward on
-  `../../../facade/time-entry.vm`.
+  now live at `src/app/time-entry/facade/time-entry.vm.ts` (Facade layer, plus
+  `TimeEntryTypeVM`), importing only from Domain (`../domain/models`, line 1). The old
+  `presentation/models/` directory was deleted. `time-entry.facade.ts:6` imports them
+  locally (`./time-entry.vm`); Presentation now consumes them inward from
+  `../../../facade/time-entry.vm` (e.g. `time-entry-list.component.ts:5`,
+  `time-entry-day.component.ts:2`, `time-entry-edit-dialog.component.ts:4`) — no reverse
+  dependency on Presentation remains.
 - `ITimeEntryRepository` — previously cited as misplaced in `data/time-entry.repository.ts`
-  (that file no longer exists). Now correctly lives at
-  `src/app/time-entry/domain/i-time-entry.repository.ts`, confirmed as the domain port
-  with no outward dependency.
+  (that file no longer exists). Confirmed at
+  `src/app/time-entry/domain/i-time-entry.repository.ts` as the domain port, with no
+  outward dependency.
 - `FileUtilService` — previously cited as needing placement evaluation in
-  `domain/utils/file-util.service.ts` (that path no longer exists). Now lives at
-  `src/app/core/services/file-util.service.ts` — infrastructure-flavored (uses browser
-  File API) but correctly outside Domain.
+  `domain/utils/file-util.service.ts` (that path no longer exists). Confirmed at
+  `src/app/core/services/file-util.service.ts` — infrastructure-flavored (uses the
+  browser File API) but correctly outside Domain.
 
-Both new resolutions above were confirmed against a fresh `architecture-guardian` live
-review, which also verified no new violations were introduced: no outward imports from
-Domain or Data in `time-entry`/`goals`/`planning`; no Facade→Presentation imports; no
-import cycles (per `graphify-out/GRAPH_REPORT.md:160-161`, "None detected").
+Both relocations above were re-verified in this pass's fresh `architecture-guardian`
+review: no new violations were introduced, no import cycles, and the Facade/Domain
+boundary holds for `time-entry`.
 
-**Awareness flag (not a violation):** `goals.facade.ts` and `planning.facade.ts` inject
-`TIME_ENTRY_REPOSITORY` cross-feature — a facade-to-cross-feature-inner-token dependency
-via the sanctioned DI token, not a layer-direction violation. Flagged by
-`architecture-guardian` for awareness only; no action needed.
+As a parallel check on the same class of issue, `architecture-guardian` also confirmed
+`goals/presentation/models/goal-progress.vm.ts` (`GoalProgressVM`) correctly stays in
+Presentation — unlike `time-entry`, the goals facade returns the domain type
+`GoalProgress` directly rather than this VM, so `GoalProgressVM` is not the facade's
+exposed contract and does not need to move. Not a violation.
+
+## Awareness (not violations)
+
+These are informational notes surfaced by `architecture-guardian` during this pass.
+They do not break the Rule of Gold and are not entered in the violations table above —
+they are flagged for monitoring / follow-up only:
+
+- **Cross-module DI bridging** — `goals.facade.ts:7` and `planning.facade.ts` inject
+  `TIME_ENTRY_REPOSITORY` cross-feature; both `goals.module.ts:80-83` and
+  `planning.module.ts:68-71` provide it via `useClass: DexieTimeEntryRepository`. This
+  is the sanctioned token-based bridging pattern, not a layer-direction violation.
+- **planning-domain → goals-domain coupling** — `planning/domain/planning.usecase.ts:6-7`
+  imports from `goals/domain/models` and `goals/domain/goal.usecase`, and line 15
+  imports `shared/domain/week-day.model`. This is domain→domain (inner→inner), so it
+  does not break the Rule of Gold, but `architecture-guardian` flags it as a design
+  coupling worth monitoring so `goals/domain` doesn't become an implicit, unlabeled
+  shared kernel.
+- **Stale agent doc line** — `.claude/agents/architecture-guardian.md` still describes
+  `TimeEntryExporter` as module-scoped; it is actually `providedIn: 'root'`
+  (`time-entry.exporter.ts:35`), with no injected dependencies, so the
+  root-cannot-inject-module-scoped hazard doesn't apply at runtime. The doc line itself
+  is stale and should be corrected by whoever owns `architecture-guardian.md` — out of
+  this doc's scope to fix.
+
+## Per-module verdict (this pass)
+
+- `time-entry`: 0 violations.
+- `goals`: 0 violations.
+- `planning`: 0 violations (informational coupling note above).
+- `shared` / `core`: 0 violations.
+- Routing shell: compliant — only `time-entry` is lazy-loaded from the root router
+  (`app-routing-module.ts:11-12`); `goals` and `plan` are lazy-loaded as children of
+  `TimeEntryModule` (`time-entry.module.ts:60,65`) inside the Layout shell, not as
+  sibling routes.
 
 See [`.claude/agents/architecture-guardian.md`](../../../.claude/agents/architecture-guardian.md#known-violations-pending-correction)
-for the source list and [Dependency overview](dependency-overview.md) for the layer
-diagram these violations apply to.
+for the source review and [Dependency overview](dependency-overview.md) for the layer
+diagram these findings apply to.
