@@ -1248,9 +1248,9 @@
     "semantic_hash": ""
   },
   "docs/_meta/doc-manifest.json": {
-    "mtime": 1789677609.7333004,
-    "seen": 1789679979.141075,
-    "ast_hash": "434c2c3a1a9b0face32ffe769fad163e",
+    "mtime": 1789716937.9132752,
+    "seen": 1789716981.357269,
+    "ast_hash": "a923dd88485b7afe57af4f30d72bf72f",
     "semantic_hash": ""
   },
   "docs/_meta/schema/ai-context.schema.json": {
@@ -1529,10 +1529,10 @@
     "ast_hash": "b6cb8d9350c269b0ec5f839f5877b99d",
     "semantic_hash": ""
   },
-  "docs/curated/architecture/adr/0002-prorrateo-diario-vs-mensual-en-progreso-de-metas.md": {
-    "mtime": 1789716534.6878455,
-    "seen": 1789716639.7119942,
-    "ast_hash": "5ec612841013038c6c42745cf7187b04",
+  "docs/curated/architecture/adr/0002-daily-vs-monthly-prorating-in-goal-progress.md": {
+    "mtime": 1789716913.578071,
+    "seen": 1789716981.3574378,
+    "ast_hash": "75e594a7c547f4060a717fa69a71a262",
     "semantic_hash": ""
   }
 }
