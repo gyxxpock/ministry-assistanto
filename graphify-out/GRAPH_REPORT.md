@@ -5,12 +5,12 @@
 - Verdict: corpus is large enough that graph structure adds value.
 
 ## Summary
-- 1413 nodes · 2434 edges · 125 communities (104 shown, 17 thin omitted)
+- 1416 nodes · 2420 edges · 135 communities (105 shown, 26 thin omitted)
 - Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 26 edges (avg confidence: 0.8)
 - Token cost: 0 input · 0 output
 
 ## Graph Freshness
-- Built from commit: `aeade5cf`
+- Built from commit: `414e51e1`
 - Run `git rev-parse HEAD` and compare to check if the graph is stale.
 - Run `graphify update .` after code changes (no API cost).
 
@@ -64,34 +64,34 @@
 - prettier
 - schematics
 - pr.sh
-- planning.component.spec.ts
-- WeeklySchedule
+- settings.component.ts
+- planning.facade.ts
 - app-module.ts
 - TimeEntry
-- time-entry.facade.ts
-- goals/domain/models.ts
-- @angular/core
+- time-entry.usecase.ts
+- goals.facade.ts
+- planning.module.ts
 - GoalConfigComponent
 - GoalConfig
 - ngsw-config.json
 - MonthlyBarChartComponent
 - Module: goals
-- layout.spec.ts
+- time-entry-list.component.ts
 - update-notification.service.ts
-- BackupReminderService
+- @angular/core
 - TimeEntryFormComponent
 - check-coverage.sh
 - karma.conf.js
-- planning.facade.ts
+- time-entry.module.ts
 - DayOverridePanelComponent
 - properties
 - Module: planning
-- settings.component.ts
+- week-start.service.ts
 - Module: time-entry
-- planning.usecase.ts
+- goals/domain/models.ts
 - ADR-0002: Granularidad de prorrateo mensual vs. diario en el cálculo de progreso de metas (goal progress)
 - ministry-assistanto
-- planning.facade.spec.ts
+- TimeEntryFacade
 - production
 - development
 - angular.json
@@ -104,11 +104,11 @@
 - AI context: <module-name>
 - Responsibilities
 - Module overview: planning
-- TimeEntryFacade
-- app-routing-module.ts
+- ITimeEntryRepository
+- InMemoryTimeEntryRepository
 - index.md
 - The 6 checks
-- goals.module.ts
+- goals.facade.spec.ts
 - Getting started
 - Workflow: AI context generation (`/docs ai-context <module|--all>`)
 - AI context: planning
@@ -130,20 +130,30 @@
 - Architecture overview
 - Dependency overview (generated)
 - Feature lifecycle
-- I18nDateStub
+- MonthPaginatorComponent
 - SettingsComponent
 - Known violations (generated)
-- TranslateStub
+- WeekDay
+- planning.component.spec.ts
+- PlanningCalendarComponent
+- GoalsComponent
+- Layout
 - check-staleness.sh
 - resolve-moved-path.sh
+- app.ts
+- i18n-date.pipe.ts
+- I18nDateStub
+- Injectable
+- Component
+- Input
 
 ## God Nodes (most connected - your core abstractions)
 1. `@angular/core` - 65 edges
-2. `TimeEntry` - 43 edges
-3. `@ngx-translate/core` - 39 edges
-4. `CourseVisit` - 36 edges
+2. `@ngx-translate/core` - 39 edges
+3. `TimeEntry` - 36 edges
+4. `CourseVisit` - 33 edges
 5. `TimeEntryFacade` - 29 edges
-6. `ITimeEntryRepository` - 28 edges
+6. `ITimeEntryRepository` - 26 edges
 7. `DexieTimeEntryRepository` - 25 edges
 8. `GoalConfig` - 23 edges
 9. `WeeklySchedule` - 23 edges
@@ -156,10 +166,10 @@
   src/app/time-entry/presentation/components/time-entry-list/time-entry-list.component.html → .github/copilot-instructions.md
 - `Time Entry Form Template` --conceptually_related_to--> `Angular Signals`  [INFERRED]
   src/app/time-entry/presentation/components/time-entry-form/time-entry-form.component.html → .github/copilot-instructions.md
+- `DayColumn` --references--> `WeeklySchedule`  [EXTRACTED]
+  src/app/planning/presentation/components/weekly-schedule-editor/weekly-schedule-editor.component.ts → src/app/planning/domain/models.ts
 - `i18n Runtime Implementation PR` --semantically_similar_to--> `i18n PR Changes Summary`  [INFERRED] [semantically similar]
   .github/PULL_REQUEST_TEMPLATE_PR_BODY.md → .github/pr-comments/i18n-summary.md
-- `Layout` --references--> `BackupReminderService`  [EXTRACTED]
-  src/app/time-entry/presentation/components/layout/layout.ts → src/app/core/services/backup-reminder.service.ts
 
 ## Import Cycles
 - None detected.
@@ -168,23 +178,19 @@
 - **CLEAN Architecture Layers** — _github_copilot_instructions_presentation_layer, _github_copilot_instructions_facade_layer, _github_copilot_instructions_domain_layer, _github_copilot_instructions_data_layer [EXTRACTED 1.00]
 - **Time Entry UI Component Flow** — src_app_time_entry_presentation_components_layout_layout_floating_nav, src_app_time_entry_presentation_components_time_entry_list_time_entry_list_component_list, src_app_time_entry_presentation_components_time_entry_day_time_entry_day_component_day_group, src_app_time_entry_presentation_components_time_entry_edit_time_entry_edit_dialog_component_dialog, src_app_time_entry_presentation_components_time_entry_form_time_entry_form_component_form [INFERRED 0.95]
 
-## Communities (125 total, 17 thin omitted)
+## Communities (135 total, 26 thin omitted)
 
 ### Community 0 - "goal.usecase.ts"
-Cohesion: 0.22
-Nodes (18): buildServiceYearFromYear(), computeAuxiliaryGoalProgress(), computeGoalProgress(), computeMonthlyTarget(), computeRegularGoalProgress(), computeRegularMonthlyTarget(), computeStatus(), countActiveMonths() (+10 more)
-
-### Community 1 - "PlanningComponent"
-Cohesion: 0.09
-Nodes (7): PlanningCalendarComponent, Component, Input, Output, PlanningComponent, Component, toDateKey()
+Cohesion: 0.23
+Nodes (17): buildServiceYearFromYear(), computeAuxiliaryGoalProgress(), computeGoalProgress(), computeMonthlyTarget(), computeRegularGoalProgress(), computeRegularMonthlyTarget(), computeStatus(), countActiveMonths() (+9 more)
 
 ### Community 2 - "options"
 Cohesion: 0.22
 Nodes (13): options, assets, browser, codeCoverage, index, inlineStyleLanguage, karmaConfig, polyfills (+5 more)
 
 ### Community 3 - "package.json"
-Cohesion: 0.08
-Nodes (23): name, private, version, @angular/animations, @angular/build, @angular/cdk, @angular/cli, angular-cli-ghpages (+15 more)
+Cohesion: 0.09
+Nodes (22): name, private, version, @angular/animations, @angular/build, @angular/cdk, @angular/cli, angular-cli-ghpages (+14 more)
 
 ### Community 4 - "dependencies"
 Cohesion: 0.12
@@ -195,12 +201,12 @@ Cohesion: 0.14
 Nodes (14): devDependencies, @angular/build, @angular/cli, angular-cli-ghpages, @angular/compiler-cli, @compodoc/compodoc, jasmine-core, karma (+6 more)
 
 ### Community 6 - "DurationWheelPickerComponent"
-Cohesion: 0.21
+Cohesion: 0.19
 Nodes (3): DurationWheelPickerComponent, Component, ViewChild
 
 ### Community 7 - "@ngx-translate/core"
-Cohesion: 0.15
-Nodes (9): @ngx-translate/core, I18nDatePipe, Pipe, GoalStatus, GoalType, GoalStatusBadgeComponent, Component, Input (+1 more)
+Cohesion: 0.16
+Nodes (10): @ngx-translate/core, GoalStatus, GoalType, GoalStatusBadgeComponent, Component, Input, GoalsModule, routes (+2 more)
 
 ### Community 8 - "CLEAN Architecture Pattern"
 Cohesion: 0.16
@@ -211,8 +217,8 @@ Cohesion: 0.18
 Nodes (7): MODE_CYCLE, ResolvedTheme, configureTestBed(), makeMockMql(), ThemeMode, ThemeService, Injectable
 
 ### Community 11 - "TimeEntryVM"
-Cohesion: 0.11
-Nodes (14): TimeEntryType, CreateTimeEntryVM, TimeEntryTypeVM, TimeEntryVM, UpdateTimeEntryVM, I18nDateStub, Pipe, TimeEntryDayComponent (+6 more)
+Cohesion: 0.22
+Nodes (9): TimeEntryType, CreateTimeEntryVM, TimeEntryTypeVM, TimeEntryVM, UpdateTimeEntryVM, TimeEntryDayComponent, Component, Input (+1 more)
 
 ### Community 12 - "check-pr.js"
 Cohesion: 0.25
@@ -267,8 +273,8 @@ Cohesion: 0.20
 Nodes (9): Agent Orchestration, Arquitecture Rules (Clean Architecture), Documentation, graphify, Knowledge Graph Integration, Layer Dependency Rules:, Modes: light / dark / system, Role tokens (defined once in `_tokens.scss`) (+1 more)
 
 ### Community 30 - "DexieTimeEntryRepository"
-Cohesion: 0.12
-Nodes (4): DexieTimeEntryRepository, TimeEntryDB, Injectable, Optional
+Cohesion: 0.11
+Nodes (5): dexie, DexieTimeEntryRepository, TimeEntryDB, Injectable, Optional
 
 ### Community 32 - "Coverage mandate"
 Cohesion: 0.12
@@ -307,8 +313,8 @@ Cohesion: 0.18
 Nodes (4): CalendarDay, TimeEntryCalendarComponent, Component, toDateKey()
 
 ### Community 41 - "WeeklyScheduleEditorComponent"
-Cohesion: 0.10
-Nodes (7): keyForJsDow(), Component, HostListener, Input, Output, ViewChild, WeeklyScheduleEditorComponent
+Cohesion: 0.09
+Nodes (10): DayColumn, ISO_WEEKDAY_KEYS, keyForJsDow(), Component, HostListener, Input, Output, ViewChild (+2 more)
 
 ### Community 42 - "UXAgent"
 Cohesion: 0.15
@@ -330,37 +336,37 @@ Nodes (4): prettier, overrides, printWidth, singleQuote
 Cohesion: 0.25
 Nodes (8): schematics, standalone, style, standalone, standalone, @schematics/angular:component, @schematics/angular:directive, @schematics/angular:pipe
 
-### Community 49 - "planning.component.spec.ts"
-Cohesion: 0.14
-Nodes (6): OptionPillGroupComponent, PillOption, TEST_OPTIONS, Component, Input, Output
+### Community 49 - "settings.component.ts"
+Cohesion: 0.21
+Nodes (7): BackupReminderFrequency, OptionPillGroupComponent, PillOption, TEST_OPTIONS, Component, Input, Output
 
-### Community 50 - "WeeklySchedule"
-Cohesion: 0.14
-Nodes (11): DexiePlanningRepository, Injectable, Optional, DayPlanRecord, PlanningDB, WeeklyScheduleRecord, IPlanningRepository, DayPlan (+3 more)
+### Community 50 - "planning.facade.ts"
+Cohesion: 0.05
+Nodes (33): getServiceYear(), isActiveMonth(), IGoalRepository, GOAL_REPOSITORY_TOKEN, DexiePlanningRepository, Injectable, Optional, DayPlanRecord (+25 more)
 
 ### Community 51 - "app-module.ts"
 Cohesion: 0.23
-Nodes (6): @angular/platform-browser, @ngx-translate/http-loader, App, AppModule, NgModule, Component
+Nodes (7): @angular/platform-browser, @ngx-translate/http-loader, AppModule, NgModule, AppRoutingModule, routes, NgModule
 
 ### Community 52 - "TimeEntry"
-Cohesion: 0.10
-Nodes (5): InMemoryTimeEntryRepository, CourseVisit, MonthlyCourseCount, TimeEntry, InMemoryRepository
+Cohesion: 0.17
+Nodes (3): CourseVisit, TimeEntry, InMemoryRepository
 
-### Community 53 - "time-entry.facade.ts"
-Cohesion: 0.32
-Nodes (8): Person, computeMonthlyTotals(), inMonth(), mergeTimeEntry(), MonthlyTotals, normalizeName(), toDateKey(), toKey()
+### Community 53 - "time-entry.usecase.ts"
+Cohesion: 0.36
+Nodes (7): computeMonthlyTotals(), inMonth(), mergeTimeEntry(), MonthlyTotals, normalizeName(), toDateKey(), toKey()
 
-### Community 54 - "goals/domain/models.ts"
-Cohesion: 0.25
-Nodes (6): Goal, GoalProgress, GoalsFacade, Injectable, DialogData, MonthOption
+### Community 54 - "goals.facade.ts"
+Cohesion: 0.23
+Nodes (6): Injectable, @angular/forms, Goal, GoalsFacade, DialogData, MonthOption
 
-### Community 55 - "@angular/core"
-Cohesion: 0.11
-Nodes (21): @angular/common, @angular/core, @angular/forms, rxjs, PlanningCalendarDay, ISO_WEEKDAY_KEYS, ZERO_SCHEDULE, PlanningModule (+13 more)
+### Community 55 - "planning.module.ts"
+Cohesion: 0.27
+Nodes (8): @angular/common, @angular/router, PlanningCalendarDay, PlanningModule, routes, NgModule, SharedModule, NgModule
 
 ### Community 57 - "GoalConfig"
-Cohesion: 0.18
-Nodes (7): DexieGoalRepository, Injectable, Optional, ActiveGoalRecord, GoalsDB, IGoalRepository, GoalConfig
+Cohesion: 0.20
+Nodes (6): DexieGoalRepository, Injectable, Optional, ActiveGoalRecord, GoalsDB, GoalConfig
 
 ### Community 58 - "ngsw-config.json"
 Cohesion: 0.50
@@ -374,28 +380,28 @@ Nodes (6): MonthlyBar, BarColumn, MonthlyBarChartComponent, Component, Input, Ou
 Cohesion: 0.40
 Nodes (5): Gotchas, Key flows, Module: goals, Purpose, Where to go next
 
-### Community 61 - "layout.spec.ts"
-Cohesion: 0.21
+### Community 61 - "time-entry-list.component.ts"
+Cohesion: 0.25
 Nodes (5): FileUtilService, Injectable, TimeEntryExporter, toCSV(), Injectable
 
 ### Community 62 - "update-notification.service.ts"
-Cohesion: 0.08
-Nodes (15): @angular/service-worker, ChangelogEntry, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, Layout, Component (+7 more)
+Cohesion: 0.09
+Nodes (13): @angular/service-worker, ChangelogEntry, ChangeEntry, ChangelogEntry, Injectable, UpdateNotificationService, Component, Input (+5 more)
 
-### Community 63 - "BackupReminderService"
-Cohesion: 0.12
-Nodes (9): BackupReminderFrequency, BackupReminderService, DAYS, Injectable, BackupReminderBannerComponent, TranslateStub, Pipe, Component (+1 more)
+### Community 63 - "@angular/core"
+Cohesion: 0.13
+Nodes (9): @angular/core, BackupReminderService, DAYS, Injectable, BackupReminderBannerComponent, TranslateStub, Pipe, Component (+1 more)
 
 ### Community 64 - "TimeEntryFormComponent"
 Cohesion: 0.24
 Nodes (4): TimeEntryFormComponent, Component, Input, Output
 
-### Community 67 - "planning.facade.ts"
-Cohesion: 0.18
-Nodes (8): getServiceYear(), toIsoDate(), buildActualByMonth(), firstAndLastOfMonth(), PlanningFacade, round2(), Injectable, ZERO_SCHEDULE
+### Community 67 - "time-entry.module.ts"
+Cohesion: 0.24
+Nodes (7): rxjs, MaterialModule, NgModule, routes, TimeEntryModule, NgModule, TIME_ENTRY_REPOSITORY
 
 ### Community 68 - "DayOverridePanelComponent"
-Cohesion: 0.20
+Cohesion: 0.17
 Nodes (5): DayOverridePanelComponent, Component, HostListener, Input, Output
 
 ### Community 69 - "properties"
@@ -406,17 +412,17 @@ Nodes (39): additionalProperties, properties, required, type, description, type,
 Cohesion: 0.40
 Nodes (5): Gotchas, Key flows, Module: planning, Purpose, Where to go next
 
-### Community 73 - "settings.component.ts"
-Cohesion: 0.19
-Nodes (7): isWeekDay(), Injectable, VALID_WEEK_DAYS, WEEK_DAY_INDEX, WeekStartService, WeekDay, today
+### Community 73 - "week-start.service.ts"
+Cohesion: 0.25
+Nodes (5): isWeekDay(), Injectable, VALID_WEEK_DAYS, WEEK_DAY_INDEX, WeekStartService
 
 ### Community 74 - "Module: time-entry"
 Cohesion: 0.40
 Nodes (5): Gotchas, Key flows, Module: time-entry, Purpose, Where to go next
 
-### Community 75 - "planning.usecase.ts"
-Cohesion: 0.13
-Nodes (14): REGULAR_GOAL_MARGIN, REGULAR_GOAL_TARGET, ServiceYear, PlanningProjectionStatus, computeDailyPlan(), computeMonthlyPlanned(), computePlanningProjection(), daysInMonth() (+6 more)
+### Community 75 - "goals/domain/models.ts"
+Cohesion: 0.27
+Nodes (4): GoalProgress, REGULAR_GOAL_MARGIN, REGULAR_GOAL_TARGET, ServiceYear
 
 ### Community 76 - "ADR-0002: Granularidad de prorrateo mensual vs. diario en el cálculo de progreso de metas (goal progress)"
 Cohesion: 0.25
@@ -425,6 +431,10 @@ Nodes (7): ADR-0002: Granularidad de prorrateo mensual vs. diario en el cálculo
 ### Community 77 - "ministry-assistanto"
 Cohesion: 0.20
 Nodes (10): extract-i18n, test, builder, architect, prefix, projectType, root, sourceRoot (+2 more)
+
+### Community 78 - "TimeEntryFacade"
+Cohesion: 0.14
+Nodes (5): TimeEntryFacade, Injectable, TimeEntryEditDialogComponent, Component, Inject
 
 ### Community 79 - "production"
 Cohesion: 0.22
@@ -443,8 +453,8 @@ Cohesion: 0.06
 Nodes (38): items, type, description, items, type, $id, properties, required (+30 more)
 
 ### Community 83 - "GoalSummaryCardComponent"
-Cohesion: 0.15
-Nodes (4): @angular/router, GoalSummaryCardComponent, Component, Input
+Cohesion: 0.25
+Nodes (3): GoalSummaryCardComponent, Component, Input
 
 ### Community 84 - "DurationWheelPickerStub"
 Cohesion: 0.22
@@ -452,7 +462,7 @@ Nodes (3): DurationWheelPickerStub, MatSelectStub, Component
 
 ### Community 85 - "GoalProgressVisualComponent"
 Cohesion: 0.33
-Nodes (3): GoalProgressVisualComponent, Component, Input
+Nodes (3): Component, Input, GoalProgressVisualComponent
 
 ### Community 86 - "What You Must Do When Invoked"
 Cohesion: 0.14
@@ -474,21 +484,13 @@ Nodes (11): 1. Stale architecture docs, 2. Outdated agent definitions, 3. Moved/
 Cohesion: 0.40
 Nodes (5): God Nodes in this module, Module overview: planning, Related docs, Responsibilities per layer, Structure
 
-### Community 92 - "TimeEntryFacade"
-Cohesion: 0.12
-Nodes (4): ITimeEntryRepository, TimeEntryFacade, Inject, Injectable
-
-### Community 93 - "app-routing-module.ts"
-Cohesion: 0.50
-Nodes (3): AppRoutingModule, routes, NgModule
-
 ### Community 95 - "The 6 checks"
 Cohesion: 0.20
 Nodes (9): 1. Stale architecture docs, 2. Outdated agent definitions, 3. Moved or renamed files, 4. Broken doc-to-doc links, 5. Feature/module mismatch, 6. Stale invariants, Output: `docs/generated/drift/latest.md`, The 6 checks (+1 more)
 
-### Community 96 - "goals.module.ts"
-Cohesion: 0.13
-Nodes (10): makeEntry(), seedJanAndJulEntries(), GOAL_REPOSITORY_TOKEN, ConfirmClearDialog, GoalsComponent, Component, GoalsModule, routes (+2 more)
+### Community 96 - "goals.facade.spec.ts"
+Cohesion: 0.25
+Nodes (4): makeEntry(), seedJanAndJulEntries(), MonthlyCourseCount, Person
 
 ### Community 97 - "Getting started"
 Cohesion: 0.22
@@ -574,9 +576,9 @@ Nodes (4): Dependency overview (generated), God Nodes, How this doc is produced,
 Cohesion: 0.67
 Nodes (3): Feature lifecycle, Typical order for a new feature, Where documentation fits in
 
-### Community 119 - "I18nDateStub"
-Cohesion: 0.40
-Nodes (3): I18nDateStub, TranslateStub, Pipe
+### Community 119 - "MonthPaginatorComponent"
+Cohesion: 0.22
+Nodes (7): MonthPaginatorComponent, I18nDateStub, TranslateStub, Pipe, Component, Input, Output
 
 ### Community 120 - "SettingsComponent"
 Cohesion: 0.22
@@ -586,25 +588,37 @@ Nodes (4): ChangelogService, Injectable, SettingsComponent, Component
 Cohesion: 0.50
 Nodes (4): Awareness (not violations), Known violations (generated), Per-module verdict (this pass), Resolved since last review
 
+### Community 122 - "WeekDay"
+Cohesion: 0.24
+Nodes (4): WeekDay, TranslateStub, Pipe, today
+
+### Community 124 - "PlanningCalendarComponent"
+Cohesion: 0.24
+Nodes (4): PlanningCalendarComponent, Component, Input, Output
+
+### Community 125 - "GoalsComponent"
+Cohesion: 0.33
+Nodes (3): ConfirmClearDialog, GoalsComponent, Component
+
 ## Knowledge Gaps
-- **501 isolated node(s):** `check-coverage.sh script`, `issues.sh script`, `pr.sh script`, `{ Octokit }`, `[owner, repo]` (+496 more)
-  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 804 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
-- **17 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+- **501 isolated node(s):** `Status`, `Context`, `Decision`, `Consequences`, `Alternatives considered` (+496 more)
+  These have ≤1 connection - possible missing edges or undocumented components. (Counts symbols only; 814 node(s) total have ≤1 connection when file, concept and rationale nodes are included.)
+- **26 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
 
 ## Suggested Questions
 _Questions this graph is uniquely positioned to answer:_
 
-- **Why does `@angular/core` connect `@angular/core` to `package.json`, `@ngx-translate/core`, `ThemeService`, `TimeEntryVM`, `DexieTimeEntryRepository`, `time-entry-calendar.ts`, `WeeklyScheduleEditorComponent`, `planning.component.spec.ts`, `WeeklySchedule`, `app-module.ts`, `time-entry.facade.ts`, `goals/domain/models.ts`, `GoalConfig`, `layout.spec.ts`, `update-notification.service.ts`, `BackupReminderService`, `planning.facade.ts`, `settings.component.ts`, `planning.facade.spec.ts`, `app-routing-module.ts`, `goals.module.ts`?**
-  _High betweenness centrality (0.071) - this node is a cross-community bridge._
-- **Why does `@ngx-translate/core` connect `@ngx-translate/core` to `goals.module.ts`, `package.json`, `planning.facade.ts`, `time-entry-calendar.ts`, `WeeklyScheduleEditorComponent`, `settings.component.ts`, `TimeEntryVM`, `planning.component.spec.ts`, `app-module.ts`, `GoalSummaryCardComponent`, `TimeEntry`, `goals/domain/models.ts`, `@angular/core`, `MonthlyBarChartComponent`, `layout.spec.ts`, `update-notification.service.ts`?**
-  _High betweenness centrality (0.026) - this node is a cross-community bridge._
-- **Why does `DurationWheelPickerComponent` connect `DurationWheelPickerComponent` to `@angular/core`?**
-  _High betweenness centrality (0.022) - this node is a cross-community bridge._
-- **What connects `check-coverage.sh script`, `issues.sh script`, `pr.sh script` to the rest of the system?**
+- **Why does `@angular/core` connect `@angular/core` to `app.ts`, `i18n-date.pipe.ts`, `package.json`, `@ngx-translate/core`, `ThemeService`, `TimeEntryVM`, `DexieTimeEntryRepository`, `time-entry-calendar.ts`, `WeeklyScheduleEditorComponent`, `settings.component.ts`, `planning.facade.ts`, `app-module.ts`, `goals.facade.ts`, `planning.module.ts`, `GoalConfig`, `time-entry-list.component.ts`, `update-notification.service.ts`, `time-entry.module.ts`, `DayOverridePanelComponent`, `week-start.service.ts`, `TimeEntryFacade`, `MonthPaginatorComponent`, `WeekDay`, `planning.component.spec.ts`?**
+  _High betweenness centrality (0.072) - this node is a cross-community bridge._
+- **Why does `@ngx-translate/core` connect `@ngx-translate/core` to `app.ts`, `i18n-date.pipe.ts`, `package.json`, `TimeEntryVM`, `time-entry-calendar.ts`, `WeeklyScheduleEditorComponent`, `settings.component.ts`, `planning.facade.ts`, `app-module.ts`, `goals.facade.ts`, `planning.module.ts`, `MonthlyBarChartComponent`, `time-entry-list.component.ts`, `update-notification.service.ts`, `time-entry.module.ts`, `DayOverridePanelComponent`, `goals/domain/models.ts`, `TimeEntryFacade`, `WeekDay`, `planning.component.spec.ts`, `PlanningCalendarComponent`?**
+  _High betweenness centrality (0.034) - this node is a cross-community bridge._
+- **Why does `DexieTimeEntryRepository` connect `DexieTimeEntryRepository` to `goals.facade.spec.ts`, `time-entry.module.ts`, `@ngx-translate/core`, `planning.module.ts`, `ITimeEntryRepository`?**
+  _High betweenness centrality (0.027) - this node is a cross-community bridge._
+- **What connects `Status`, `Context`, `Decision` to the rest of the system?**
   _501 weakly-connected nodes found - possible documentation gaps or missing edges._
-- **Should `PlanningComponent` be split into smaller, more focused modules?**
-  _Cohesion score 0.09401709401709402 - nodes in this community are weakly interconnected._
 - **Should `package.json` be split into smaller, more focused modules?**
-  _Cohesion score 0.08333333333333333 - nodes in this community are weakly interconnected._
+  _Cohesion score 0.08695652173913043 - nodes in this community are weakly interconnected._
 - **Should `dependencies` be split into smaller, more focused modules?**
   _Cohesion score 0.11764705882352941 - nodes in this community are weakly interconnected._
+- **Should `devDependencies` be split into smaller, more focused modules?**
+  _Cohesion score 0.14285714285714285 - nodes in this community are weakly interconnected._
