@@ -13,12 +13,22 @@ function makeAuxiliaryConfig(): GoalConfig {
 }
 
 function makeProgress(partial: Partial<GoalProgress> = {}): GoalProgress {
+  const targetHours = partial.targetHours ?? 600;
+  const activeMonthsElapsed = partial.activeMonthsElapsed ?? 6;
+  const totalActiveMonths = partial.totalActiveMonths ?? 12;
+  const targetToDate = (targetHours * activeMonthsElapsed) / totalActiveMonths;
+  const accumulatedHours = partial.accumulatedHours ?? 300;
+
   return {
-    accumulatedHours: 300,
+    accumulatedHours,
     projectedHours: 550,
-    targetHours: 600,
+    targetHours,
     status: 'on-track',
     monthsElapsed: 6,
+    activeMonthsElapsed,
+    totalActiveMonths,
+    targetToDate,
+    hoursDifference: accumulatedHours - targetToDate,
     monthlyAccumulated: 40,
     monthlyTarget: 50,
     monthlyProgress: 80,

@@ -1,5 +1,11 @@
 [
   {
+    "version": "2026-09-18",
+    "changes": [
+      { "type": "fix", "text": "El progreso de Metas ya no marca falsamente 'fuera de margen' al inicio de cada mes: el mes en curso se prorratea por día en vez de contarse como transcurrido al 100%" }
+    ]
+  },
+  {
     "version": "2026-09-10",
     "changes": [
       { "type": "feature", "text": "Nueva sección Plan: agenda tu horario semanal, ajusta días puntuales, compara horas planificadas frente a reales por mes y visualiza tu avance hacia el objetivo mensual" },

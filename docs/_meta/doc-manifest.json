@@ -51,6 +51,16 @@
       ".claude/agents/architecture-guardian.md"
     ]
   },
+  "curated/architecture/adr/0002-prorrateo-diario-vs-mensual-en-progreso-de-metas.md": {
+    "doc_type": "adr",
+    "module": "goals",
+    "status": "draft",
+    "generated_by": "human-docs-agent",
+    "source_commit": "aeade5cf20994fcbb549bd9b348dc146b3ccf91c",
+    "sources": [
+      "src/app/goals/domain/goal.usecase.ts"
+    ]
+  },
   "generated/drift/latest.md": {
     "doc_type": "drift-report",
     "module": "root",

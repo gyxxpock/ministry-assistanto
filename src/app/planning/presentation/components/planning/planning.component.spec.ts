@@ -43,12 +43,22 @@ function makeRegularGoal(): Goal {
 }
 
 function makeGoalProgress(partial: Partial<GoalProgress> = {}): GoalProgress {
+  const targetHours = partial.targetHours ?? 600;
+  const activeMonthsElapsed = partial.activeMonthsElapsed ?? 3;
+  const totalActiveMonths = partial.totalActiveMonths ?? 12;
+  const targetToDate = (targetHours * activeMonthsElapsed) / totalActiveMonths;
+  const accumulatedHours = partial.accumulatedHours ?? 100;
+
   return {
-    accumulatedHours: 100,
+    accumulatedHours,
     projectedHours: 450,
-    targetHours: 600,
+    targetHours,
     status: 'on-track',
     monthsElapsed: 3,
+    activeMonthsElapsed,
+    totalActiveMonths,
+    targetToDate,
+    hoursDifference: accumulatedHours - targetToDate,
     monthlyAccumulated: 10,
     monthlyTarget: 50,
     monthlyProgress: 20,

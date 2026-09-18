@@ -42,7 +42,10 @@ export interface GoalProgress {
   targetHours: number;
   status: GoalStatus;
   monthsElapsed: number;
-  activeMonthsElapsed?: number; // auxiliary goals only
+  activeMonthsElapsed: number;
+  totalActiveMonths: number;
+  targetToDate: number;
+  hoursDifference: number;
   // Monthly metrics — for current calendar month visibility
   monthlyAccumulated: number;
   monthlyTarget: number;

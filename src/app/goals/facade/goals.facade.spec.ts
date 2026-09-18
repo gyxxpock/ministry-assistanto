@@ -390,7 +390,7 @@ describe('GoalsFacade', () => {
       expect(facade.accumulatedHours()).toBe(2);
     }));
 
-    it('false branch (type !== "auxiliary"): regular goal uses the full service-year range', fakeAsync(() => {
+    it('regular goal WITHOUT startMonth uses the full service-year range', fakeAsync(() => {
       const serviceYear = facade.currentServiceYear().year;
       seedJanAndJulEntries(serviceYear);
 
@@ -400,6 +400,23 @@ describe('GoalsFacade', () => {
 
       // Both entries counted: (60 + 120) / 60 = 3h.
       expect(facade.accumulatedHours()).toBe(3);
+    }));
+
+    it('regular goal WITH startMonth narrows the range to active months', fakeAsync(() => {
+      const serviceYear = facade.currentServiceYear().year;
+      seedJanAndJulEntries(serviceYear);
+
+      const config: GoalConfig = {
+        type: 'regular',
+        serviceYear,
+        startMonth: 6,
+      };
+      mockRepo.getActive.and.returnValue(Promise.resolve(config));
+      facade.loadGoal();
+      flushMicrotasks();
+
+      // Only the July entry (inside June-August) is counted: 120min / 60 = 2h.
+      expect(facade.accumulatedHours()).toBe(2);
     }));
 
     it('false branch (permanent === true): permanent auxiliary uses the full service-year range', fakeAsync(() => {
