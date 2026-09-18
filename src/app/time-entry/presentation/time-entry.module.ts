@@ -16,7 +16,7 @@ import { BackupReminderBannerComponent } from './components/backup-reminder-bann
 import { UpdateBannerComponent } from './components/update-banner/update-banner.component';
 import { VersionHistoryComponent } from './components/version-history/version-history.component';
 
-import { TIME_ENTRY_REPOSITORY } from './tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../time-entry.tokens';
 import { DexieTimeEntryRepository } from '../data/time-entry.dexie';
 import { TimeEntryFacade } from '../facade/time-entry.facade';
 import { MaterialModule } from './material/material.module';

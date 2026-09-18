@@ -4,7 +4,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TimeEntryEditDialogComponent } from './time-entry-edit-dialog.component';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
-import { TimeEntryVM } from '../../models/time-entry.vm';
+import { TimeEntryVM } from '../../../facade/time-entry.vm';
 
 function makeEntry(overrides: Partial<TimeEntryVM> = {}): TimeEntryVM {
   return {

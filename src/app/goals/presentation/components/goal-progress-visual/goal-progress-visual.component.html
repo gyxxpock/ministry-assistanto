@@ -54,7 +54,7 @@
 
       <div class="metric-row" *ngIf="goalProgress.monthsElapsed">
         <span class="metric-label">{{ 'goals.metrics.months-elapsed' | translate }}</span>
-        <span class="metric-value">{{ goalProgress.monthsElapsed }} / {{ totalMonths }}</span>
+        <span class="metric-value">{{ goalProgress.activeMonthsElapsed }} / {{ vm()?.totalActiveMonths }}</span>
       </div>
 
       <mat-divider></mat-divider>

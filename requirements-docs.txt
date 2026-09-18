@@ -1,0 +1,5 @@
+# Local tooling for `npm run docs:site:build` / `docs:site:serve`.
+# Install once with: pip install -r requirements-docs.txt
+mkdocs>=1.6.1
+mkdocs-material>=9.5
+mkdocs-mermaid2-plugin>=1.1

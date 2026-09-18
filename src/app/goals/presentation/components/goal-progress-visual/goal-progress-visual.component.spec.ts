@@ -10,12 +10,22 @@ import { GoalStatusBadgeComponent } from '../goal-status-badge/goal-status-badge
 import { GoalProgress, GoalStatus } from '../../../domain/models';
 
 function makeProgress(overrides: Partial<GoalProgress> = {}): GoalProgress {
+  const targetHours = overrides.targetHours ?? 600;
+  const activeMonthsElapsed = overrides.activeMonthsElapsed ?? 3;
+  const totalActiveMonths = overrides.totalActiveMonths ?? 12;
+  const targetToDate = (targetHours * activeMonthsElapsed) / totalActiveMonths;
+  const accumulatedHours = overrides.accumulatedHours ?? 150;
+
   return {
-    accumulatedHours: 150,
+    accumulatedHours,
     projectedHours: 600,
-    targetHours: 600,
+    targetHours,
     status: 'on-track',
     monthsElapsed: 3,
+    activeMonthsElapsed,
+    totalActiveMonths,
+    targetToDate,
+    hoursDifference: accumulatedHours - targetToDate,
     monthlyAccumulated: 15,
     monthlyTarget: 50,
     monthlyProgress: 30,
@@ -49,16 +59,7 @@ describe('GoalProgressVisualComponent', () => {
   });
 
   it('should display progress percentage', () => {
-    component.goalProgress = {
-      accumulatedHours: 150,
-      projectedHours: 600,
-      targetHours: 600,
-      status: 'on-track',
-      monthsElapsed: 3,
-      monthlyAccumulated: 15,
-      monthlyTarget: 50,
-      monthlyProgress: 30,
-    };
+    component.goalProgress = makeProgress();
 
     fixture.detectChanges();
 
@@ -67,16 +68,7 @@ describe('GoalProgressVisualComponent', () => {
   });
 
   it('should display metric values', () => {
-    component.goalProgress = {
-      accumulatedHours: 150,
-      projectedHours: 600,
-      targetHours: 600,
-      status: 'on-track',
-      monthsElapsed: 3,
-      monthlyAccumulated: 15,
-      monthlyTarget: 50,
-      monthlyProgress: 30,
-    };
+    component.goalProgress = makeProgress();
     component.goalConfig = { type: 'regular', serviceYear: 2027 };
 
     fixture.detectChanges();
@@ -87,16 +79,13 @@ describe('GoalProgressVisualComponent', () => {
   });
 
   it('should color SVG circle green for on-track status', () => {
-    component.goalProgress = {
+    component.goalProgress = makeProgress({
       accumulatedHours: 450,
-      projectedHours: 600,
-      targetHours: 600,
-      status: 'on-track',
       monthsElapsed: 9,
+      activeMonthsElapsed: 9,
       monthlyAccumulated: 45,
-      monthlyTarget: 50,
       monthlyProgress: 90,
-    };
+    });
 
     fixture.detectChanges();
 
@@ -147,15 +136,13 @@ describe('GoalProgressVisualComponent', () => {
     });
   });
 
-  describe('computeTargetToDate (via vm().targetToDate)', () => {
-    it('returns 0 when monthsElapsed is 0', () => {
-      component.goalProgress = makeProgress({ monthsElapsed: 0 });
-      expect(component.vm()?.targetToDate).toBe(0);
-    });
+  describe('months-elapsed row (passthrough from domain)', () => {
+    it('renders activeMonthsElapsed / totalActiveMonths from the domain, not a hardcoded 12', () => {
+      component.goalProgress = makeProgress({ activeMonthsElapsed: 4, totalActiveMonths: 8 });
+      fixture.detectChanges();
 
-    it('returns a proportional value when monthsElapsed is not 0', () => {
-      component.goalProgress = makeProgress({ monthsElapsed: 6, targetHours: 600 });
-      expect(component.vm()?.targetToDate).toBe((600 * 6) / component.totalMonths);
+      const metricsText = fixture.nativeElement.textContent;
+      expect(metricsText).toContain('4 / 8');
     });
   });
 

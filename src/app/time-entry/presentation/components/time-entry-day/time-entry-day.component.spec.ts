@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { NO_ERRORS_SCHEMA, Pipe, PipeTransform } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
 import { TimeEntryDayComponent } from './time-entry-day.component';
-import { TimeEntryVM } from '../../models/time-entry.vm';
+import { TimeEntryVM } from '../../../facade/time-entry.vm';
 
 @Pipe({ name: 'i18nDate', standalone: true })
 class I18nDateStub implements PipeTransform {

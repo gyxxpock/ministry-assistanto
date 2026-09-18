@@ -31,7 +31,7 @@ import { GoalsFacade } from '../facade/goals.facade';
 import { DexieGoalRepository } from '../data/dexie-goal.repository';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
 import { DexieTimeEntryRepository } from '../../time-entry/data/time-entry.dexie';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 
 const routes: Routes = [
   {

@@ -24,8 +24,6 @@ export class GoalProgressVisualComponent {
   @Input() goalProgress: GoalProgress | null = null;
   @Input() goalConfig: GoalConfig | null = null;
 
-  readonly totalMonths = 12;
-
   readonly vm = computed(() => {
     const progress = this.goalProgress;
     if (!progress) return null;
@@ -34,8 +32,9 @@ export class GoalProgressVisualComponent {
       accumulatedHours: progress.accumulatedHours,
       projectedHours: progress.projectedHours,
       targetHours: progress.targetHours,
-      targetToDate: this.computeTargetToDate(progress),
-      hoursDifference: progress.accumulatedHours - this.computeTargetToDate(progress),
+      targetToDate: progress.targetToDate,
+      hoursDifference: progress.hoursDifference,
+      totalActiveMonths: progress.totalActiveMonths,
       statusLabel: progress.status,
       monthsElapsed: progress.monthsElapsed,
       monthlyAccumulated: progress.monthlyAccumulated,
@@ -70,10 +69,5 @@ export class GoalProgressVisualComponent {
 
   get circleBackgroundColor(): string {
     return '#E5E7EB';
-  }
-
-  private computeTargetToDate(progress: GoalProgress): number {
-    if (progress.monthsElapsed === 0) return 0;
-    return (progress.targetHours * progress.monthsElapsed) / this.totalMonths;
   }
 }

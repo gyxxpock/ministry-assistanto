@@ -1,7 +1,7 @@
 import { Component, Inject, OnInit } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
-import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../models/time-entry.vm';
+import { CreateTimeEntryVM, TimeEntryVM, UpdateTimeEntryVM } from '../../../facade/time-entry.vm';
 
 @Component({
   selector: 'ma-time-entry-edit-dialog',

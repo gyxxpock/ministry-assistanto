@@ -7,7 +7,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { TimeEntryCalendarComponent } from './time-entry-calendar';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
-import { TimeEntryVM } from '../../models/time-entry.vm';
+import { TimeEntryVM } from '../../../facade/time-entry.vm';
 import { WeekStartService } from '../../../../core/services/week-start.service';
 import { WeekDay } from '../../../../shared/domain/week-day.model';
 

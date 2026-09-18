@@ -2,7 +2,7 @@ import { Component, computed, inject, OnInit, signal } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TimeEntryFacade } from '../../../facade/time-entry.facade';
 import { TimeEntryEditDialogComponent } from '../time-entry-edit/time-entry-edit-dialog.component';
-import { TimeEntryVM } from '../../models/time-entry.vm';
+import { TimeEntryVM } from '../../../facade/time-entry.vm';
 import { FileUtilService } from '../../../../core/services/file-util.service';
 import TimeEntryExporter from '../../../facade/time-entry.exporter';
 import { BackupReminderService } from '../../../../core/services/backup-reminder.service';

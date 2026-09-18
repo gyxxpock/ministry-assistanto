@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync, flushMicrotasks } from '@angular/core/testing';
 import { FileUtilService } from './file-util.service';
 
 describe('FileUtilService', () => {
@@ -63,31 +63,46 @@ describe('FileUtilService', () => {
   });
 
   describe('readFile()', () => {
-    it('resolves with the text content of the file', async () => {
-      const file = new File(['hello world'], 'test.txt', { type: 'text/plain' });
-      const result = await service.readFile(file);
-      expect(result).toBe('hello world');
-    });
+    let mockReader: any;
 
-    it('resolves with JSON content', async () => {
-      const json = '{"key":"value"}';
-      const file = new File([json], 'data.json', { type: 'application/json' });
-      const result = await service.readFile(file);
-      expect(result).toBe(json);
-    });
-
-    it('rejects when FileReader encounters an error', async () => {
-      const file = new File([''], 'test.txt');
-      const mockReader: any = {
+    beforeEach(() => {
+      mockReader = {
         result: null,
         onload: null,
         onerror: null,
-        readAsText: jasmine.createSpy('readAsText').and.callFake(function (this: any) {
-          Promise.resolve().then(() => this.onerror('read error'));
-        }),
+        readAsText: jasmine.createSpy('readAsText'),
       };
       spyOn(window as any, 'FileReader').and.returnValue(mockReader);
-      await expectAsync(service.readFile(file)).toBeRejected();
     });
+
+    it('resolves with the text content of the file', fakeAsync(() => {
+      const file = new File(['hello world'], 'test.txt', { type: 'text/plain' });
+      mockReader.readAsText.and.callFake(() =>
+        mockReader.onload({ target: { result: 'hello world' } })
+      );
+      let result: string | undefined;
+      service.readFile(file).then((r) => (result = r));
+      flushMicrotasks();
+      expect(result).toBe('hello world');
+    }));
+
+    it('resolves with JSON content', fakeAsync(() => {
+      const json = '{"key":"value"}';
+      const file = new File([json], 'data.json', { type: 'application/json' });
+      mockReader.readAsText.and.callFake(() => mockReader.onload({ target: { result: json } }));
+      let result: string | undefined;
+      service.readFile(file).then((r) => (result = r));
+      flushMicrotasks();
+      expect(result).toBe(json);
+    }));
+
+    it('rejects when FileReader encounters an error', fakeAsync(() => {
+      const file = new File([''], 'test.txt');
+      mockReader.readAsText.and.callFake(() => mockReader.onerror('read error'));
+      let rejected = false;
+      service.readFile(file).catch(() => (rejected = true));
+      flushMicrotasks();
+      expect(rejected).toBe(true);
+    }));
   });
 });

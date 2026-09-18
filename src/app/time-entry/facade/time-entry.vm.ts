@@ -1,4 +1,4 @@
-import { TimeEntryType } from '../../domain/models';
+import { TimeEntryType } from '../domain/models';
 
 export type TimeEntryTypeVM = TimeEntryType;
 

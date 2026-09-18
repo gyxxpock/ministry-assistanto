@@ -23,6 +23,9 @@ src/app/time-entry/presentation/
     time-entry-edit/         ← edit/create dialog
     time-entry-form/         ← time entry form
     time-entry-list/         ← main view (God Node: 18 edges)
+    shared/
+      option-pill-group/     ← reused by planning.module.ts too — cross-module UI primitive
+      month-paginator/       ← reused by planning.module.ts too — cross-module UI primitive
   material/material.module.ts
   models/time-entry.vm.ts    ← TimeEntryVM (ViewModel)
   tokens/time-entry.tokens.ts

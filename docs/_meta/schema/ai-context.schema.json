@@ -1,0 +1,59 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://ministry-assistanto/docs/_meta/schema/ai-context.schema.json",
+  "title": "AI-context document",
+  "description": "Fixed schema for docs/generated/ai/<module>.md, mirrored here for tooling that needs to validate structure rather than parse Markdown headings.",
+  "type": "object",
+  "required": [
+    "purpose",
+    "public_api_surface",
+    "key_invariants",
+    "dependencies",
+    "god_nodes_in_scope",
+    "test_coverage_summary",
+    "source_commit"
+  ],
+  "properties": {
+    "purpose": {
+      "type": "string",
+      "description": "What this module is responsible for, in domain terms."
+    },
+    "public_api_surface": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["symbol", "location"],
+        "properties": {
+          "symbol": { "type": "string" },
+          "location": { "type": "string", "description": "file:line" }
+        }
+      }
+    },
+    "key_invariants": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["statement", "location"],
+        "properties": {
+          "statement": { "type": "string" },
+          "location": { "type": "string", "description": "file:line" }
+        }
+      }
+    },
+    "dependencies": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "god_nodes_in_scope": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "test_coverage_summary": {
+      "type": "string"
+    },
+    "source_commit": {
+      "type": "string",
+      "description": "Commit SHA this doc was generated against."
+    }
+  }
+}

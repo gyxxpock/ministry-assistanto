@@ -4,7 +4,7 @@ import { ITimeEntryRepository } from '../../time-entry/domain/i-time-entry.repos
 import { Goal, GoalConfig, GoalProgress } from '../domain/models';
 import { computeGoalProgress, getServiceYear } from '../domain/goal.usecase';
 import { GOAL_REPOSITORY_TOKEN } from '../goals.tokens';
-import { TIME_ENTRY_REPOSITORY } from '../../time-entry/presentation/tokens/time-entry.tokens';
+import { TIME_ENTRY_REPOSITORY } from '../../time-entry/time-entry.tokens';
 
 @Injectable()
 export class GoalsFacade {
@@ -69,7 +69,12 @@ export class GoalsFacade {
     let startDate: Date;
     let endDate: Date;
 
-    if (config.type === 'auxiliary' && !config.permanent &&
+    if (config.type === 'regular' && config.startMonth !== undefined) {
+      // Regular con startMonth: sólo desde el mes en que empezó hasta agosto
+      const smYear = config.startMonth >= 9 ? startYear : endYear;
+      startDate = new Date(smYear, config.startMonth - 1, 1);
+      endDate = new Date(endYear, 7, 31, 23, 59, 59, 999); // siempre hasta agosto
+    } else if (config.type === 'auxiliary' && !config.permanent &&
         config.startMonth !== undefined && config.endMonth !== undefined) {
       // Auxiliar con rango: sólo los meses activos dentro del año de servicio
       const smYear = config.startMonth >= 9 ? startYear : endYear;
